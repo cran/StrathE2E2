@@ -1,0 +1,8 @@
+\documentclass{article}
+%\VignetteIndexEntry{CheatSheet}
+
+\usepackage{pdfpages}
+\begin{document}
+\includepdf[pages=-,fitpaper=true]{CheatSheet.pdf}
+\end{document}
+

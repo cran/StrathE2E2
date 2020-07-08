@@ -1,0 +1,25 @@
+Filename,Expected_subdir,Description,Comments
+physical_parameters_Testbed.csv,Parameters,Physical parameters (areas thickness and sediments),North Sea model data
+physics_Testbed.csv,Driving_data,Physics drivers (ocean inflows temperature etc),North Sea 2003-2013 data from NEMO-ERSEM and elsewhere
+chemistry_Testbed.csv,Driving_data,Chemistry drivers (boundary nutrients etc),North Sea 2003-2013 data from NEMO-ERSEM World Ocean Atlas and elsewhere
+initial_values_Testbed.csv,Parameters,Initial state of each state variable,Data exported from end of run for stationary state North Sea 2003-2013 model
+event_timing_Testbed.csv,Parameters,Biological event timing parameters,North Sea spawning recruitment and mackerel migrations in the 2003-2013 period
+fixed_consumers_Testbed.csv,Parameters,Fixed parameters for consumer guilds,Mostly generic parameters for European temperate waters with minor variation in harvestable fraction for carniv zoo for 2003-2013
+fixed_miscellaneous.csv,Parameters,Fixed miscellaneous parameters (Q10s etc),Miscellaneous fixed parameters for European temperate waters
+fitted_preference_matrix_Testbed.csv,Parameters,Fitted prey preference matrix,North Sea preference matrix generic for both 1970-1999 and 2003-2013 periods 
+fitted_uptake_mort_rates_Testbed.csv,Parameters,Fitted uptake and mortality parameters,North Sea parameters generic for both 1970-1999 and 2003-2013 periods 
+fitted_microbiology_others_Testbed.csv,Parameters,Fitted microibiology and other parameters,North Sea parameters generic for both 1970-1999 and 2003-2013 periods 
+fishing_fleet_Testbed.csv,Parameters,Fishing fleet basic parameters,North Sea fleet parameters for the 2003-2013 period (uses demersal discard rates from csv file)
+fishing_activity_Testbed.csv,Parameters,Fishing activity and seabed abrasion rates for each gear,North Sea gear activity rates from STECF and Norway for the 2003-2013 period
+fishing_power_Testbed.csv,Parameters,Fishing power parameters for each gear and guild,North Sea power parameters derived from 2003-2013 STECF data - used generically for both 1970-1999 and 2003-2013 periods
+fishing_discards_Testbed.csv,Parameters,Discard rates for each gear and guild,North Sea discard rates from 2003-2013 STECF data - used generically for both 1970-1999 and 2003-2013 - EXCEPT for demersal fish rates need to be set to internally derived in 1970-1999
+fishing_processing_Testbed.csv,Parameters,Processing at sea ratyes for each gear and guild,North Sea processing-at-sea rates generic for both 1970-1999 and 2003-2013 periods
+fishing_distribution_Testbed.csv,Parameters,Spatial distribution of activity rates across habitats,North Sea gear activity distributions from 2003-2013 STECF data - used generically for both the 1970-1999 and 2003-2013 periods
+fishing_gear_multiplier.csv,Parameters,Gear activity multipiers,Multipliers to be applied to activity rates of gears used in the North Sea (values >=0)
+harvest_ratio_multiplier.csv,Parameters,Harvest ratio multipliers,Multipliers to be applied to guild harvest ratios (values >=0)
+food_web_flow_matrix_template.csv,Parameters,Food web flow matrix template,Template file for the creation of a mass flow matrix for the final year of the model run
+fishing_gear_linkages.csv,Parameters,Relationships between gear activity rates over time,North Sea estimates _ only required by fitting function to seek activity rates generating given patterns of harvest ratios
+annual_observed_Testbed.csv,Target_data,Annual target data,Compilation of annual observational data on the mean state of the North Sea during 2003-2013
+monthly_observed_Testbed.csv,Target_data,Monthly target data,Compilation of monthly observational data on the mean state of the North Sea during 2003-2013
+region_harvest_r_Testbed.csv,Target_data,Independently estimates guild harvest ratios,North Sea 2003-2013 guild HRs from ICES stock assessments and survey data and regional ecosystem review _  only required by utility function to calculate HRscale parameters given known regional harvest ratios
+zonal_harvest_r_Testbed.csv,Target_data,Inshore and offshore harvest ratios,North Sea 2003-2013 inshore and offshore harvest ratios genertaed by a prior run of the model  _ only required by fitting function to seek activity rates generating given patterns of harvest ratios

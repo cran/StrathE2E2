@@ -1,0 +1,20 @@
+citHeader("To cite package 'StrathE2E2' in publications use:")
+citEntry(entry="article",
+  title = "StrathE2E2: an R package for modelling the dynamics of marine food webs 
+          and fisheries",
+  author = personList(as.person("Michael R. Heath"),
+                      as.person("Douglas C. Speirs"),
+                      as.person("Ian Thurlbeck "),
+                      as.person("Robert Wilson ")),
+  journal  =	"Methods in Ecology and Evolution",
+  volume   =	"submitted",
+  year     = 	"2020",
+  ISSN     = 	"2041-210X",
+  URL      = 	"https://besjournals.onlinelibrary.wiley.com/journal/2041210X",
+  keywords =	"food web, dynamic model, ecosystem, fisheries, 
+                 ordinary differential equations, optimization, 
+				 sensitivity analysis, Monte-Carlo, R",
+  textVersion =  paste("Heath, M.R., Speirs, D.C., Thurlbeck, I. and Wilson, R. (2019).",
+                       "StrathE2E2: an R package for modelling the dynamics of marine food webs and fisheries.",
+                       "Methods in Ecology and Evolution, submitted (check online for updates).")
+)
