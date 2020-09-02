@@ -61,7 +61,7 @@ O_results<-data.frame("total_labile_detritus_bd"=rep(NA,6),
 		"kelp_bd"=rep(NA,6),
 		"phyt_bd"=rep(NA,6),
 		"benth_susp_bd"=rep(NA,6),
-		"herb_bd"=rep(NA,6),
+		"omni_bd"=rep(NA,6),
 		"benth_carn_bd"=rep(NA,6),
 		"carn_bd"=rep(NA,6),	
 		"plankfish_bd"=rep(NA,6),
@@ -152,8 +152,8 @@ O_results$demfish_bd <- ( (O_rawresults[which(O_rawresults$Description=="Demersa
 I_results$migfish_bd <- ( (I_rawresults[which(I_rawresults$Description=="Migratory_fish"),1]) ) /shallowprop
 O_results$migfish_bd <- ( (O_rawresults[which(O_rawresults$Description=="Migratory_fish"),1]) ) /(1-shallowprop)
 
-I_results$herb_bd <- ( (I_rawresults[which(I_rawresults$Description=="Omnivorous_zooplankton"),1]) ) /shallowprop
-O_results$herb_bd <- ( (O_rawresults[which(O_rawresults$Description=="Omnivorous_zooplankton"),1]) ) /(1-shallowprop)
+I_results$omni_bd <- ( (I_rawresults[which(I_rawresults$Description=="Omnivorous_zooplankton"),1]) ) /shallowprop
+O_results$omni_bd <- ( (O_rawresults[which(O_rawresults$Description=="Omnivorous_zooplankton"),1]) ) /(1-shallowprop)
 
 I_results$carn_bd <- ( (I_rawresults[which(I_rawresults$Description=="Carnivorous_zooplankton"),1]) ) /shallowprop
 O_results$carn_bd <- ( (O_rawresults[which(O_rawresults$Description=="Carnivorous_zooplankton"),1]) ) /(1-shallowprop)

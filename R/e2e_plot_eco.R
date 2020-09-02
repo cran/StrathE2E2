@@ -73,7 +73,7 @@
 #' # plot example credible interval data:
 #' # This example requires the Strathe2E2examples supplementary data package.
 #' if(require(StrathE2E2examples)){
-#'     model <- e2e_read("North_Sea", "1970-1999")
+#'     e2e_plot_eco(model, selection="BENTHOS",ci.data=TRUE,use.example=TRUE)
 #' }
 #'
 #

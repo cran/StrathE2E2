@@ -27,18 +27,18 @@ List of all vignettes and documentation supplied with the package: \cr
 CheatSheet - quick-reference guide to StrathE2E2 functions ... \url{../doc/StrathE2E2_CheatSheet.pdf} \cr
   or ... from an R session ... vignette("StrathE2E2_CheatSheet")
 
-\href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.1.0/StrathE2E2_User_Manual_3.1.0.html}{Package User Manual (html) - guide to developing and running models} \cr
+\href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.2.0/StrathE2E2_User_Manual_3.2.0.html}{Package User Manual (html) - guide to developing and running models} \cr
 
 Package website: \url{https://marineresourcemodelling.gitlab.io/index.html}
 
 Download documentation from the package website: \cr
-  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.1.0/StrathE2E2_Technical_Manual_3.1.0.pdf}{Technical Manual - documentation on the structure of input and output R-objects and files} \cr
-  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.1.0/StrathE2E2_Model_origin.pdf}{Origin of the model (previous versions)} \cr
-  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.1.0/StrathE2E2_Model_overview.pdf}{Overview of the model concepts and design} \cr
-  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.1.0/StrathE2E2_Ecology_model.pdf}{Ecology model description} \cr
-  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.1.0/StrathE2E2_Fishing_fleet_model.pdf}{Fishing fleet model description} \cr
-  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.1.0/StrathE2E2_Optimization_sensitivity_Monte_Carlo_methodology.pdf}{Optimization, sensitivity and Monte Carlo methods} \cr
-  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.1.0/StrathE2E2_North_Sea_model.pdf}{Documentation on the North Sea implementation of StrathE2E2 which is provided with the package} \cr
+  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.2.0/StrathE2E2_Technical_Manual_3.2.0.pdf}{Technical Manual - documentation on the structure of input and output R-objects and files} \cr
+  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.2.0/StrathE2E2_Model_origin.pdf}{Origin of the model (previous versions)} \cr
+  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.2.0/StrathE2E2_Model_overview.pdf}{Overview of the model concepts and design} \cr
+  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.2.0/StrathE2E2_Ecology_model.pdf}{Ecology model description} \cr
+  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.2.0/StrathE2E2_Fishing_fleet_model.pdf}{Fishing fleet model description} \cr
+  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.2.0/StrathE2E2_Optimization_sensitivity_Monte_Carlo_methodology.pdf}{Optimization, sensitivity and Monte Carlo methods} \cr
+  \href{https://marineresourcemodelling.gitlab.io/resources/StrathE2E2/documents/3.2.0/StrathE2E2_North_Sea_model.pdf}{Documentation on the North Sea implementation of StrathE2E2 which is provided with the package} \cr
 
 Repository for contributed models: (\url{https://marineresourcemodelling.gitlab.io/resources/index.html}) \cr
 }

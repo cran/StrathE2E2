@@ -162,7 +162,9 @@ A separate function e2e_plot_sens_mc() produces a graphical representation of th
 
 }
 \references{
-Morris, M.D. (1991). Factorial sampling plans for preliminary computational experiments. Technometrics, 33, 161-174.
+For details on the sensitivity analysis method see: Morris, M.D. (1991). Factorial sampling plans for preliminary computational experiments. Technometrics, 33, 161-174.
+
+For a review of sensitivity analysis methods including the Morris Method see: Wu, J. et al. (2013). Sensitivity analysis of infectious disease models: methods, advances and their application. J R Soc Interface 10: 20121018, 14pp.
 }
 \seealso{
 \code{\link{e2e_read}}, \code{\link{e2e_merge_sens_mc}}, \code{\link{e2e_process_sens_mc}}, \code{\link{e2e_plot_sens_mc}}

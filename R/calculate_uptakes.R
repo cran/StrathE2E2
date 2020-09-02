@@ -17,31 +17,31 @@ calculate_uptakes <- function(fitted.parms) {
 	PREF_AMM_kelp		= elt(fitted.parms, "PREF_AMM_kelp")
 	PREF_NIT_phyt		= elt(fitted.parms, "PREF_NIT_phyt")
 	PREF_AMM_phyt		= elt(fitted.parms, "PREF_AMM_phyt")
-	PREF_phyt_herb		= elt(fitted.parms, "PREF_phyt_herb")
-	PREF_det_herb		= elt(fitted.parms, "PREF_det_herb")
-	PREF_benthslar_herb	= elt(fitted.parms, "PREF_benthslar_herb")
-	PREF_benthclar_herb	= elt(fitted.parms, "PREF_benthclar_herb")
-	PREF_herb_carn		= elt(fitted.parms, "PREF_herb_carn")
+	PREF_phyt_omni		= elt(fitted.parms, "PREF_phyt_omni")
+	PREF_det_omni		= elt(fitted.parms, "PREF_det_omni")
+	PREF_benthslar_omni	= elt(fitted.parms, "PREF_benthslar_omni")
+	PREF_benthclar_omni	= elt(fitted.parms, "PREF_benthclar_omni")
+	PREF_omni_carn		= elt(fitted.parms, "PREF_omni_carn")
 	PREF_benthslar_carn	= elt(fitted.parms, "PREF_benthslar_carn")
 	PREF_benthclar_carn	= elt(fitted.parms, "PREF_benthclar_carn")
 	PREF_fishplar_carn	= elt(fitted.parms, "PREF_fishplar_carn")
 	PREF_fishdlar_carn	= elt(fitted.parms, "PREF_fishdlar_carn")
-	PREF_herb_fishplar	= elt(fitted.parms, "PREF_herb_fishplar")
+	PREF_omni_fishplar	= elt(fitted.parms, "PREF_omni_fishplar")
 	PREF_benthslar_fishplar	= elt(fitted.parms, "PREF_benthslar_fishplar")
 	PREF_benthclar_fishplar	= elt(fitted.parms, "PREF_benthclar_fishplar")
-	PREF_herb_fishp		= elt(fitted.parms, "PREF_herb_fishp")
+	PREF_omni_fishp		= elt(fitted.parms, "PREF_omni_fishp")
 	PREF_carn_fishp		= elt(fitted.parms, "PREF_carn_fishp")
 	PREF_benthslar_fishp	= elt(fitted.parms, "PREF_benthslar_fishp")
 	PREF_benthclar_fishp	= elt(fitted.parms, "PREF_benthclar_fishp")
 	PREF_fishdlar_fishp	= elt(fitted.parms, "PREF_fishdlar_fishp")
 	PREF_fishplar_fishp	= elt(fitted.parms, "PREF_fishplar_fishp")
-	PREF_herb_fishm		= elt(fitted.parms, "PREF_herb_fishm")
+	PREF_omni_fishm		= elt(fitted.parms, "PREF_omni_fishm")
 	PREF_carn_fishm		= elt(fitted.parms, "PREF_carn_fishm")
 	PREF_benthslar_fishm	= elt(fitted.parms, "PREF_benthslar_fishm")
 	PREF_benthclar_fishm	= elt(fitted.parms, "PREF_benthclar_fishm")
 	PREF_fishdlar_fishm	= elt(fitted.parms, "PREF_fishdlar_fishm")
 	PREF_fishplar_fishm	= elt(fitted.parms, "PREF_fishplar_fishm")
-	PREF_herb_fishdlar	= elt(fitted.parms, "PREF_herb_fishdlar")
+	PREF_omni_fishdlar	= elt(fitted.parms, "PREF_omni_fishdlar")
 	PREF_benthslar_fishdlar	= elt(fitted.parms, "PREF_benthslar_fishdlar")
 	PREF_benthclar_fishdlar	= elt(fitted.parms, "PREF_benthclar_fishdlar")
 	PREF_carn_fishd		= elt(fitted.parms, "PREF_carn_fishd")
@@ -82,7 +82,7 @@ calculate_uptakes <- function(fitted.parms) {
 	PREF_bird_seal		= elt(fitted.parms, "PREF_bird_seal")
 	PREF_disc_seal		= elt(fitted.parms, "PREF_disc_seal")
 	PREF_corp_seal		= elt(fitted.parms, "PREF_corp_seal")
-	PREF_herb_ceta		= elt(fitted.parms, "PREF_herb_ceta")
+	PREF_omni_ceta		= elt(fitted.parms, "PREF_omni_ceta")
 	PREF_carn_ceta		= elt(fitted.parms, "PREF_carn_ceta")
 	PREF_benths_ceta	= elt(fitted.parms, "PREF_benths_ceta")
 	PREF_benthc_ceta	= elt(fitted.parms, "PREF_benthc_ceta")
@@ -97,7 +97,7 @@ calculate_uptakes <- function(fitted.parms) {
 
 	u_kelp			= elt(fitted.parms, "u_kelp")
 	u_phyt			= elt(fitted.parms, "u_phyt")
-	u_herb			= elt(fitted.parms, "u_herb")
+	u_omni			= elt(fitted.parms, "u_omni")
 	u_carn			= elt(fitted.parms, "u_carn")
 	u_fishplar		= elt(fitted.parms, "u_fishplar")
 	u_fishp			= elt(fitted.parms, "u_fishp")
@@ -114,7 +114,7 @@ calculate_uptakes <- function(fitted.parms) {
 
 	h_kelp			= elt(fitted.parms, "h_kelp")
 	h_phyt			= elt(fitted.parms, "h_phyt")
-	h_herb			= elt(fitted.parms, "h_herb")
+	h_omni			= elt(fitted.parms, "h_omni")
 	h_carn			= elt(fitted.parms, "h_carn")
 	h_fishplar		= elt(fitted.parms, "h_fishplar")
 	h_fishp			= elt(fitted.parms, "h_fishp")
@@ -147,18 +147,18 @@ calculate_uptakes <- function(fitted.parms) {
 		hsAMM_phyt		= h_phyt,
 
 		#Feeding by mesozooplankton at the reference temperature
-		uphyt_herbt		= u_herb*PREF_phyt_herb,
-		hsphyt_herb		= h_herb,
-		udet_herbt		= u_herb*PREF_det_herb,
-		hsdet_herb		= h_herb,
-		ubenthslar_herbt	= u_herb*PREF_benthslar_herb,
-		hsbenthslar_herb	= h_herb,
-		ubenthclar_herbt	= u_herb*PREF_benthclar_herb,
-		hsbenthclar_herb	= h_herb,
+		uphyt_omnit		= u_omni*PREF_phyt_omni,
+		hsphyt_omni		= h_omni,
+		udet_omnit		= u_omni*PREF_det_omni,
+		hsdet_omni		= h_omni,
+		ubenthslar_omnit	= u_omni*PREF_benthslar_omni,
+		hsbenthslar_omni	= h_omni,
+		ubenthclar_omnit	= u_omni*PREF_benthclar_omni,
+		hsbenthclar_omni	= h_omni,
 
 		#Feeding by carnivorous zooplankton at the reference temperature
-		uherb_carnt		= u_carn*PREF_herb_carn,
-		hsherb_carn		= h_carn,
+		uomni_carnt		= u_carn*PREF_omni_carn,
+		hsomni_carn		= h_carn,
 		ubenthslar_carnt	= u_carn*PREF_benthslar_carn,
 		hsbenthslar_carn	= h_carn,
 		ubenthclar_carnt	= u_carn*PREF_benthclar_carn,
@@ -169,16 +169,16 @@ calculate_uptakes <- function(fitted.parms) {
 		hsfishdlar_carn		= h_carn,
 
 		#Feeding by larvae of pelagic fish at the reference temperature
-		uherb_fishplart		= u_fishplar*PREF_herb_fishplar,
-		hsherb_fishplar		= h_fishplar,
+		uomni_fishplart		= u_fishplar*PREF_omni_fishplar,
+		hsomni_fishplar		= h_fishplar,
 		ubenthslar_fishplart	= u_fishplar*PREF_benthslar_fishplar,
 		hsbenthslar_fishplar	= h_fishplar,
 		ubenthclar_fishplart	= u_fishplar*PREF_benthclar_fishplar,
 		hsbenthclar_fishplar	= h_fishplar,
 
 		#Feeding by pelagic fish at the reference temperature
-		uherb_fishpt		= u_fishp*PREF_herb_fishp,
-		hsherb_fishp		= h_fishp,
+		uomni_fishpt		= u_fishp*PREF_omni_fishp,
+		hsomni_fishp		= h_fishp,
 		ucarn_fishpt		= u_fishp*PREF_carn_fishp,
 		hscarn_fishp		= h_fishp,
 		ubenthslar_fishpt	= u_fishp*PREF_benthslar_fishp,
@@ -191,8 +191,8 @@ calculate_uptakes <- function(fitted.parms) {
 		hsfishplar_fishp	= h_fishp,
 
 		#Feeding by migratory fish at the reference temperature
-		uherb_fishmt		= u_fishm*PREF_herb_fishm,
-		hsherb_fishm		= h_fishm,
+		uomni_fishmt		= u_fishm*PREF_omni_fishm,
+		hsomni_fishm		= h_fishm,
 		ucarn_fishmt		= u_fishm*PREF_carn_fishm,
 		hscarn_fishm		= h_fishm,
 		ubenthslar_fishmt	= u_fishm*PREF_benthslar_fishm,
@@ -205,8 +205,8 @@ calculate_uptakes <- function(fitted.parms) {
 		hsfishplar_fishm	= h_fishm,
 
 		#Feeding by larvae of demersal fish at the reference temperature
-		uherb_fishdlart		= u_fishdlar*PREF_herb_fishdlar,
-		hsherb_fishdlar		= h_fishdlar,
+		uomni_fishdlart		= u_fishdlar*PREF_omni_fishdlar,
+		hsomni_fishdlar		= h_fishdlar,
 		ubenthslar_fishdlart	= u_fishdlar*PREF_benthslar_fishdlar,
 		hsbenthslar_fishdlar	= h_fishdlar,
 		ubenthclar_fishdlart	= u_fishdlar*PREF_benthclar_fishdlar,
@@ -265,8 +265,8 @@ calculate_uptakes <- function(fitted.parms) {
 		hscorp_benthc		= h_benthc,
 
 		#Feeding by birds and mammals - temperature independent
-		#uherb_bird		= u_bird*PREF_herb_bird,
-		#hsherb_bird		= h_bird,
+		#uomni_bird		= u_bird*PREF_omni_bird,
+		#hsomni_bird		= h_bird,
 		ucarn_bird		= u_bird*PREF_carn_bird,
 		hscarn_bird		= h_bird,
 		ubenths_bird		= u_bird*PREF_benths_bird,
@@ -287,7 +287,7 @@ calculate_uptakes <- function(fitted.parms) {
 
 		bda_par_bird		= bda_par_bird,
 
-		##uherb_seal=u_seal*PREF_herb_seal,hsherb_seal=h_seal,
+		##uomni_seal=u_seal*PREF_omni_seal,hsomni_seal=h_seal,
 		ucarn_seal		= u_seal*PREF_carn_seal,
 		hscarn_seal		= h_seal,
 		ubenths_seal		= u_seal*PREF_benths_seal,
@@ -312,8 +312,8 @@ calculate_uptakes <- function(fitted.parms) {
 
 		bdapar_seal		= bda_par_seal,
 
-		uherb_ceta		= u_ceta*PREF_herb_ceta,
-		hsherb_ceta		= h_ceta,
+		uomni_ceta		= u_ceta*PREF_omni_ceta,
+		hsomni_ceta		= h_ceta,
 		ucarn_ceta		= u_ceta*PREF_carn_ceta,
 		hscarn_ceta		= h_ceta,
 		ubenths_ceta		= u_ceta*PREF_benths_ceta,
@@ -341,8 +341,8 @@ calculate_uptakes <- function(fitted.parms) {
 	)
 
 	#showall("u_ceta", u_ceta)
-	#showall("PREF_herb_ceta", PREF_herb_ceta)
-	#showall("uherb_ceta", uptakes[["uherb_ceta"]])
+	#showall("PREF_omni_ceta", PREF_omni_ceta)
+	#showall("uomni_ceta", uptakes[["uomni_ceta"]])
 
 	uptakes
 }

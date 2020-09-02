@@ -215,7 +215,7 @@ if(ci.data2==FALSE){
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_benclar_pb")] <- "Carn/scav.benthos larv. P/B"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_bens_pb")] <- "Susp/dep.benthos P/B"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_benc_pb")] <- "Carn/scav.benthos P/B"
-	annualtargetnames[which(annualtargetdata[,4]=="Obs_herb_pb")] <- "Omniv.zooplankton P/B"
+	annualtargetnames[which(annualtargetdata[,4]=="Obs_omni_pb")] <- "Omniv.zooplankton P/B"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_carn_pb")] <- "Carniv.zooplankton P/B"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_fishplar_pb")] <- "Plank.fish larvae P/B"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_fishdlar_pb")] <- "Dem.fish larvae P/B"
@@ -244,7 +244,7 @@ if(ci.data2==FALSE){
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_NDJF_d_ammonia")] <- "Winter deep ammonia"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_MJJA_d_ammonia")] <- "Summer deep ammonia"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_carn_io_ratio")] <- "Carniv.zooplanton"
-	annualtargetnames[which(annualtargetdata[,4]=="Obs_herb_io_ratio")] <- "Omniv.zooplankton"
+	annualtargetnames[which(annualtargetdata[,4]=="Obs_omni_io_ratio")] <- "Omniv.zooplankton"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_phyt_io_ratio")] <- "Surf.phytoplankton"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_nit_io_ratio")] <- "Surf.nitrate"
 	annualtargetnames[which(annualtargetdata[,4]=="Obs_amm_io_ratio")] <- "Surf.ammonia"
@@ -328,7 +328,7 @@ if(ci.data2==FALSE){
 		which(annualtargetdata[,4]=="Obs_exud_C_kelp"),
 		which(annualtargetdata[,4]=="Obs_kelp_beachcast"),
 
-		which(annualtargetdata[,4]=="Obs_herb_pb"),
+		which(annualtargetdata[,4]=="Obs_omni_pb"),
 		which(annualtargetdata[,4]=="Obs_benslar_pb"),
 		which(annualtargetdata[,4]=="Obs_benclar_pb"),
 		which(annualtargetdata[,4]=="Obs_fishplar_pb"),
@@ -367,7 +367,7 @@ if(ci.data2==FALSE){
 		which(annualtargetdata[,4]=="Obs_amm_io_ratio"),
 		which(annualtargetdata[,4]=="Obs_nit_io_ratio"),
 		which(annualtargetdata[,4]=="Obs_phyt_io_ratio"),
-		which(annualtargetdata[,4]=="Obs_herb_io_ratio"),
+		which(annualtargetdata[,4]=="Obs_omni_io_ratio"),
 		which(annualtargetdata[,4]=="Obs_carn_io_ratio"),
 		which(annualtargetdata[,4]=="Obs_pfish_io_ratio"),
 		which(annualtargetdata[,4]=="Obs_dfish_io_ratio"),

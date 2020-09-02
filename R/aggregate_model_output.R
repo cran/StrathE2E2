@@ -89,8 +89,8 @@ aggregate_model_output <- function(model, output) {
 		elt(out, "kelpdebris")+
 		elt(out, "phyt_so")+
 		elt(out, "phyt_d")+
-		elt(out, "herb_o")+
-		elt(out, "herb_i")+
+		elt(out, "omni_o")+
+		elt(out, "omni_i")+
 		elt(out, "carn_o")+
 		elt(out, "carn_i")+
 		elt(out, "benthslar_o")+
@@ -149,7 +149,7 @@ aggregate_model_output <- function(model, output) {
 		elt(out, "x_nitrate_d3")+
 		elt(out, "phyt_so")+
 		elt(out, "phyt_d")+
-		elt(out, "herb_o")+
+		elt(out, "omni_o")+
 		elt(out, "carn_o")+
 		elt(out, "benthslar_o")+
 		elt(out, "benthclar_o")+
@@ -182,7 +182,7 @@ aggregate_model_output <- function(model, output) {
 		elt(out, "x_nitrate_s1")+
 		elt(out, "x_nitrate_s2")+
 		elt(out, "x_nitrate_s3")+
-		elt(out, "herb_i")+
+		elt(out, "omni_i")+
 		elt(out, "carn_i")+
 		elt(out, "fishplar_i")+
 		elt(out, "fishp_i")+
@@ -252,7 +252,7 @@ aggregate_model_output <- function(model, output) {
 	aggregates$benthc<-elt(out, "benthc_o")+elt(out, "benthc_i")
 	aggregates$discard<-elt(out, "discard_o")+elt(out, "discard_i")
 
-	aggregates$herb<-elt(out, "herb_o")+elt(out, "herb_i")
+	aggregates$omni<-elt(out, "omni_o")+elt(out, "omni_i")
 
 	aggregates$carn<-elt(out, "carn_o")+elt(out, "carn_i")
 
@@ -281,7 +281,7 @@ aggregate_model_output <- function(model, output) {
 
 	aggregates$phytgrossprod <- out$phytgrossprod_o + out$phytgrossprod_i
 
-	aggregates$herbgrossprod <- out$herbgrossprod_o + out$herbgrossprod_i
+	aggregates$omnigrossprod <- out$omnigrossprod_o + out$omnigrossprod_i
 	aggregates$carngrossprod <- out$carngrossprod_o + out$carngrossprod_i
 	aggregates$pfishlargrossprod <- out$pfishlargrossprod_o + out$pfishlargrossprod_i
 	aggregates$dfishlargrossprod <- out$dfishlargrossprod_o + out$dfishlargrossprod_i
@@ -296,7 +296,7 @@ aggregate_model_output <- function(model, output) {
 	aggregates$sealgrossprod <- out$sealgrossprod_o + out$sealgrossprod_i
 	aggregates$cetagrossprod <- out$cetagrossprod_o + out$cetagrossprod_i
 
-	aggregates$herbnetprod <- out$herbnetprod_o + out$herbnetprod_i
+	aggregates$omninetprod <- out$omninetprod_o + out$omninetprod_i
 	aggregates$carnnetprod <- out$carnnetprod_o + out$carnnetprod_i
 	aggregates$pfishlarnetprod <- out$pfishlarnetprod_o + out$pfishlarnetprod_i
 	aggregates$dfishlarnetprod <- out$dfishlarnetprod_o + out$dfishlarnetprod_i

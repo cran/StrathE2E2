@@ -42,36 +42,36 @@ read_fitted_parameters <- function(model.path) {
 		PREF_NIT_phyt		= preference_matrix_input$phyt[which(rownames(preference_matrix_input)=="nitrate")],
 		PREF_AMM_phyt		= preference_matrix_input$phyt[which(rownames(preference_matrix_input)=="ammonia")],
 
-		PREF_phyt_herb		= preference_matrix_input$omnivzoo[which(rownames(preference_matrix_input)=="phyt")],
-		PREF_det_herb		= preference_matrix_input$omnivzoo[which(rownames(preference_matrix_input)=="suspdet")],
-		PREF_benthslar_herb	= preference_matrix_input$omnivzoo[which(rownames(preference_matrix_input)=="benthslar")],
-		PREF_benthclar_herb	= preference_matrix_input$omnivzoo[which(rownames(preference_matrix_input)=="benthclar")],
+		PREF_phyt_omni		= preference_matrix_input$omnivzoo[which(rownames(preference_matrix_input)=="phyt")],
+		PREF_det_omni		= preference_matrix_input$omnivzoo[which(rownames(preference_matrix_input)=="suspdet")],
+		PREF_benthslar_omni	= preference_matrix_input$omnivzoo[which(rownames(preference_matrix_input)=="benthslar")],
+		PREF_benthclar_omni	= preference_matrix_input$omnivzoo[which(rownames(preference_matrix_input)=="benthclar")],
 
-		PREF_herb_carn		= preference_matrix_input$carnzoo[which(rownames(preference_matrix_input)=="omnivzoo")],
+		PREF_omni_carn		= preference_matrix_input$carnzoo[which(rownames(preference_matrix_input)=="omnivzoo")],
 		PREF_benthslar_carn	= preference_matrix_input$carnzoo[which(rownames(preference_matrix_input)=="benthslar")],
 		PREF_benthclar_carn	= preference_matrix_input$carnzoo[which(rownames(preference_matrix_input)=="benthclar")],
 		PREF_fishplar_carn	= preference_matrix_input$carnzoo[which(rownames(preference_matrix_input)=="fishplar")],
 		PREF_fishdlar_carn	= preference_matrix_input$carnzoo[which(rownames(preference_matrix_input)=="fishdlar")],
 
-		PREF_herb_fishplar	= preference_matrix_input$fishplar[which(rownames(preference_matrix_input)=="omnivzoo")],
+		PREF_omni_fishplar	= preference_matrix_input$fishplar[which(rownames(preference_matrix_input)=="omnivzoo")],
 		PREF_benthslar_fishplar	= preference_matrix_input$fishplar[which(rownames(preference_matrix_input)=="benthslar")],
 		PREF_benthclar_fishplar	= preference_matrix_input$fishplar[which(rownames(preference_matrix_input)=="benthclar")],
 
-		PREF_herb_fishp		= preference_matrix_input$fishp[which(rownames(preference_matrix_input)=="omnivzoo")],
+		PREF_omni_fishp		= preference_matrix_input$fishp[which(rownames(preference_matrix_input)=="omnivzoo")],
 		PREF_carn_fishp		= preference_matrix_input$fishp[which(rownames(preference_matrix_input)=="carnzoo")],
 		PREF_benthslar_fishp	= preference_matrix_input$fishp[which(rownames(preference_matrix_input)=="benthslar")],
 		PREF_benthclar_fishp	= preference_matrix_input$fishp[which(rownames(preference_matrix_input)=="benthclar")],
 		PREF_fishdlar_fishp	= preference_matrix_input$fishp[which(rownames(preference_matrix_input)=="fishdlar")],
 		PREF_fishplar_fishp	= preference_matrix_input$fishp[which(rownames(preference_matrix_input)=="fishplar")],
 
-		PREF_herb_fishm		= preference_matrix_input$fishm[which(rownames(preference_matrix_input)=="omnivzoo")],
+		PREF_omni_fishm		= preference_matrix_input$fishm[which(rownames(preference_matrix_input)=="omnivzoo")],
 		PREF_carn_fishm		= preference_matrix_input$fishm[which(rownames(preference_matrix_input)=="carnzoo")],
 		PREF_benthslar_fishm	= preference_matrix_input$fishm[which(rownames(preference_matrix_input)=="benthslar")],
 		PREF_benthclar_fishm	= preference_matrix_input$fishm[which(rownames(preference_matrix_input)=="benthclar")],
 		PREF_fishdlar_fishm	= preference_matrix_input$fishm[which(rownames(preference_matrix_input)=="fishdlar")],
 		PREF_fishplar_fishm	= preference_matrix_input$fishm[which(rownames(preference_matrix_input)=="fishplar")],
 
-		PREF_herb_fishdlar	= preference_matrix_input$fishdlar[which(rownames(preference_matrix_input)=="omnivzoo")],
+		PREF_omni_fishdlar	= preference_matrix_input$fishdlar[which(rownames(preference_matrix_input)=="omnivzoo")],
 		PREF_benthslar_fishdlar	= preference_matrix_input$fishdlar[which(rownames(preference_matrix_input)=="benthslar")],
 		PREF_benthclar_fishdlar	= preference_matrix_input$fishdlar[which(rownames(preference_matrix_input)=="benthclar")],
 
@@ -121,7 +121,7 @@ read_fitted_parameters <- function(model.path) {
 		PREF_disc_seal		= preference_matrix_input$seal[which(rownames(preference_matrix_input)=="discards")],
 		PREF_corp_seal		= preference_matrix_input$seal[which(rownames(preference_matrix_input)=="corpses")],
 
-		PREF_herb_ceta		= preference_matrix_input$ceta[which(rownames(preference_matrix_input)=="omnivzoo")],
+		PREF_omni_ceta		= preference_matrix_input$ceta[which(rownames(preference_matrix_input)=="omnivzoo")],
 		PREF_carn_ceta		= preference_matrix_input$ceta[which(rownames(preference_matrix_input)=="carnzoo")],
 		PREF_benths_ceta	= preference_matrix_input$ceta[which(rownames(preference_matrix_input)=="benths")],
 		PREF_benthc_ceta	= preference_matrix_input$ceta[which(rownames(preference_matrix_input)=="benthc")],
@@ -139,7 +139,7 @@ read_fitted_parameters <- function(model.path) {
 		ddexudC_kelp		= uptake_mort_input$Cddexud[which(uptake_mort_input$consumer=="kelp")],
 		u_kelp			= uptake_mort_input$Numax[which(uptake_mort_input$consumer=="kelp")],
 		u_phyt			= uptake_mort_input$Numax[which(uptake_mort_input$consumer=="phyt_s")],
-		u_herb			= uptake_mort_input$Numax[which(uptake_mort_input$consumer=="omnivzoo")],
+		u_omni			= uptake_mort_input$Numax[which(uptake_mort_input$consumer=="omnivzoo")],
 		u_carn			= uptake_mort_input$Numax[which(uptake_mort_input$consumer=="carnzoo")],
 		u_fishplar		= uptake_mort_input$Numax[which(uptake_mort_input$consumer=="fishplar")],
 		u_fishp			= uptake_mort_input$Numax[which(uptake_mort_input$consumer=="fishp")],
@@ -157,7 +157,7 @@ read_fitted_parameters <- function(model.path) {
 		# h_store: 19 pars
 		h_kelp			= uptake_mort_input$Nhsat[which(uptake_mort_input$consumer=="kelp")],
 		h_phyt			= uptake_mort_input$Nhsat[which(uptake_mort_input$consumer=="phyt_s")],
-		h_herb			= uptake_mort_input$Nhsat[which(uptake_mort_input$consumer=="omnivzoo")],
+		h_omni			= uptake_mort_input$Nhsat[which(uptake_mort_input$consumer=="omnivzoo")],
 		h_carn			= uptake_mort_input$Nhsat[which(uptake_mort_input$consumer=="carnzoo")],
 		h_fishplar		= uptake_mort_input$Nhsat[which(uptake_mort_input$consumer=="fishplar")],
 		h_fishp			= uptake_mort_input$Nhsat[which(uptake_mort_input$consumer=="fishp")],
@@ -226,7 +226,7 @@ read_fitted_parameters <- function(model.path) {
 		xxdt			= uptake_mort_input$ddmort[which(uptake_mort_input$consumer=="phyt_d")],
 
 		#Death rate of carnivores fish birds and mammals per unit biomass - temperature independent
-		xxherb			= uptake_mort_input$ddmort[which(uptake_mort_input$consumer=="omnivzoo")],
+		xxomni			= uptake_mort_input$ddmort[which(uptake_mort_input$consumer=="omnivzoo")],
 		xxcarn			= uptake_mort_input$ddmort[which(uptake_mort_input$consumer=="carnzoo")],
 		xxbenthslar		= uptake_mort_input$ddmort[which(uptake_mort_input$consumer=="benthslar")],
 		xxbenthclar		= uptake_mort_input$ddmort[which(uptake_mort_input$consumer=="benthclar")],

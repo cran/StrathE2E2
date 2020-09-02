@@ -116,7 +116,7 @@ derive_annual_results_wholedomain <- function(model, build, output, aggregates) 
 	fluxcorp_wcdet		<- elt(output, "fluxcorp_wcdet")
 	fluxkelpdebris_wcdet	<- elt(output, "fluxkelpdebris_wcdet")
 	fluxphyt_wcdet		<- elt(output, "fluxphyt_wcdet")
-	fluxherb_wcdet		<- elt(output, "fluxherb_wcdet")
+	fluxomni_wcdet		<- elt(output, "fluxomni_wcdet")
 	fluxcarn_wcdet		<- elt(output, "fluxcarn_wcdet")
 	fluxpfishlar_wcdet	<- elt(output, "fluxpfishlar_wcdet")
 	fluxdfishlar_wcdet	<- elt(output, "fluxdfishlar_wcdet")
@@ -146,7 +146,7 @@ derive_annual_results_wholedomain <- function(model, build, output, aggregates) 
 	fluxwcdet_xdet		<- elt(output, "fluxwcdet_xdet")
 	fluxphyt_benths		<- elt(output, "fluxphyt_benths")
 	fluxwcdet_benths	<- elt(output, "fluxwcdet_benths")
-	fluxherb_wcamm		<- elt(output, "fluxherb_wcamm")
+	fluxomni_wcamm		<- elt(output, "fluxomni_wcamm")
 	fluxcarn_wcamm		<- elt(output, "fluxcarn_wcamm")
 	fluxpfishlar_wcamm	<- elt(output, "fluxpfishlar_wcamm")
 	fluxdfishlar_wcamm	<- elt(output, "fluxdfishlar_wcamm")
@@ -167,28 +167,28 @@ derive_annual_results_wholedomain <- function(model, build, output, aggregates) 
 	fluxsedamm_sednit	<- elt(output, "fluxsedamm_sednit")
 	fluxsedamm_wcamm	<- elt(output, "fluxsedamm_wcamm")
 	fluxsednit_wcnit	<- elt(output, "fluxsednit_wcnit")
-	fluxwcdet_herb		<- elt(output, "fluxwcdet_herb")
-	fluxphyt_herb		<- elt(output, "fluxphyt_herb")
-	fluxbenthslar_herb	<- elt(output, "fluxbenthslar_herb")
-	fluxbenthclar_herb	<- elt(output, "fluxbenthclar_herb")
-	fluxherb_carn		<- elt(output, "fluxherb_carn")
+	fluxwcdet_omni		<- elt(output, "fluxwcdet_omni")
+	fluxphyt_omni		<- elt(output, "fluxphyt_omni")
+	fluxbenthslar_omni	<- elt(output, "fluxbenthslar_omni")
+	fluxbenthclar_omni	<- elt(output, "fluxbenthclar_omni")
+	fluxomni_carn		<- elt(output, "fluxomni_carn")
 	fluxpfishlar_carn	<- elt(output, "fluxpfishlar_carn")
 	fluxdfishlar_carn	<- elt(output, "fluxdfishlar_carn")
 	fluxbenthslar_carn	<- elt(output, "fluxbenthslar_carn")
 	fluxbenthclar_carn	<- elt(output, "fluxbenthclar_carn")
-	fluxherb_pfishlar	<- elt(output, "fluxherb_pfishlar")
+	fluxomni_pfishlar	<- elt(output, "fluxomni_pfishlar")
 	fluxbenthslar_pfishlar	<- elt(output, "fluxbenthslar_pfishlar")
 	fluxbenthclar_pfishlar	<- elt(output, "fluxbenthclar_pfishlar")
-	fluxherb_dfishlar	<- elt(output, "fluxherb_dfishlar")
+	fluxomni_dfishlar	<- elt(output, "fluxomni_dfishlar")
 	fluxbenthslar_dfishlar	<- elt(output, "fluxbenthslar_dfishlar")
 	fluxbenthclar_dfishlar	<- elt(output, "fluxbenthclar_dfishlar")
-	fluxherb_pfish		<- elt(output, "fluxherb_pfish")
+	fluxomni_pfish		<- elt(output, "fluxomni_pfish")
 	fluxcarn_pfish		<- elt(output, "fluxcarn_pfish")
 	fluxpfishlar_pfish	<- elt(output, "fluxpfishlar_pfish")
 	fluxdfishlar_pfish	<- elt(output, "fluxdfishlar_pfish")
 	fluxbenthslar_pfish	<- elt(output, "fluxbenthslar_pfish")
 	fluxbenthclar_pfish	<- elt(output, "fluxbenthclar_pfish")
-	fluxherb_mfish		<- elt(output, "fluxherb_mfish")
+	fluxomni_mfish		<- elt(output, "fluxomni_mfish")
 	fluxcarn_mfish		<- elt(output, "fluxcarn_mfish")
 	fluxpfishlar_mfish	<- elt(output, "fluxpfishlar_mfish")
 	fluxdfishlar_mfish	<- elt(output, "fluxdfishlar_mfish")
@@ -232,7 +232,7 @@ derive_annual_results_wholedomain <- function(model, build, output, aggregates) 
 	fluxbenthc_seal		<- elt(output, "fluxbenthc_seal")
 	fluxbird_seal		<- elt(output, "fluxbird_seal")
 	fluxdisc_ceta		<- elt(output, "fluxdisc_ceta")
-	fluxherb_ceta		<- elt(output, "fluxherb_ceta")
+	fluxomni_ceta		<- elt(output, "fluxomni_ceta")
 	fluxcarn_ceta		<- elt(output, "fluxcarn_ceta")
 	fluxpfish_ceta		<- elt(output, "fluxpfish_ceta")
 	fluxmfish_ceta		<- elt(output, "fluxmfish_ceta")
@@ -267,7 +267,7 @@ derive_annual_results_wholedomain <- function(model, build, output, aggregates) 
 	s_nitrate		<- elt(aggregates, "s_nitrate")
 	x_nitrate		<- elt(aggregates, "x_nitrate")
 	s_phyt			<- elt(aggregates, "s_phyt")
-	herb			<- elt(aggregates, "herb")
+	omni			<- elt(aggregates, "omni")
 	carn			<- elt(aggregates, "carn")
 	benthslar		<- elt(aggregates, "benthslar")
 	benths			<- elt(aggregates, "benths")
@@ -303,7 +303,7 @@ derive_annual_results_wholedomain <- function(model, build, output, aggregates) 
 	fluxwcnit_phyt		<- elt(aggregates, "fluxwcnit_phyt")
 	fluxwcamm_phyt		<- elt(aggregates, "fluxwcamm_phyt")
 	phytgrossprod		<- elt(aggregates, "phytgrossprod")
-	herbgrossprod		<- elt(aggregates, "herbgrossprod")
+	omnigrossprod		<- elt(aggregates, "omnigrossprod")
 	carngrossprod		<- elt(aggregates, "carngrossprod")
 	pfishlargrossprod	<- elt(aggregates, "pfishlargrossprod")
 	dfishlargrossprod	<- elt(aggregates, "dfishlargrossprod")
@@ -317,7 +317,7 @@ derive_annual_results_wholedomain <- function(model, build, output, aggregates) 
 	birdgrossprod		<- elt(aggregates, "birdgrossprod")
 	sealgrossprod		<- elt(aggregates, "sealgrossprod")
 	cetagrossprod		<- elt(aggregates, "cetagrossprod")
-	herbnetprod		<- elt(aggregates, "herbnetprod")
+	omninetprod		<- elt(aggregates, "omninetprod")
 	carnnetprod		<- elt(aggregates, "carnnetprod")
 	pfishlarnetprod		<- elt(aggregates, "pfishlarnetprod")
 	dfishlarnetprod		<- elt(aggregates, "dfishlarnetprod")
@@ -398,7 +398,7 @@ aamass_kelpN<-mean(kelpN[((nyears-1)*360+1):ndays])
 
 aamass_s_phyt<-mean(s_phyt[((nyears-1)*360+1):ndays])
 aamass_d_phyt<-mean(phyt_d[((nyears-1)*360+1):ndays])
-aamass_herb<-mean(herb[((nyears-1)*360+1):ndays])
+aamass_omni<-mean(omni[((nyears-1)*360+1):ndays])
 aamass_carn<-mean(carn[((nyears-1)*360+1):ndays])
 aamass_benthslar<-mean(benthslar[((nyears-1)*360+1):ndays])
 aamass_benths<-mean(benths[((nyears-1)*360+1):ndays])
@@ -440,7 +440,7 @@ mass_results[14,1]<-aamass_kelpN
 
 mass_results[15,1]<-aamass_s_phyt
 mass_results[16,1]<-aamass_d_phyt
-mass_results[17,1]<-aamass_herb
+mass_results[17,1]<-aamass_omni
 mass_results[18,1]<-aamass_carn
 mass_results[19,1]<-aamass_benthslar
 mass_results[20,1]<-aamass_benths
@@ -539,7 +539,7 @@ aamaxmass_kelpN<-max(kelpN[((nyears-1)*360+1):ndays])
 
 aamaxmass_s_phyt<-max(s_phyt[((nyears-1)*360+1):ndays])
 aamaxmass_d_phyt<-max(phyt_d[((nyears-1)*360+1):ndays])
-aamaxmass_herb<-max(herb[((nyears-1)*360+1):ndays])
+aamaxmass_omni<-max(omni[((nyears-1)*360+1):ndays])
 aamaxmass_carn<-max(carn[((nyears-1)*360+1):ndays])
 aamaxmass_benthslar<-max(benthslar[((nyears-1)*360+1):ndays])
 aamaxmass_benths<-max(benths[((nyears-1)*360+1):ndays])
@@ -580,7 +580,7 @@ maxmass_results[14,1]<-aamaxmass_kelpN
 
 maxmass_results[15,1]<-aamaxmass_s_phyt
 maxmass_results[16,1]<-aamaxmass_d_phyt
-maxmass_results[17,1]<-aamaxmass_herb
+maxmass_results[17,1]<-aamaxmass_omni
 maxmass_results[18,1]<-aamaxmass_carn
 maxmass_results[19,1]<-aamaxmass_benthslar
 maxmass_results[20,1]<-aamaxmass_benths
@@ -644,7 +644,7 @@ aaminmass_kelpN<-min(kelpN[((nyears-1)*360+1):ndays])
 
 aaminmass_s_phyt<-min(s_phyt[((nyears-1)*360+1):ndays])
 aaminmass_d_phyt<-min(phyt_d[((nyears-1)*360+1):ndays])
-aaminmass_herb<-min(herb[((nyears-1)*360+1):ndays])
+aaminmass_omni<-min(omni[((nyears-1)*360+1):ndays])
 aaminmass_carn<-min(carn[((nyears-1)*360+1):ndays])
 aaminmass_benthslar<-min(benthslar[((nyears-1)*360+1):ndays])
 aaminmass_benths<-min(benths[((nyears-1)*360+1):ndays])
@@ -685,7 +685,7 @@ minmass_results[14,1]<-aaminmass_kelpN
 
 minmass_results[15,1]<-aaminmass_s_phyt
 minmass_results[16,1]<-aaminmass_d_phyt
-minmass_results[17,1]<-aaminmass_herb
+minmass_results[17,1]<-aaminmass_omni
 minmass_results[18,1]<-aaminmass_carn
 minmass_results[19,1]<-aaminmass_benthslar
 minmass_results[20,1]<-aaminmass_benths
@@ -784,7 +784,7 @@ KelpNprod       <-   kelpNprod_i[ndays]      -     kelpNprod_i[((nyears-1)*360+1
 
 Phytgrossprod        <-   phytgrossprod[ndays]      -     phytgrossprod[((nyears-1)*360+1)]
 
-Herbgrossprod        <-   herbgrossprod[ndays]      -     herbgrossprod[((nyears-1)*360+1)]
+omnigrossprod        <-   omnigrossprod[ndays]      -     omnigrossprod[((nyears-1)*360+1)]
 Carngrossprod        <-   carngrossprod[ndays]      -     carngrossprod[((nyears-1)*360+1)]
 Fishplargrossprod    <-   pfishlargrossprod[ndays]  -     pfishlargrossprod[((nyears-1)*360+1)]
 Fishdlargrossprod    <-   dfishlargrossprod[ndays]  -     dfishlargrossprod[((nyears-1)*360+1)]
@@ -799,7 +799,7 @@ Birdgrossprod        <-   birdgrossprod[ndays]      -     birdgrossprod[((nyears
 Sealgrossprod        <-   sealgrossprod[ndays]      -     sealgrossprod[((nyears-1)*360+1)]
 Cetagrossprod        <-   cetagrossprod[ndays]      -     cetagrossprod[((nyears-1)*360+1)]
 
-Herbnetprod        <-   herbnetprod[ndays]      -     herbnetprod[((nyears-1)*360+1)]
+omninetprod        <-   omninetprod[ndays]      -     omninetprod[((nyears-1)*360+1)]
 Carnnetprod        <-   carnnetprod[ndays]      -     carnnetprod[((nyears-1)*360+1)]
 Fishplarnetprod    <-   pfishlarnetprod[ndays]  -     pfishlarnetprod[((nyears-1)*360+1)]
 Fishdlarnetprod    <-   dfishlarnetprod[ndays]  -     dfishlarnetprod[((nyears-1)*360+1)]
@@ -817,7 +817,7 @@ Cetanetprod        <-   cetanetprod[ndays]      -     cetanetprod[((nyears-1)*36
 WCdetritusprod      <-   fluxcorp_wcdet[ndays]      -     fluxcorp_wcdet[((nyears-1)*360+1)] +
                         +fluxkelpdebris_wcdet[ndays]      -     fluxkelpdebris_wcdet[((nyears-1)*360+1)] +
                         +fluxphyt_wcdet[ndays]      -     fluxphyt_wcdet[((nyears-1)*360+1)] +
-                        +fluxherb_wcdet[ndays]      -     fluxherb_wcdet[((nyears-1)*360+1)] +
+                        +fluxomni_wcdet[ndays]      -     fluxomni_wcdet[((nyears-1)*360+1)] +
                         +fluxcarn_wcdet[ndays]      -     fluxcarn_wcdet[((nyears-1)*360+1)] +
                         +fluxpfishlar_wcdet[ndays]      -     fluxpfishlar_wcdet[((nyears-1)*360+1)] +
                         +fluxdfishlar_wcdet[ndays]      -     fluxdfishlar_wcdet[((nyears-1)*360+1)] +
@@ -863,7 +863,7 @@ Fluxpartwc_sed      <-   fluxwcdet_xdet[ndays]      -     fluxwcdet_xdet[((nyear
 
 Fluxdisc_corp       <-   fluxdisc_corp[ndays]      -     fluxdisc_corp[((nyears-1)*360+1)]
 
-Pelagammprod        <-   fluxherb_wcamm[ndays]      -     fluxherb_wcamm[((nyears-1)*360+1)] +
+Pelagammprod        <-   fluxomni_wcamm[ndays]      -     fluxomni_wcamm[((nyears-1)*360+1)] +
                         +fluxcarn_wcamm[ndays]      -     fluxcarn_wcamm[((nyears-1)*360+1)] +
                         +fluxpfishlar_wcamm[ndays]      -     fluxpfishlar_wcamm[((nyears-1)*360+1)] +
                         +fluxdfishlar_wcamm[ndays]      -     fluxdfishlar_wcamm[((nyears-1)*360+1)] +
@@ -908,33 +908,33 @@ SEDWCnitflux        <-   fluxsednit_wcnit[ndays]      -     fluxsednit_wcnit[((n
 
 
 
-Fluxdet_herb           <-   fluxwcdet_herb[ndays]      -     fluxwcdet_herb[((nyears-1)*360+1)]
-Fluxphyt_herb          <-   fluxphyt_herb[ndays]      -     fluxphyt_herb[((nyears-1)*360+1)]
-Fluxbenthslar_herb          <-   fluxbenthslar_herb[ndays]      -     fluxbenthslar_herb[((nyears-1)*360+1)]
-Fluxbenthclar_herb          <-   fluxbenthclar_herb[ndays]      -     fluxbenthclar_herb[((nyears-1)*360+1)]
+Fluxdet_omni           <-   fluxwcdet_omni[ndays]      -     fluxwcdet_omni[((nyears-1)*360+1)]
+Fluxphyt_omni          <-   fluxphyt_omni[ndays]      -     fluxphyt_omni[((nyears-1)*360+1)]
+Fluxbenthslar_omni          <-   fluxbenthslar_omni[ndays]      -     fluxbenthslar_omni[((nyears-1)*360+1)]
+Fluxbenthclar_omni          <-   fluxbenthclar_omni[ndays]      -     fluxbenthclar_omni[((nyears-1)*360+1)]
 
-Fluxherb_carn           <-   fluxherb_carn[ndays]      -     fluxherb_carn[((nyears-1)*360+1)]
+Fluxomni_carn           <-   fluxomni_carn[ndays]      -     fluxomni_carn[((nyears-1)*360+1)]
 Fluxpfishlar_carn       <-   fluxpfishlar_carn[ndays]      -     fluxpfishlar_carn[((nyears-1)*360+1)]
 Fluxdfishlar_carn       <-   fluxdfishlar_carn[ndays]      -     fluxdfishlar_carn[((nyears-1)*360+1)]   
 Fluxbenthslar_carn       <-   fluxbenthslar_carn[ndays]      -     fluxbenthslar_carn[((nyears-1)*360+1)]    
 Fluxbenthclar_carn       <-   fluxbenthclar_carn[ndays]      -     fluxbenthclar_carn[((nyears-1)*360+1)]    
 
-Fluxherb_pfishlar           <-   fluxherb_pfishlar[ndays]      -     fluxherb_pfishlar[((nyears-1)*360+1)]   
+Fluxomni_pfishlar           <-   fluxomni_pfishlar[ndays]      -     fluxomni_pfishlar[((nyears-1)*360+1)]   
 Fluxbenthslar_pfishlar        <-   fluxbenthslar_pfishlar[ndays]      -     fluxbenthslar_pfishlar[((nyears-1)*360+1)]   
 Fluxbenthclar_pfishlar        <-   fluxbenthclar_pfishlar[ndays]      -     fluxbenthclar_pfishlar[((nyears-1)*360+1)]   
 
-Fluxherb_dfishlar           <-   fluxherb_dfishlar[ndays]      -     fluxherb_dfishlar[((nyears-1)*360+1)]   
+Fluxomni_dfishlar           <-   fluxomni_dfishlar[ndays]      -     fluxomni_dfishlar[((nyears-1)*360+1)]   
 Fluxbenthslar_dfishlar        <-   fluxbenthslar_dfishlar[ndays]      -     fluxbenthslar_dfishlar[((nyears-1)*360+1)]   
 Fluxbenthclar_dfishlar        <-   fluxbenthclar_dfishlar[ndays]      -     fluxbenthclar_dfishlar[((nyears-1)*360+1)]   
 
-Fluxherb_pfish            <-   fluxherb_pfish[ndays]      -     fluxherb_pfish[((nyears-1)*360+1)]     
+Fluxomni_pfish            <-   fluxomni_pfish[ndays]      -     fluxomni_pfish[((nyears-1)*360+1)]     
 Fluxcarn_pfish            <-   fluxcarn_pfish[ndays]      -     fluxcarn_pfish[((nyears-1)*360+1)]     
 Fluxpfishlar_pfish        <-   fluxpfishlar_pfish[ndays]      -     fluxpfishlar_pfish[((nyears-1)*360+1)]     
 Fluxdfishlar_pfish        <-   fluxdfishlar_pfish[ndays]      -     fluxdfishlar_pfish[((nyears-1)*360+1)]     
 Fluxbenthslar_pfish         <-   fluxbenthslar_pfish[ndays]      -     fluxbenthslar_pfish[((nyears-1)*360+1)]     
 Fluxbenthclar_pfish         <-   fluxbenthclar_pfish[ndays]      -     fluxbenthclar_pfish[((nyears-1)*360+1)]     
 
-Fluxherb_mfish            <-   fluxherb_mfish[ndays]      -     fluxherb_mfish[((nyears-1)*360+1)]     
+Fluxomni_mfish            <-   fluxomni_mfish[ndays]      -     fluxomni_mfish[((nyears-1)*360+1)]     
 Fluxcarn_mfish            <-   fluxcarn_mfish[ndays]      -     fluxcarn_mfish[((nyears-1)*360+1)]     
 Fluxpfishlar_mfish        <-   fluxpfishlar_mfish[ndays]      -     fluxpfishlar_mfish[((nyears-1)*360+1)]     
 Fluxdfishlar_mfish        <-   fluxdfishlar_mfish[ndays]      -     fluxdfishlar_mfish[((nyears-1)*360+1)]     
@@ -971,7 +971,7 @@ Fluxbenths_benthc          <-   fluxbenths_benthc[ndays]      -     fluxbenths_b
 
 Fluxcorp_bird            <-   fluxcorp_bird[ndays]      -     fluxcorp_bird[((nyears-1)*360+1)]      
 Fluxdisc_bird            <-   fluxdisc_bird[ndays]      -     fluxdisc_bird[((nyears-1)*360+1)]      
-#Fluxherb_bird            <-   fluxherb_bird[ndays]      -     fluxherb_bird[((nyears-1)*360+1)]      
+#Fluxomni_bird            <-   fluxomni_bird[ndays]      -     fluxomni_bird[((nyears-1)*360+1)]      
 Fluxcarn_bird            <-   fluxcarn_bird[ndays]      -     fluxcarn_bird[((nyears-1)*360+1)]      
 Fluxpfish_bird           <-   fluxpfish_bird[ndays]      -     fluxpfish_bird[((nyears-1)*360+1)]      
 Fluxmfish_bird           <-   fluxmfish_bird[ndays]      -     fluxmfish_bird[((nyears-1)*360+1)]      
@@ -990,7 +990,7 @@ Fluxbenthc_seal          <-   fluxbenthc_seal[ndays]      -     fluxbenthc_seal[
 Fluxbird_seal          <-   fluxbird_seal[ndays]      -     fluxbird_seal[((nyears-1)*360+1)]      
 
 Fluxdisc_ceta            <-   fluxdisc_ceta[ndays]      -     fluxdisc_ceta[((nyears-1)*360+1)]      
-Fluxherb_ceta            <-   fluxherb_ceta[ndays]      -     fluxherb_ceta[((nyears-1)*360+1)]      
+Fluxomni_ceta            <-   fluxomni_ceta[ndays]      -     fluxomni_ceta[((nyears-1)*360+1)]      
 Fluxcarn_ceta            <-   fluxcarn_ceta[ndays]      -     fluxcarn_ceta[((nyears-1)*360+1)]      
 Fluxpfish_ceta           <-   fluxpfish_ceta[ndays]      -     fluxpfish_ceta[((nyears-1)*360+1)]      
 Fluxmfish_ceta           <-   fluxmfish_ceta[ndays]      -     fluxmfish_ceta[((nyears-1)*360+1)]      
@@ -1001,7 +1001,7 @@ Fluxbird_ceta            <-   fluxbird_ceta[ndays]      -     fluxbird_ceta[((ny
 Fluxseal_ceta            <-   fluxseal_ceta[ndays]      -     fluxseal_ceta[((nyears-1)*360+1)]      
 
 
-HTLP<-   Herbnetprod +
+HTLP<-   omninetprod +
        + Carnnetprod +
        + Benthsnetprod +
        + Benthcnetprod +
@@ -1017,11 +1017,11 @@ HTLP<-   Herbnetprod +
        + Cetanetprod 
 
 
-export_from_2prod<-  Fluxherb_carn +
-                   + Fluxherb_pfishlar + 
-                   + Fluxherb_dfishlar +
-                   + Fluxherb_pfish +
-                   + Fluxherb_ceta +
+export_from_2prod<-  Fluxomni_carn +
+                   + Fluxomni_pfishlar + 
+                   + Fluxomni_dfishlar +
+                   + Fluxomni_pfish +
+                   + Fluxomni_ceta +
                    + Fluxbenths_dfish +
                    + Fluxbenths_benthc +
                    + Fluxbenths_bird +
@@ -1149,7 +1149,7 @@ annual_flux_results[39,1]<-KelpNprod
 
 annual_flux_results[40,1]<-Phytgrossprod
 
-annual_flux_results[41,1]<-Herbgrossprod
+annual_flux_results[41,1]<-omnigrossprod
 annual_flux_results[42,1]<-Carngrossprod
 annual_flux_results[43,1]<-Fishplargrossprod
 annual_flux_results[44,1]<-Fishdlargrossprod
@@ -1164,7 +1164,7 @@ annual_flux_results[52,1]<-Birdgrossprod
 annual_flux_results[53,1]<-Sealgrossprod
 annual_flux_results[54,1]<-Cetagrossprod
 
-annual_flux_results[55,1]<-Herbnetprod
+annual_flux_results[55,1]<-omninetprod
 annual_flux_results[56,1]<-Carnnetprod
 annual_flux_results[57,1]<-Fishplarnetprod
 annual_flux_results[58,1]<-Fishdlarnetprod
@@ -1196,28 +1196,28 @@ annual_flux_results[80,1]<-WCdenitrification
 annual_flux_results[81,1]<-SEDdenitrification
 annual_flux_results[82,1]<-SEDWCammflux      
 annual_flux_results[83,1]<-SEDWCnitflux      
-annual_flux_results[84,1]<-Fluxdet_herb    
-annual_flux_results[85,1]<-Fluxphyt_herb   
-annual_flux_results[86,1]<-Fluxbenthslar_herb 
-annual_flux_results[87,1]<-Fluxbenthclar_herb 
-annual_flux_results[88,1]<-Fluxherb_carn      
+annual_flux_results[84,1]<-Fluxdet_omni    
+annual_flux_results[85,1]<-Fluxphyt_omni   
+annual_flux_results[86,1]<-Fluxbenthslar_omni 
+annual_flux_results[87,1]<-Fluxbenthclar_omni 
+annual_flux_results[88,1]<-Fluxomni_carn      
 annual_flux_results[89,1]<-Fluxpfishlar_carn  
 annual_flux_results[90,1]<-Fluxdfishlar_carn  
 annual_flux_results[91,1]<-Fluxbenthslar_carn   
 annual_flux_results[92,1]<-Fluxbenthclar_carn   
-annual_flux_results[93,1]<-Fluxherb_pfishlar   
+annual_flux_results[93,1]<-Fluxomni_pfishlar   
 annual_flux_results[94,1]<-Fluxbenthslar_pfishlar
 annual_flux_results[95,1]<-Fluxbenthclar_pfishlar
-annual_flux_results[96,1]<-Fluxherb_dfishlar   
+annual_flux_results[96,1]<-Fluxomni_dfishlar   
 annual_flux_results[97,1]<-Fluxbenthslar_dfishlar
 annual_flux_results[98,1]<-Fluxbenthclar_dfishlar
-annual_flux_results[99,1]<-Fluxherb_pfish       
+annual_flux_results[99,1]<-Fluxomni_pfish       
 annual_flux_results[100,1]<-Fluxcarn_pfish       
 annual_flux_results[101,1]<-Fluxpfishlar_pfish   
 annual_flux_results[102,1]<-Fluxdfishlar_pfish   
 annual_flux_results[103,1]<-Fluxbenthslar_pfish    
 annual_flux_results[104,1]<-Fluxbenthclar_pfish    
-annual_flux_results[105,1]<-Fluxherb_mfish      
+annual_flux_results[105,1]<-Fluxomni_mfish      
 annual_flux_results[106,1]<-Fluxcarn_mfish      
 annual_flux_results[107,1]<-Fluxpfishlar_mfish  
 annual_flux_results[108,1]<-Fluxdfishlar_mfish  
@@ -1247,7 +1247,7 @@ annual_flux_results[131,1]<-Fluxbenths_benthc
 annual_flux_results[132,1]<-Fluxcorp_bird       
 annual_flux_results[133,1]<-Fluxdisc_bird       
 
-#annual_flux_results[xxx,1]<-Fluxherb_bird       
+#annual_flux_results[xxx,1]<-Fluxomni_bird       
 
 annual_flux_results[134,1]<-Fluxcarn_bird       
 annual_flux_results[135,1]<-Fluxpfish_bird      
@@ -1265,7 +1265,7 @@ annual_flux_results[146,1]<-Fluxbenths_seal
 annual_flux_results[147,1]<-Fluxbenthc_seal     
 annual_flux_results[148,1]<-Fluxbird_seal     
 annual_flux_results[149,1]<-Fluxdisc_ceta       
-annual_flux_results[150,1]<-Fluxherb_ceta       
+annual_flux_results[150,1]<-Fluxomni_ceta       
 annual_flux_results[151,1]<-Fluxcarn_ceta       
 annual_flux_results[152,1]<-Fluxpfish_ceta      
 annual_flux_results[153,1]<-Fluxmfish_ceta      

@@ -39,14 +39,14 @@ lastyearstore$dummy<-1
 # [31] "nitrate_so"                 "nitrate_d"                  "x_nitrate_s1"              
 # [34] "x_nitrate_s2"               "x_nitrate_s3"               "x_nitrate_d1"              
 # [37] "x_nitrate_d2"               "x_nitrate_d3"               "phyt_so"                   
-# [40] "phyt_d"                     "herb_o"                     "carn_o"                    
+# [40] "phyt_d"                     "omni_o"                     "carn_o"                    
 # [43] "benthslar_o"                "benths_o"                   "benthclar_o"               
 # [46] "benthc_o"                   "fishp_o"                    "fishplar_o"                
 # [49] "fishd_o"                    "fishdlar_o"                 "fishm_o"                   
 # [52] "bird_o"                     "detritus_si"                "ammonia_si"                
 # [55] "nitrate_si"                 "phyt_si"                    "benthslar_i"               
 # [58] "benthclar_i"                "benths_i"                   "benthc_i"                  
-# [61] "discard_i"                  "herb_i"                     "carn_i"                    
+# [61] "discard_i"                  "omni_i"                     "carn_i"                    
 # [64] "fishplar_i"                 "fishdlar_i"                 "fishp_i"                   
 # [67] "fishm_i"                    "fishd_i"                    "bird_i"                    
 # [70] "seal_o"                     "seal_i"                     "ceta_o"                    
@@ -55,7 +55,7 @@ lastyearstore$dummy<-1
 # [79] "netpprod_o"                 "netpprod_i"                 "NNCP_o"                     
 # [82] "NNCP_i"                      "phytgrossprod_o"            "phytgrossprod_i"           
 # [85] "kelpCprod_i"                "kelpCexud_i"                "kelpNprod_i"               
-# [88] "herbgrossprod_o"            "herbgrossprod_i"            "carngrossprod_o"           
+# [88] "omnigrossprod_o"            "omnigrossprod_i"            "carngrossprod_o"           
 # [91] "carngrossprod_i"            "pfishlargrossprod_o"        "pfishlargrossprod_i"       
 # [94] "dfishlargrossprod_o"        "dfishlargrossprod_i"        "pfishgrossprod_o"          
 # [97] "pfishgrossprod_i"           "mfishgrossprod_o"           "mfishgrossprod_i"          
@@ -66,7 +66,7 @@ lastyearstore$dummy<-1
 #[112] "sealgrossprod_o"            "sealgrossprod_i"            "cetagrossprod_o"           
 #[115] "cetagrossprod_i"            "wcdenitrif_o"               "wcdenitrif_i"              
 #[118] "seddenitrif_o"              "seddenitrif_i"              "fluxsedamm_wcamm"          
-#[121] "fluxwcdet_wcamm"            "fluxherb_wcamm"             "fluxcarn_wcamm"            
+#[121] "fluxwcdet_wcamm"            "fluxomni_wcamm"             "fluxcarn_wcamm"            
 #[124] "fluxpfishlar_wcamm"         "fluxdfishlar_wcamm"         "fluxpfish_wcamm"           
 #[127] "fluxmfish_wcamm"            "fluxdfish_wcamm"            "fluxbenthslar_wcamm"       
 #[130] "fluxbenthclar_wcamm"        "fluxbenths_wcamm"           "fluxbenthc_wcamm"          
@@ -74,7 +74,7 @@ lastyearstore$dummy<-1
 #[136] "fluxxdet_sedamm"            "fluxxRdet_sedamm"           "fluxwcamm_wcnit"           
 #[139] "fluxsednit_wcnit"           "fluxsedamm_sednit"          "fluxxdet_wcdet"            
 #[142] "fluxkelpdebris_wcdet"       "fluxcorp_wcdet"             "fluxphyt_wcdet"            
-#[145] "fluxherb_wcdet"             "fluxcarn_wcdet"             "fluxpfishlar_wcdet"        
+#[145] "fluxomni_wcdet"             "fluxcarn_wcdet"             "fluxpfishlar_wcdet"        
 #[148] "fluxdfishlar_wcdet"         "fluxpfish_wcdet"            "fluxmfish_wcdet"           
 #[151] "fluxdfish_wcdet"            "fluxbenthslar_wcdet"        "fluxbenthclar_wcdet"       
 #[154] "fluxbenths_wcdet"           "fluxbenthc_wcdet"           "fluxbird_wcdet"            
@@ -86,14 +86,14 @@ lastyearstore$dummy<-1
 #[172] "fluxbenthc_corp"            "fluxbird_corp"              "fluxseal_corp"             
 #[175] "fluxceta_corp"              "fluxwcamm_kelp"             "fluxwcnit_kelp"            
 #[178] "fluxwcamm_phyt_o"           "fluxwcamm_phyt_i"           "fluxwcnit_phyt_o"          
-#[181] "fluxwcnit_phyt_i"           "fluxwcdet_herb"             "fluxphyt_herb"             
-#[184] "fluxbenthslar_herb"         "fluxbenthclar_herb"         "fluxherb_carn"             
+#[181] "fluxwcnit_phyt_i"           "fluxwcdet_omni"             "fluxphyt_omni"             
+#[184] "fluxbenthslar_omni"         "fluxbenthclar_omni"         "fluxomni_carn"             
 #[187] "fluxpfishlar_carn"          "fluxdfishlar_carn"          "fluxbenthslar_carn"        
-#[190] "fluxbenthclar_carn"         "fluxherb_pfishlar"          "fluxbenthslar_pfishlar"    
-#[193] "fluxbenthclar_pfishlar"     "fluxherb_dfishlar"          "fluxbenthslar_dfishlar"    
-#[196] "fluxbenthclar_dfishlar"     "fluxherb_pfish"             "fluxcarn_pfish"            
+#[190] "fluxbenthclar_carn"         "fluxomni_pfishlar"          "fluxbenthslar_pfishlar"    
+#[193] "fluxbenthclar_pfishlar"     "fluxomni_dfishlar"          "fluxbenthslar_dfishlar"    
+#[196] "fluxbenthclar_dfishlar"     "fluxomni_pfish"             "fluxcarn_pfish"            
 #[199] "fluxpfishlar_pfish"         "fluxdfishlar_pfish"         "fluxbenthslar_pfish"       
-#[202] "fluxbenthclar_pfish"        "fluxherb_mfish"             "fluxcarn_mfish"            
+#[202] "fluxbenthclar_pfish"        "fluxomni_mfish"             "fluxcarn_mfish"            
 #[205] "fluxpfishlar_mfish"         "fluxdfishlar_mfish"         "fluxbenthslar_mfish"       
 #[208] "fluxbenthclar_mfish"        "fluxcorp_dfish"             "fluxdisc_dfish"            
 #[211] "fluxcarn_dfish"             "fluxpfishlar_dfish"         "fluxdfishlar_dfish"        
@@ -108,7 +108,7 @@ lastyearstore$dummy<-1
 #[238] "fluxbenthc_bird"            "fluxcorp_seal"              "fluxdisc_seal"             
 #[241] "fluxcarn_seal"              "fluxpfish_seal"             "fluxmfish_seal"            
 #[244] "fluxdfish_seal"             "fluxbenths_seal"            "fluxbenthc_seal"           
-#[247] "fluxbird_seal"              "fluxdisc_ceta"              "fluxherb_ceta"             
+#[247] "fluxbird_seal"              "fluxdisc_ceta"              "fluxomni_ceta"             
 #[250] "fluxcarn_ceta"              "fluxpfish_ceta"             "fluxmfish_ceta"            
 #[253] "fluxdfish_ceta"             "fluxbenths_ceta"            "fluxbenthc_ceta"           
 #[256] "fluxbird_ceta"              "fluxseal_ceta"              "Bs_spawn"                  
@@ -151,7 +151,7 @@ lastyearstore$dummy<-1
 #[367] "offaldem_quota_i"           "offaldem_nonquota_i"        "offalmig_i"                
 #[370] "offalsb_i"                  "offalcb_i"                  "offalcz_i"                 
 #[373] "offalbd_i"                  "offalsl_i"                  "offalct_i"                 
-#[376] "offalkp_i"                  "herbnetprod_o"              "herbnetprod_i"             
+#[376] "offalkp_i"                  "omninetprod_o"              "omninetprod_i"             
 #[379] "carnnetprod_o"              "carnnetprod_i"              "pfishlarnetprod_o"         
 #[382] "pfishlarnetprod_i"          "dfishlarnetprod_o"          "dfishlarnetprod_i"         
 #[385] "pfishnetprod_o"             "pfishnetprod_i"             "mfishnetprod_o"            
@@ -168,17 +168,17 @@ lastyearstore$dummy<-1
 #[418] "x_nitrate_o"                "x_nitrate_i"                "s_detritus"                
 #[421] "s_ammonia"                  "s_nitrate"                  "s_phyt"                    
 #[424] "benthslar"                  "benthclar"                  "benths"                    
-#[427] "benthc"                     "discard"                    "herb"                      
+#[427] "benthc"                     "discard"                    "omni"                      
 #[430] "carn"                       "fishp"                      "fishd"                     
 #[433] "fishm"                      "bird"                       "seal"                      
 #[436] "ceta"                       "fishplar"                   "fishdlar"                  
 #[439] "NNCP"                        "netpprod"                   "fluxwcamm_phyt"            
-#[442] "fluxwcnit_phyt"             "phytgrossprod"              "herbgrossprod"             
+#[442] "fluxwcnit_phyt"             "phytgrossprod"              "omnigrossprod"             
 #[445] "carngrossprod"              "pfishlargrossprod"          "dfishlargrossprod"         
 #[448] "pfishgrossprod"             "mfishgrossprod"             "dfishgrossprod"            
 #[451] "benthslargrossprod"         "benthclargrossprod"         "benthsgrossprod"           
 #[454] "benthcgrossprod"            "birdgrossprod"              "sealgrossprod"             
-#[457] "cetagrossprod"              "herbnetprod"                "carnnetprod"               
+#[457] "cetagrossprod"              "omninetprod"                "carnnetprod"               
 #[460] "pfishlarnetprod"            "dfishlarnetprod"            "pfishnetprod"              
 #[463] "mfishnetprod"               "dfishnetprod"               "benthslarnetprod"          
 #[466] "benthclarnetprod"           "benthsnetprod"              "benthcnetprod"             
@@ -473,7 +473,7 @@ Result_data<-Build_Cred_Timeseries(VtoPid,areaid,thikid,io,creds,varname)
 Result_data_store<-rbind(Result_data_store,Result_data)
 
 #Offshore omnizoo
-VtoPid<-which(names(lastyearstore)=="herb_o")
+VtoPid<-which(names(lastyearstore)=="omni_o")
 areaid<-which(names(lastyearstore)=="shallowprop")
 thikid<-which(names(lastyearstore)=="dummy")
 io<-0  #offshore
@@ -483,7 +483,7 @@ Result_data<-Build_Cred_Timeseries(VtoPid,areaid,thikid,io,creds,varname)
 Result_data_store<-rbind(Result_data_store,Result_data)
 
 #inshore omnizoo
-VtoPid<-which(names(lastyearstore)=="herb_i")
+VtoPid<-which(names(lastyearstore)=="omni_i")
 areaid<-which(names(lastyearstore)=="shallowprop")
 thikid<-which(names(lastyearstore)=="dummy")
 io<-1  #inshore

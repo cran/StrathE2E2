@@ -140,16 +140,16 @@ uNIT_phytt,323,0,Ecology model fitted,Maximum uptake rate,Nitrate by phytoplankt
 hsNIT_phyt,324,0,Ecology model fitted,Uptake half saturation coefficient,Nitrate by phytoplankton
 uAMM_phytt,325,0,Ecology model fitted,Maximum uptake rate,Ammonia by phytoplankton
 hsAMM_phyt,326,0,Ecology model fitted,Uptake half saturation coefficient,Ammonia by phytoplankton
-uphyt_herbt,327,0,Ecology model fitted,Maximum uptake rate,Phytoplankton by omnivorous zooplankton
-hsphyt_herb,328,0,Ecology model fitted,Uptake half saturation coefficient,Phytoplankton by omnivorous zooplankton
-udet_herbt,329,0,Ecology model fitted,Maximum uptake rate,Suspended detritus by omnivorous zooplankton
-hsdet_herb,330,0,Ecology model fitted,Uptake half saturation coefficient,Suspended detritus by omnivorous zooplankton
-ubenthslar_herbt,331,0,Ecology model fitted,Maximum uptake rate,Suspension/deposit feeding benthos larvae by omnivorous zooplankton
-hsbenthslar_herb,332,0,Ecology model fitted,Uptake half saturation coefficient,Suspension/deposit feeding benthos larvae by omnivorous zooplankton
-ubenthclar_herbt,333,0,Ecology model fitted,Maximum uptake rate,Carnivore/scavenge feeding benthos larvae by omnivorous zooplankton
-hsbenthclar_herb,334,0,Ecology model fitted,Uptake half saturation coefficient,Carnivore/scavenge feeding benthos larvae by omnivorous zooplankton
-uherb_carnt,335,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by carnivorous zooplankton
-hsherb_carn,336,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by carnivorous zooplankton
+uphyt_omnit,327,0,Ecology model fitted,Maximum uptake rate,Phytoplankton by omnivorous zooplankton
+hsphyt_omni,328,0,Ecology model fitted,Uptake half saturation coefficient,Phytoplankton by omnivorous zooplankton
+udet_omnit,329,0,Ecology model fitted,Maximum uptake rate,Suspended detritus by omnivorous zooplankton
+hsdet_omni,330,0,Ecology model fitted,Uptake half saturation coefficient,Suspended detritus by omnivorous zooplankton
+ubenthslar_omnit,331,0,Ecology model fitted,Maximum uptake rate,Suspension/deposit feeding benthos larvae by omnivorous zooplankton
+hsbenthslar_omni,332,0,Ecology model fitted,Uptake half saturation coefficient,Suspension/deposit feeding benthos larvae by omnivorous zooplankton
+ubenthclar_omnit,333,0,Ecology model fitted,Maximum uptake rate,Carnivore/scavenge feeding benthos larvae by omnivorous zooplankton
+hsbenthclar_omni,334,0,Ecology model fitted,Uptake half saturation coefficient,Carnivore/scavenge feeding benthos larvae by omnivorous zooplankton
+uomni_carnt,335,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by carnivorous zooplankton
+hsomni_carn,336,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by carnivorous zooplankton
 ubenthslar_carnt,337,0,Ecology model fitted,Maximum uptake rate,Suspension/deposit feeding benthos larvae by carnivorous zooplankton
 hsbenthslar_carn,338,0,Ecology model fitted,Uptake half saturation coefficient,Suspension/deposit feeding benthos larvae by carnivorous zooplankton
 ubenthclar_carnt,339,0,Ecology model fitted,Maximum uptake rate,Carnivore/scavenge feeding benthos larvae by carnivorous zooplankton
@@ -158,14 +158,14 @@ ufishplar_carnt,341,0,Ecology model fitted,Maximum uptake rate,Planktivorous fis
 hsfishplar_carn,342,0,Ecology model fitted,Uptake half saturation coefficient,Planktivorous fish larvae by carnivorous zooplankton
 ufishdlar_carnt,343,0,Ecology model fitted,Maximum uptake rate,Demersal fish larvae by carnivorous zooplankton
 hsfishdlar_carn,344,0,Ecology model fitted,Uptake half saturation coefficient,Demersal fish larvae by carnivorous zooplankton
-uherb_fishplart,345,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by planktivorous fish larvae
-hsherb_fishplar,346,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by planktivorous fish larvae
+uomni_fishplart,345,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by planktivorous fish larvae
+hsomni_fishplar,346,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by planktivorous fish larvae
 ubenthslar_fishplart,347,0,Ecology model fitted,Maximum uptake rate,Suspension/deposit feeding benthos larvae by planktivorous fish larvae
 hsbenthslar_fishplar,348,0,Ecology model fitted,Uptake half saturation coefficient,Suspension/deposit feeding benthos larvae by planktivorous fish larvae
 ubenthclar_fishplart,349,0,Ecology model fitted,Maximum uptake rate,Carnivore/scavenge feeding benthos larvae by planktivorous fish larvae
 hsbenthclar_fishplar,350,0,Ecology model fitted,Uptake half saturation coefficient,Carnivore/scavenge feeding benthos larvae by planktivorous fish larvae
-uherb_fishpt,351,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by planktivorous fish
-hsherb_fishp,352,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by planktivorous fish
+uomni_fishpt,351,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by planktivorous fish
+hsomni_fishp,352,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by planktivorous fish
 ucarn_fishpt,353,0,Ecology model fitted,Maximum uptake rate,Carnivorous zooplankton by planktivorous fish
 hscarn_fishp,354,0,Ecology model fitted,Uptake half saturation coefficient,Carnivorous zooplankton by planktivorous fish
 ubenthslar_fishpt,355,0,Ecology model fitted,Maximum uptake rate,Suspension/deposit feeding benthos larvae by planktivorous fish
@@ -176,8 +176,8 @@ ufishdlar_fishpt,359,0,Ecology model fitted,Maximum uptake rate,Demersal fish la
 hsfishdlar_fishp,360,0,Ecology model fitted,Uptake half saturation coefficient,Demersal fish larvae by planktivorous fish
 ufishplar_fishpt,361,0,Ecology model fitted,Maximum uptake rate,Planktivorous fish larvae by planktivorous fish
 hsfishplar_fishp,362,0,Ecology model fitted,Uptake half saturation coefficient,Planktivorous fish larvae by planktivorous fish
-uherb_fishmt,363,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by migratory fish
-hsherb_fishm,364,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by migratory fish
+uomni_fishmt,363,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by migratory fish
+hsomni_fishm,364,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by migratory fish
 ucarn_fishmt,365,0,Ecology model fitted,Maximum uptake rate,Carnivorous zooplankton by migratory fish
 hscarn_fishm,366,0,Ecology model fitted,Uptake half saturation coefficient,Carnivorous zooplankton by migratory fish
 ubenthslar_fishmt,367,0,Ecology model fitted,Maximum uptake rate,Suspension/deposit feeding benthos larvae by migratory fish
@@ -188,8 +188,8 @@ ufishdlar_fishmt,371,0,Ecology model fitted,Maximum uptake rate,Demersal fish la
 hsfishdlar_fishm,372,0,Ecology model fitted,Uptake half saturation coefficient,Demersal fish larvae by migratory fish
 ufishplar_fishmt,373,0,Ecology model fitted,Maximum uptake rate,Planktivorous fish larvae by migratory fish
 hsfishplar_fishm,374,0,Ecology model fitted,Uptake half saturation coefficient,Planktivorous fish larvae by migratory fish
-uherb_fishdlart,375,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by demersal fish larvae
-hsherb_fishdlar,376,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by demersal fish larvae
+uomni_fishdlart,375,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by demersal fish larvae
+hsomni_fishdlar,376,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by demersal fish larvae
 ubenthslar_fishdlart,377,0,Ecology model fitted,Maximum uptake rate,Suspension/deposit feeding benthos larvae by demersal fish larvae
 hsbenthslar_fishdlar,378,0,Ecology model fitted,Uptake half saturation coefficient,Suspension/deposit feeding benthos larvae by demersal fish larvae
 ubenthclar_fishdlart,379,0,Ecology model fitted,Maximum uptake rate,Carnivore/scavenge feeding benthos larvae by demersal fish larvae
@@ -272,8 +272,8 @@ hsdisc_seal,455,0,Ecology model fitted,Uptake half saturation coefficient,Discar
 ucorp_seal,456,0,Ecology model fitted,Maximum uptake rate,Corpses by pinnipeds
 hscorp_seal,457,0,Ecology model fitted,Uptake half saturation coefficient,Corpses by pinnipeds
 bdapar_seal,458,0,Ecology model fitted,Bedding DeAngelis parameter,Pinnipeds
-uherb_ceta,459,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by cetaceans
-hsherb_ceta,460,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by cetaceans
+uomni_ceta,459,0,Ecology model fitted,Maximum uptake rate,Omnivorous zooplankton by cetaceans
+hsomni_ceta,460,0,Ecology model fitted,Uptake half saturation coefficient,Omnivorous zooplankton by cetaceans
 ucarn_ceta,461,0,Ecology model fitted,Maximum uptake rate,Carnivorous zooplankton by cetaceans
 hscarn_ceta,462,0,Ecology model fitted,Uptake half saturation coefficient,Carnivorous zooplankton by cetaceans
 ubenths_ceta,463,0,Ecology model fitted,Maximum uptake rate,Suspension/deposit feeding benthos by cetaceans
@@ -338,7 +338,7 @@ dsens,521,0,Ecology model fitted,Denitrification rate sensitivity to grain size,
 xwave_kelp,522,0,Ecology model fitted,Wave height dependent conversion rate,Macrophytes to macrophyte debris
 xst,523,0,Ecology model fitted,Density dependent mortality coefficient,Phytoplankton upper layer
 xdt,524,0,Ecology model fitted,Density dependent mortality coefficient,Phytoplankton lower layer
-xherb,525,0,Ecology model fitted,Density dependent mortality coefficient,Omnivorous zooplankton
+xomni,525,0,Ecology model fitted,Density dependent mortality coefficient,Omnivorous zooplankton
 xcarn,526,0,Ecology model fitted,Density dependent mortality coefficient,Carnivorous zooplankton
 xbenthslar,527,0,Ecology model fitted,Density dependent mortality coefficient,Suspension/deposit feeding benthos larvae
 xbenthclar,528,0,Ecology model fitted,Density dependent mortality coefficient,Carnivore/scavenge feeding benthos larvae

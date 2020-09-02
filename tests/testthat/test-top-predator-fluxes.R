@@ -95,7 +95,7 @@ corpse_s1<-pull_final_year_mean(results,"corpse_s1")
 corpse_s2<-pull_final_year_mean(results,"corpse_s2")
 corpse_s3<-pull_final_year_mean(results,"corpse_s3")
 discard_i<-pull_final_year_mean(results,"discard_i")
-herb_i<-pull_final_year_mean(results,"herb_i")
+omni_i<-pull_final_year_mean(results,"omni_i")
 carn_i<-pull_final_year_mean(results,"carn_i")
 benths_i<-pull_final_year_mean(results,"benths_i")
 benthc_i<-pull_final_year_mean(results,"benthc_i")
@@ -113,7 +113,7 @@ corpse_d1<-pull_final_year_mean(results,"corpse_d1")
 corpse_d2<-pull_final_year_mean(results,"corpse_d2")
 corpse_d3<-pull_final_year_mean(results,"corpse_d3")
 discard_o<-pull_final_year_mean(results,"discard_o")
-herb_o<- pull_final_year_mean(results,"herb_o")
+omni_o<- pull_final_year_mean(results,"omni_o")
 carn_o<- pull_final_year_mean(results,"carn_o")
 benths_o<-pull_final_year_mean(results,"benths_o")
 benthc_o<-pull_final_year_mean(results,"benthc_o")
@@ -215,7 +215,7 @@ h_ceta<-elt(fitted.parameters,"h_ceta")
 bda_par_ceta<-elt(fitted.parameters,"bda_par_ceta")
 
 PREF_discard_ceta<-elt(fitted.parameters,"PREF_disc_ceta")
-PREF_herb_ceta<-elt(fitted.parameters,"PREF_herb_ceta")
+PREF_omni_ceta<-elt(fitted.parameters,"PREF_omni_ceta")
 PREF_carn_ceta<-elt(fitted.parameters,"PREF_carn_ceta")
 PREF_benths_ceta<-elt(fitted.parameters,"PREF_benths_ceta")
 PREF_benthc_ceta<-elt(fitted.parameters,"PREF_benthc_ceta")
@@ -457,15 +457,15 @@ model_flux_discard_ceta<-extract_model_flux(flow_matrix,"discards","ceta")
 #............................
 
 
-calc_flux_herb_ceta_o<- f3(herb_o,(ceta_o),u_ceta*PREF_herb_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_herb_ceta_i<- f3(herb_i,(ceta_i),u_ceta*PREF_herb_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_omni_ceta_o<- f3(omni_o,(ceta_o),u_ceta*PREF_omni_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
+calc_flux_omni_ceta_i<- f3(omni_i,(ceta_i),u_ceta*PREF_omni_ceta,h_ceta*(volume_si),bda_par_ceta)
 
-calc_flux_herb_ceta_w <- calc_flux_herb_ceta_o + calc_flux_herb_ceta_i
+calc_flux_omni_ceta_w <- calc_flux_omni_ceta_o + calc_flux_omni_ceta_i
 
-model_flux_herb_ceta<-extract_model_flux(flow_matrix,"omnivzoo","ceta")
+model_flux_omni_ceta<-extract_model_flux(flow_matrix,"omnivzoo","ceta")
 
-#calc_flux_herb_ceta_w
-#model_flux_herb_ceta
+#calc_flux_omni_ceta_w
+#model_flux_omni_ceta
 
 #............................
 
@@ -592,7 +592,7 @@ expect_equal(model_flux_fishd_seal,calc_flux_fishd_seal_w , 1e-7)
 expect_equal(model_flux_bird_seal,calc_flux_bird_seal_w , 1e-7)
 
 expect_equal(model_flux_discard_ceta,calc_flux_discard_ceta_w , 1e-7)
-expect_equal(model_flux_herb_ceta,calc_flux_herb_ceta_w , 1e-7)
+expect_equal(model_flux_omni_ceta,calc_flux_omni_ceta_w , 1e-7)
 expect_equal(model_flux_carn_ceta,calc_flux_carn_ceta_w , 1e-7)
 expect_equal(model_flux_benths_ceta,calc_flux_benths_ceta_w , 1e-7)
 expect_equal(model_flux_benthc_ceta,calc_flux_benthc_ceta_w , 1e-7)

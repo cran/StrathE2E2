@@ -106,7 +106,7 @@ benthslar_i<- pull_final_year_mean(results,"benthslar_i")
 benthclar_i<- pull_final_year_mean(results,"benthclar_i")
 fishplar_i<- pull_final_year_mean(results,"fishplar_i")
 fishdlar_i<- pull_final_year_mean(results,"fishdlar_i")
-herb_i<-pull_final_year_mean(results,"herb_i")
+omni_i<-pull_final_year_mean(results,"omni_i")
 carn_i<-pull_final_year_mean(results,"carn_i")
 benths_i<-pull_final_year_mean(results,"benths_i")
 benthc_i<-pull_final_year_mean(results,"benthc_i")
@@ -125,7 +125,7 @@ benthslar_o<- pull_final_year_mean(results,"benthslar_o")
 benthclar_o<- pull_final_year_mean(results,"benthclar_o")
 fishplar_o<- pull_final_year_mean(results,"fishplar_o")
 fishdlar_o<- pull_final_year_mean(results,"fishdlar_o")
-herb_o<- pull_final_year_mean(results,"herb_o")
+omni_o<- pull_final_year_mean(results,"omni_o")
 carn_o<- pull_final_year_mean(results,"carn_o")
 benths_o<-pull_final_year_mean(results,"benths_o")
 benthc_o<-pull_final_year_mean(results,"benthc_o")
@@ -194,7 +194,7 @@ CZ_inedible_o <- CZ_inedible * (1-shallowprop)
 u_fishp<-elt(fitted.parameters,"u_fishp")
 h_fishp<-elt(fitted.parameters,"h_fishp")
 
-PREF_herb_fishp<-elt(fitted.parameters,"PREF_herb_fishp")
+PREF_omni_fishp<-elt(fitted.parameters,"PREF_omni_fishp")
 PREF_carn_fishp<-elt(fitted.parameters,"PREF_carn_fishp")
 PREF_benthslar_fishp<-elt(fitted.parameters,"PREF_benthslar_fishp")
 PREF_benthclar_fishp<-elt(fitted.parameters,"PREF_benthclar_fishp")
@@ -222,7 +222,7 @@ PREF_fishm_fishd<-elt(fitted.parameters,"PREF_fishm_fishd")
 u_fishm<-elt(fitted.parameters,"u_fishm")
 h_fishm<-elt(fitted.parameters,"h_fishm")
 
-PREF_herb_fishm<-elt(fitted.parameters,"PREF_herb_fishm")
+PREF_omni_fishm<-elt(fitted.parameters,"PREF_omni_fishm")
 PREF_carn_fishm<-elt(fitted.parameters,"PREF_carn_fishm")
 PREF_benthslar_fishm<-elt(fitted.parameters,"PREF_benthslar_fishm")
 PREF_benthclar_fishm<-elt(fitted.parameters,"PREF_benthclar_fishm")
@@ -237,15 +237,15 @@ PREF_fishdlar_fishm<-elt(fitted.parameters,"PREF_fishdlar_fishm")
 
 #............................
 
-calc_flux_herb_fishp_o<- f1(herb_o,(fishp_o),u_fishp*PREF_herb_fishp,h_fishp*(volume_so+volume_d))
-calc_flux_herb_fishp_i<- f1(herb_i,(fishp_i),u_fishp*PREF_herb_fishp,h_fishp*(volume_si))
+calc_flux_omni_fishp_o<- f1(omni_o,(fishp_o),u_fishp*PREF_omni_fishp,h_fishp*(volume_so+volume_d))
+calc_flux_omni_fishp_i<- f1(omni_i,(fishp_i),u_fishp*PREF_omni_fishp,h_fishp*(volume_si))
 
-calc_flux_herb_fishp_w <- calc_flux_herb_fishp_o + calc_flux_herb_fishp_i
+calc_flux_omni_fishp_w <- calc_flux_omni_fishp_o + calc_flux_omni_fishp_i
 
-model_flux_herb_fishp<-extract_model_flux(flow_matrix,"omnivzoo","pfish")
+model_flux_omni_fishp<-extract_model_flux(flow_matrix,"omnivzoo","pfish")
 
-#calc_flux_herb_fishp_w
-#model_flux_herb_fishp
+#calc_flux_omni_fishp_w
+#model_flux_omni_fishp
 
 #............................
 
@@ -310,15 +310,15 @@ model_flux_fishdlar_fishp<-extract_model_flux(flow_matrix,"dfishlar","pfish")
 #............................
 #............................
 
-calc_flux_herb_fishm_o<- f1(herb_o,(fishm_o),u_fishm*PREF_herb_fishm,h_fishm*(volume_so+volume_d))
-calc_flux_herb_fishm_i<- f1(herb_i,(fishm_i),u_fishm*PREF_herb_fishm,h_fishm*(volume_si))
+calc_flux_omni_fishm_o<- f1(omni_o,(fishm_o),u_fishm*PREF_omni_fishm,h_fishm*(volume_so+volume_d))
+calc_flux_omni_fishm_i<- f1(omni_i,(fishm_i),u_fishm*PREF_omni_fishm,h_fishm*(volume_si))
 
-calc_flux_herb_fishm_w <- calc_flux_herb_fishm_o + calc_flux_herb_fishm_i
+calc_flux_omni_fishm_w <- calc_flux_omni_fishm_o + calc_flux_omni_fishm_i
 
-model_flux_herb_fishm<-extract_model_flux(flow_matrix,"omnivzoo","mfish")
+model_flux_omni_fishm<-extract_model_flux(flow_matrix,"omnivzoo","mfish")
 
-#calc_flux_herb_fishm_w
-#model_flux_herb_fishm
+#calc_flux_omni_fishm_w
+#model_flux_omni_fishm
 
 #............................
 
@@ -509,14 +509,14 @@ model_flux_fishm_fishd<-extract_model_flux(flow_matrix,"mfish","dfish")
 
 #Implement testthat checks...
 
-expect_equal(model_flux_herb_fishp,calc_flux_herb_fishp_w , 1e-7)
+expect_equal(model_flux_omni_fishp,calc_flux_omni_fishp_w , 1e-7)
 expect_equal(model_flux_carn_fishp,calc_flux_carn_fishp_w , 1e-7)
 expect_equal(model_flux_benthslar_fishp,calc_flux_benthslar_fishp_w , 1e-7)
 expect_equal(model_flux_benthclar_fishp,calc_flux_benthclar_fishp_w , 1e-7)
 expect_equal(model_flux_fishplar_fishp,calc_flux_fishplar_fishp_w , 1e-7)
 expect_equal(model_flux_fishdlar_fishp,calc_flux_fishdlar_fishp_w , 1e-7)
 
-expect_equal(model_flux_herb_fishm,calc_flux_herb_fishm_w , 1e-7)
+expect_equal(model_flux_omni_fishm,calc_flux_omni_fishm_w , 1e-7)
 expect_equal(model_flux_carn_fishm,calc_flux_carn_fishm_w , 1e-7)
 expect_equal(model_flux_benthslar_fishm,calc_flux_benthslar_fishm_w , 1e-7)
 expect_equal(model_flux_benthclar_fishm,calc_flux_benthclar_fishm_w , 1e-7)

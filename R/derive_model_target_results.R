@@ -63,8 +63,8 @@ derive_model_target_results <- function(model, build, output, aggregates, annual
 	fishp_o			<- elt(output, "fishp_o")
 	fishd_i			<- elt(output, "fishd_i")
 	fishd_o			<- elt(output, "fishd_o")
-	herb_i			<- elt(output, "herb_i")
-	herb_o			<- elt(output, "herb_o")
+	omni_i			<- elt(output, "omni_i")
+	omni_o			<- elt(output, "omni_o")
 	carn_i			<- elt(output, "carn_i")
 	carn_o			<- elt(output, "carn_o")
 	phyt_si			<- elt(output, "phyt_si")
@@ -103,10 +103,10 @@ derive_model_target_results <- function(model, build, output, aggregates, annual
 	x_detritus_d3		<- elt(output, "x_detritus_d3")
 	xR_detritus_d3		<- elt(output, "xR_detritus_d3")
 	ammonia_d		<- elt(output, "ammonia_d")
-	fluxherb_pfishlar	<- elt(output, "fluxherb_pfishlar")
-	fluxherb_dfishlar	<- elt(output, "fluxherb_dfishlar")
-	fluxherb_pfish		<- elt(output, "fluxherb_pfish")
-	fluxherb_carn		<- elt(output, "fluxherb_carn")
+	fluxomni_pfishlar	<- elt(output, "fluxomni_pfishlar")
+	fluxomni_dfishlar	<- elt(output, "fluxomni_dfishlar")
+	fluxomni_pfish		<- elt(output, "fluxomni_pfish")
+	fluxomni_carn		<- elt(output, "fluxomni_carn")
 	fluxpfishlar_pfish	<- elt(output, "fluxpfishlar_pfish")
 	fluxpfishlar_dfish	<- elt(output, "fluxpfishlar_dfish")
 	fluxdfishlar_pfish	<- elt(output, "fluxdfishlar_pfish")
@@ -133,7 +133,7 @@ derive_model_target_results <- function(model, build, output, aggregates, annual
 	fluxpfish_seal		<- elt(output, "fluxpfish_seal")
 	fluxdfish_seal		<- elt(output, "fluxdfish_seal")
 	fluxmfish_seal		<- elt(output, "fluxmfish_seal")
-	fluxherb_ceta		<- elt(output, "fluxherb_ceta")
+	fluxomni_ceta		<- elt(output, "fluxomni_ceta")
 	fluxcarn_ceta		<- elt(output, "fluxcarn_ceta")
 	fluxdisc_ceta		<- elt(output, "fluxdisc_ceta")
 	fluxpfish_ceta		<- elt(output, "fluxpfish_ceta")
@@ -153,7 +153,7 @@ derive_model_target_results <- function(model, build, output, aggregates, annual
 	atmosDINinput		<- elt(aggregates, "atmosDINinput")
 	fluxDINinflow		<- elt(aggregates, "fluxDINinflow")
 	fluxDINoutflow		<- elt(aggregates, "fluxDINoutflow")
-	herb			<- elt(aggregates, "herb")
+	omni			<- elt(aggregates, "omni")
 	carn			<- elt(aggregates, "carn")
 	benthslar		<- elt(aggregates, "benthslar")
 	benthclar		<- elt(aggregates, "benthclar")
@@ -169,7 +169,7 @@ derive_model_target_results <- function(model, build, output, aggregates, annual
 	ceta			<- elt(aggregates, "ceta")
 	netpprod		<- elt(aggregates, "netpprod")
 	s_nitrate		<- elt(aggregates, "s_nitrate")
-	herbgrossprod		<- elt(aggregates, "herbgrossprod")
+	omnigrossprod		<- elt(aggregates, "omnigrossprod")
 	carngrossprod		<- elt(aggregates, "carngrossprod")
 	pfishgrossprod		<- elt(aggregates, "pfishgrossprod")
 	pfishlargrossprod	<- elt(aggregates, "pfishlargrossprod")
@@ -291,7 +291,7 @@ sumatmosNITinput<-(atmosNITinput[ndays-90]-atmosNITinput[((nyears-1)*360+1+89)])
 #Calculate whole domain annual average mass of a range of state variables
 #Except fo rkelp, these variables ar the aggregares of the inshore and offshore mass data
 
-aamass_herb<-mean(herb[((nyears-1)*360+1):ndays])
+aamass_omni<-mean(omni[((nyears-1)*360+1):ndays])
 aamass_carn<-mean(carn[((nyears-1)*360+1):ndays])
 aamass_benthslar<-mean(benthslar[((nyears-1)*360+1):ndays])
 aamass_benthclar<-mean(benthclar[((nyears-1)*360+1):ndays])
@@ -319,8 +319,8 @@ aaconc_fishp_o<-(mean(fishp_o[((nyears-1)*360+1):ndays]))/(1-x_shallowprop)
 aaconc_fishd_i<-(mean(fishd_i[((nyears-1)*360+1):ndays]))/x_shallowprop
 aaconc_fishd_o<-(mean(fishd_o[((nyears-1)*360+1):ndays]))/(1-x_shallowprop)
 
-aaconc_herb_i<-(mean(herb_i[((nyears-1)*360+1):ndays]))/xvolume_si
-aaconc_herb_o<-(mean(herb_o[((nyears-1)*360+1):ndays]))/(xvolume_so+xd_volume)
+aaconc_omni_i<-(mean(omni_i[((nyears-1)*360+1):ndays]))/xvolume_si
+aaconc_omni_o<-(mean(omni_o[((nyears-1)*360+1):ndays]))/(xvolume_so+xd_volume)
 
 aaconc_carn_i<-(mean(carn_i[((nyears-1)*360+1):ndays]))/xvolume_si
 aaconc_carn_o<-(mean(carn_o[((nyears-1)*360+1):ndays]))/(xvolume_so+xd_volume)
@@ -356,7 +356,7 @@ kelp_beachcast<-((fluxkelpdebris_beachexport[ndays]-fluxkelpdebris_beachexport[(
 
 kelp_beachcast_per_annProd <- kelp_beachcast/KelpNP
 
-OmnizoogrossP <- herbgrossprod[ndays]-herbgrossprod[((nyears-1)*360+1)]
+OmnizoogrossP <- omnigrossprod[ndays]-omnigrossprod[((nyears-1)*360+1)]
 
 CarnzoogrossP <- carngrossprod[ndays]-carngrossprod[((nyears-1)*360+1)]
 
@@ -388,7 +388,7 @@ benclar_pb<-BenthclargrossP/aamass_benthclar
 
 benc_pb<-BenthcgrossP/aamass_benthc
 bens_pb<-BenthsgrossP/aamass_benths
-herb_pb<-OmnizoogrossP/aamass_herb
+omni_pb<-OmnizoogrossP/aamass_omni
 carn_pb<-CarnzoogrossP/aamass_carn
 pfishlar_pb<-PFishlargrossP/aamass_fishplar
 dfishlar_pb<-DFishlargrossP/aamass_fishdlar
@@ -521,13 +521,13 @@ saconc_ammonia_d <- (mean(ammonia_d[summerdays]))/xd_volume
 
 #Various feeding fluxes...
 
-herb_pfishlarflux<-fluxherb_pfishlar[ndays]-fluxherb_pfishlar[((nyears-1)*360+1)]
-herb_dfishlarflux<-fluxherb_dfishlar[ndays]-fluxherb_dfishlar[((nyears-1)*360+1)]
-herb_pfishflux<-fluxherb_pfish[ndays]-fluxherb_pfish[((nyears-1)*360+1)]
+omni_pfishlarflux<-fluxomni_pfishlar[ndays]-fluxomni_pfishlar[((nyears-1)*360+1)]
+omni_dfishlarflux<-fluxomni_dfishlar[ndays]-fluxomni_dfishlar[((nyears-1)*360+1)]
+omni_pfishflux<-fluxomni_pfish[ndays]-fluxomni_pfish[((nyears-1)*360+1)]
 
-mzoofishflux<-herb_pfishlarflux+herb_dfishlarflux+herb_pfishflux
+mzoofishflux<-omni_pfishlarflux+omni_dfishlarflux+omni_pfishflux
 
-herb_carnflux<-fluxherb_carn[ndays]-fluxherb_carn[((nyears-1)*360+1)]
+omni_carnflux<-fluxomni_carn[ndays]-fluxomni_carn[((nyears-1)*360+1)]
 
 pfishlar_pfishflux<-fluxpfishlar_pfish[ndays]-fluxpfishlar_pfish[((nyears-1)*360+1)]
 pfishlar_dfishflux<-fluxpfishlar_dfish[ndays]-fluxpfishlar_dfish[((nyears-1)*360+1)]
@@ -571,8 +571,8 @@ total_sealflux<-  pfish_sealflux + dfish_sealflux + mfish_sealflux +
                 + benths_sealflux + benthc_sealflux
 
 
-disc_cetaflux<-fluxherb_ceta[ndays]-fluxherb_ceta[((nyears-1)*360+1)]
-herb_cetaflux<-fluxcarn_ceta[ndays]-fluxcarn_ceta[((nyears-1)*360+1)]
+disc_cetaflux<-fluxomni_ceta[ndays]-fluxomni_ceta[((nyears-1)*360+1)]
+omni_cetaflux<-fluxcarn_ceta[ndays]-fluxcarn_ceta[((nyears-1)*360+1)]
 carn_cetaflux<-fluxdisc_ceta[ndays]-fluxdisc_ceta[((nyears-1)*360+1)]
 pfish_cetaflux<-fluxpfish_ceta[ndays]-fluxpfish_ceta[((nyears-1)*360+1)]
 dfish_cetaflux<-fluxdfish_ceta[ndays]-fluxdfish_ceta[((nyears-1)*360+1)]
@@ -582,7 +582,7 @@ benthc_cetaflux<-fluxbenthc_ceta[ndays]-fluxbenthc_ceta[((nyears-1)*360+1)]
 bird_cetaflux<-fluxbird_ceta[ndays]-fluxbird_ceta[((nyears-1)*360+1)]
 seal_cetaflux<-fluxseal_ceta[ndays]-fluxseal_ceta[((nyears-1)*360+1)]
 total_cetaflux<-   pfish_cetaflux + dfish_cetaflux + mfish_cetaflux +
-                 + herb_cetaflux + carn_cetaflux + disc_cetaflux +
+                 + omni_cetaflux + carn_cetaflux + disc_cetaflux +
                  + benths_cetaflux + benthc_cetaflux + bird_cetaflux + seal_cetaflux 
 
 
@@ -658,7 +658,7 @@ opt_results$Model_data[which(opt_results$Name=="Obs_Condfishfish")] <- dfishfish
 
 opt_results$Model_data[which(opt_results$Name=="Obs_Conzoofish")] <- mzoofishflux
 
-opt_results$Model_data[which(opt_results$Name=="Obs_Conzoocarnz")] <- herb_carnflux
+opt_results$Model_data[which(opt_results$Name=="Obs_Conzoocarnz")] <- omni_carnflux
 
 opt_results$Model_data[which(opt_results$Name=="Obs_Conbenfish")] <- benfishflux
 
@@ -719,7 +719,7 @@ opt_results$Model_data[which(opt_results$Name=="Obs_benslar_pb")]<-benslar_pb
 opt_results$Model_data[which(opt_results$Name=="Obs_benclar_pb")]<-benclar_pb
 opt_results$Model_data[which(opt_results$Name=="Obs_bens_pb")]<-bens_pb
 opt_results$Model_data[which(opt_results$Name=="Obs_benc_pb")]<-benc_pb
-opt_results$Model_data[which(opt_results$Name=="Obs_herb_pb")]<-herb_pb
+opt_results$Model_data[which(opt_results$Name=="Obs_omni_pb")]<-omni_pb
 opt_results$Model_data[which(opt_results$Name=="Obs_carn_pb")]<-carn_pb
 opt_results$Model_data[which(opt_results$Name=="Obs_fishplar_pb")]<-pfishlar_pb
 opt_results$Model_data[which(opt_results$Name=="Obs_fishdlar_pb")]<-dfishlar_pb
@@ -760,7 +760,7 @@ opt_results$Model_data[which(opt_results$Name=="Obs_MJJA_d_ammonia")]<-saconc_am
 
 opt_results$Model_data[which(opt_results$Name=="Obs_carn_io_ratio")]<-aaconc_carn_i/aaconc_carn_o
 
-opt_results$Model_data[which(opt_results$Name=="Obs_herb_io_ratio")]<-aaconc_herb_i/aaconc_herb_o
+opt_results$Model_data[which(opt_results$Name=="Obs_omni_io_ratio")]<-aaconc_omni_i/aaconc_omni_o
 
 opt_results$Model_data[which(opt_results$Name=="Obs_phyt_io_ratio")]<-aaconc_phyt_si/aaconc_phyt_so
 

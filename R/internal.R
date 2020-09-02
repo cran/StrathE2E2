@@ -1153,11 +1153,6 @@ extract_ACTmult_to_parmsfolder <- function(model, ACTmult_accepted,csv.output) {
 
 	read.only	<- elt(model, "setup", "read.only")
 
-	if (read.only & csv.output==TRUE) {
-		message("Warning: model is read-only: accepted gear multiplier values have not been written to model parameters folder")
-		return
-	}
-
 	model.ident	<- elt(model, "setup", "model.ident")
 	model.path	<- elt(model, "setup", "model.path")
 
@@ -1181,7 +1176,15 @@ extract_ACTmult_to_parmsfolder <- function(model, ACTmult_accepted,csv.output) {
 	if(read.only==FALSE & csv.output==TRUE){
 	csvfile <- csvname(pardir, "fishing_gear_multiplier", model.ident)
 	writecsv(output_ACTmult, csvfile, row.names=FALSE)
-	print(paste("Writing gear multiplier file :",csvfile))
+	message(paste("Writing gear multiplier file :",csvfile))
+	}
+
+	if (read.only==TRUE) {
+		message("Model is read-only: accepted gear multiplier values have not been written to model parameters folder")
+	}
+
+	if (csv.output==FALSE) {
+		message("csv.output is FALSE: accepted gear multiplier values have not been written to model parameters folder")
 	}
 
 	output_ACTmult
@@ -1198,11 +1201,6 @@ extract_ACTmult_to_parmsfolder <- function(model, ACTmult_accepted,csv.output) {
 extract_HRmult_to_parmsfolder <- function(model, HRscale_accepted,csv.output) {
 
 	read.only	<- elt(model, "setup", "read.only")
-
-	if (read.only & csv.output==TRUE) {
-		message("Warning: model is read-only: accepted harvest ratio multiplier values have not been written to model parameters folder")
-		return
-	}
 
 	model.ident	<- elt(model, "setup", "model.ident")
 	model.path	<- elt(model, "setup", "model.path")
@@ -1229,7 +1227,15 @@ extract_HRmult_to_parmsfolder <- function(model, HRscale_accepted,csv.output) {
 	if(read.only==FALSE & csv.output==TRUE){
 		csvfile <- csvname(pardir, "harvest_ratio_multiplier", model.ident)
 		writecsv(output_HRmult, csvfile, row.names=FALSE)
-		print(paste("Writing harvest ratio muliplier file :",csvfile))
+		message(paste("Writing harvest ratio muliplier file :",csvfile))
+	}
+
+	if (read.only==TRUE) {
+		message("Model is read-only: accepted harvest ratio multiplier values have not been written to model parameters folder")
+	}
+
+	if (csv.output==FALSE) {
+		message("csv.output is FALSE: accepted harvest ratio multiplier values have not been written to model parameters folder")
 	}
 
 	output_HRmult

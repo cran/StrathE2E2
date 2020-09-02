@@ -54,36 +54,36 @@ perturb_parameters <- function(datastore, annealing.parms, toppredlock=FALSE) {
 	PREF_NIT_phyt			<- elt(datastore, "PREF_NIT_phyt")
 	PREF_AMM_phyt			<- elt(datastore, "PREF_AMM_phyt")
 
-	PREF_phyt_herb			<- elt(datastore, "PREF_phyt_herb")
-	PREF_det_herb			<- elt(datastore, "PREF_det_herb")
-	PREF_benthslar_herb		<- elt(datastore, "PREF_benthslar_herb")
-	PREF_benthclar_herb		<- elt(datastore, "PREF_benthclar_herb")
+	PREF_phyt_omni			<- elt(datastore, "PREF_phyt_omni")
+	PREF_det_omni			<- elt(datastore, "PREF_det_omni")
+	PREF_benthslar_omni		<- elt(datastore, "PREF_benthslar_omni")
+	PREF_benthclar_omni		<- elt(datastore, "PREF_benthclar_omni")
 
-	PREF_herb_carn			<- elt(datastore, "PREF_herb_carn")
+	PREF_omni_carn			<- elt(datastore, "PREF_omni_carn")
 	PREF_benthslar_carn		<- elt(datastore, "PREF_benthslar_carn") 
 	PREF_benthclar_carn		<- elt(datastore, "PREF_benthclar_carn") 
 	PREF_fishplar_carn		<- elt(datastore, "PREF_fishplar_carn")
 	PREF_fishdlar_carn		<- elt(datastore, "PREF_fishdlar_carn")
 
-	PREF_herb_fishplar		<- elt(datastore, "PREF_herb_fishplar")
+	PREF_omni_fishplar		<- elt(datastore, "PREF_omni_fishplar")
 	PREF_benthslar_fishplar		<- elt(datastore, "PREF_benthslar_fishplar") 
 	PREF_benthclar_fishplar		<- elt(datastore, "PREF_benthclar_fishplar") 
 
-	PREF_herb_fishp			<- elt(datastore, "PREF_herb_fishp")
+	PREF_omni_fishp			<- elt(datastore, "PREF_omni_fishp")
 	PREF_carn_fishp			<- elt(datastore, "PREF_carn_fishp")
 	PREF_benthslar_fishp		<- elt(datastore, "PREF_benthslar_fishp") 
 	PREF_benthclar_fishp		<- elt(datastore, "PREF_benthclar_fishp") 
 	PREF_fishdlar_fishp		<- elt(datastore, "PREF_fishdlar_fishp")
 	PREF_fishplar_fishp		<- elt(datastore, "PREF_fishplar_fishp")
 
-	PREF_herb_fishm			<- elt(datastore, "PREF_herb_fishm") 
+	PREF_omni_fishm			<- elt(datastore, "PREF_omni_fishm") 
 	PREF_carn_fishm			<- elt(datastore, "PREF_carn_fishm") 
 	PREF_benthslar_fishm		<- elt(datastore, "PREF_benthslar_fishm") 
 	PREF_benthclar_fishm		<- elt(datastore, "PREF_benthclar_fishm") 
 	PREF_fishdlar_fishm		<- elt(datastore, "PREF_fishdlar_fishm") 
 	PREF_fishplar_fishm		<- elt(datastore, "PREF_fishplar_fishm") 
 
-	PREF_herb_fishdlar		<- elt(datastore, "PREF_herb_fishdlar")
+	PREF_omni_fishdlar		<- elt(datastore, "PREF_omni_fishdlar")
 	PREF_benthslar_fishdlar		<- elt(datastore, "PREF_benthslar_fishdlar")
 	PREF_benthclar_fishdlar		<- elt(datastore, "PREF_benthclar_fishdlar")
 
@@ -136,7 +136,7 @@ perturb_parameters <- function(datastore, annealing.parms, toppredlock=FALSE) {
 	PREF_corp_seal			<- elt(datastore, "PREF_corp_seal")
 
 
-	PREF_herb_ceta			<- elt(datastore, "PREF_herb_ceta")
+	PREF_omni_ceta			<- elt(datastore, "PREF_omni_ceta")
 	PREF_carn_ceta			<- elt(datastore, "PREF_carn_ceta")
 	PREF_benths_ceta		<- elt(datastore, "PREF_benths_ceta")
 	PREF_benthc_ceta		<- elt(datastore, "PREF_benthc_ceta")
@@ -157,7 +157,7 @@ perturb_parameters <- function(datastore, annealing.parms, toppredlock=FALSE) {
 	u_kelp				<- elt(datastore, "u_kelp") 
 
 	u_phyt				<- elt(datastore, "u_phyt")
-	u_herb				<- elt(datastore, "u_herb")
+	u_omni				<- elt(datastore, "u_omni")
 	u_carn				<- elt(datastore, "u_carn")
 	u_fishplar			<- elt(datastore, "u_fishplar")
 	u_fishp				<- elt(datastore, "u_fishp")
@@ -176,7 +176,7 @@ perturb_parameters <- function(datastore, annealing.parms, toppredlock=FALSE) {
 	h_kelp				<- elt(datastore, "h_kelp")
 
 	h_phyt				<- elt(datastore, "h_phyt")
-	h_herb				<- elt(datastore, "h_herb")
+	h_omni				<- elt(datastore, "h_omni")
 	h_carn				<- elt(datastore, "h_carn")
 	h_fishplar			<- elt(datastore, "h_fishplar")
 	h_fishp				<- elt(datastore, "h_fishp")
@@ -228,7 +228,7 @@ perturb_parameters <- function(datastore, annealing.parms, toppredlock=FALSE) {
 	xxdt				<- elt(datastore, "xxdt")
 
 	#Death rate of carnivores fish birds and mammals per unit biomass - temperature independent
-	xxherb				<- elt(datastore, "xxherb")
+	xxomni				<- elt(datastore, "xxomni")
 	xxcarn				<- elt(datastore, "xxcarn")
 	xxbenthslar			<- elt(datastore, "xxbenthslar")
 	xxbenthclar			<- elt(datastore, "xxbenthclar")
@@ -322,49 +322,49 @@ prefsum<-PREF_NIT_phytx+PREF_AMM_phytx
 	PREF_NIT_phyt<-PREF_NIT_phytx/prefsum
 	PREF_AMM_phyt<-PREF_AMM_phytx/prefsum
 
-	PREF_phyt_herbx<-max(0,rnorm(1,PREF_phyt_herb,Prefsd*PREF_phyt_herb))
-	PREF_det_herbx<-max(0,rnorm(1,PREF_det_herb,Prefsd*PREF_det_herb))
-	PREF_benthslar_herbx<-max(0,rnorm(1,PREF_benthslar_herb,Prefsd*PREF_benthslar_herb))
-	PREF_benthclar_herbx<-max(0,rnorm(1,PREF_benthclar_herb,Prefsd*PREF_benthclar_herb))
+	PREF_phyt_omnix<-max(0,rnorm(1,PREF_phyt_omni,Prefsd*PREF_phyt_omni))
+	PREF_det_omnix<-max(0,rnorm(1,PREF_det_omni,Prefsd*PREF_det_omni))
+	PREF_benthslar_omnix<-max(0,rnorm(1,PREF_benthslar_omni,Prefsd*PREF_benthslar_omni))
+	PREF_benthclar_omnix<-max(0,rnorm(1,PREF_benthclar_omni,Prefsd*PREF_benthclar_omni))
 #Renormalise
-prefsum<-PREF_phyt_herbx+PREF_det_herbx+PREF_benthslar_herbx+PREF_benthclar_herbx
-	PREF_phyt_herb<-PREF_phyt_herbx/prefsum
-	PREF_det_herb<-PREF_det_herbx/prefsum
-	PREF_benthslar_herb<-PREF_benthslar_herbx/prefsum
-	PREF_benthclar_herb<-PREF_benthclar_herbx/prefsum
+prefsum<-PREF_phyt_omnix+PREF_det_omnix+PREF_benthslar_omnix+PREF_benthclar_omnix
+	PREF_phyt_omni<-PREF_phyt_omnix/prefsum
+	PREF_det_omni<-PREF_det_omnix/prefsum
+	PREF_benthslar_omni<-PREF_benthslar_omnix/prefsum
+	PREF_benthclar_omni<-PREF_benthclar_omnix/prefsum
 
-	PREF_herb_carnx<-max(0,rnorm(1,PREF_herb_carn,Prefsd*PREF_herb_carn))
+	PREF_omni_carnx<-max(0,rnorm(1,PREF_omni_carn,Prefsd*PREF_omni_carn))
 	PREF_fishplar_carnx<-max(0,rnorm(1,PREF_fishplar_carn,Prefsd*PREF_fishplar_carn))
 	PREF_fishdlar_carnx<-max(0,rnorm(1,PREF_fishdlar_carn,Prefsd*PREF_fishdlar_carn))
 	PREF_benthslar_carnx<-max(0,rnorm(1,PREF_benthslar_carn,Prefsd*PREF_benthslar_carn))
 	PREF_benthclar_carnx<-max(0,rnorm(1,PREF_benthclar_carn,Prefsd*PREF_benthclar_carn))
 #Renormalise
-prefsum<-PREF_herb_carnx+PREF_fishplar_carnx+PREF_fishdlar_carnx+PREF_benthslar_carnx+PREF_benthclar_carnx
-	PREF_herb_carn<-PREF_herb_carnx/prefsum
+prefsum<-PREF_omni_carnx+PREF_fishplar_carnx+PREF_fishdlar_carnx+PREF_benthslar_carnx+PREF_benthclar_carnx
+	PREF_omni_carn<-PREF_omni_carnx/prefsum
 	PREF_fishplar_carn<-PREF_fishplar_carnx/prefsum
 	PREF_fishdlar_carn<-PREF_fishdlar_carnx/prefsum
 	PREF_benthslar_carn<-PREF_benthslar_carnx/prefsum
 	PREF_benthclar_carn<-PREF_benthclar_carnx/prefsum
 
 
-	PREF_herb_fishplarx<-max(0,rnorm(1,PREF_herb_fishplar,Prefsd*PREF_herb_fishplar))
+	PREF_omni_fishplarx<-max(0,rnorm(1,PREF_omni_fishplar,Prefsd*PREF_omni_fishplar))
 	PREF_benthslar_fishplarx<-max(0,rnorm(1,PREF_benthslar_fishplar,Prefsd*PREF_benthslar_fishplar))
 	PREF_benthclar_fishplarx<-max(0,rnorm(1,PREF_benthclar_fishplar,Prefsd*PREF_benthclar_fishplar))
 #Renormalise
-prefsum<-PREF_herb_fishplarx+PREF_benthslar_fishplarx+PREF_benthclar_fishplarx
-	PREF_herb_fishplar<-PREF_herb_fishplarx/prefsum
+prefsum<-PREF_omni_fishplarx+PREF_benthslar_fishplarx+PREF_benthclar_fishplarx
+	PREF_omni_fishplar<-PREF_omni_fishplarx/prefsum
 	PREF_benthslar_fishplar<-PREF_benthslar_fishplarx/prefsum
 	PREF_benthclar_fishplar<-PREF_benthclar_fishplarx/prefsum
 
-	PREF_herb_fishpx<-max(0,rnorm(1,PREF_herb_fishp,Prefsd*PREF_herb_fishp))
+	PREF_omni_fishpx<-max(0,rnorm(1,PREF_omni_fishp,Prefsd*PREF_omni_fishp))
 	PREF_carn_fishpx<-max(0,rnorm(1,PREF_carn_fishp,Prefsd*PREF_carn_fishp))
 	PREF_fishdlar_fishpx<-max(0,rnorm(1,PREF_fishdlar_fishp,Prefsd*PREF_fishdlar_fishp))
 	PREF_fishplar_fishpx<-max(0,rnorm(1,PREF_fishplar_fishp,Prefsd*PREF_fishplar_fishp))
 	PREF_benthslar_fishpx<-max(0,rnorm(1,PREF_benthslar_fishp,Prefsd*PREF_benthslar_fishp))
 	PREF_benthclar_fishpx<-max(0,rnorm(1,PREF_benthclar_fishp,Prefsd*PREF_benthclar_fishp))
 #Renormalise
-prefsum<-PREF_herb_fishpx+PREF_carn_fishpx+PREF_fishdlar_fishpx+PREF_fishplar_fishpx+PREF_benthslar_fishpx+PREF_benthclar_fishpx
-	PREF_herb_fishp<-PREF_herb_fishpx/prefsum
+prefsum<-PREF_omni_fishpx+PREF_carn_fishpx+PREF_fishdlar_fishpx+PREF_fishplar_fishpx+PREF_benthslar_fishpx+PREF_benthclar_fishpx
+	PREF_omni_fishp<-PREF_omni_fishpx/prefsum
 	PREF_carn_fishp<-PREF_carn_fishpx/prefsum
 	PREF_fishdlar_fishp<-PREF_fishdlar_fishpx/prefsum
 	PREF_fishplar_fishp<-PREF_fishplar_fishpx/prefsum
@@ -372,15 +372,15 @@ prefsum<-PREF_herb_fishpx+PREF_carn_fishpx+PREF_fishdlar_fishpx+PREF_fishplar_fi
 	PREF_benthclar_fishp<-PREF_benthclar_fishpx/prefsum
 
 
-	PREF_herb_fishmx<-max(0,rnorm(1,PREF_herb_fishm,Prefsd*PREF_herb_fishm)) 
+	PREF_omni_fishmx<-max(0,rnorm(1,PREF_omni_fishm,Prefsd*PREF_omni_fishm)) 
 	PREF_carn_fishmx<-max(0,rnorm(1,PREF_carn_fishm,Prefsd*PREF_carn_fishm)) 
 	PREF_fishdlar_fishmx<-max(0,rnorm(1,PREF_fishdlar_fishm,Prefsd*PREF_fishdlar_fishm))
 	PREF_fishplar_fishmx<-max(0,rnorm(1,PREF_fishplar_fishm,Prefsd*PREF_fishplar_fishm))
 	PREF_benthslar_fishmx<-max(0,rnorm(1,PREF_benthslar_fishm,Prefsd*PREF_benthslar_fishm))
 	PREF_benthclar_fishmx<-max(0,rnorm(1,PREF_benthclar_fishm,Prefsd*PREF_benthclar_fishm))
 #Renormalise
-prefsum<-PREF_herb_fishmx+PREF_carn_fishmx+PREF_benthslar_fishmx+PREF_benthclar_fishmx+PREF_fishdlar_fishmx+PREF_fishplar_fishmx
-	PREF_herb_fishm<-PREF_herb_fishmx/prefsum
+prefsum<-PREF_omni_fishmx+PREF_carn_fishmx+PREF_benthslar_fishmx+PREF_benthclar_fishmx+PREF_fishdlar_fishmx+PREF_fishplar_fishmx
+	PREF_omni_fishm<-PREF_omni_fishmx/prefsum
 	PREF_carn_fishm<-PREF_carn_fishmx/prefsum
 	PREF_fishdlar_fishm<-PREF_fishdlar_fishmx/prefsum
 	PREF_fishplar_fishm<-PREF_fishplar_fishmx/prefsum
@@ -388,12 +388,12 @@ prefsum<-PREF_herb_fishmx+PREF_carn_fishmx+PREF_benthslar_fishmx+PREF_benthclar_
 	PREF_benthclar_fishm<-PREF_benthclar_fishmx/prefsum
 
 
-	PREF_herb_fishdlarx<-max(0,rnorm(1,PREF_herb_fishdlar,Prefsd*PREF_herb_fishdlar))
+	PREF_omni_fishdlarx<-max(0,rnorm(1,PREF_omni_fishdlar,Prefsd*PREF_omni_fishdlar))
 	PREF_benthslar_fishdlarx<-max(0,rnorm(1,PREF_benthslar_fishdlar,Prefsd*PREF_benthslar_fishdlar))
 	PREF_benthclar_fishdlarx<-max(0,rnorm(1,PREF_benthclar_fishdlar,Prefsd*PREF_benthclar_fishdlar))
 #Renormalise
-prefsum<-PREF_herb_fishdlarx+PREF_benthslar_fishdlarx+PREF_benthclar_fishdlarx
-	PREF_herb_fishdlar<-PREF_herb_fishdlarx/prefsum
+prefsum<-PREF_omni_fishdlarx+PREF_benthslar_fishdlarx+PREF_benthclar_fishdlarx
+	PREF_omni_fishdlar<-PREF_omni_fishdlarx/prefsum
 	PREF_benthslar_fishdlar<-PREF_benthslar_fishdlarx/prefsum
 	PREF_benthclar_fishdlar<-PREF_benthclar_fishdlarx/prefsum
 
@@ -525,7 +525,7 @@ prefsum<-PREF_benths_benthcx+PREF_corp_benthcx+PREF_kelp_benthcx+PREF_kelpdebris
 
 
 
-		PREF_herb_cetax<-max(0,rnorm(1,PREF_herb_ceta,Prefsd*PREF_herb_ceta))
+		PREF_omni_cetax<-max(0,rnorm(1,PREF_omni_ceta,Prefsd*PREF_omni_ceta))
 		PREF_carn_cetax<-max(0,rnorm(1,PREF_carn_ceta,Prefsd*PREF_carn_ceta))
 		PREF_benths_cetax<-max(0,rnorm(1,PREF_benths_ceta,Prefsd*PREF_benths_ceta))
 		PREF_benthc_cetax<-max(0,rnorm(1,PREF_benthc_ceta,Prefsd*PREF_benthc_ceta))
@@ -536,8 +536,8 @@ prefsum<-PREF_benths_benthcx+PREF_corp_benthcx+PREF_kelp_benthcx+PREF_kelpdebris
 		PREF_seal_cetax<-max(0,rnorm(1,PREF_seal_ceta,Prefsd*PREF_seal_ceta))
 		PREF_disc_cetax<-max(0,rnorm(1,PREF_disc_ceta,Prefsd*PREF_disc_ceta))
 		#Renormalise
-		prefsum<-PREF_herb_cetax+PREF_carn_cetax+PREF_benths_cetax+PREF_benthc_cetax+PREF_fishp_cetax+PREF_fishm_cetax+PREF_fishd_cetax+PREF_bird_cetax+PREF_seal_cetax+PREF_disc_cetax
-		PREF_herb_ceta<-PREF_herb_cetax/prefsum
+		prefsum<-PREF_omni_cetax+PREF_carn_cetax+PREF_benths_cetax+PREF_benthc_cetax+PREF_fishp_cetax+PREF_fishm_cetax+PREF_fishd_cetax+PREF_bird_cetax+PREF_seal_cetax+PREF_disc_cetax
+		PREF_omni_ceta<-PREF_omni_cetax/prefsum
 		PREF_carn_ceta<-PREF_carn_cetax/prefsum
 		PREF_benths_ceta<-PREF_benths_cetax/prefsum
 		PREF_benthc_ceta<-PREF_benthc_cetax/prefsum
@@ -552,11 +552,11 @@ prefsum<-PREF_benths_benthcx+PREF_corp_benthcx+PREF_kelp_benthcx+PREF_kelpdebris
 }
 
 prefstore<-list(PREF_NIT_kelp,PREF_AMM_kelp,
-             PREF_NIT_phyt,PREF_AMM_phyt,PREF_phyt_herb,PREF_det_herb,PREF_benthslar_herb,PREF_benthclar_herb,PREF_herb_carn,PREF_benthslar_carn,PREF_benthclar_carn,PREF_fishplar_carn,PREF_fishdlar_carn,
-             PREF_herb_fishplar,PREF_benthslar_fishplar,PREF_benthclar_fishplar,
-             PREF_herb_fishp,PREF_carn_fishp,PREF_benthslar_fishp,PREF_benthclar_fishp,PREF_fishdlar_fishp,PREF_fishplar_fishp,
-             PREF_herb_fishm,PREF_carn_fishm,PREF_benthslar_fishm,PREF_benthclar_fishm,PREF_fishdlar_fishm,PREF_fishplar_fishm,
-             PREF_herb_fishdlar,PREF_benthslar_fishdlar,PREF_benthclar_fishdlar,
+             PREF_NIT_phyt,PREF_AMM_phyt,PREF_phyt_omni,PREF_det_omni,PREF_benthslar_omni,PREF_benthclar_omni,PREF_omni_carn,PREF_benthslar_carn,PREF_benthclar_carn,PREF_fishplar_carn,PREF_fishdlar_carn,
+             PREF_omni_fishplar,PREF_benthslar_fishplar,PREF_benthclar_fishplar,
+             PREF_omni_fishp,PREF_carn_fishp,PREF_benthslar_fishp,PREF_benthclar_fishp,PREF_fishdlar_fishp,PREF_fishplar_fishp,
+             PREF_omni_fishm,PREF_carn_fishm,PREF_benthslar_fishm,PREF_benthclar_fishm,PREF_fishdlar_fishm,PREF_fishplar_fishm,
+             PREF_omni_fishdlar,PREF_benthslar_fishdlar,PREF_benthclar_fishdlar,
              PREF_carn_fishd,PREF_benths_fishd,PREF_benthc_fishd,PREF_fishplar_fishd,PREF_fishdlar_fishd,PREF_fishp_fishd,PREF_fishm_fishd,PREF_fishd_fishd,PREF_disc_fishd,PREF_corp_fishd,
              PREF_phyt_benthslar,PREF_phyt_benthclar,
              PREF_det_benthslar,PREF_det_benthclar,
@@ -564,13 +564,13 @@ prefstore<-list(PREF_NIT_kelp,PREF_AMM_kelp,
              PREF_kelp_benthc,PREF_kelpdebris_benthc,PREF_benths_benthc,PREF_corp_benthc,
              PREF_carn_bird,PREF_benths_bird,PREF_benthc_bird,PREF_fishp_bird,PREF_fishm_bird,PREF_fishd_bird,PREF_disc_bird,PREF_corp_bird,
              PREF_carn_seal,PREF_benths_seal,PREF_benthc_seal,PREF_fishp_seal,PREF_fishm_seal,PREF_fishd_seal,PREF_bird_seal,PREF_disc_seal,PREF_corp_seal,
-             PREF_herb_ceta,PREF_carn_ceta,PREF_benths_ceta,PREF_benthc_ceta,PREF_fishp_ceta,PREF_fishm_ceta,PREF_fishd_ceta,PREF_bird_ceta,PREF_seal_ceta,PREF_disc_ceta)
+             PREF_omni_ceta,PREF_carn_ceta,PREF_benths_ceta,PREF_benthc_ceta,PREF_fishp_ceta,PREF_fishm_ceta,PREF_fishd_ceta,PREF_bird_ceta,PREF_seal_ceta,PREF_disc_ceta)
 names(prefstore)<-c("PREF_NIT_kelp","PREF_AMM_kelp",
-            "PREF_NIT_phyt","PREF_AMM_phyt","PREF_phyt_herb","PREF_det_herb","PREF_benthslar_herb","PREF_benthclar_herb","PREF_herb_carn","PREF_benthslar_carn","PREF_benthclar_carn","PREF_fishplar_carn","PREF_fishdlar_carn",
-            "PREF_herb_fishplar","PREF_benthslar_fishplar","PREF_benthclar_fishplar",
-            "PREF_herb_fishp","PREF_carn_fishp","PREF_benthslar_fishp","PREF_benthclar_fishp","PREF_fishdlar_fishp","PREF_fishplar_fishp",
-            "PREF_herb_fishm","PREF_carn_fishm","PREF_benthslar_fishm","PREF_benthclar_fishm","PREF_fishdlar_fishm","PREF_fishplar_fishm",
-            "PREF_herb_fishdlar","PREF_benthslar_fishdlar","PREF_benthclar_fishdlar",
+            "PREF_NIT_phyt","PREF_AMM_phyt","PREF_phyt_omni","PREF_det_omni","PREF_benthslar_omni","PREF_benthclar_omni","PREF_omni_carn","PREF_benthslar_carn","PREF_benthclar_carn","PREF_fishplar_carn","PREF_fishdlar_carn",
+            "PREF_omni_fishplar","PREF_benthslar_fishplar","PREF_benthclar_fishplar",
+            "PREF_omni_fishp","PREF_carn_fishp","PREF_benthslar_fishp","PREF_benthclar_fishp","PREF_fishdlar_fishp","PREF_fishplar_fishp",
+            "PREF_omni_fishm","PREF_carn_fishm","PREF_benthslar_fishm","PREF_benthclar_fishm","PREF_fishdlar_fishm","PREF_fishplar_fishm",
+            "PREF_omni_fishdlar","PREF_benthslar_fishdlar","PREF_benthclar_fishdlar",
             "PREF_carn_fishd","PREF_benths_fishd","PREF_benthc_fishd","PREF_fishplar_fishd","PREF_fishdlar_fishd","PREF_fishp_fishd","PREF_fishm_fishd","PREF_fishd_fishd","PREF_disc_fishd","PREF_corp_fishd",
             "PREF_phyt_benthslar","PREF_phyt_benthclar",
             "PREF_det_benthslar","PREF_det_benthclar",
@@ -578,7 +578,7 @@ names(prefstore)<-c("PREF_NIT_kelp","PREF_AMM_kelp",
             "PREF_kelp_benthc","PREF_kelpdebris_benthc","PREF_benths_benthc","PREF_corp_benthc",
             "PREF_carn_bird","PREF_benths_bird","PREF_benthc_bird","PREF_fishp_bird","PREF_fishm_bird","PREF_fishd_bird","PREF_disc_bird","PREF_corp_bird",
             "PREF_carn_seal","PREF_benths_seal","PREF_benthc_seal","PREF_fishp_seal","PREF_fishm_seal","PREF_fishd_seal","PREF_bird_seal","PREF_disc_seal","PREF_corp_seal",
-            "PREF_herb_ceta","PREF_carn_ceta","PREF_benths_ceta","PREF_benthc_ceta","PREF_fishp_ceta","PREF_fishm_ceta","PREF_fishd_ceta","PREF_bird_ceta","PREF_seal_ceta","PREF_disc_ceta")
+            "PREF_omni_ceta","PREF_carn_ceta","PREF_benths_ceta","PREF_benthc_ceta","PREF_fishp_ceta","PREF_fishm_ceta","PREF_fishd_ceta","PREF_bird_ceta","PREF_seal_ceta","PREF_disc_ceta")
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -594,7 +594,7 @@ u_kelp<-max(0,rnorm(1,u_kelp,u_kelp*u_sd))
 
 
 u_phyt<-max(0,rnorm(1,u_phyt,u_phyt*u_sd))
-u_herb<-max(0,rnorm(1,u_herb,u_herb*u_sd))
+u_omni<-max(0,rnorm(1,u_omni,u_omni*u_sd))
 u_carn<-max(0,rnorm(1,u_carn,u_carn*u_sd))
 u_fishplar<-max(0,rnorm(1,u_fishplar,u_fishplar*u_sd))
 u_fishp<-max(0,rnorm(1,u_fishp,u_fishp*u_sd))
@@ -614,7 +614,7 @@ u_benthc<-max(0,rnorm(1,u_benthc,u_benthc*u_sd))
 	}
 
 #u_phyt<-max(0,rnorm(1,u_phyt,u_phyt*ressd))
-#u_herb<-max(0,rnorm(1,u_herb,u_herb*ressd))
+#u_omni<-max(0,rnorm(1,u_omni,u_omni*ressd))
 #u_carn<-max(0,rnorm(1,u_carn,u_carn*ressd))
 #u_fishplar<-max(0,rnorm(1,u_fishplar,u_fishplar*ressd))
 #u_fishp<-max(0,rnorm(1,u_fishp,u_fishp*ressd))
@@ -625,8 +625,8 @@ u_benthc<-max(0,rnorm(1,u_benthc,u_benthc*u_sd))
 
 }
 
-ustore<-list(uC_kelp,ddexudC_kelp,u_kelp,u_phyt,u_herb,u_carn,u_fishplar,u_fishp,u_fishm,u_fishdlar,u_fishd,u_benthslar,u_benthclar,u_benths,u_benthc,u_bird,u_seal,u_ceta)
-names(ustore)<-c("uC_kelp","ddexudC_kelp","u_kelp","u_phyt","u_herb","u_carn","u_fishplar","u_fishp","u_fishm","u_fishdlar","u_fishd","u_benthslar","u_benthclar","u_benths","u_benthc","u_bird","u_seal","u_ceta")
+ustore<-list(uC_kelp,ddexudC_kelp,u_kelp,u_phyt,u_omni,u_carn,u_fishplar,u_fishp,u_fishm,u_fishdlar,u_fishd,u_benthslar,u_benthclar,u_benths,u_benthc,u_bird,u_seal,u_ceta)
+names(ustore)<-c("uC_kelp","ddexudC_kelp","u_kelp","u_phyt","u_omni","u_carn","u_fishplar","u_fishp","u_fishm","u_fishdlar","u_fishd","u_benthslar","u_benthclar","u_benths","u_benthc","u_bird","u_seal","u_ceta")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -638,7 +638,7 @@ if(h_sd>0){
 
 h_kelp<-max(0,rnorm(1,h_kelp,h_kelp*h_sd))
 h_phyt<-max(0,rnorm(1,h_phyt,h_phyt*h_sd))
-h_herb<-max(0,rnorm(1,h_herb,h_herb*h_sd))
+h_omni<-max(0,rnorm(1,h_omni,h_omni*h_sd))
 h_carn<-max(0,rnorm(1,h_carn,h_carn*h_sd))
 h_fishplar<-max(0,rnorm(1,h_fishplar,h_fishplar*h_sd))
 h_fishp<-max(0,rnorm(1,h_fishp,h_fishp*h_sd))
@@ -661,7 +661,7 @@ h_benthc<-max(0,rnorm(1,h_benthc,h_benthc*h_sd))
 		bda_par_ceta<-max(0,rnorm(1,bda_par_ceta,bda_par_ceta*h_sd))
 	}
 
-#h_herb<-max(0,rnorm(1,h_herb,h_herb*ressd))
+#h_omni<-max(0,rnorm(1,h_omni,h_omni*ressd))
 #h_carn<-max(0,rnorm(1,h_carn,h_carn*ressd))
 #h_fishp<-max(0,rnorm(1,h_fishp,h_fishp*ressd))
 #h_fishd<-max(0,rnorm(1,h_fishd,h_fishd*ressd))
@@ -670,8 +670,8 @@ h_benthc<-max(0,rnorm(1,h_benthc,h_benthc*h_sd))
 
 }
 
-hstore<-list(h_kelp,h_phyt,h_herb,h_carn,h_fishplar,h_fishp,h_fishm,h_fishdlar,h_fishd,h_benthslar,h_benthclar,h_benths,h_benthc,h_bird,h_seal,h_ceta,bda_par_bird,bda_par_seal,bda_par_ceta)
-names(hstore)<-c("h_kelp","h_phyt","h_herb","h_carn","h_fishplar","h_fishp","h_fishm","h_fishdlar","h_fishd","h_benthslar","h_benthclar","h_benths","h_benthc","h_bird","h_seal","h_ceta","bda_par_bird","bda_par_seal","bda_par_ceta")
+hstore<-list(h_kelp,h_phyt,h_omni,h_carn,h_fishplar,h_fishp,h_fishm,h_fishdlar,h_fishd,h_benthslar,h_benthclar,h_benths,h_benthc,h_bird,h_seal,h_ceta,bda_par_bird,bda_par_seal,bda_par_ceta)
+names(hstore)<-c("h_kelp","h_phyt","h_omni","h_carn","h_fishplar","h_fishp","h_fishm","h_fishdlar","h_fishd","h_benthslar","h_benthclar","h_benths","h_benthc","h_bird","h_seal","h_ceta","bda_par_bird","bda_par_seal","bda_par_ceta")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -765,7 +765,7 @@ xxwave_kelp<-max(0,rnorm(1,xxwave_kelp,xxwave_kelp*mort_sd))
 
 xxst<-max(0,rnorm(1,xxst,xxst*mort_sd))
 xxdt<-max(0,rnorm(1,xxdt,xxdt*mort_sd))
-xxherb<-max(0,rnorm(1,xxherb,xxherb*mort_sd))
+xxomni<-max(0,rnorm(1,xxomni,xxomni*mort_sd))
 xxcarn<-max(0,rnorm(1,xxcarn,xxcarn*mort_sd))
 xxbenthslar<-max(0,rnorm(1,xxbenthslar,xxbenthslar*mort_sd))
 xxbenthclar<-max(0,rnorm(1,xxbenthclar,xxbenthclar*mort_sd))
@@ -786,8 +786,8 @@ xxbenthc<-max(0,rnorm(1,xxbenthc,xxbenthc*mort_sd))
 
 }
 
-mortstore<-list(xxwave_kelp,xxst,xxdt,xxherb,xxcarn,xxbenthslar,xxbenthclar,xxbenths,xxbenthc,xxpfishlar,xxdfishlar,xxpfish,xxmfish,xxdfish,xxbird,xxseal,xxceta)
-names(mortstore)<-c("xxwave_kelp","xxst","xxdt","xxherb","xxcarn","xxbenthslar","xxbenthclar","xxbenths","xxbenthc","xxpfishlar","xxdfishlar","xxpfish","xxmfish","xxdfish","xxbird","xxseal","xxceta")
+mortstore<-list(xxwave_kelp,xxst,xxdt,xxomni,xxcarn,xxbenthslar,xxbenthclar,xxbenths,xxbenthc,xxpfishlar,xxdfishlar,xxpfish,xxmfish,xxdfish,xxbird,xxseal,xxceta)
+names(mortstore)<-c("xxwave_kelp","xxst","xxdt","xxomni","xxcarn","xxbenthslar","xxbenthclar","xxbenths","xxbenthc","xxpfishlar","xxdfishlar","xxpfish","xxmfish","xxdfish","xxbird","xxseal","xxceta")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if(ressd>0){

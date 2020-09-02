@@ -92,7 +92,7 @@ read_initial_state <- function(model.path) {
 
 		phyt_so=IRdata[38,2],
 		phyt_d=IRdata[39,2],
-		herb_o=IRdata[40,2],
+		omni_o=IRdata[40,2],
 		carn_o=IRdata[41,2],
 		benthslar_o=IRdata[42,2],
 		benths_o=IRdata[43,2],
@@ -114,7 +114,7 @@ read_initial_state <- function(model.path) {
 		benths_i=IRdata[58,2],
 		benthc_i=IRdata[59,2],
 		discard_i=IRdata[60,2],
-		herb_i=IRdata[61,2],
+		omni_i=IRdata[61,2],
 		carn_i=IRdata[62,2],
 		fishplar_i=IRdata[63,2],
 		fishdlar_i=IRdata[64,2],
@@ -150,8 +150,8 @@ read_initial_state <- function(model.path) {
 		kelpCexud_i=0,
 		kelpNprod_i=0,
 
-		herbgrossprod_o=0,
-		herbgrossprod_i=0,
+		omnigrossprod_o=0,
+		omnigrossprod_i=0,
 
 		carngrossprod_o=0,
 		carngrossprod_i=0,
@@ -192,7 +192,7 @@ read_initial_state <- function(model.path) {
 
 		fluxsedamm_wcamm=0,
 		fluxwcdet_wcamm=0,
-		fluxherb_wcamm=0,
+		fluxomni_wcamm=0,
 		fluxcarn_wcamm=0,
 		fluxpfishlar_wcamm=0,
 		fluxdfishlar_wcamm=0,
@@ -221,7 +221,7 @@ read_initial_state <- function(model.path) {
 
 		fluxcorp_wcdet=0,
 		fluxphyt_wcdet=0,
-		fluxherb_wcdet=0,
+		fluxomni_wcdet=0,
 		fluxcarn_wcdet=0,
 		fluxpfishlar_wcdet=0,
 		fluxdfishlar_wcdet=0,
@@ -278,33 +278,33 @@ read_initial_state <- function(model.path) {
 		fluxwcnit_phyt_o=0,
 		fluxwcnit_phyt_i=0,
 
-		fluxwcdet_herb=0,
-		fluxphyt_herb=0,
-		fluxbenthslar_herb=0,
-		fluxbenthclar_herb=0,
+		fluxwcdet_omni=0,
+		fluxphyt_omni=0,
+		fluxbenthslar_omni=0,
+		fluxbenthclar_omni=0,
 
-		fluxherb_carn=0,
+		fluxomni_carn=0,
 		fluxpfishlar_carn=0,
 		fluxdfishlar_carn=0,
 		fluxbenthslar_carn=0,
 		fluxbenthclar_carn=0,
 
-		fluxherb_pfishlar=0,
+		fluxomni_pfishlar=0,
 		fluxbenthslar_pfishlar=0,
 		fluxbenthclar_pfishlar=0,
 
-		fluxherb_dfishlar=0,
+		fluxomni_dfishlar=0,
 		fluxbenthslar_dfishlar=0,
 		fluxbenthclar_dfishlar=0,
 
-		fluxherb_pfish=0,
+		fluxomni_pfish=0,
 		fluxcarn_pfish=0,
 		fluxpfishlar_pfish=0,
 		fluxdfishlar_pfish=0,
 		fluxbenthslar_pfish=0,
 		fluxbenthclar_pfish=0,
 
-		fluxherb_mfish=0,
+		fluxomni_mfish=0,
 		fluxcarn_mfish=0,
 		fluxpfishlar_mfish=0,
 		fluxdfishlar_mfish=0,
@@ -340,7 +340,7 @@ read_initial_state <- function(model.path) {
 
 		fluxcorp_bird=0,
 		fluxdisc_bird=0,
-		##    fluxherb_bird=0,
+		##    fluxomni_bird=0,
 		fluxcarn_bird=0,
 		fluxpfish_bird=0,
 		fluxmfish_bird=0,
@@ -350,7 +350,7 @@ read_initial_state <- function(model.path) {
 
 		fluxcorp_seal=0,
 		fluxdisc_seal=0,
-		##    fluxherb_seal=0,
+		##    fluxomni_seal=0,
 		fluxcarn_seal=0,
 		fluxpfish_seal=0,
 		fluxmfish_seal=0,
@@ -361,7 +361,7 @@ read_initial_state <- function(model.path) {
 
 		##    fluxcorp_ceta=0,
 		fluxdisc_ceta=0,
-		fluxherb_ceta=0,
+		fluxomni_ceta=0,
 		fluxcarn_ceta=0,
 		fluxpfish_ceta=0,
 		fluxmfish_ceta=0,
@@ -523,8 +523,8 @@ read_initial_state <- function(model.path) {
 		offalct_i=0,
 		offalkp_i=0,
 
-		herbnetprod_o=0,
-		herbnetprod_i=0,
+		omninetprod_o=0,
+		omninetprod_i=0,
 
 		carnnetprod_o=0,
 		carnnetprod_i=0,

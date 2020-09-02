@@ -50,36 +50,36 @@ preference_matrix_input_NEW$kelp[which(rownames(preference_matrix_input_NEW)=="a
 preference_matrix_input_NEW$phyt[which(rownames(preference_matrix_input_NEW)=="nitrate")] <- parhistory$PREF_NIT_phyt[ROW_TO_USE]
 preference_matrix_input_NEW$phyt[which(rownames(preference_matrix_input_NEW)=="ammonia")] <- parhistory$PREF_AMM_phyt[ROW_TO_USE]
 
-preference_matrix_input_NEW$omnivzoo[which(rownames(preference_matrix_input_NEW)=="phyt")] <- parhistory$PREF_phyt_herb[ROW_TO_USE]      
-preference_matrix_input_NEW$omnivzoo[which(rownames(preference_matrix_input_NEW)=="suspdet")] <- parhistory$PREF_det_herb[ROW_TO_USE]
-preference_matrix_input_NEW$omnivzoo[which(rownames(preference_matrix_input_NEW)=="benthslar")] <- parhistory$PREF_benthslar_herb[ROW_TO_USE]
-preference_matrix_input_NEW$omnivzoo[which(rownames(preference_matrix_input_NEW)=="benthclar")] <- parhistory$PREF_benthclar_herb[ROW_TO_USE]
+preference_matrix_input_NEW$omnivzoo[which(rownames(preference_matrix_input_NEW)=="phyt")] <- parhistory$PREF_phyt_omni[ROW_TO_USE]      
+preference_matrix_input_NEW$omnivzoo[which(rownames(preference_matrix_input_NEW)=="suspdet")] <- parhistory$PREF_det_omni[ROW_TO_USE]
+preference_matrix_input_NEW$omnivzoo[which(rownames(preference_matrix_input_NEW)=="benthslar")] <- parhistory$PREF_benthslar_omni[ROW_TO_USE]
+preference_matrix_input_NEW$omnivzoo[which(rownames(preference_matrix_input_NEW)=="benthclar")] <- parhistory$PREF_benthclar_omni[ROW_TO_USE]
 
-preference_matrix_input_NEW$carnzoo[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_herb_carn[ROW_TO_USE]
+preference_matrix_input_NEW$carnzoo[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_omni_carn[ROW_TO_USE]
 preference_matrix_input_NEW$carnzoo[which(rownames(preference_matrix_input_NEW)=="benthslar")] <- parhistory$PREF_benthslar_carn[ROW_TO_USE]
 preference_matrix_input_NEW$carnzoo[which(rownames(preference_matrix_input_NEW)=="benthclar")] <- parhistory$PREF_benthclar_carn[ROW_TO_USE]
 preference_matrix_input_NEW$carnzoo[which(rownames(preference_matrix_input_NEW)=="fishplar")] <- parhistory$PREF_fishplar_carn[ROW_TO_USE]
 preference_matrix_input_NEW$carnzoo[which(rownames(preference_matrix_input_NEW)=="fishdlar")] <- parhistory$PREF_fishdlar_carn[ROW_TO_USE]
 
-preference_matrix_input_NEW$fishplar[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_herb_fishplar[ROW_TO_USE]   
+preference_matrix_input_NEW$fishplar[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_omni_fishplar[ROW_TO_USE]   
 preference_matrix_input_NEW$fishplar[which(rownames(preference_matrix_input_NEW)=="benthslar")] <- parhistory$PREF_benthslar_fishplar[ROW_TO_USE]
 preference_matrix_input_NEW$fishplar[which(rownames(preference_matrix_input_NEW)=="benthclar")] <- parhistory$PREF_benthclar_fishplar[ROW_TO_USE]
                
-preference_matrix_input_NEW$fishp[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_herb_fishp[ROW_TO_USE] 
+preference_matrix_input_NEW$fishp[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_omni_fishp[ROW_TO_USE] 
 preference_matrix_input_NEW$fishp[which(rownames(preference_matrix_input_NEW)=="carnzoo")] <- parhistory$PREF_carn_fishp[ROW_TO_USE]
 preference_matrix_input_NEW$fishp[which(rownames(preference_matrix_input_NEW)=="benthslar")] <- parhistory$PREF_benthslar_fishp[ROW_TO_USE]
 preference_matrix_input_NEW$fishp[which(rownames(preference_matrix_input_NEW)=="benthclar")] <- parhistory$PREF_benthclar_fishp[ROW_TO_USE]
 preference_matrix_input_NEW$fishp[which(rownames(preference_matrix_input_NEW)=="fishdlar")] <- parhistory$PREF_fishdlar_fishp[ROW_TO_USE]
 preference_matrix_input_NEW$fishp[which(rownames(preference_matrix_input_NEW)=="fishplar")] <- parhistory$PREF_fishplar_fishp[ROW_TO_USE]
 
-preference_matrix_input_NEW$fishm[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_herb_fishm[ROW_TO_USE]  
+preference_matrix_input_NEW$fishm[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_omni_fishm[ROW_TO_USE]  
 preference_matrix_input_NEW$fishm[which(rownames(preference_matrix_input_NEW)=="carnzoo")] <- parhistory$PREF_carn_fishm[ROW_TO_USE]
 preference_matrix_input_NEW$fishm[which(rownames(preference_matrix_input_NEW)=="benthslar")] <- parhistory$PREF_benthslar_fishm[ROW_TO_USE]
 preference_matrix_input_NEW$fishm[which(rownames(preference_matrix_input_NEW)=="benthclar")] <- parhistory$PREF_benthclar_fishm[ROW_TO_USE]
 preference_matrix_input_NEW$fishm[which(rownames(preference_matrix_input_NEW)=="fishdlar")] <- parhistory$PREF_fishdlar_fishm[ROW_TO_USE]
 preference_matrix_input_NEW$fishm[which(rownames(preference_matrix_input_NEW)=="fishplar")] <- parhistory$PREF_fishplar_fishm[ROW_TO_USE]
 
-preference_matrix_input_NEW$fishdlar[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_herb_fishdlar[ROW_TO_USE]      
+preference_matrix_input_NEW$fishdlar[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_omni_fishdlar[ROW_TO_USE]      
 preference_matrix_input_NEW$fishdlar[which(rownames(preference_matrix_input_NEW)=="benthslar")] <- parhistory$PREF_benthslar_fishdlar[ROW_TO_USE]
 preference_matrix_input_NEW$fishdlar[which(rownames(preference_matrix_input_NEW)=="benthclar")] <- parhistory$PREF_benthclar_fishdlar[ROW_TO_USE]
 
@@ -109,7 +109,7 @@ preference_matrix_input_NEW$benthc[which(rownames(preference_matrix_input_NEW)==
 preference_matrix_input_NEW$benthc[which(rownames(preference_matrix_input_NEW)=="benths")] <- parhistory$PREF_benths_benthc[ROW_TO_USE]
 preference_matrix_input_NEW$benthc[which(rownames(preference_matrix_input_NEW)=="corpses")] <- parhistory$PREF_corp_benthc[ROW_TO_USE]
 
-#preference_matrix_input_NEW$bird[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_herb_bird[ROW_TO_USE]
+#preference_matrix_input_NEW$bird[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_omni_bird[ROW_TO_USE]
 preference_matrix_input_NEW$bird[which(rownames(preference_matrix_input_NEW)=="carnzoo")] <- parhistory$PREF_carn_bird[ROW_TO_USE]
 preference_matrix_input_NEW$bird[which(rownames(preference_matrix_input_NEW)=="benths")] <- parhistory$PREF_benths_bird[ROW_TO_USE]
 preference_matrix_input_NEW$bird[which(rownames(preference_matrix_input_NEW)=="benthc")] <- parhistory$PREF_benthc_bird[ROW_TO_USE]
@@ -119,7 +119,7 @@ preference_matrix_input_NEW$bird[which(rownames(preference_matrix_input_NEW)=="f
 preference_matrix_input_NEW$bird[which(rownames(preference_matrix_input_NEW)=="discards")] <- parhistory$PREF_disc_bird[ROW_TO_USE]
 preference_matrix_input_NEW$bird[which(rownames(preference_matrix_input_NEW)=="corpses")] <- parhistory$PREF_corp_bird[ROW_TO_USE]
 
-#preference_matrix_input_NEW$seal[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_herb_seal[ROW_TO_USE]
+#preference_matrix_input_NEW$seal[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_omni_seal[ROW_TO_USE]
 preference_matrix_input_NEW$seal[which(rownames(preference_matrix_input_NEW)=="carnzoo")] <- parhistory$PREF_carn_seal[ROW_TO_USE]
 preference_matrix_input_NEW$seal[which(rownames(preference_matrix_input_NEW)=="benths")] <- parhistory$PREF_benths_seal[ROW_TO_USE]
 preference_matrix_input_NEW$seal[which(rownames(preference_matrix_input_NEW)=="benthc")] <- parhistory$PREF_benthc_seal[ROW_TO_USE]
@@ -130,7 +130,7 @@ preference_matrix_input_NEW$seal[which(rownames(preference_matrix_input_NEW)=="d
 preference_matrix_input_NEW$seal[which(rownames(preference_matrix_input_NEW)=="corpses")] <- parhistory$PREF_corp_seal[ROW_TO_USE]
 preference_matrix_input_NEW$seal[which(rownames(preference_matrix_input_NEW)=="bird")] <- parhistory$PREF_bird_seal[ROW_TO_USE]
 
-preference_matrix_input_NEW$ceta[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_herb_ceta[ROW_TO_USE]
+preference_matrix_input_NEW$ceta[which(rownames(preference_matrix_input_NEW)=="omnivzoo")] <- parhistory$PREF_omni_ceta[ROW_TO_USE]
 preference_matrix_input_NEW$ceta[which(rownames(preference_matrix_input_NEW)=="carnzoo")] <- parhistory$PREF_carn_ceta[ROW_TO_USE]
 preference_matrix_input_NEW$ceta[which(rownames(preference_matrix_input_NEW)=="benths")] <- parhistory$PREF_benths_ceta[ROW_TO_USE]
 preference_matrix_input_NEW$ceta[which(rownames(preference_matrix_input_NEW)=="benthc")] <- parhistory$PREF_benthc_ceta[ROW_TO_USE]
@@ -154,7 +154,7 @@ uptake_mort_input_NEW$Cddexud[which(uptake_mort_input_NEW$consumer=="kelp")] <- 
 
 uptake_mort_input_NEW$Numax[which(uptake_mort_input_NEW$consumer=="kelp")] <- parhistory$u_kelp[ROW_TO_USE]
 uptake_mort_input_NEW$Numax[which(uptake_mort_input_NEW$consumer=="phyt_s")] <- parhistory$u_phyt[ROW_TO_USE]
-uptake_mort_input_NEW$Numax[which(uptake_mort_input_NEW$consumer=="omnivzoo")] <- parhistory$u_herb[ROW_TO_USE]
+uptake_mort_input_NEW$Numax[which(uptake_mort_input_NEW$consumer=="omnivzoo")] <- parhistory$u_omni[ROW_TO_USE]
 uptake_mort_input_NEW$Numax[which(uptake_mort_input_NEW$consumer=="carnzoo")] <- parhistory$u_carn[ROW_TO_USE]
 uptake_mort_input_NEW$Numax[which(uptake_mort_input_NEW$consumer=="fishplar")] <- parhistory$u_fishplar[ROW_TO_USE]
 uptake_mort_input_NEW$Numax[which(uptake_mort_input_NEW$consumer=="fishp")] <- parhistory$u_fishp[ROW_TO_USE]
@@ -171,7 +171,7 @@ uptake_mort_input_NEW$Numax[which(uptake_mort_input_NEW$consumer=="ceta")] <- pa
 
 uptake_mort_input_NEW$Nhsat[which(uptake_mort_input_NEW$consumer=="kelp")] <- parhistory$h_kelp[ROW_TO_USE]
 uptake_mort_input_NEW$Nhsat[which(uptake_mort_input_NEW$consumer=="phyt_s")] <- parhistory$h_phyt[ROW_TO_USE]
-uptake_mort_input_NEW$Nhsat[which(uptake_mort_input_NEW$consumer=="omnivzoo")] <- parhistory$h_herb[ROW_TO_USE]
+uptake_mort_input_NEW$Nhsat[which(uptake_mort_input_NEW$consumer=="omnivzoo")] <- parhistory$h_omni[ROW_TO_USE]
 uptake_mort_input_NEW$Nhsat[which(uptake_mort_input_NEW$consumer=="carnzoo")] <- parhistory$h_carn[ROW_TO_USE]
 uptake_mort_input_NEW$Nhsat[which(uptake_mort_input_NEW$consumer=="fishplar")] <- parhistory$h_fishplar[ROW_TO_USE]
 uptake_mort_input_NEW$Nhsat[which(uptake_mort_input_NEW$consumer=="fishp")] <- parhistory$h_fishp[ROW_TO_USE]
@@ -203,7 +203,7 @@ uptake_mort_input_NEW$ddmort[which(uptake_mort_input_NEW$consumer=="phyt_s")] <-
 uptake_mort_input_NEW$ddmort[which(uptake_mort_input_NEW$consumer=="phyt_d")] <- parhistory$xxdt[ROW_TO_USE]
 
 #Death rate of carnivores fish birds and mammals per unit biomass - temperature independent
-uptake_mort_input_NEW$ddmort[which(uptake_mort_input_NEW$consumer=="omnivzoo")] <- parhistory$xxherb[ROW_TO_USE]
+uptake_mort_input_NEW$ddmort[which(uptake_mort_input_NEW$consumer=="omnivzoo")] <- parhistory$xxomni[ROW_TO_USE]
 uptake_mort_input_NEW$ddmort[which(uptake_mort_input_NEW$consumer=="carnzoo")] <- parhistory$xxcarn[ROW_TO_USE]     
 uptake_mort_input_NEW$ddmort[which(uptake_mort_input_NEW$consumer=="benthslar")] <- parhistory$xxbenthslar[ROW_TO_USE]
 uptake_mort_input_NEW$ddmort[which(uptake_mort_input_NEW$consumer=="benthclar")] <- parhistory$xxbenthclar[ROW_TO_USE]

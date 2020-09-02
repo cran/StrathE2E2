@@ -1,4 +1,13 @@
-# StrathE2E2 3.1.0 
+# StrathE2E2 3.2.0 
+
+* Version 3.2.0 accompanied a review revision our manuscript to 
+  Methods in Ecology and Evolution in August 2020:
+  
+  * The variable name for omnivorous zooplankton in the code
+    changed from from 'herb' to 'omni'.
+
+  * Two instances of return without () in internal.R removed to
+    comply with new cran check requirements.
 
 * Version 3.1.0 accompanied a pre-review revision our manuscript to 
   Methods in Ecology and Evolution in July 2020

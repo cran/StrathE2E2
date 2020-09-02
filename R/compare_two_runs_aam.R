@@ -142,7 +142,7 @@ baselinewater[3,1]<-sum(baselinedata[11:12,1],na.rm=TRUE)  	#wc nitrate
 baselinewater[4,1]<-(baselinedata[14,1]) 			#macrophytes
 baselinewater[5,1]<-sum(baselinedata[15:16,1],na.rm=TRUE) 	#phyt
 baselinewater[6,1]<-(baselinedata[19,1]) 			#sdb larvae
-baselinewater[7,1]<-(baselinedata[17,1] )      			#herbzoo
+baselinewater[7,1]<-(baselinedata[17,1] )      			#omnizoo
 baselinewater[8,1]<-(baselinedata[21,1]) 			#csb larvae
 baselinewater[9,1]<-(baselinedata[18,1])       			#carnzoo
 baselinewater[10,1]<-sum(baselinedata[23:24,1],na.rm=TRUE) 	#pelfish settled + larvae
@@ -168,7 +168,7 @@ scenariowater[3,1]<-sum(scenariodata[11:12,1],na.rm=TRUE)  	#wc nitrate
 scenariowater[4,1]<-(scenariodata[14,1]) 			#macrophytes
 scenariowater[5,1]<-sum(scenariodata[15:16,1],na.rm=TRUE) 	#phyt
 scenariowater[6,1]<-(scenariodata[19,1]) 			#sdb larvae
-scenariowater[7,1]<-(scenariodata[17,1] )      			#herbzoo
+scenariowater[7,1]<-(scenariodata[17,1] )      			#omnizoo
 scenariowater[8,1]<-(scenariodata[21,1]) 			#csb larvae
 scenariowater[9,1]<-(scenariodata[18,1])       			#carnzoo
 scenariowater[10,1]<-sum(scenariodata[23:24,1],na.rm=TRUE) 	#pelfish settled + larvae

@@ -526,16 +526,16 @@ static double parms[585]; //declare empty vector of length 585 - will be filled 
 #define hsNIT_phyt              parms[323] 
 #define uAMM_phytt              parms[324]
 #define hsAMM_phyt              parms[325]
-#define uphyt_herbt             parms[326]
-#define hsphyt_herb             parms[327]
-#define udet_herbt              parms[328]
-#define hsdet_herb              parms[329]
-#define ubenthslar_herbt        parms[330]
-#define hsbenthslar_herb        parms[331]
-#define ubenthclar_herbt        parms[332]
-#define hsbenthclar_herb        parms[333]
-#define uherb_carnt             parms[334]
-#define hsherb_carn             parms[335]
+#define uphyt_omnit             parms[326]
+#define hsphyt_omni             parms[327]
+#define udet_omnit              parms[328]
+#define hsdet_omni              parms[329]
+#define ubenthslar_omnit        parms[330]
+#define hsbenthslar_omni        parms[331]
+#define ubenthclar_omnit        parms[332]
+#define hsbenthclar_omni        parms[333]
+#define uomni_carnt             parms[334]
+#define hsomni_carn             parms[335]
 #define ubenthslar_carnt        parms[336]
 #define hsbenthslar_carn        parms[337]
 #define ubenthclar_carnt        parms[338]
@@ -544,14 +544,14 @@ static double parms[585]; //declare empty vector of length 585 - will be filled 
 #define hsfishplar_carn         parms[341]
 #define ufishdlar_carnt         parms[342]
 #define hsfishdlar_carn         parms[343]
-#define uherb_fishplart         parms[344]
-#define hsherb_fishplar         parms[345]
+#define uomni_fishplart         parms[344]
+#define hsomni_fishplar         parms[345]
 #define ubenthslar_fishplart    parms[346]
 #define hsbenthslar_fishplar    parms[347]
 #define ubenthclar_fishplart    parms[348]
 #define hsbenthclar_fishplar    parms[349]
-#define uherb_fishpt            parms[350]
-#define hsherb_fishp            parms[351]
+#define uomni_fishpt            parms[350]
+#define hsomni_fishp            parms[351]
 #define ucarn_fishpt            parms[352]
 #define hscarn_fishp            parms[353]
 #define ubenthslar_fishpt       parms[354]
@@ -562,8 +562,8 @@ static double parms[585]; //declare empty vector of length 585 - will be filled 
 #define hsfishdlar_fishp        parms[359]
 #define ufishplar_fishpt        parms[360]
 #define hsfishplar_fishp        parms[361]
-#define uherb_fishmt            parms[362]
-#define hsherb_fishm            parms[363]
+#define uomni_fishmt            parms[362]
+#define hsomni_fishm            parms[363]
 #define ucarn_fishmt            parms[364]
 #define hscarn_fishm            parms[365]
 #define ubenthslar_fishmt       parms[366]
@@ -574,8 +574,8 @@ static double parms[585]; //declare empty vector of length 585 - will be filled 
 #define hsfishdlar_fishm        parms[371]
 #define ufishplar_fishmt        parms[372]
 #define hsfishplar_fishm        parms[373]
-#define uherb_fishdlart         parms[374]
-#define hsherb_fishdlar         parms[375]
+#define uomni_fishdlart         parms[374]
+#define hsomni_fishdlar         parms[375]
 #define ubenthslar_fishdlart    parms[376]
 #define hsbenthslar_fishdlar    parms[377]
 #define ubenthclar_fishdlart    parms[378]
@@ -624,8 +624,8 @@ static double parms[585]; //declare empty vector of length 585 - will be filled 
 #define ucorp_benthct           parms[420]
 #define hscorp_benthc           parms[421]
 
-//        #define uherb_bird    not used
-//        #define hsherb_bird   not used
+//        #define uomni_bird    not used
+//        #define hsomni_bird   not used
 #define ucarn_bird              parms[422]
 #define hscarn_bird             parms[423]
 #define ubenths_bird            parms[424]
@@ -664,8 +664,8 @@ static double parms[585]; //declare empty vector of length 585 - will be filled 
 #define hscorp_seal             parms[456]
 #define bdapar_seal             parms[457]
 
-#define uherb_ceta              parms[458]
-#define hsherb_ceta             parms[459]
+#define uomni_ceta              parms[458]
+#define hsomni_ceta             parms[459]
 #define ucarn_ceta              parms[460]
 #define hscarn_ceta             parms[461]
 #define ubenths_ceta            parms[462]
@@ -739,7 +739,7 @@ static double parms[585]; //declare empty vector of length 585 - will be filled 
 
 #define xst                     parms[522]
 #define xdt                     parms[523]
-#define xherb                   parms[524]
+#define xomni                   parms[524]
 #define xcarn                   parms[525]
 #define xbenthslar              parms[526]
 #define xbenthclar              parms[527]
@@ -960,8 +960,8 @@ static double xs_o;
 static double xs_i;
 static double xd;
 
-static double xherb_o;
-static double xherb_i;
+static double xomni_o;
+static double xomni_i;
 static double xcarn_o;
 static double xcarn_i;
 static double xbenthslar_o;
@@ -1002,18 +1002,18 @@ static double uNIT_phyt_o;
 static double uAMM_phyt_o;
 static double uNIT_phyt_i;
 static double uAMM_phyt_i;
-static double ubenthslar_o_herb;
-static double ubenthclar_o_herb;
-static double udet_so_herb;
-static double udet_si_herb;
-static double udet_d_herb;
-static double uphyt_so_herb;
-static double uphyt_si_herb;
-static double uphyt_d_herb;
-static double ubenthslar_i_herb;
-static double ubenthclar_i_herb;
-static double uherb_o_carn;
-static double uherb_i_carn;
+static double ubenthslar_o_omni;
+static double ubenthclar_o_omni;
+static double udet_so_omni;
+static double udet_si_omni;
+static double udet_d_omni;
+static double uphyt_so_omni;
+static double uphyt_si_omni;
+static double uphyt_d_omni;
+static double ubenthslar_i_omni;
+static double ubenthclar_i_omni;
+static double uomni_o_carn;
+static double uomni_i_carn;
 static double ubenthslar_i_carn;
 static double ubenthclar_i_carn;
 static double ubenthslar_o_carn;
@@ -1022,14 +1022,14 @@ static double ufishplar_o_carn;
 static double ufishplar_i_carn;
 static double ufishdlar_o_carn;
 static double ufishdlar_i_carn;
-static double uherb_o_fishplar;
-static double uherb_i_fishplar;
+static double uomni_o_fishplar;
+static double uomni_i_fishplar;
 static double ubenthslar_i_fishplar;
 static double ubenthclar_i_fishplar;
 static double ubenthslar_o_fishplar;
 static double ubenthclar_o_fishplar;
-static double uherb_o_fishp;
-static double uherb_i_fishp;
+static double uomni_o_fishp;
+static double uomni_i_fishp;
 static double ucarn_o_fishp;
 static double ucarn_i_fishp;
 static double ubenthslar_i_fishp;
@@ -1040,14 +1040,14 @@ static double ufishdlar_o_fishp;
 static double ufishdlar_i_fishp;
 static double ufishplar_o_fishp;
 static double ufishplar_i_fishp;
-static double uherb_o_fishdlar;
-static double uherb_i_fishdlar;
+static double uomni_o_fishdlar;
+static double uomni_i_fishdlar;
 static double ubenthslar_i_fishdlar;
 static double ubenthclar_i_fishdlar;
 static double ubenthslar_o_fishdlar;
 static double ubenthclar_o_fishdlar;
-static double uherb_o_fishm;
-static double uherb_i_fishm;
+static double uomni_o_fishm;
+static double uomni_i_fishm;
 static double ucarn_o_fishm;
 static double ucarn_i_fishm;
 static double ubenthslar_i_fishm;
@@ -1111,8 +1111,8 @@ static double udisc_i_bird;
 static double ucorp_i_bird;
 static double udisc_o_bird;
 static double ucorp_o_bird;
-// static double uherb_o_bird;   // NOT USED IN THIS CODE
-// static double uherb_i_bird;   // NOT USED IN THIS CODE
+// static double uomni_o_bird;   // NOT USED IN THIS CODE
+// static double uomni_i_bird;   // NOT USED IN THIS CODE
 static double ucarn_o_bird;
 static double ucarn_i_bird;
 static double ufishp_o_bird;
@@ -1151,8 +1151,8 @@ static double udisc_i_ceta;
 static double udisc_o_ceta;
 //  static double ucorp_i_ceta;   // NOT USED IN THIS CODE
 //  static double ucorp_o_ceta;   // NOT USED IN THIS CODE
-static double uherb_o_ceta;
-static double uherb_i_ceta;
+static double uomni_o_ceta;
+static double uomni_i_ceta;
 static double ucarn_o_ceta;
 static double ucarn_i_ceta;
 static double ufishp_o_ceta;
@@ -1227,8 +1227,8 @@ static double dsed_d3;
 static double corp_det_i;
 static double corp_det_o;
 static double kelpdebris_det_i;
-static double prop_herb_surfo;
-static double prop_herb_deep;
+static double prop_omni_surfo;
+static double prop_omni_deep;
 static double prop_benthslar_surfo;
 static double prop_benthclar_surfo;
 static double prop_benthslar_deep;
@@ -1247,18 +1247,18 @@ static double Upt_samm_sphyt_o;
 static double Upt_samm_sphyt_i;
 static double Upt_snit_sphyt_o;
 static double Upt_snit_sphyt_i;
-static double Upt_detritus_so_herb;
-static double Upt_detritus_si_herb;
-static double Upt_detritus_d_herb;
-static double Upt_phyt_so_herb;
-static double Upt_phyt_si_herb;
-static double Upt_phyt_d_herb;
-static double Upt_benthslar_o_herb;
-static double Upt_benthslar_i_herb;
-static double Upt_benthclar_o_herb;
-static double Upt_benthclar_i_herb;
-static double Upt_total_herb_o;
-static double Upt_total_herb_i;
+static double Upt_detritus_so_omni;
+static double Upt_detritus_si_omni;
+static double Upt_detritus_d_omni;
+static double Upt_phyt_so_omni;
+static double Upt_phyt_si_omni;
+static double Upt_phyt_d_omni;
+static double Upt_benthslar_o_omni;
+static double Upt_benthslar_i_omni;
+static double Upt_benthclar_o_omni;
+static double Upt_benthclar_i_omni;
+static double Upt_total_omni_o;
+static double Upt_total_omni_i;
 static double Upt_detritus_so_benthslar;
 static double Upt_detritus_d_benthslar;
 static double Upt_phyt_so_benthslar;
@@ -1275,8 +1275,8 @@ static double Upt_total_benthslar_i;
 static double Upt_detritus_si_benthclar;
 static double Upt_phyt_si_benthclar;
 static double Upt_total_benthclar_i;
-static double Upt_herb_o_carn;
-static double Upt_herb_i_carn;
+static double Upt_omni_o_carn;
+static double Upt_omni_i_carn;
 static double Upt_fishplar_o_carn;
 static double Upt_fishplar_i_carn;
 static double Upt_fishdlar_o_carn;
@@ -1287,16 +1287,16 @@ static double Upt_benthslar_i_carn;
 static double Upt_benthclar_i_carn;
 static double Upt_total_carn_o;
 static double Upt_total_carn_i;
-static double Upt_herb_o_fishplar;
-static double Upt_herb_i_fishplar;
+static double Upt_omni_o_fishplar;
+static double Upt_omni_i_fishplar;
 static double Upt_benthslar_o_fishplar;
 static double Upt_benthclar_o_fishplar;
 static double Upt_benthslar_i_fishplar;
 static double Upt_benthclar_i_fishplar;
 static double Upt_total_fishplar_o;
 static double Upt_total_fishplar_i;
-static double Upt_herb_o_fishdlar;
-static double Upt_herb_i_fishdlar;
+static double Upt_omni_o_fishdlar;
+static double Upt_omni_i_fishdlar;
 static double Upt_benthslar_o_fishdlar;
 static double Upt_benthclar_o_fishdlar;
 static double Upt_benthslar_i_fishdlar;
@@ -1360,8 +1360,8 @@ static double Upt_total_benthc_d2;
 static double Upt_total_benthc_d3;
 static double Upt_total_benthc_o;
 
-static double Upt_herb_o_fishp;
-static double Upt_herb_i_fishp;
+static double Upt_omni_o_fishp;
+static double Upt_omni_i_fishp;
 static double Upt_carn_o_fishp;
 static double Upt_carn_i_fishp;
 static double Upt_benthslar_o_fishp;
@@ -1374,8 +1374,8 @@ static double Upt_fishdlar_o_fishp;
 static double Upt_fishdlar_i_fishp;
 static double Upt_total_fishp_o ;
 static double Upt_total_fishp_i ;
-static double Upt_herb_o_fishm;
-static double Upt_herb_i_fishm;
+static double Upt_omni_o_fishm;
+static double Upt_omni_i_fishm;
 static double Upt_carn_o_fishm;
 static double Upt_carn_i_fishm;
 static double Upt_benthslar_o_fishm;
@@ -1429,8 +1429,8 @@ static double Upt_corpse_d2_bird;
 static double Upt_corpse_d3_bird;
 static double Upt_corpse_i_bird;
 static double Upt_corpse_o_bird;
-//  static double Upt_herb_o_bird;   // NOT USED IN THIS CODE
-//  static double Upt_herb_i_bird;   // NOT USED IN THIS CODE
+//  static double Upt_omni_o_bird;   // NOT USED IN THIS CODE
+//  static double Upt_omni_i_bird;   // NOT USED IN THIS CODE
 static double Upt_carn_o_bird;
 static double Upt_carn_i_bird;
 static double Upt_benths_o_bird;
@@ -1489,8 +1489,8 @@ static double Upt_total_seal_i;
 //  static double Upt_corpse_d3_ceta;   // NOT USED IN THIS CODE
 //  static double Upt_corpse_i_ceta;    // NOT USED IN THIS CODE
 //  static double Upt_corpse_o_ceta;    // NOT USED IN THIS CODE
-static double Upt_herb_o_ceta;
-static double Upt_herb_i_ceta;
+static double Upt_omni_o_ceta;
+static double Upt_omni_i_ceta;
 static double Upt_carn_o_ceta;
 static double Upt_carn_i_ceta;
 static double Upt_benths_o_ceta;
@@ -1516,9 +1516,9 @@ static double Upt_total_ceta_i;
 
 static double Exude_kelp_i;
 
-static double Excr_herb_so;
-static double Excr_herb_si;
-static double Excr_herb_d;
+static double Excr_omni_so;
+static double Excr_omni_si;
+static double Excr_omni_d;
 static double Excr_carn_so;
 static double Excr_carn_si;
 static double Excr_carn_d;
@@ -1579,9 +1579,9 @@ static double Excr_ceta_so;
 static double Excr_ceta_si;
 static double Excr_ceta_d;
 
-static double Defec_herb_so;
-static double Defec_herb_si;
-static double Defec_herb_d;
+static double Defec_omni_so;
+static double Defec_omni_si;
+static double Defec_omni_d;
 static double Defec_carn_so;
 static double Defec_carn_si;
 static double Defec_carn_d;
@@ -1635,8 +1635,8 @@ static double Defec_ceta_so;
 static double Defec_ceta_si;
 static double Defec_ceta_d;
 
-static double Assim_herb_o;
-static double Assim_herb_i;
+static double Assim_omni_o;
+static double Assim_omni_i;
 static double Assim_carn_o;
 static double Assim_carn_i;
 static double Assim_benthslar_o;
@@ -1760,7 +1760,7 @@ static double InshoreIN_snitrate;
 static double InshoreIN_sphyt;
 static double InshoreIN_benthslar;
 static double InshoreIN_benthclar;
-static double InshoreIN_herb;
+static double InshoreIN_omni;
 static double InshoreIN_carn;
 static double InshoreIN_fishplar;
 static double InshoreIN_fishdlar;
@@ -1778,7 +1778,7 @@ static double InshoreOUT_snitrate;
 static double InshoreOUT_sphyt;
 static double InshoreOUT_benthslar;
 static double InshoreOUT_benthclar;
-static double InshoreOUT_herb;
+static double InshoreOUT_omni;
 static double InshoreOUT_carn;
 static double InshoreOUT_fishplar;
 static double InshoreOUT_fishdlar;
@@ -2091,8 +2091,8 @@ void derivsc (int *neq,
              xd = xdt;
 
              // Omnivzoo
-             xherb_o = xherb * (volume_so+volume_si+volume_d)/(volume_so + volume_d);
-             xherb_i = xherb * (volume_so+volume_si+volume_d)/(volume_si);
+             xomni_o = xomni * (volume_so+volume_si+volume_d)/(volume_so + volume_d);
+             xomni_i = xomni * (volume_so+volume_si+volume_d)/(volume_si);
 
              // Carnzoo
              xcarn_o = xcarn * (volume_so+volume_si+volume_d)/(volume_so + volume_d);
@@ -2413,8 +2413,8 @@ void derivsc (int *neq,
 
 
 /* _____dynamic vertical distributions of zooplankton and benthic larvae _____ */
- prop_herb_surfo=         ((udet_herbt*y[0])+(uphyt_herbt*y[37]))/((udet_herbt*y[0])+(udet_herbt*y[1])+(uphyt_herbt*y[37])+(uphyt_herbt*y[38]));
- prop_herb_deep=(1-prop_herb_surfo);
+ prop_omni_surfo=         ((udet_omnit*y[0])+(uphyt_omnit*y[37]))/((udet_omnit*y[0])+(udet_omnit*y[1])+(uphyt_omnit*y[37])+(uphyt_omnit*y[38]));
+ prop_omni_deep=(1-prop_omni_surfo);
 
  prop_benthslar_surfo= ((udet_benthslart*y[0])+(uphyt_benthslart*y[37]))/((udet_benthslart*y[0])+(udet_benthslart*y[1])+(uphyt_benthslart*y[37])+(uphyt_benthslart*y[38]));
  prop_benthslar_deep=(1-prop_benthslar_surfo);
@@ -2422,18 +2422,18 @@ void derivsc (int *neq,
  prop_benthclar_surfo= ((udet_benthclart*y[0])+(uphyt_benthclart*y[37]))/((udet_benthclart*y[0])+(udet_benthclart*y[1])+(uphyt_benthclart*y[37])+(uphyt_benthclart*y[38]));
  prop_benthclar_deep=(1-prop_benthclar_surfo);
 
- prop_fishplar_surfo=((uherb_fishplart*prop_herb_surfo*y[39])+(ubenthslar_fishplart*prop_benthslar_surfo*y[41])+(ubenthclar_fishplart*prop_benthclar_surfo*y[43]))/((uherb_fishplart*y[39])+(ubenthslar_fishplart*y[41])+(ubenthclar_fishplart*y[43]));
+ prop_fishplar_surfo=((uomni_fishplart*prop_omni_surfo*y[39])+(ubenthslar_fishplart*prop_benthslar_surfo*y[41])+(ubenthclar_fishplart*prop_benthclar_surfo*y[43]))/((uomni_fishplart*y[39])+(ubenthslar_fishplart*y[41])+(ubenthclar_fishplart*y[43]));
  prop_fishplar_deep=(1-prop_fishplar_surfo);
 
- prop_fishdlar_surfo=((uherb_fishdlart*prop_herb_surfo*y[39])+(ubenthslar_fishdlart*prop_benthslar_surfo*y[41])+(ubenthclar_fishdlart*prop_benthclar_surfo*y[43]))/((uherb_fishdlart*y[39])+(ubenthslar_fishdlart*y[41])+(ubenthclar_fishdlart*y[43]));
+ prop_fishdlar_surfo=((uomni_fishdlart*prop_omni_surfo*y[39])+(ubenthslar_fishdlart*prop_benthslar_surfo*y[41])+(ubenthclar_fishdlart*prop_benthclar_surfo*y[43]))/((uomni_fishdlart*y[39])+(ubenthslar_fishdlart*y[41])+(ubenthclar_fishdlart*y[43]));
  prop_fishdlar_deep=(1-prop_fishdlar_surfo);
 
- prop_carn_surfo=((uherb_carnt*prop_herb_surfo*y[39])+(ubenthslar_carnt*prop_benthslar_surfo*y[41])+(ubenthclar_carnt*prop_benthclar_surfo*y[43])+(ufishplar_carnt*prop_fishplar_surfo*y[46])+(ufishdlar_carnt*prop_fishdlar_surfo*y[48]))/((uherb_carnt*y[39])+(ubenthslar_carnt*y[41])+(ubenthclar_carnt*y[43])+(ufishplar_carnt*y[46])+(ufishdlar_carnt*y[48]));
+ prop_carn_surfo=((uomni_carnt*prop_omni_surfo*y[39])+(ubenthslar_carnt*prop_benthslar_surfo*y[41])+(ubenthclar_carnt*prop_benthclar_surfo*y[43])+(ufishplar_carnt*prop_fishplar_surfo*y[46])+(ufishdlar_carnt*prop_fishdlar_surfo*y[48]))/((uomni_carnt*y[39])+(ubenthslar_carnt*y[41])+(ubenthclar_carnt*y[43])+(ufishplar_carnt*y[46])+(ufishdlar_carnt*y[48]));
  prop_carn_deep=(1-prop_carn_surfo);
 
 
-// Rprintf("prop_herb_surf_o=%f\n", prop_herb_surfo);
-// Rprintf("prop_herb_deep=%f\n", prop_herb_deep);
+// Rprintf("prop_omni_surf_o=%f\n", prop_omni_surfo);
+// Rprintf("prop_omni_deep=%f\n", prop_omni_deep);
 
 // Rprintf("prop_benthslar_surfo=%f\n", prop_benthslar_surfo);
 // Rprintf("prop_benthslar_deep=%f\n", prop_benthslar_deep);
@@ -2455,18 +2455,18 @@ void derivsc (int *neq,
 // if log-gradients are >0 the food is higher offshore relative to predator so predator needs to shift offshore
 // if log-gradients are <0 then food is higher inshore relative to predator so predator needs to shift inshore
 
-food_gradient_pfish =  log( ( ((uherb_fishpt * y[39] + ucarn_fishpt * CZ_edible_o
+food_gradient_pfish =  log( ( ((uomni_fishpt * y[39] + ucarn_fishpt * CZ_edible_o
                                          +ufishplar_fishpt * y[46] + ufishdlar_fishpt * y[48]
                                          +ubenthslar_fishpt * y[41] + ubenthclar_fishpt * y[43])/(1-shallowprop))
-                                      / ((uherb_fishpt * y[60] + ucarn_fishpt * CZ_edible_i
+                                      / ((uomni_fishpt * y[60] + ucarn_fishpt * CZ_edible_i
                                          +ufishplar_fishpt * y[62] + ufishdlar_fishpt * y[63]
                                          +ubenthslar_fishpt * y[55] + ubenthclar_fishpt * y[56])/(shallowprop))
                                       )  / ( (y[45]/(1-shallowprop))/(y[64]/shallowprop) ) );
 
-food_gradient_mfish =  log( ( ((uherb_fishmt * y[39] + ucarn_fishmt * CZ_edible_o
+food_gradient_mfish =  log( ( ((uomni_fishmt * y[39] + ucarn_fishmt * CZ_edible_o
                                          +ufishplar_fishmt * y[46] + ufishdlar_fishmt * y[48]
                                          +ubenthslar_fishmt * y[41] + ubenthclar_fishmt * y[43])/(1-shallowprop))
-                                      / ((uherb_fishmt * y[60] + ucarn_fishmt * CZ_edible_i
+                                      / ((uomni_fishmt * y[60] + ucarn_fishmt * CZ_edible_i
                                          +ufishplar_fishmt * y[62] + ufishdlar_fishmt * y[63]
                                          +ubenthslar_fishmt * y[55] + ubenthclar_fishmt * y[56])/(shallowprop))
                                       )  / ( (y[49]/(1-shallowprop))/(y[65]/shallowprop) ) );
@@ -2492,11 +2492,11 @@ food_gradient_seal =    log( ( ((ucarn_seal * CZ_edible_o
                                       )  / ( (y[68]/(1-shallowprop))/(y[69]/shallowprop) ) );
 
 
-food_gradient_ceta =    log( ( ((uherb_ceta * y[39] + ucarn_ceta * CZ_edible_o
+food_gradient_ceta =    log( ( ((uomni_ceta * y[39] + ucarn_ceta * CZ_edible_o
                                          +ubenths_ceta * y[42] + ubenthc_ceta * y[44]
                                          +udisc_ceta * y[14] + ubird_ceta*y[50] + useal_ceta*y[68]
                                          +ufishp_ceta * y[45] + ufishd_ceta * y[47]  + ufishm_ceta * y[49])  /(1-shallowprop))
-                                      / ((uherb_ceta * y[60] + ucarn_ceta * CZ_edible_i
+                                      / ((uomni_ceta * y[60] + ucarn_ceta * CZ_edible_i
                                          +ubenths_ceta * y[57] + ubenthc_ceta * y[58]
                                          +udisc_ceta * y[59] + ubird_ceta*y[67] + useal_ceta*y[69]
                                          +ufishp_ceta * y[64] + ufishd_ceta * y[66] + ufishm_ceta * y[65])/(shallowprop))
@@ -2537,7 +2537,7 @@ food_gradient_dfish =  log( ( (( ucarn_fishdt * CZ_edible_o
 driverwcotemp = ((driversotemp*volume_so)+(driverdtemp*volume_d))/(volume_so+volume_d);
 
 /* Zooplankton offshore vertical distribution weighted average temperature */
-driverzodtemp = ((driversotemp*prop_herb_surfo)+(driverdtemp*prop_herb_deep))/(prop_herb_surfo+prop_herb_deep);
+driverzodtemp = ((driversotemp*prop_omni_surfo)+(driverdtemp*prop_omni_deep))/(prop_omni_surfo+prop_omni_deep);
 
 /* Offshore benthslarvae distribution weighted average temperature */
 driverbslotemp = ((driversotemp*prop_benthslar_surfo)+(driverdtemp*prop_benthslar_deep))/(prop_benthslar_surfo+prop_benthslar_deep);
@@ -2565,23 +2565,23 @@ driverbclotemp = ((driversotemp*prop_benthclar_surfo)+(driverdtemp*prop_benthcla
 
 /* _____ Zooplankton uptake parameters at offshore vertical distribution  average temperatures */
 
- ubenthslar_o_herb=(exp((((driverzodtemp-qtenr)*log(qtenh))/10)+log(ubenthslar_herbt)));
- ubenthclar_o_herb=(exp((((driverzodtemp-qtenr)*log(qtenh))/10)+log(ubenthclar_herbt)));
+ ubenthslar_o_omni=(exp((((driverzodtemp-qtenr)*log(qtenh))/10)+log(ubenthslar_omnit)));
+ ubenthclar_o_omni=(exp((((driverzodtemp-qtenr)*log(qtenh))/10)+log(ubenthclar_omnit)));
 
  eH_o =                (exp((((driverzodtemp-qtenr)*log(qtenm))/10)+log(eHt)));
 
 /* _____ Zooplankton uptake parameters at in-situ temperatures */
 
- udet_so_herb=      (exp((((driversotemp-qtenr)*log(qtenh))/10)+log(udet_herbt)));
- udet_si_herb=      (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(udet_herbt)));
- udet_d_herb=       (exp((((driverdtemp -qtenr)*log(qtenh))/10)+log(udet_herbt)));
+ udet_so_omni=      (exp((((driversotemp-qtenr)*log(qtenh))/10)+log(udet_omnit)));
+ udet_si_omni=      (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(udet_omnit)));
+ udet_d_omni=       (exp((((driverdtemp -qtenr)*log(qtenh))/10)+log(udet_omnit)));
 
- uphyt_so_herb=      (exp((((driversotemp-qtenr)*log(qtenh))/10)+log(uphyt_herbt)));
- uphyt_si_herb=      (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uphyt_herbt)));
- uphyt_d_herb=       (exp((((driverdtemp -qtenr)*log(qtenh))/10)+log(uphyt_herbt)));
+ uphyt_so_omni=      (exp((((driversotemp-qtenr)*log(qtenh))/10)+log(uphyt_omnit)));
+ uphyt_si_omni=      (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uphyt_omnit)));
+ uphyt_d_omni=       (exp((((driverdtemp -qtenr)*log(qtenh))/10)+log(uphyt_omnit)));
 
- ubenthslar_i_herb=(exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ubenthslar_herbt)));
- ubenthclar_i_herb=(exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ubenthclar_herbt)));
+ ubenthslar_i_omni=(exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ubenthslar_omnit)));
+ ubenthclar_i_omni=(exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ubenthclar_omnit)));
 
  eH_i =                (exp((((driversitemp-qtenr)*log(qtenm))/10)+log(eHt)));
 
@@ -2657,8 +2657,8 @@ driverbclotemp = ((driversotemp*prop_benthclar_surfo)+(driverdtemp*prop_benthcla
 
 /* ______________ Carnivorous zooplankton uptake and metabolic parameters at domain averaged temperatures ___*/
 
- uherb_o_carn=      (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uherb_carnt)));
- uherb_i_carn=      (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uherb_carnt)));
+ uomni_o_carn=      (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uomni_carnt)));
+ uomni_i_carn=      (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uomni_carnt)));
 
  ufishplar_o_carn=  (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(ufishplar_carnt)));
  ufishplar_i_carn=  (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ufishplar_carnt)));
@@ -2679,8 +2679,8 @@ driverbclotemp = ((driversotemp*prop_benthclar_surfo)+(driverdtemp*prop_benthcla
 
 /* ______________ Pelagic fish larvae uptake and metabolic parameters at domain averaged temperatures ___*/
 
- uherb_o_fishplar=  (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uherb_fishplart)));
- uherb_i_fishplar=  (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uherb_fishplart)));
+ uomni_o_fishplar=  (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uomni_fishplart)));
+ uomni_i_fishplar=  (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uomni_fishplart)));
 
  ubenthslar_i_fishplar= (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ubenthslar_fishplart)));
  ubenthclar_i_fishplar= (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ubenthclar_fishplart)));
@@ -2694,8 +2694,8 @@ driverbclotemp = ((driversotemp*prop_benthclar_surfo)+(driverdtemp*prop_benthcla
 
 /* ______________ Demersal fish larvae uptake and metabolic parameters at domain averaged temperatures ___*/
 
- uherb_o_fishdlar=  (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uherb_fishdlart)));
- uherb_i_fishdlar=  (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uherb_fishdlart)));
+ uomni_o_fishdlar=  (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uomni_fishdlart)));
+ uomni_i_fishdlar=  (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uomni_fishdlart)));
 
  ubenthslar_i_fishdlar= (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ubenthslar_fishdlart)));
  ubenthclar_i_fishdlar= (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ubenthclar_fishdlart)));
@@ -2709,8 +2709,8 @@ driverbclotemp = ((driversotemp*prop_benthclar_surfo)+(driverdtemp*prop_benthcla
 
 /* ______________ Pelagic fish uptake and metabolic parameters at domain averaged temperatures ___*/
 
- uherb_o_fishp=     (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uherb_fishpt)));
- uherb_i_fishp=     (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uherb_fishpt)));
+ uomni_o_fishp=     (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uomni_fishpt)));
+ uomni_i_fishp=     (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uomni_fishpt)));
 
  ucarn_o_fishp=     (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(ucarn_fishpt)));
  ucarn_i_fishp=     (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ucarn_fishpt)));
@@ -2734,8 +2734,8 @@ driverbclotemp = ((driversotemp*prop_benthclar_surfo)+(driverdtemp*prop_benthcla
 
 /* ______________ Migratory fish uptake and metabolic parameters at domain averaged temperatures ___*/
 
- uherb_o_fishm=     (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uherb_fishmt)));
- uherb_i_fishm=     (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uherb_fishmt)));
+ uomni_o_fishm=     (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(uomni_fishmt)));
+ uomni_i_fishm=     (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(uomni_fishmt)));
 
  ucarn_o_fishm=     (exp((((driverwcotemp-qtenr)*log(qtenh))/10)+log(ucarn_fishmt)));
  ucarn_i_fishm=     (exp((((driversitemp-qtenr)*log(qtenh))/10)+log(ucarn_fishmt)));
@@ -2816,7 +2816,7 @@ ubenthc_o_bird = ubenthc_bird;
 
 udisc_i_bird = udisc_bird;
 ucorp_i_bird = ucorp_bird;
-//  uherb_i_bird = uherb_bird;
+//  uomni_i_bird = uomni_bird;
 ucarn_i_bird = ucarn_bird;
 ufishp_i_bird = ufishp_bird;
 ufishm_i_bird = ufishm_bird;
@@ -2824,7 +2824,7 @@ ufishd_i_bird = ufishd_bird;
 
 udisc_o_bird = udisc_bird;
 ucorp_o_bird = ucorp_bird;
-//  uherb_o_bird = uherb_bird;
+//  uomni_o_bird = uomni_bird;
 ucarn_o_bird = ucarn_bird;
 ufishp_o_bird = ufishp_bird;
 ufishm_o_bird = ufishm_bird;
@@ -2863,7 +2863,7 @@ ubenthc_o_ceta = ubenthc_ceta;
 
 udisc_i_ceta = udisc_ceta;
 //  ucorp_i_ceta = ucorp_ceta;
-uherb_i_ceta = uherb_ceta;
+uomni_i_ceta = uomni_ceta;
 ucarn_i_ceta = ucarn_ceta;
 ufishp_i_ceta = ufishp_ceta;
 ufishm_i_ceta = ufishm_ceta;
@@ -2874,7 +2874,7 @@ useal_i_ceta = useal_ceta;
 
 udisc_o_ceta = udisc_ceta;
 //  ucorp_o_ceta = ucorp_ceta;
-uherb_o_ceta = uherb_ceta;
+uomni_o_ceta = uomni_ceta;
 ucarn_o_ceta = ucarn_ceta;
 ufishp_o_ceta = ufishp_ceta;
 ufishm_o_ceta = ufishm_ceta;
@@ -3041,35 +3041,35 @@ Upt_snit_kelp_i= kelp_Unsc * (f1(y[53],y[74],uNIT_kelp_i,(hsNIT_kelp*volume_si))
 // Zooplankton offshore
 // _____________
 
- Upt_detritus_so_herb=     (f1((y[0]),(y[39]*prop_herb_surfo),udet_so_herb,(hsdet_herb*(volume_so))));
- Upt_detritus_d_herb=     (f1(y[1],(y[39]*prop_herb_deep),udet_d_herb,(hsdet_herb*volume_d)));
+ Upt_detritus_so_omni=     (f1((y[0]),(y[39]*prop_omni_surfo),udet_so_omni,(hsdet_omni*(volume_so))));
+ Upt_detritus_d_omni=     (f1(y[1],(y[39]*prop_omni_deep),udet_d_omni,(hsdet_omni*volume_d)));
 
- Upt_phyt_so_herb=         (f1((y[37]),(y[39]*prop_herb_surfo),uphyt_so_herb,(hsphyt_herb*(volume_so))));
- Upt_phyt_d_herb=         (f1(y[38],(y[39]*prop_herb_deep),uphyt_d_herb,(hsphyt_herb*volume_d)));
+ Upt_phyt_so_omni=         (f1((y[37]),(y[39]*prop_omni_surfo),uphyt_so_omni,(hsphyt_omni*(volume_so))));
+ Upt_phyt_d_omni=         (f1(y[38],(y[39]*prop_omni_deep),uphyt_d_omni,(hsphyt_omni*volume_d)));
 
- Upt_benthslar_o_herb=     (f1((y[41]),(y[39]*(prop_herb_surfo+prop_herb_deep)),ubenthslar_o_herb,(hsbenthslar_herb*(volume_so+volume_d))));
- Upt_benthclar_o_herb=     (f1((y[43]),(y[39]*(prop_herb_surfo+prop_herb_deep)),ubenthclar_o_herb,(hsbenthclar_herb*(volume_so+volume_d))));
+ Upt_benthslar_o_omni=     (f1((y[41]),(y[39]*(prop_omni_surfo+prop_omni_deep)),ubenthslar_o_omni,(hsbenthslar_omni*(volume_so+volume_d))));
+ Upt_benthclar_o_omni=     (f1((y[43]),(y[39]*(prop_omni_surfo+prop_omni_deep)),ubenthclar_o_omni,(hsbenthclar_omni*(volume_so+volume_d))));
 
 // Sum over all prey
-      Upt_total_herb_o = Upt_detritus_so_herb + Upt_detritus_d_herb
-                      +Upt_phyt_so_herb + Upt_phyt_d_herb
-                      +Upt_benthslar_o_herb + Upt_benthclar_o_herb;
+      Upt_total_omni_o = Upt_detritus_so_omni + Upt_detritus_d_omni
+                      +Upt_phyt_so_omni + Upt_phyt_d_omni
+                      +Upt_benthslar_o_omni + Upt_benthclar_o_omni;
 
 
 // Zooplankton inshore
 // _____________
 
- Upt_detritus_si_herb=     (f1((y[51]),(y[60]),udet_si_herb,(hsdet_herb*(volume_si))));
+ Upt_detritus_si_omni=     (f1((y[51]),(y[60]),udet_si_omni,(hsdet_omni*(volume_si))));
 
- Upt_phyt_si_herb=         (f1((y[54]),(y[60]),uphyt_si_herb,(hsphyt_herb*(volume_si))));
+ Upt_phyt_si_omni=         (f1((y[54]),(y[60]),uphyt_si_omni,(hsphyt_omni*(volume_si))));
 
- Upt_benthslar_i_herb=     (f1((y[55]),(y[60]),ubenthslar_i_herb,(hsbenthslar_herb*(volume_si))));
- Upt_benthclar_i_herb=     (f1((y[56]),(y[60]),ubenthclar_i_herb,(hsbenthclar_herb*(volume_si))));
+ Upt_benthslar_i_omni=     (f1((y[55]),(y[60]),ubenthslar_i_omni,(hsbenthslar_omni*(volume_si))));
+ Upt_benthclar_i_omni=     (f1((y[56]),(y[60]),ubenthclar_i_omni,(hsbenthclar_omni*(volume_si))));
 
 // Sum over all prey
-      Upt_total_herb_i = Upt_detritus_si_herb +
-                      +Upt_phyt_si_herb 
-                      +Upt_benthslar_i_herb + Upt_benthclar_i_herb ;
+      Upt_total_omni_i = Upt_detritus_si_omni +
+                      +Upt_phyt_si_omni 
+                      +Upt_benthslar_i_omni + Upt_benthclar_i_omni ;
 
 
 
@@ -3128,7 +3128,7 @@ Upt_snit_kelp_i= kelp_Unsc * (f1(y[53],y[74],uNIT_kelp_i,(hsNIT_kelp*volume_si))
 // Offshore Zooplankton carnivores
 // _____________
 
- Upt_herb_o_carn=          (f1(y[39],y[40],uherb_o_carn,(hsherb_carn*(volume_so+volume_d))));
+ Upt_omni_o_carn=          (f1(y[39],y[40],uomni_o_carn,(hsomni_carn*(volume_so+volume_d))));
 
  Upt_fishplar_o_carn=      (f1(y[46],y[40],ufishplar_o_carn,(hsfishplar_carn*(volume_so+volume_d))));
 
@@ -3139,14 +3139,14 @@ Upt_snit_kelp_i= kelp_Unsc * (f1(y[53],y[74],uNIT_kelp_i,(hsNIT_kelp*volume_si))
 
 
 // Sum over all prey
-      Upt_total_carn_o = Upt_herb_o_carn + Upt_fishplar_o_carn + Upt_fishdlar_o_carn 
+      Upt_total_carn_o = Upt_omni_o_carn + Upt_fishplar_o_carn + Upt_fishdlar_o_carn 
                       +Upt_benthslar_o_carn + Upt_benthclar_o_carn ;
 
 
 // Inshore Zooplankton carnivores
 // _____________
 
- Upt_herb_i_carn=          (f1(y[60],y[61],uherb_i_carn,(hsherb_carn*(volume_si))));
+ Upt_omni_i_carn=          (f1(y[60],y[61],uomni_i_carn,(hsomni_carn*(volume_si))));
 
  Upt_fishplar_i_carn=      (f1(y[62],y[61],ufishplar_i_carn,(hsfishplar_carn*(volume_si))));
 
@@ -3156,7 +3156,7 @@ Upt_snit_kelp_i= kelp_Unsc * (f1(y[53],y[74],uNIT_kelp_i,(hsNIT_kelp*volume_si))
  Upt_benthclar_i_carn=     (f1((y[56]),y[61],ubenthclar_i_carn,(hsbenthclar_carn*(volume_si))));
 
 // Sum over all prey
-      Upt_total_carn_i = Upt_herb_i_carn  + Upt_fishplar_i_carn + Upt_fishdlar_i_carn
+      Upt_total_carn_i = Upt_omni_i_carn  + Upt_fishplar_i_carn + Upt_fishdlar_i_carn
                       +Upt_benthslar_i_carn + Upt_benthclar_i_carn  ;
 
 
@@ -3347,26 +3347,26 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // Offshore Larvae of pelagic fish
 // _____________
 
- Upt_herb_o_fishplar=      (f1(y[39],y[46],uherb_o_fishplar,(hsherb_fishplar*(volume_so+volume_d))));
+ Upt_omni_o_fishplar=      (f1(y[39],y[46],uomni_o_fishplar,(hsomni_fishplar*(volume_so+volume_d))));
 
  Upt_benthslar_o_fishplar= (f1(y[41],y[46],ubenthslar_o_fishplar,(hsbenthslar_fishplar*(volume_so+volume_d))));
  Upt_benthclar_o_fishplar= (f1(y[43],y[46],ubenthclar_o_fishplar,(hsbenthclar_fishplar*(volume_so+volume_d))));
 
 // Sum over all prey
-      Upt_total_fishplar_o = Upt_herb_o_fishplar 
+      Upt_total_fishplar_o = Upt_omni_o_fishplar 
                           +Upt_benthslar_o_fishplar + Upt_benthclar_o_fishplar ;
 
 
 // Inshore Larvae of pelagic fish
 // ____________
 
- Upt_herb_i_fishplar=      (f1(y[60],y[62],uherb_i_fishplar,(hsherb_fishplar*(volume_si))));
+ Upt_omni_i_fishplar=      (f1(y[60],y[62],uomni_i_fishplar,(hsomni_fishplar*(volume_si))));
 
  Upt_benthslar_i_fishplar= (f1(y[55],y[62],ubenthslar_i_fishplar,(hsbenthslar_fishplar*(volume_si))));
  Upt_benthclar_i_fishplar= (f1(y[56],y[62],ubenthclar_i_fishplar,(hsbenthclar_fishplar*(volume_si))));
 
 // Sum over all prey
-      Upt_total_fishplar_i = Upt_herb_i_fishplar
+      Upt_total_fishplar_i = Upt_omni_i_fishplar
                           +Upt_benthslar_i_fishplar + Upt_benthclar_i_fishplar  ;
 
 
@@ -3374,13 +3374,13 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // _____________
 
 
- Upt_herb_o_fishdlar=     (f1(y[39],y[48],uherb_o_fishdlar,(hsherb_fishdlar*(volume_so+volume_d))));
+ Upt_omni_o_fishdlar=     (f1(y[39],y[48],uomni_o_fishdlar,(hsomni_fishdlar*(volume_so+volume_d))));
 
  Upt_benthslar_o_fishdlar= (f1(y[41],y[48],ubenthslar_o_fishdlar,(hsbenthslar_fishdlar*(volume_so+volume_d))));
  Upt_benthclar_o_fishdlar= (f1(y[43],y[48],ubenthclar_o_fishdlar,(hsbenthclar_fishdlar*(volume_so+volume_d))));
  
 // Sum over all prey
-      Upt_total_fishdlar_o = Upt_herb_o_fishdlar 
+      Upt_total_fishdlar_o = Upt_omni_o_fishdlar 
                           +Upt_benthslar_o_fishdlar + Upt_benthclar_o_fishdlar ;
 
 
@@ -3388,13 +3388,13 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // _____________
 
 
- Upt_herb_i_fishdlar=     (f1(y[60],y[63],uherb_i_fishdlar,(hsherb_fishdlar*(volume_si))));
+ Upt_omni_i_fishdlar=     (f1(y[60],y[63],uomni_i_fishdlar,(hsomni_fishdlar*(volume_si))));
 
  Upt_benthslar_i_fishdlar= (f1(y[55],y[63],ubenthslar_i_fishdlar,(hsbenthslar_fishdlar*(volume_si))));
  Upt_benthclar_i_fishdlar= (f1(y[56],y[63],ubenthclar_i_fishdlar,(hsbenthclar_fishdlar*(volume_si))));
 
 // Sum over all prey
-      Upt_total_fishdlar_i = Upt_herb_i_fishdlar
+      Upt_total_fishdlar_i = Upt_omni_i_fishdlar
                           +Upt_benthslar_i_fishdlar + Upt_benthclar_i_fishdlar  ;
 
 
@@ -3402,7 +3402,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // Offshore Pelagic fish
 // _____________
 
- Upt_herb_o_fishp=         (f1(y[39],y[45],uherb_o_fishp,(hsherb_fishp*(volume_so+volume_d))));
+ Upt_omni_o_fishp=         (f1(y[39],y[45],uomni_o_fishp,(hsomni_fishp*(volume_so+volume_d))));
 
  Upt_carn_o_fishp=         (f1(CZ_edible_o,y[45],ucarn_o_fishp,(hscarn_fishp*(volume_so+volume_d))));
 
@@ -3414,14 +3414,14 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthclar_o_fishp=    (f1(y[43],y[45],ubenthclar_o_fishp,(hsbenthclar_fishp*(volume_so+volume_d))));
 
 // Sum over all prey
-      Upt_total_fishp_o = Upt_herb_o_fishp + Upt_carn_o_fishp + Upt_fishplar_o_fishp + Upt_fishdlar_o_fishp
+      Upt_total_fishp_o = Upt_omni_o_fishp + Upt_carn_o_fishp + Upt_fishplar_o_fishp + Upt_fishdlar_o_fishp
                           +Upt_benthslar_o_fishp + Upt_benthclar_o_fishp ;
 
 
 // Inshore Pelagic fish
 // _____________
 
- Upt_herb_i_fishp=         (f1(y[60],y[64],uherb_i_fishp,(hsherb_fishp*(volume_si))));
+ Upt_omni_i_fishp=         (f1(y[60],y[64],uomni_i_fishp,(hsomni_fishp*(volume_si))));
 
  Upt_carn_i_fishp=         (f1(CZ_edible_i,y[64],ucarn_i_fishp,(hscarn_fishp*(volume_si))));
 
@@ -3433,7 +3433,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthclar_i_fishp= (f1(y[56],y[64],ubenthclar_i_fishp,(hsbenthclar_fishp*(volume_si))));
 
 // Sum over all prey
-      Upt_total_fishp_i = Upt_herb_i_fishp + Upt_carn_i_fishp + Upt_fishplar_i_fishp + Upt_fishdlar_i_fishp
+      Upt_total_fishp_i = Upt_omni_i_fishp + Upt_carn_i_fishp + Upt_fishplar_i_fishp + Upt_fishdlar_i_fishp
                           +Upt_benthslar_i_fishp + Upt_benthclar_i_fishp  ;
 
 
@@ -3441,7 +3441,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // Offshore Migratory fish
 // _____________
 
- Upt_herb_o_fishm=         (f1(y[39],y[49],uherb_o_fishm,(hsherb_fishm*(volume_so+volume_d))));
+ Upt_omni_o_fishm=         (f1(y[39],y[49],uomni_o_fishm,(hsomni_fishm*(volume_so+volume_d))));
 
  Upt_carn_o_fishm=         (f1(CZ_edible_o,y[49],ucarn_o_fishm,(hscarn_fishm*(volume_so+volume_d))));
 
@@ -3453,14 +3453,14 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthclar_o_fishm=    (f1(y[43],y[49],ubenthclar_o_fishm,(hsbenthclar_fishm*(volume_so+volume_d))));
 
 // Sum over all prey
-      Upt_total_fishm_o = Upt_herb_o_fishm +  Upt_carn_o_fishm + Upt_fishplar_o_fishm + Upt_fishdlar_o_fishm
+      Upt_total_fishm_o = Upt_omni_o_fishm +  Upt_carn_o_fishm + Upt_fishplar_o_fishm + Upt_fishdlar_o_fishm
                           +Upt_benthslar_o_fishm + Upt_benthclar_o_fishm ;
 
 
 // Inshore Migratory fish
 // _____________
 
- Upt_herb_i_fishm=         (f1(y[60],y[65],uherb_i_fishm,(hsherb_fishm*(volume_si))));
+ Upt_omni_i_fishm=         (f1(y[60],y[65],uomni_i_fishm,(hsomni_fishm*(volume_si))));
 
  Upt_carn_i_fishm=         (f1(CZ_edible_i,y[65],ucarn_i_fishm,(hscarn_fishm*(volume_si))));
 
@@ -3472,7 +3472,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthclar_i_fishm= (f1(y[56],y[65],ubenthclar_i_fishm,(hsbenthclar_fishm*(volume_si))));
 
 // Sum over all prey
-      Upt_total_fishm_i = Upt_herb_i_fishm +  Upt_carn_i_fishm + Upt_fishplar_i_fishm + Upt_fishdlar_i_fishm
+      Upt_total_fishm_i = Upt_omni_i_fishm +  Upt_carn_i_fishm + Upt_fishplar_i_fishm + Upt_fishdlar_i_fishm
                           +Upt_benthslar_i_fishm + Upt_benthclar_i_fishm  ;
 
 
@@ -3568,7 +3568,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthc_o_bird=        (f3(y[44],(y[50]),ubenthc_o_bird,(hsbenthc_bird*(volume_so+volume_d)),bdapar_bird));
  Upt_disc_o_bird=          (f3(y[14],(y[50]),udisc_o_bird,(hsdisc_bird*(volume_so+volume_d)),bdapar_bird));
 
-// Upt_herb_o_bird=          (f3(y[39],(y[50]),uherb_o_bird,(hsherb_bird*(volume_so+volume_d)),bdapar_bird));
+// Upt_omni_o_bird=          (f3(y[39],(y[50]),uomni_o_bird,(hsomni_bird*(volume_so+volume_d)),bdapar_bird));
 
  Upt_carn_o_bird=          (f3(CZ_edible_o,(y[50]),ucarn_o_bird,(hscarn_bird*(volume_so+volume_d)),bdapar_bird));
 
@@ -3599,7 +3599,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthc_i_bird=        (f3(y[58],(y[67]),ubenthc_i_bird,(hsbenthc_bird*(volume_si)),bdapar_bird));
  Upt_disc_i_bird=          (f3(y[59],(y[67]),udisc_i_bird,(hsdisc_bird*(volume_si)),bdapar_bird));
 
-//  Upt_herb_i_bird=          (f3(y[60],(y[67]),uherb_i_bird,(hsherb_bird*(volume_si)),bdapar_bird));
+//  Upt_omni_i_bird=          (f3(y[60],(y[67]),uomni_i_bird,(hsomni_bird*(volume_si)),bdapar_bird));
 
  Upt_carn_i_bird=          (f3(CZ_edible_i,(y[67]),ucarn_i_bird,(hscarn_bird*(volume_si)),bdapar_bird));
 
@@ -3632,7 +3632,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthc_o_seal=        (f3(y[44],(y[68]),ubenthc_o_seal,(hsbenthc_seal*(volume_so+volume_d)),bdapar_seal));
  Upt_disc_o_seal=          (f3(y[14],(y[68]),udisc_o_seal,(hsdisc_seal*(volume_so+volume_d)),bdapar_seal));
 
-// Upt_herb_o_seal=          (f3(y[39],(y[68]),uherb_o_seal,(hsherb_seal*(volume_so+volume_d)),bdapar_seal));
+// Upt_omni_o_seal=          (f3(y[39],(y[68]),uomni_o_seal,(hsomni_seal*(volume_so+volume_d)),bdapar_seal));
 
  Upt_carn_o_seal=          (f3(CZ_edible_o,(y[68]),ucarn_o_seal,(hscarn_seal*(volume_so+volume_d)),bdapar_seal));
 
@@ -3667,7 +3667,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthc_i_seal=        (f3(y[58],(y[69]),ubenthc_i_seal,(hsbenthc_seal*(volume_si)),bdapar_seal));
  Upt_disc_i_seal=          (f3(y[59],(y[69]),udisc_i_seal,(hsdisc_seal*(volume_si)),bdapar_seal));
 
-// Upt_herb_i_seal=          (f3(y[60],(y[69]),uherb_i_seal,(hsherb_seal*(volume_si)),bdapar_seal));
+// Upt_omni_i_seal=          (f3(y[60],(y[69]),uomni_i_seal,(hsomni_seal*(volume_si)),bdapar_seal));
 
  Upt_carn_i_seal=          (f3(CZ_edible_i,(y[69]),ucarn_i_seal,(hscarn_seal*(volume_si)),bdapar_seal));
 
@@ -3701,7 +3701,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthc_o_ceta=        (f3(y[44],(y[70]),ubenthc_o_ceta,(hsbenthc_ceta*(volume_so+volume_d)),bdapar_ceta));
  Upt_disc_o_ceta=          (f3(y[14],(y[70]),udisc_o_ceta,(hsdisc_ceta*(volume_so+volume_d)),bdapar_ceta));
 
- Upt_herb_o_ceta=          (f3(y[39],(y[70]),uherb_o_ceta,(hsherb_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_omni_o_ceta=          (f3(y[39],(y[70]),uomni_o_ceta,(hsomni_ceta*(volume_so+volume_d)),bdapar_ceta));
 
  Upt_carn_o_ceta=          (f3(CZ_edible_o,(y[70]),ucarn_o_ceta,(hscarn_ceta*(volume_so+volume_d)),bdapar_ceta));
 
@@ -3716,7 +3716,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_seal_o_ceta=         (f3(y[68],(y[70]),useal_o_ceta,(hsseal_ceta*(volume_so+volume_d)),bdapar_ceta));
 
 // Sum over all prey
-      Upt_total_ceta_o = Upt_herb_o_ceta  
+      Upt_total_ceta_o = Upt_omni_o_ceta  
                       +Upt_carn_o_ceta + Upt_fishp_o_ceta + Upt_fishm_o_ceta + Upt_fishd_o_ceta
                       +Upt_disc_o_ceta + Upt_bird_o_ceta  + Upt_seal_o_ceta
                       +Upt_benths_o_ceta + Upt_benthc_o_ceta;
@@ -3736,7 +3736,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_benthc_i_ceta=        (f3(y[58],(y[71]),ubenthc_i_ceta,(hsbenthc_ceta*(volume_si)),bdapar_ceta));
  Upt_disc_i_ceta=          (f3(y[59],(y[71]),udisc_i_ceta,(hsdisc_ceta*(volume_si)),bdapar_ceta));
 
- Upt_herb_i_ceta=          (f3(y[60],(y[71]),uherb_i_ceta,(hsherb_ceta*(volume_si)),bdapar_ceta));
+ Upt_omni_i_ceta=          (f3(y[60],(y[71]),uomni_i_ceta,(hsomni_ceta*(volume_si)),bdapar_ceta));
 
  Upt_carn_i_ceta=          (f3(CZ_edible_i,(y[71]),ucarn_i_ceta,(hscarn_ceta*(volume_si)),bdapar_ceta));
 
@@ -3751,7 +3751,7 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
  Upt_seal_i_ceta=         (f3(y[69],(y[71]),useal_i_ceta,(hsseal_ceta*(volume_si)),bdapar_ceta));
 
 // Sum over all prey
-      Upt_total_ceta_i = Upt_herb_i_ceta 
+      Upt_total_ceta_i = Upt_omni_i_ceta 
                       +Upt_carn_i_ceta + Upt_fishp_i_ceta + Upt_fishm_i_ceta + Upt_fishd_i_ceta
                       +Upt_disc_i_ceta  + Upt_bird_i_ceta + Upt_seal_i_ceta
                       +Upt_benths_i_ceta + Upt_benthc_i_ceta ;
@@ -3769,9 +3769,9 @@ Exude_kelp_i = exC_kelp_i * y[74] * y[74];
 /* _____Ammonia Excretion by each animal consumer group_____ */
 
 
- Excr_herb_so=      (1-aH)*0.5*(Upt_total_herb_o)*prop_herb_surfo;
- Excr_herb_d=       (1-aH)*0.5*(Upt_total_herb_o)*prop_herb_deep;
- Excr_herb_si=      (1-aH)*0.5*(Upt_total_herb_i);
+ Excr_omni_so=      (1-aH)*0.5*(Upt_total_omni_o)*prop_omni_surfo;
+ Excr_omni_d=       (1-aH)*0.5*(Upt_total_omni_o)*prop_omni_deep;
+ Excr_omni_si=      (1-aH)*0.5*(Upt_total_omni_i);
 
  Excr_carn_so=     (1-aC)*0.5*(Upt_total_carn_o)*prop_carn_surfo;
  Excr_carn_d=      (1-aC)*0.5*(Upt_total_carn_o)*prop_carn_deep;
@@ -3852,9 +3852,9 @@ Exude_kelp_i = exC_kelp_i * y[74] * y[74];
 
 /* _____Defecation rate of each animal consumer group_____ */
 
-Defec_herb_so = Excr_herb_so ;
-Defec_herb_si = Excr_herb_si ;
-Defec_herb_d  = Excr_herb_d ;
+Defec_omni_so = Excr_omni_so ;
+Defec_omni_si = Excr_omni_si ;
+Defec_omni_d  = Excr_omni_d ;
 
 Defec_carn_so = Excr_carn_so ;
 Defec_carn_si = Excr_carn_si ;
@@ -3939,11 +3939,11 @@ Defec_ceta_d  = Excr_ceta_d ;
 
 
 /* _____Assimilation of each animal consumer group_____ */
- Assim_herb_o= aH * Upt_total_herb_o ;
- Assim_herb_i= aH * Upt_total_herb_i ;
+ Assim_omni_o= aH * Upt_total_omni_o ;
+ Assim_omni_i= aH * Upt_total_omni_i ;
 // Mass balance check - should  = 0
-// Rprintf("herb_o=%f\n", Upt_total_herb_o - Assim_herb_o - Defec_herb_so - Defec_herb_d - Excr_herb_so - Excr_herb_d);
-// Rprintf("herb_i=%f\n", Upt_total_herb_i - Assim_herb_i - Defec_herb_si - Excr_herb_si);
+// Rprintf("omni_o=%f\n", Upt_total_omni_o - Assim_omni_o - Defec_omni_so - Defec_omni_d - Excr_omni_so - Excr_omni_d);
+// Rprintf("omni_i=%f\n", Upt_total_omni_i - Assim_omni_i - Defec_omni_si - Excr_omni_si);
 
  Assim_carn_o= aC * Upt_total_carn_o ;
  Assim_carn_i= aC * Upt_total_carn_i ;
@@ -4644,7 +4644,7 @@ HTLmetabolism_si =     ( eH_i * y[60] )
  InshoreIN_sphyt=          ((y[37]/volume_so)*driverso_si_flow);
  InshoreIN_benthslar=      ((y[41]*prop_benthslar_surfo/volume_so)*driverso_si_flow);
  InshoreIN_benthclar=      ((y[43]*prop_benthclar_surfo/volume_so)*driverso_si_flow);
- InshoreIN_herb=           ((y[39]*prop_herb_surfo/volume_so)*driverso_si_flow);
+ InshoreIN_omni=           ((y[39]*prop_omni_surfo/volume_so)*driverso_si_flow);
  InshoreIN_carn=           ((y[40]*prop_carn_surfo/volume_so)*driverso_si_flow);
  InshoreIN_fishplar=       ((y[46]*prop_fishplar_surfo/volume_so)*driverso_si_flow);
  InshoreIN_fishdlar=       ((y[48]*prop_fishdlar_surfo/volume_so)*driverso_si_flow);
@@ -4657,7 +4657,7 @@ HTLmetabolism_si =     ( eH_i * y[60] )
  InshoreOUT_sphyt=         ((y[54]/volume_si)*(driversi_so_flow + driverriver));
  InshoreOUT_benthslar=     ((y[55]/volume_si)*(driversi_so_flow + driverriver));
  InshoreOUT_benthclar=     ((y[56]/volume_si)*(driversi_so_flow + driverriver));
- InshoreOUT_herb=          ((y[60]/volume_si)*(driversi_so_flow + driverriver));
+ InshoreOUT_omni=          ((y[60]/volume_si)*(driversi_so_flow + driverriver));
  InshoreOUT_carn=          ((y[61]/volume_si)*(driversi_so_flow + driverriver));
  InshoreOUT_fishplar=      ((y[62]/volume_si)*(driversi_so_flow + driverriver));
  InshoreOUT_fishdlar=      ((y[63]/volume_si)*(driversi_so_flow + driverriver));
@@ -4790,7 +4790,7 @@ else {
 
     // ddetritus_so
     ydot[0]= ( xs_o * y[37] * y[37] )
-             + Defec_herb_so
+             + Defec_omni_so
              + Defec_carn_so
 	     + Defec_fishplar_so
 	     + Defec_fishp_so
@@ -4810,13 +4810,13 @@ else {
 	     + OceanIN_sodetritus  
 	     - OceanOUT_sodetritus 
 	     + Upwelling_det  
-	     - Upt_detritus_so_herb
+	     - Upt_detritus_so_omni
              - Upt_detritus_so_benthslar
 	     - Upt_detritus_so_benthclar ;
 
     // ddetritus_si
     ydot[51]= ( xs_i * y[54] * y[54] )
-             + Defec_herb_si
+             + Defec_omni_si
              + Defec_carn_si
 	     + Defec_fishplar_si  
 	     + Defec_fishp_si  
@@ -4831,7 +4831,7 @@ else {
 	     - ( m_si * y[51] )  
 	     - detr_settle_s_b  
 	     + Riv_det_IN  
-	     - Upt_detritus_si_herb
+	     - Upt_detritus_si_omni
 	     - Upt_detritus_si_benths_i  
              - Upt_detritus_si_benthslar
 	     - Upt_detritus_si_benthclar
@@ -4855,7 +4855,7 @@ else {
              +( Defec_benthc_s1 ) * s1_stick_reflect
              +( Defec_benthc_s2 ) * s2_stick_reflect
              +( Defec_benthc_s3 ) * s3_stick_reflect
-             + ( xherb_i * ( y[60] * y[60] ) )
+             + ( xomni_i * ( y[60] * y[60] ) )
              + ( xcarn_i * ( y[61] * y[61] ) )
              + ( xpfishlar_i * ( y[62] * y[62] * y[62] ) )
              + ( xdfishlar_i * ( y[63] * y[63] * y[63] ) )
@@ -4866,7 +4866,7 @@ else {
 
 
     // ddetritus_d
-    ydot[1]=   Defec_herb_d
+    ydot[1]=   Defec_omni_d
 	     + Defec_carn_d  
              + Defec_benthslar_d
              + Defec_benthclar_d
@@ -4883,7 +4883,7 @@ else {
 	     + ( xd * y[38] * y[38] ) 
 	     + detr_settle_s_d
 	     - detr_settle_d 
-	     - Upt_detritus_d_herb 
+	     - Upt_detritus_d_omni 
 	     - Upt_detritus_d_benths_o 
 	     - ( m_d * y[1] )  
 	     - Vmix_detritus  
@@ -4906,7 +4906,7 @@ else {
              +( Defec_benthc_d2 ) * d2_stick_reflect
              +( Defec_benthc_d3 ) * d3_stick_reflect
              + ( xcarn_o * ( y[40] * y[40] ) )
-             + ( xherb_o * ( y[39] * y[39] ) )
+             + ( xomni_o * ( y[39] * y[39] ) )
              + ( xpfishlar_o * ( y[46] * y[46] * y[46] ) )
              + ( xdfishlar_o * ( y[48] * y[48] * y[48] ) )
 	     + (xbenthslar_o * ( y[41] * y[41] * y[41] ) )
@@ -5397,7 +5397,7 @@ else {
     //________________________________________________________
 
     // dammonia_so
-    ydot[21] =  Excr_herb_so
+    ydot[21] =  Excr_omni_so
               + Excr_carn_so 
 	      + Excr_benthslar_so
 	      + Excr_benthclar_so
@@ -5425,7 +5425,7 @@ else {
 
 
     // dammonia_si
-    ydot[52] =  Excr_herb_si
+    ydot[52] =  Excr_omni_si
               + Excr_carn_si 
 	      + Excr_benthslar_si
 	      + Excr_benthclar_si 
@@ -5456,7 +5456,7 @@ else {
 
 
     // dd_ammonia
-    ydot[22] =  Excr_herb_d 
+    ydot[22] =  Excr_omni_d 
               + Excr_carn_d 
 	      + Excr_benthslar_d
 	      + Excr_benthclar_d
@@ -5555,7 +5555,7 @@ else {
     ydot[37] = Upt_samm_sphyt_o
               + Upt_snit_sphyt_o
               - ( xs_o * y[37] * y[37]  )
-              - Upt_phyt_so_herb
+              - Upt_phyt_so_omni
 	      - Upt_phyt_so_benthslar
 	      - Upt_phyt_so_benthclar
               + Vmix_phyt
@@ -5569,7 +5569,7 @@ else {
     ydot[54] = Upt_samm_sphyt_i
               + Upt_snit_sphyt_i
               - ( xs_i * y[54] * y[54]  )
-              - Upt_phyt_si_herb
+              - Upt_phyt_si_omni
 	      - Upt_phyt_si_benthslar
 	      - Upt_phyt_si_benthclar
               - Upt_phyt_si_benths_i
@@ -5585,7 +5585,7 @@ else {
 // Rprintf("siphyt=%f\n",  y[54] );
 // Rprintf("uptamm=%f\n",  Upt_samm_sphyt_i );
 // Rprintf("uptnit=%f\n",  Upt_snit_sphyt_i );
-// Rprintf("upt_p_herb=%f\n",  Upt_phyt_si_herb );
+// Rprintf("upt_p_omni=%f\n",  Upt_phyt_si_omni );
 // Rprintf("upt_p_bslar=%f\n",  Upt_phyt_si_benthslar );
 // Rprintf("upt_p_bclar=%f\n",  Upt_phyt_si_benthclar );
 // Rprintf("upt_p_bs=%f\n",  Upt_phyt_si_benths_i );
@@ -5600,7 +5600,7 @@ else {
 
 	      
     // dphyt_d
-    ydot[38] = -Upt_phyt_d_herb
+    ydot[38] = -Upt_phyt_d_omni
 	      - Upt_phyt_d_benthslar
 	      - Upt_phyt_d_benthclar
               - Upt_phyt_d_benths_o
@@ -5610,33 +5610,33 @@ else {
               - Upwelling_phyt
               - OceanOUT_dphyt ;
 	      
-    // dherb_o
-    ydot[39] = Assim_herb_o
+    // domni_o
+    ydot[39] = Assim_omni_o
               - ( eH_o * y[39] )
-              - ( xherb_o * ( y[39] * y[39] ) )
-              - InshoreIN_herb
-              + InshoreOUT_herb
-              - Upt_herb_o_carn
-              - Upt_herb_o_fishplar
-              - Upt_herb_o_fishdlar
-              - Upt_herb_o_fishp
-              - Upt_herb_o_fishm
-//              - Upt_herb_o_bird
-              - Upt_herb_o_ceta;
+              - ( xomni_o * ( y[39] * y[39] ) )
+              - InshoreIN_omni
+              + InshoreOUT_omni
+              - Upt_omni_o_carn
+              - Upt_omni_o_fishplar
+              - Upt_omni_o_fishdlar
+              - Upt_omni_o_fishp
+              - Upt_omni_o_fishm
+//              - Upt_omni_o_bird
+              - Upt_omni_o_ceta;
 
-    // dherb_i
-    ydot[60] = Assim_herb_i
+    // domni_i
+    ydot[60] = Assim_omni_i
               - ( eH_i * y[60] )
-              - ( xherb_i * ( y[60] * y[60] ) )
-              + InshoreIN_herb
-              - InshoreOUT_herb
-              - Upt_herb_i_carn
-              - Upt_herb_i_fishplar
-              - Upt_herb_i_fishdlar
-              - Upt_herb_i_fishp
-              - Upt_herb_i_fishm
-//              - Upt_herb_i_bird
-              - Upt_herb_i_ceta;
+              - ( xomni_i * ( y[60] * y[60] ) )
+              + InshoreIN_omni
+              - InshoreOUT_omni
+              - Upt_omni_i_carn
+              - Upt_omni_i_fishplar
+              - Upt_omni_i_fishdlar
+              - Upt_omni_i_fishp
+              - Upt_omni_i_fishm
+//              - Upt_omni_i_bird
+              - Upt_omni_i_ceta;
 
 
     // dcarn_o
@@ -5673,7 +5673,7 @@ else {
     //dbenthslar_o
     ydot[41]=Assim_benthslar_o
         	-(eBslar_o*y[41])
-		-Upt_benthslar_o_herb
+		-Upt_benthslar_o_omni
 			-Upt_benthslar_o_carn
 			-Upt_benthslar_o_fishp
 			-Upt_benthslar_o_fishplar
@@ -5688,7 +5688,7 @@ else {
     //dbenthslar_i
     ydot[55]=Assim_benthslar_i
         	-(eBslar_i*y[55])
-		-Upt_benthslar_i_herb
+		-Upt_benthslar_i_omni
 			-Upt_benthslar_i_carn
 			-Upt_benthslar_i_fishp
 			-Upt_benthslar_i_fishplar
@@ -5733,7 +5733,7 @@ else {
     //dbenthclar_o
     ydot[43]=Assim_benthclar_o
 		-(eBclar_o*y[43])
-		-Upt_benthclar_o_herb
+		-Upt_benthclar_o_omni
 			-Upt_benthclar_o_carn
 			-Upt_benthclar_o_fishp
 			-Upt_benthclar_o_fishplar
@@ -5748,7 +5748,7 @@ else {
     //dbenthclar_i
     ydot[56]=Assim_benthclar_i
 		-(eBclar_i*y[56])
-		-Upt_benthclar_i_herb
+		-Upt_benthclar_i_omni
 			-Upt_benthclar_i_carn
 			-Upt_benthclar_i_fishp
 			-Upt_benthclar_i_fishplar
@@ -6080,12 +6080,12 @@ else {
 
 
     // Omnivorous zooplankton gross production - offshore
-    //dherbgrossprod_o
-    ydot[86] = Assim_herb_o ;
+    //domnigrossprod_o
+    ydot[86] = Assim_omni_o ;
 
     // Omnivorous zooplankton gross production - inshore
-    //dherbgrossprod_i
-    ydot[87] = Assim_herb_i ;
+    //domnigrossprod_i
+    ydot[87] = Assim_omni_i ;
 
     // Carniv zooplankton gross production - offshore
     //dcarngrossprod_o              
@@ -6223,10 +6223,10 @@ else {
     ydot[119] = ( m_so * y[0] ) + ( m_si * y[51] )+ ( m_d * y[1] ) ;
 
 
-    //dfluxherb_wcamm
-    ydot[120] =   Excr_herb_so
-               + Excr_herb_si
-               + Excr_herb_d
+    //dfluxomni_wcamm
+    ydot[120] =   Excr_omni_so
+               + Excr_omni_si
+               + Excr_omni_d
                + ( eH_o * y[39] ) 
                + ( eH_i * y[60] ) ;
 
@@ -6396,12 +6396,12 @@ else {
                + ( xd * y[38] * y[38] ) ;
 
 
-    //dfluxherb_wcdet
-    ydot[143]  =  Defec_herb_so
-               + Defec_herb_si
-               + Defec_herb_d
-               + ( xherb_o * ( y[39] * y[39] ) )
-               + ( xherb_i * ( y[60] * y[60] ) ) ;
+    //dfluxomni_wcdet
+    ydot[143]  =  Defec_omni_so
+               + Defec_omni_si
+               + Defec_omni_d
+               + ( xomni_o * ( y[39] * y[39] ) )
+               + ( xomni_i * ( y[60] * y[60] ) ) ;
 
     //dfluxcarn_wcdet
     ydot[144] =     Defec_carn_so
@@ -6648,22 +6648,22 @@ else {
 
 // .......................................... 
 
-    //dfluxwcdet_herb
-    ydot[180] = Upt_detritus_so_herb + Upt_detritus_si_herb + Upt_detritus_d_herb ;
+    //dfluxwcdet_omni
+    ydot[180] = Upt_detritus_so_omni + Upt_detritus_si_omni + Upt_detritus_d_omni ;
 
-    //dfluxphyt_herb
-    ydot[181] = Upt_phyt_so_herb + Upt_phyt_si_herb + Upt_phyt_d_herb ;
+    //dfluxphyt_omni
+    ydot[181] = Upt_phyt_so_omni + Upt_phyt_si_omni + Upt_phyt_d_omni ;
 
-    //dfluxbenthslar_herb
-    ydot[182]= Upt_benthslar_o_herb + Upt_benthslar_i_herb;
+    //dfluxbenthslar_omni
+    ydot[182]= Upt_benthslar_o_omni + Upt_benthslar_i_omni;
 
-    //dfluxbenthclar_herb
-    ydot[183]=Upt_benthclar_o_herb + Upt_benthclar_i_herb;
+    //dfluxbenthclar_omni
+    ydot[183]=Upt_benthclar_o_omni + Upt_benthclar_i_omni;
     
 // .......................................... 
     
-    //dfluxherb_carn         
-    ydot[184] = Upt_herb_o_carn + Upt_herb_i_carn ;
+    //dfluxomni_carn         
+    ydot[184] = Upt_omni_o_carn + Upt_omni_i_carn ;
 
     //dfluxpfishlar_carn     
     ydot[185] = Upt_fishplar_o_carn + Upt_fishplar_i_carn;
@@ -6679,8 +6679,8 @@ else {
 
 // .......................................... 
 
-    //dfluxherb_pfishlar     
-    ydot[189] = Upt_herb_o_fishplar + Upt_herb_i_fishplar;
+    //dfluxomni_pfishlar     
+    ydot[189] = Upt_omni_o_fishplar + Upt_omni_i_fishplar;
     
     //dfluxbenslar_pfishlar
     ydot[190]= Upt_benthslar_o_fishplar + Upt_benthslar_i_fishplar;
@@ -6690,8 +6690,8 @@ else {
 
 // .......................................... 
 
-    //dfluxherb_dfishlar     
-    ydot[192] = Upt_herb_o_fishdlar + Upt_herb_i_fishdlar ;
+    //dfluxomni_dfishlar     
+    ydot[192] = Upt_omni_o_fishdlar + Upt_omni_i_fishdlar ;
 
     //dfluxbenslar_dfishlar
     ydot[193]=Upt_benthslar_o_fishdlar + Upt_benthslar_i_fishdlar;
@@ -6701,8 +6701,8 @@ else {
 
 // .......................................... 
 
-    //dfluxherb_pfish        
-    ydot[195] = Upt_herb_o_fishp + Upt_herb_i_fishp ;
+    //dfluxomni_pfish        
+    ydot[195] = Upt_omni_o_fishp + Upt_omni_i_fishp ;
 
     //dfluxcarn_pfish        
     ydot[196] = Upt_carn_o_fishp + Upt_carn_i_fishp;
@@ -6721,8 +6721,8 @@ else {
 
 // .......................................... 
     
-    //dfluxherb_mfish
-    ydot[201] = Upt_herb_o_fishm + Upt_herb_i_fishm;
+    //dfluxomni_mfish
+    ydot[201] = Upt_omni_o_fishm + Upt_omni_i_fishm;
 
     //dfluxcarn_mfish
     ydot[202] = Upt_carn_o_fishm + Upt_carn_i_fishm;
@@ -6855,8 +6855,8 @@ else {
     //dfluxdisc_bird         
     ydot[230] = Upt_disc_o_bird + Upt_disc_i_bird ;
 
-//          //dfluxherb_bird
-//          ydot[xxx] = Upt_herb_o_bird + Upt_herb_i_bird ;
+//          //dfluxomni_bird
+//          ydot[xxx] = Upt_omni_o_bird + Upt_omni_i_bird ;
 
     //dfluxcarn_bird
     ydot[231] = Upt_carn_o_bird + Upt_carn_i_bird ;
@@ -6914,8 +6914,8 @@ else {
     //dfluxdisc_ceta         
     ydot[246] = Upt_disc_o_ceta + Upt_disc_i_ceta ;
 
-    //dfluxherb_ceta
-    ydot[247] = Upt_herb_o_ceta + Upt_herb_i_ceta ;
+    //dfluxomni_ceta
+    ydot[247] = Upt_omni_o_ceta + Upt_omni_i_ceta ;
 
     //dfluxcarn_ceta
     ydot[248] = Upt_carn_o_ceta + Upt_carn_i_ceta ;
@@ -7088,7 +7088,7 @@ else {
               + InshoreIN_sphyt
               + InshoreIN_benthslar
               + InshoreIN_benthclar
-              + InshoreIN_herb
+              + InshoreIN_omni
               + InshoreIN_carn
               + InshoreIN_fishplar
               + InshoreIN_fishdlar)
@@ -7117,7 +7117,7 @@ else {
               + InshoreOUT_sphyt
               + InshoreOUT_benthslar
               + InshoreOUT_benthclar
-              + InshoreOUT_herb
+              + InshoreOUT_omni
               + InshoreOUT_carn
               + InshoreOUT_fishplar
               + InshoreOUT_fishdlar)
@@ -7173,7 +7173,7 @@ else {
               + InshoreOUT_sphyt
               + InshoreOUT_benthslar
               + InshoreOUT_benthclar
-              + InshoreOUT_herb
+              + InshoreOUT_omni
               + InshoreOUT_carn
               + InshoreOUT_fishplar
               + InshoreOUT_fishdlar)
@@ -7199,7 +7199,7 @@ else {
               + InshoreIN_sphyt
               + InshoreIN_benthslar
               + InshoreIN_benthclar
-              + InshoreIN_herb
+              + InshoreIN_omni
               + InshoreIN_carn
               + InshoreIN_fishplar
               + InshoreIN_fishdlar)
@@ -7305,7 +7305,7 @@ else {
               + InshoreOUT_sphyt
               + InshoreOUT_benthslar
               + InshoreOUT_benthclar
-              + InshoreOUT_herb
+              + InshoreOUT_omni
               + InshoreOUT_carn
               + InshoreOUT_fishplar
               + InshoreOUT_fishdlar) ;
@@ -7316,7 +7316,7 @@ else {
               + InshoreIN_sphyt
               + InshoreIN_benthslar
               + InshoreIN_benthclar
-              + InshoreIN_herb
+              + InshoreIN_omni
               + InshoreIN_carn
               + InshoreIN_fishplar
               + InshoreIN_fishdlar) ;
@@ -7552,12 +7552,12 @@ else {
 
 
     // Omnivorous zooplankton net production - offshore
-    //dherbnetprod_o
-    ydot[375] = Assim_herb_o - ( eH_o * y[39] );
+    //domninetprod_o
+    ydot[375] = Assim_omni_o - ( eH_o * y[39] );
 
     // Omnivorous zooplankton net production - inshore
-    //dherbnetprod_i
-    ydot[376] = Assim_herb_i - ( eH_i * y[60] );
+    //domninetprod_i
+    ydot[376] = Assim_omni_i - ( eH_i * y[60] );
 
     // Carniv zooplankton net production - offshore
     //dcarnnetprod_o              

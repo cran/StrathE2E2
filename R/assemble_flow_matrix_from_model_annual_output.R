@@ -35,7 +35,7 @@ assemble_flow_matrix_from_model_annual_output <- function(model, build, output, 
 	# extract output:
 	fluxsedamm_wcamm	<- elt(output, "fluxsedamm_wcamm")
 	fluxwcdet_wcamm		<- elt(output, "fluxwcdet_wcamm")
-	fluxherb_wcamm		<- elt(output, "fluxherb_wcamm")
+	fluxomni_wcamm		<- elt(output, "fluxomni_wcamm")
 	fluxcarn_wcamm		<- elt(output, "fluxcarn_wcamm")
 	fluxpfishlar_wcamm	<- elt(output, "fluxpfishlar_wcamm")
 	fluxdfishlar_wcamm	<- elt(output, "fluxdfishlar_wcamm")
@@ -58,7 +58,7 @@ assemble_flow_matrix_from_model_annual_output <- function(model, build, output, 
 	fluxcorp_wcdet		<- elt(output, "fluxcorp_wcdet")
 	fluxkelpdebris_wcdet	<- elt(output, "fluxkelpdebris_wcdet")
 	fluxphyt_wcdet		<- elt(output, "fluxphyt_wcdet")
-	fluxherb_wcdet		<- elt(output, "fluxherb_wcdet")
+	fluxomni_wcdet		<- elt(output, "fluxomni_wcdet")
 	fluxcarn_wcdet		<- elt(output, "fluxcarn_wcdet")
 	fluxpfishlar_wcdet	<- elt(output, "fluxpfishlar_wcdet")
 	fluxdfishlar_wcdet	<- elt(output, "fluxdfishlar_wcdet")
@@ -90,31 +90,31 @@ assemble_flow_matrix_from_model_annual_output <- function(model, build, output, 
 	fluxkelp_kelpdebris	<- elt(output, "fluxkelp_kelpdebris")
 	fluxwcamm_kelp		<- elt(output, "fluxwcamm_kelp")
 	fluxwcnit_kelp		<- elt(output, "fluxwcnit_kelp")
-	fluxwcdet_herb		<- elt(output, "fluxwcdet_herb")
-	fluxphyt_herb		<- elt(output, "fluxphyt_herb")
-	fluxbenthslar_herb	<- elt(output, "fluxbenthslar_herb")
-	fluxbenthclar_herb	<- elt(output, "fluxbenthclar_herb")
-	fluxherb_carn		<- elt(output, "fluxherb_carn")
+	fluxwcdet_omni		<- elt(output, "fluxwcdet_omni")
+	fluxphyt_omni		<- elt(output, "fluxphyt_omni")
+	fluxbenthslar_omni	<- elt(output, "fluxbenthslar_omni")
+	fluxbenthclar_omni	<- elt(output, "fluxbenthclar_omni")
+	fluxomni_carn		<- elt(output, "fluxomni_carn")
 	fluxpfishlar_carn	<- elt(output, "fluxpfishlar_carn")
 	fluxdfishlar_carn	<- elt(output, "fluxdfishlar_carn")
 	fluxbenthslar_carn	<- elt(output, "fluxbenthslar_carn")
 	fluxbenthclar_carn	<- elt(output, "fluxbenthclar_carn")
-	fluxherb_pfishlar	<- elt(output, "fluxherb_pfishlar")
+	fluxomni_pfishlar	<- elt(output, "fluxomni_pfishlar")
 	fluxbenthslar_pfishlar	<- elt(output, "fluxbenthslar_pfishlar")
 	fluxbenthclar_pfishlar	<- elt(output, "fluxbenthclar_pfishlar")
 	Pfish_spawn		<- elt(output, "Pfish_spawn")
-	fluxherb_dfishlar	<- elt(output, "fluxherb_dfishlar")
+	fluxomni_dfishlar	<- elt(output, "fluxomni_dfishlar")
 	fluxbenthslar_dfishlar	<- elt(output, "fluxbenthslar_dfishlar")
 	fluxbenthclar_dfishlar	<- elt(output, "fluxbenthclar_dfishlar")
 	Dfish_spawn		<- elt(output, "Dfish_spawn")
-	fluxherb_pfish		<- elt(output, "fluxherb_pfish")
+	fluxomni_pfish		<- elt(output, "fluxomni_pfish")
 	fluxcarn_pfish		<- elt(output, "fluxcarn_pfish")
 	fluxpfishlar_pfish	<- elt(output, "fluxpfishlar_pfish")
 	Pfish_recruit		<- elt(output, "Pfish_recruit")
 	fluxdfishlar_pfish	<- elt(output, "fluxdfishlar_pfish")
 	fluxbenthslar_pfish	<- elt(output, "fluxbenthslar_pfish")
 	fluxbenthclar_pfish	<- elt(output, "fluxbenthclar_pfish")
-	fluxherb_mfish		<- elt(output, "fluxherb_mfish")
+	fluxomni_mfish		<- elt(output, "fluxomni_mfish")
 	fluxcarn_mfish		<- elt(output, "fluxcarn_mfish")
 	fluxpfishlar_mfish	<- elt(output, "fluxpfishlar_mfish")
 	fluxdfishlar_mfish	<- elt(output, "fluxdfishlar_mfish")
@@ -165,7 +165,7 @@ assemble_flow_matrix_from_model_annual_output <- function(model, build, output, 
 	fluxbenthc_seal		<- elt(output, "fluxbenthc_seal")
 	fluxbird_seal		<- elt(output, "fluxbird_seal")
 	fluxdisc_ceta		<- elt(output, "fluxdisc_ceta")
-	fluxherb_ceta		<- elt(output, "fluxherb_ceta")
+	fluxomni_ceta		<- elt(output, "fluxomni_ceta")
 	fluxcarn_ceta		<- elt(output, "fluxcarn_ceta")
 	fluxpfish_ceta		<- elt(output, "fluxpfish_ceta")
 	fluxmfish_ceta		<- elt(output, "fluxmfish_ceta")
@@ -297,7 +297,7 @@ flux<-fluxvec[outrowend]-fluxvec[outrowstart]
 flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(colnames(flowmatrix_template)==destname))] <- flux
 
 #From omnivorous zooplankton
-fluxvec<-fluxherb_wcamm
+fluxvec<-fluxomni_wcamm
 sourcename<-"omnivzoo"
 destname  <-"wcammonia"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -484,7 +484,7 @@ flux<-fluxvec[outrowend]-fluxvec[outrowstart]
 flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(colnames(flowmatrix_template)==destname))] <- flux
 
 #From omnivorous zooplankton
-fluxvec<-fluxherb_wcdet
+fluxvec<-fluxomni_wcdet
 sourcename<-"omnivzoo"
 destname  <-"wcdetritus"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -821,28 +821,28 @@ flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(co
 #Fluxes to omnivorous zooplankton
 
 #From water column detritus
-fluxvec<-fluxwcdet_herb
+fluxvec<-fluxwcdet_omni
 sourcename<-"wcdetritus"
 destname  <-"omnivzoo"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
 flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(colnames(flowmatrix_template)==destname))] <- flux
 
 #From phytoplankton
-fluxvec<-fluxphyt_herb
+fluxvec<-fluxphyt_omni
 sourcename<-"phyt"
 destname  <-"omnivzoo"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
 flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(colnames(flowmatrix_template)==destname))] <- flux
 
 #From f/d benthos larvae
-fluxvec<-fluxbenthslar_herb
+fluxvec<-fluxbenthslar_omni
 sourcename<-"benthslar"
 destname  <-"omnivzoo"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
 flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(colnames(flowmatrix_template)==destname))] <- flux
 
 #From c/s benthos larvae
-fluxvec<-fluxbenthclar_herb
+fluxvec<-fluxbenthclar_omni
 sourcename<-"benthclar"
 destname  <-"omnivzoo"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -853,7 +853,7 @@ flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(co
 #Fluxes to carnivorous zooplankton
 
 #From omnivorous zooplankton
-fluxvec<-fluxherb_carn
+fluxvec<-fluxomni_carn
 sourcename<-"omnivzoo"
 destname  <-"carnzoo"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -892,7 +892,7 @@ flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(co
 #Fluxes to pelagic fish larvae
 
 #From omnivorous zooplankton
-fluxvec<-fluxherb_pfishlar
+fluxvec<-fluxomni_pfishlar
 sourcename<-"omnivzoo"
 destname  <-"pfishlar"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -924,7 +924,7 @@ flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(co
 #Fluxes to demersal fish larvae
 
 #From omnivorous zooplankton
-fluxvec<-fluxherb_dfishlar
+fluxvec<-fluxomni_dfishlar
 sourcename<-"omnivzoo"
 destname  <-"dfishlar"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -956,7 +956,7 @@ flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(co
 #Fluxes to pelagic fish
 
 #From omnivorous zooplankton
-fluxvec<-fluxherb_pfish
+fluxvec<-fluxomni_pfish
 sourcename<-"omnivzoo"
 destname  <-"pfish"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -1007,7 +1007,7 @@ flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(co
 #Fluxes to migratory fish
 
 #From omnivorous zooplankton
-fluxvec<-fluxherb_mfish
+fluxvec<-fluxomni_mfish
 sourcename<-"omnivzoo"
 destname  <-"mfish"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -1272,7 +1272,7 @@ flux<-fluxvec[outrowend]-fluxvec[outrowstart]
 flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(colnames(flowmatrix_template)==destname))] <- flux
 
 # #From omnivorous zooplankton
-# fluxvec<-fluxherb_bird
+# fluxvec<-fluxomni_bird
 # sourcename<-"omnivzoo"
 # destname  <-"bird"
 # flux<-fluxvec[outrowend]-fluxvec[outrowstart]
@@ -1409,7 +1409,7 @@ flux<-fluxvec[outrowend]-fluxvec[outrowstart]
 flowmatrix_template[(which(colnames(flowmatrix_template)==sourcename)),(which(colnames(flowmatrix_template)==destname))] <- flux
 
 #From omnivorous zooplankton
-fluxvec<-fluxherb_ceta
+fluxvec<-fluxomni_ceta
 sourcename<-"omnivzoo"
 destname  <-"ceta"
 flux<-fluxvec[outrowend]-fluxvec[outrowstart]

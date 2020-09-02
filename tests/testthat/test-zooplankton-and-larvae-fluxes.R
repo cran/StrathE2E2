@@ -89,7 +89,7 @@ benthslar_i<- pull_final_year_mean(results,"benthslar_i")
 benthclar_i<- pull_final_year_mean(results,"benthclar_i")
 fishplar_i<- pull_final_year_mean(results,"fishplar_i")
 fishdlar_i<- pull_final_year_mean(results,"fishdlar_i")
-herb_i<-pull_final_year_mean(results,"herb_i")
+omni_i<-pull_final_year_mean(results,"omni_i")
 carn_i<-pull_final_year_mean(results,"carn_i")
 
 phyt_so<- pull_final_year_mean(results,"phyt_so")
@@ -100,7 +100,7 @@ benthslar_o<- pull_final_year_mean(results,"benthslar_o")
 benthclar_o<- pull_final_year_mean(results,"benthclar_o")
 fishplar_o<- pull_final_year_mean(results,"fishplar_o")
 fishdlar_o<- pull_final_year_mean(results,"fishdlar_o")
-herb_o<- pull_final_year_mean(results,"herb_o")
+omni_o<- pull_final_year_mean(results,"omni_o")
 carn_o<- pull_final_year_mean(results,"carn_o")
 
 #Pull out the flow matrix from the results
@@ -145,20 +145,20 @@ model.path<-model$setup$model.path
 	read.model.setup(model.path)			# Models/Model/Variant/MODEL_SETUP.csv
 	fitted.parameters	<- read_fitted_parameters(model.path)
 
-u_herb<-elt(fitted.parameters,"u_herb")
-h_herb<-elt(fitted.parameters,"h_herb")
+u_omni<-elt(fitted.parameters,"u_omni")
+h_omni<-elt(fitted.parameters,"h_omni")
 
-PREF_phyt_herb<-elt(fitted.parameters,"PREF_phyt_herb")
-PREF_det_herb<-elt(fitted.parameters,"PREF_det_herb")
-PREF_benthslar_herb<-elt(fitted.parameters,"PREF_benthslar_herb")
-PREF_benthclar_herb<-elt(fitted.parameters,"PREF_benthclar_herb")
+PREF_phyt_omni<-elt(fitted.parameters,"PREF_phyt_omni")
+PREF_det_omni<-elt(fitted.parameters,"PREF_det_omni")
+PREF_benthslar_omni<-elt(fitted.parameters,"PREF_benthslar_omni")
+PREF_benthclar_omni<-elt(fitted.parameters,"PREF_benthclar_omni")
 
 #....
 
 u_carn<-elt(fitted.parameters,"u_carn")
 h_carn<-elt(fitted.parameters,"h_carn")
 
-PREF_herb_carn<-elt(fitted.parameters,"PREF_herb_carn")
+PREF_omni_carn<-elt(fitted.parameters,"PREF_omni_carn")
 PREF_benthslar_carn<-elt(fitted.parameters,"PREF_benthslar_carn")
 PREF_benthclar_carn<-elt(fitted.parameters,"PREF_benthclar_carn")
 PREF_fishplar_carn<-elt(fitted.parameters,"PREF_fishplar_carn")
@@ -185,7 +185,7 @@ PREF_det_benthclar<-elt(fitted.parameters,"PREF_det_benthclar")
 u_fishplar<-elt(fitted.parameters,"u_fishplar")
 h_fishplar<-elt(fitted.parameters,"h_fishplar")
 
-PREF_herb_fishplar<-elt(fitted.parameters,"PREF_herb_fishplar")
+PREF_omni_fishplar<-elt(fitted.parameters,"PREF_omni_fishplar")
 PREF_benthslar_fishplar<-elt(fitted.parameters,"PREF_benthslar_fishplar")
 PREF_benthclar_fishplar<-elt(fitted.parameters,"PREF_benthclar_fishplar")
 
@@ -194,7 +194,7 @@ PREF_benthclar_fishplar<-elt(fitted.parameters,"PREF_benthclar_fishplar")
 u_fishdlar<-elt(fitted.parameters,"u_fishdlar")
 h_fishdlar<-elt(fitted.parameters,"h_fishdlar")
 
-PREF_herb_fishdlar<-elt(fitted.parameters,"PREF_herb_fishdlar")
+PREF_omni_fishdlar<-elt(fitted.parameters,"PREF_omni_fishdlar")
 PREF_benthslar_fishdlar<-elt(fitted.parameters,"PREF_benthslar_fishdlar")
 PREF_benthclar_fishdlar<-elt(fitted.parameters,"PREF_benthclar_fishdlar")
 
@@ -207,13 +207,13 @@ PREF_benthclar_fishdlar<-elt(fitted.parameters,"PREF_benthclar_fishdlar")
 
 # Calculate the vertical distributions of consumers in the offshore
 
- prop_herb_surfo<-         ((u_herb*PREF_det_herb*detritus_so)+
-                            (u_herb*PREF_phyt_herb*phyt_so))/
-                           ((u_herb*PREF_det_herb*detritus_so)+
-                            (u_herb*PREF_det_herb*detritus_d)+
-                            (u_herb*PREF_phyt_herb*phyt_so)+
-                            (u_herb*PREF_phyt_herb*phyt_d))
- prop_herb_deep<-(1-prop_herb_surfo)
+ prop_omni_surfo<-         ((u_omni*PREF_det_omni*detritus_so)+
+                            (u_omni*PREF_phyt_omni*phyt_so))/
+                           ((u_omni*PREF_det_omni*detritus_so)+
+                            (u_omni*PREF_det_omni*detritus_d)+
+                            (u_omni*PREF_phyt_omni*phyt_so)+
+                            (u_omni*PREF_phyt_omni*phyt_d))
+ prop_omni_deep<-(1-prop_omni_surfo)
 
  prop_benthslar_surfo<-         ((u_benthslar*PREF_det_benthslar*detritus_so)+
                             (u_benthslar*PREF_phyt_benthslar*phyt_so))/
@@ -234,53 +234,53 @@ PREF_benthclar_fishdlar<-elt(fitted.parameters,"PREF_benthclar_fishdlar")
 
 #Now calculate the fluxes
 
-calc_flux_phyt_herb_o<- f1(phyt_so,(herb_o*prop_herb_surfo),u_herb*PREF_phyt_herb,h_herb*(volume_so)) +
-                   f1(phyt_d,(herb_o*prop_herb_deep),u_herb*PREF_phyt_herb,h_herb*(volume_d))
-calc_flux_phyt_herb_i<- f1(phyt_si,(herb_i),u_herb*PREF_phyt_herb,h_herb*(volume_si))
+calc_flux_phyt_omni_o<- f1(phyt_so,(omni_o*prop_omni_surfo),u_omni*PREF_phyt_omni,h_omni*(volume_so)) +
+                   f1(phyt_d,(omni_o*prop_omni_deep),u_omni*PREF_phyt_omni,h_omni*(volume_d))
+calc_flux_phyt_omni_i<- f1(phyt_si,(omni_i),u_omni*PREF_phyt_omni,h_omni*(volume_si))
 
-calc_flux_phyt_herb_w <- calc_flux_phyt_herb_o + calc_flux_phyt_herb_i
+calc_flux_phyt_omni_w <- calc_flux_phyt_omni_o + calc_flux_phyt_omni_i
 
-model_flux_phyt_herb<-extract_model_flux(flow_matrix,"phyt","omnivzoo")
+model_flux_phyt_omni<-extract_model_flux(flow_matrix,"phyt","omnivzoo")
 
-#calc_flux_phyt_herb_w
-#model_flux_phyt_herb
-
-#............................
-
-calc_flux_det_herb_o<- f1(detritus_so,(herb_o*prop_herb_surfo),u_herb*PREF_det_herb,h_herb*(volume_so)) +
-                   f1(detritus_d,(herb_o*prop_herb_deep),u_herb*PREF_det_herb,h_herb*(volume_d))
-calc_flux_det_herb_i<- f1(detritus_si,(herb_i),u_herb*PREF_det_herb,h_herb*(volume_si))
-
-calc_flux_det_herb_w <- calc_flux_det_herb_o + calc_flux_det_herb_i
-
-model_flux_det_herb<-extract_model_flux(flow_matrix,"wcdetritus","omnivzoo")
-
-#calc_flux_det_herb_w
-#model_flux_det_herb
+#calc_flux_phyt_omni_w
+#model_flux_phyt_omni
 
 #............................
 
-calc_flux_benthslar_herb_o<- f1(benthslar_o,(herb_o),u_herb*PREF_benthslar_herb,h_herb*(volume_so+volume_d))
-calc_flux_benthslar_herb_i<- f1(benthslar_i,(herb_i),u_herb*PREF_benthslar_herb,h_herb*(volume_si))
+calc_flux_det_omni_o<- f1(detritus_so,(omni_o*prop_omni_surfo),u_omni*PREF_det_omni,h_omni*(volume_so)) +
+                   f1(detritus_d,(omni_o*prop_omni_deep),u_omni*PREF_det_omni,h_omni*(volume_d))
+calc_flux_det_omni_i<- f1(detritus_si,(omni_i),u_omni*PREF_det_omni,h_omni*(volume_si))
 
-calc_flux_benthslar_herb_w <- calc_flux_benthslar_herb_o + calc_flux_benthslar_herb_i
+calc_flux_det_omni_w <- calc_flux_det_omni_o + calc_flux_det_omni_i
 
-model_flux_benthslar_herb<-extract_model_flux(flow_matrix,"benthslar","omnivzoo")
+model_flux_det_omni<-extract_model_flux(flow_matrix,"wcdetritus","omnivzoo")
 
-#calc_flux_benthslar_herb_w
-#model_flux_benthslar_herb
+#calc_flux_det_omni_w
+#model_flux_det_omni
 
 #............................
 
-calc_flux_benthclar_herb_o<- f1(benthclar_o,(herb_o),u_herb*PREF_benthclar_herb,h_herb*(volume_so+volume_d))
-calc_flux_benthclar_herb_i<- f1(benthclar_i,(herb_i),u_herb*PREF_benthclar_herb,h_herb*(volume_si))
+calc_flux_benthslar_omni_o<- f1(benthslar_o,(omni_o),u_omni*PREF_benthslar_omni,h_omni*(volume_so+volume_d))
+calc_flux_benthslar_omni_i<- f1(benthslar_i,(omni_i),u_omni*PREF_benthslar_omni,h_omni*(volume_si))
 
-calc_flux_benthclar_herb_w <- calc_flux_benthclar_herb_o + calc_flux_benthclar_herb_i
+calc_flux_benthslar_omni_w <- calc_flux_benthslar_omni_o + calc_flux_benthslar_omni_i
 
-model_flux_benthclar_herb<-extract_model_flux(flow_matrix,"benthclar","omnivzoo")
+model_flux_benthslar_omni<-extract_model_flux(flow_matrix,"benthslar","omnivzoo")
 
-#calc_flux_benthclar_herb_w
-#model_flux_benthclar_herb
+#calc_flux_benthslar_omni_w
+#model_flux_benthslar_omni
+
+#............................
+
+calc_flux_benthclar_omni_o<- f1(benthclar_o,(omni_o),u_omni*PREF_benthclar_omni,h_omni*(volume_so+volume_d))
+calc_flux_benthclar_omni_i<- f1(benthclar_i,(omni_i),u_omni*PREF_benthclar_omni,h_omni*(volume_si))
+
+calc_flux_benthclar_omni_w <- calc_flux_benthclar_omni_o + calc_flux_benthclar_omni_i
+
+model_flux_benthclar_omni<-extract_model_flux(flow_matrix,"benthclar","omnivzoo")
+
+#calc_flux_benthclar_omni_w
+#model_flux_benthclar_omni
 
 #............................
 #............................
@@ -339,15 +339,15 @@ model_flux_det_benthclar<-extract_model_flux(flow_matrix,"wcdetritus","benthclar
 #............................
 #............................
 
-calc_flux_herb_carn_o<- f1(herb_o,(carn_o),u_carn*PREF_herb_carn,h_carn*(volume_so+volume_d))
-calc_flux_herb_carn_i<- f1(herb_i,(carn_i),u_carn*PREF_herb_carn,h_carn*(volume_si))
+calc_flux_omni_carn_o<- f1(omni_o,(carn_o),u_carn*PREF_omni_carn,h_carn*(volume_so+volume_d))
+calc_flux_omni_carn_i<- f1(omni_i,(carn_i),u_carn*PREF_omni_carn,h_carn*(volume_si))
 
-calc_flux_herb_carn_w <- calc_flux_herb_carn_o + calc_flux_herb_carn_i
+calc_flux_omni_carn_w <- calc_flux_omni_carn_o + calc_flux_omni_carn_i
 
-model_flux_herb_carn<-extract_model_flux(flow_matrix,"omnivzoo","carnzoo")
+model_flux_omni_carn<-extract_model_flux(flow_matrix,"omnivzoo","carnzoo")
 
-#calc_flux_herb_carn_w
-#model_flux_herb_carn
+#calc_flux_omni_carn_w
+#model_flux_omni_carn
 
 #............................
 
@@ -400,15 +400,15 @@ model_flux_fishdlar_carn<-extract_model_flux(flow_matrix,"dfishlar","carnzoo")
 #............................
 #............................
 
-calc_flux_herb_fishplar_o<- f1(herb_o,(fishplar_o),u_fishplar*PREF_herb_fishplar,h_fishplar*(volume_so+volume_d))
-calc_flux_herb_fishplar_i<- f1(herb_i,(fishplar_i),u_fishplar*PREF_herb_fishplar,h_fishplar*(volume_si))
+calc_flux_omni_fishplar_o<- f1(omni_o,(fishplar_o),u_fishplar*PREF_omni_fishplar,h_fishplar*(volume_so+volume_d))
+calc_flux_omni_fishplar_i<- f1(omni_i,(fishplar_i),u_fishplar*PREF_omni_fishplar,h_fishplar*(volume_si))
 
-calc_flux_herb_fishplar_w <- calc_flux_herb_fishplar_o + calc_flux_herb_fishplar_i
+calc_flux_omni_fishplar_w <- calc_flux_omni_fishplar_o + calc_flux_omni_fishplar_i
 
-model_flux_herb_fishplar<-extract_model_flux(flow_matrix,"omnivzoo","pfishlar")
+model_flux_omni_fishplar<-extract_model_flux(flow_matrix,"omnivzoo","pfishlar")
 
-#calc_flux_herb_fishplar_w
-#model_flux_herb_fishplar
+#calc_flux_omni_fishplar_w
+#model_flux_omni_fishplar
 
 #............................
 
@@ -437,15 +437,15 @@ model_flux_benthclar_fishplar<-extract_model_flux(flow_matrix,"benthclar","pfish
 #............................
 #............................
 
-calc_flux_herb_fishdlar_o<- f1(herb_o,(fishdlar_o),u_fishdlar*PREF_herb_fishdlar,h_fishdlar*(volume_so+volume_d))
-calc_flux_herb_fishdlar_i<- f1(herb_i,(fishdlar_i),u_fishdlar*PREF_herb_fishdlar,h_fishdlar*(volume_si))
+calc_flux_omni_fishdlar_o<- f1(omni_o,(fishdlar_o),u_fishdlar*PREF_omni_fishdlar,h_fishdlar*(volume_so+volume_d))
+calc_flux_omni_fishdlar_i<- f1(omni_i,(fishdlar_i),u_fishdlar*PREF_omni_fishdlar,h_fishdlar*(volume_si))
 
-calc_flux_herb_fishdlar_w <- calc_flux_herb_fishdlar_o + calc_flux_herb_fishdlar_i
+calc_flux_omni_fishdlar_w <- calc_flux_omni_fishdlar_o + calc_flux_omni_fishdlar_i
 
-model_flux_herb_fishdlar<-extract_model_flux(flow_matrix,"omnivzoo","dfishlar")
+model_flux_omni_fishdlar<-extract_model_flux(flow_matrix,"omnivzoo","dfishlar")
 
-#calc_flux_herb_fishdlar_w
-#model_flux_herb_fishdlar
+#calc_flux_omni_fishdlar_w
+#model_flux_omni_fishdlar
 
 #............................
 
@@ -476,12 +476,12 @@ model_flux_benthclar_fishdlar<-extract_model_flux(flow_matrix,"benthclar","dfish
 
 #Implement testthat checks...
 
-expect_equal(model_flux_phyt_herb,calc_flux_phyt_herb_w , 1e-7)
-expect_equal(model_flux_det_herb,calc_flux_det_herb_w , 1e-7)
-expect_equal(model_flux_benthslar_herb,calc_flux_benthslar_herb_w , 1e-7)
-expect_equal(model_flux_benthclar_herb,calc_flux_benthclar_herb_w , 1e-7)
+expect_equal(model_flux_phyt_omni,calc_flux_phyt_omni_w , 1e-7)
+expect_equal(model_flux_det_omni,calc_flux_det_omni_w , 1e-7)
+expect_equal(model_flux_benthslar_omni,calc_flux_benthslar_omni_w , 1e-7)
+expect_equal(model_flux_benthclar_omni,calc_flux_benthclar_omni_w , 1e-7)
 
-expect_equal(model_flux_herb_carn,calc_flux_herb_carn_w , 1e-7)
+expect_equal(model_flux_omni_carn,calc_flux_omni_carn_w , 1e-7)
 expect_equal(model_flux_benthslar_carn,calc_flux_benthslar_carn_w , 1e-7)
 expect_equal(model_flux_benthclar_carn,calc_flux_benthclar_carn_w , 1e-7)
 expect_equal(model_flux_fishplar_carn,calc_flux_fishplar_carn_w , 1e-7)
@@ -493,11 +493,11 @@ expect_equal(model_flux_det_benthslar,calc_flux_det_benthslar_w , 1e-6)
 expect_equal(model_flux_phyt_benthclar,calc_flux_phyt_benthclar_w , 1e-7)
 expect_equal(model_flux_det_benthclar,calc_flux_det_benthclar_w , 1e-7)
 
-expect_equal(model_flux_herb_fishplar,calc_flux_herb_fishplar_w , 1e-7)
+expect_equal(model_flux_omni_fishplar,calc_flux_omni_fishplar_w , 1e-7)
 expect_equal(model_flux_benthslar_fishplar,calc_flux_benthslar_fishplar_w , 1e-7)
 expect_equal(model_flux_benthclar_fishplar,calc_flux_benthclar_fishplar_w , 1e-7)
 
-expect_equal(model_flux_herb_fishdlar,calc_flux_herb_fishdlar_w , 1e-7)
+expect_equal(model_flux_omni_fishdlar,calc_flux_omni_fishdlar_w , 1e-7)
 expect_equal(model_flux_benthslar_fishdlar,calc_flux_benthslar_fishdlar_w , 1e-7)
 expect_equal(model_flux_benthclar_fishdlar,calc_flux_benthclar_fishdlar_w , 1e-7)
 

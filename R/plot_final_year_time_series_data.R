@@ -77,8 +77,8 @@ on.exit(par(mfrow = start_par))
 	phyt_so		<- elt(output, "phyt_so")
 	phyt_si		<- elt(output, "phyt_si")
 	phyt_d		<- elt(output, "phyt_d")
-	herb_o		<- elt(output, "herb_o")
-	herb_i		<- elt(output, "herb_i")
+	omni_o		<- elt(output, "omni_o")
+	omni_i		<- elt(output, "omni_i")
 	carn_o		<- elt(output, "carn_o")
 	carn_i		<- elt(output, "carn_i")
 	benths_o	<- elt(output, "benths_o")
@@ -441,8 +441,8 @@ if(selection=="NUT_PHYT"){
 
 	par(mfrow=c(2,2))
 
-	l1<-herb_o[((nyears-1)*360+1):ndays]/(1-x_shallowprop)
-	l2<-herb_i[((nyears-1)*360+1):ndays]/x_shallowprop
+	l1<-omni_o[((nyears-1)*360+1):ndays]/(1-x_shallowprop)
+	l2<-omni_i[((nyears-1)*360+1):ndays]/x_shallowprop
 	fyplot2("Omnivorous zooplankton","","Offshore","Inshore",l1,l2)
 	mtext(bquote("Area density mMN.m"^-2),cex=0.7,side=2,line=2.5)
 

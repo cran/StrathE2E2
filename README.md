@@ -104,10 +104,10 @@ Start R and run:
 Then on command line:
 ```
 > R CMD build StrathE2E2
-> R CMD INSTALL --build StrathE2E2_3.1.0.tar.gz
+> R CMD INSTALL --build StrathE2E2_3.2.0.tar.gz
 ```
 
-This will build the binary package *StrathE2E2_3.1.0.zip*
+This will build the binary package *StrathE2E2_3.2.0.zip*
 
 
 ### MacOS X build
@@ -126,11 +126,11 @@ make sure to restart any *terminal* applications after installing these packages
 
 Within a *Terminal*, unpack the downloaded source package and install/build:
 ```
-tar zxvf StrathE2E2_3.1.0.tar.gz
+tar zxvf StrathE2E2_3.2.0.tar.gz
 R CMD INSTALL --build StrathE2E2
 ```
 
 If the command line developer tools are missing you should accept the offer of installing them.
 
-A successful build will install the package in R, and there will also be a binary package file *StrathE2E2_3.1.0.tgz* created.
+A successful build will install the package in R, and there will also be a binary package file *StrathE2E2_3.2.0.tgz* created.
 

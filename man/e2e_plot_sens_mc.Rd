@@ -122,7 +122,9 @@ if(require(StrathE2E2examples)){
 
 }
 \references{
-For details on the sensitivity analysis methodology see: Morris, M.D. (1991). Factorial sampling plans for preliminary computational experiments. Technometrics, 33, 161-174.
+For details on the sensitivity analysis method see: Morris, M.D. (1991). Factorial sampling plans for preliminary computational experiments. Technometrics, 33, 161-174.
+
+For a review of sensitivity analysis methods including the Morris Method see: Wu, J. et al. (2013). Sensitivity analysis of infectious disease models: methods, advances and their application. J R Soc Interface 10: 20121018, 14pp.
 }
 \seealso{
 \code{\link{e2e_read}}, \code{\link{e2e_run_mc}}, \code{\link{e2e_run_sens}}, \code{\link{e2e_get_parmdoc}}

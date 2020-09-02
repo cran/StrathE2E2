@@ -66,7 +66,8 @@
 #'
 #' For details of how the distribution of credible output values from StrathE2E are calculated see the help information for the e2e_run_mc() function.
 #'
-#' @references For details on the sensitivity analysis methodology see: Morris, M.D. (1991). Factorial sampling plans for preliminary computational experiments. Technometrics, 33, 161-174.
+#' @references For details on the sensitivity analysis method see: Morris, M.D. (1991). Factorial sampling plans for preliminary computational experiments. Technometrics, 33, 161-174.
+#' @references For a review of sensitivity analysis methods including the Morris Method see: Wu, J. et al. (2013). Sensitivity analysis of infectious disease models: methods, advances and their application. J R Soc Interface 10: 20121018, 14pp. 
 #'
 #' @param model R-list object defining the model configuration, compiled by the e2e_read() function
 #' @param selection Text string from a list identifying source of data to bed merged. Select from: "SENS", "MC", referring to sensitivity analysis or Monte Carlo analysis. Remember to include the phrase within "" quotes.

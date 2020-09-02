@@ -172,18 +172,18 @@ build_model_parameters <- function(model, uptakes, fleet.model.output) {
 		hsAMM_phyt		= elt(uptakes, "hsAMM_phyt"),
 	
 		#Feeding by mesozooplankton at the reference temperature
-		uphyt_herbt		= elt(uptakes, "uphyt_herbt"),
-		hsphyt_herb		= elt(uptakes, "hsphyt_herb"),
-		udet_herbt		= elt(uptakes, "udet_herbt"),
-		hsdet_herb		= elt(uptakes, "hsdet_herb"),
-		ubenthslar_herbt	= elt(uptakes, "ubenthslar_herbt"),
-		hsbenthslar_herb	= elt(uptakes, "hsbenthslar_herb"),
-		ubenthclar_herbt	= elt(uptakes, "ubenthclar_herbt"),
-		hsbenthclar_herb	= elt(uptakes, "hsbenthclar_herb"),
+		uphyt_omnit		= elt(uptakes, "uphyt_omnit"),
+		hsphyt_omni		= elt(uptakes, "hsphyt_omni"),
+		udet_omnit		= elt(uptakes, "udet_omnit"),
+		hsdet_omni		= elt(uptakes, "hsdet_omni"),
+		ubenthslar_omnit	= elt(uptakes, "ubenthslar_omnit"),
+		hsbenthslar_omni	= elt(uptakes, "hsbenthslar_omni"),
+		ubenthclar_omnit	= elt(uptakes, "ubenthclar_omnit"),
+		hsbenthclar_omni	= elt(uptakes, "hsbenthclar_omni"),
 	
 		#Feeding by carnivorous zooplankton at the reference temperature
-		uherb_carnt		= elt(uptakes, "uherb_carnt"),
-		hsherb_carn		= elt(uptakes, "hsherb_carn"),
+		uomni_carnt		= elt(uptakes, "uomni_carnt"),
+		hsomni_carn		= elt(uptakes, "hsomni_carn"),
 		ubenthslar_carnt	= elt(uptakes, "ubenthslar_carnt"),
 		hsbenthslar_carn	= elt(uptakes, "hsbenthslar_carn"),
 		ubenthclar_carnt	= elt(uptakes, "ubenthclar_carnt"),
@@ -194,16 +194,16 @@ build_model_parameters <- function(model, uptakes, fleet.model.output) {
 		hsfishdlar_carn		= elt(uptakes, "hsfishdlar_carn"),
 	
 		#Feeding by larvae of pelagic fish at the reference temperature
-		uherb_fishplart		= elt(uptakes, "uherb_fishplart"),
-		hsherb_fishplar		= elt(uptakes, "hsherb_fishplar"),
+		uomni_fishplart		= elt(uptakes, "uomni_fishplart"),
+		hsomni_fishplar		= elt(uptakes, "hsomni_fishplar"),
 		ubenthslar_fishplart	= elt(uptakes, "ubenthslar_fishplart"),
 		hsbenthslar_fishplar	= elt(uptakes, "hsbenthslar_fishplar"),
 		ubenthclar_fishplart	= elt(uptakes, "ubenthclar_fishplart"),
 		hsbenthclar_fishplar	= elt(uptakes, "hsbenthclar_fishplar"),
 	
 		#Feeding by pelagic fish at the reference temperature
-		uherb_fishpt		= elt(uptakes, "uherb_fishpt"),
-		hsherb_fishp		= elt(uptakes, "hsherb_fishp"),
+		uomni_fishpt		= elt(uptakes, "uomni_fishpt"),
+		hsomni_fishp		= elt(uptakes, "hsomni_fishp"),
 		ucarn_fishpt		= elt(uptakes, "ucarn_fishpt"),
 		hscarn_fishp		= elt(uptakes, "hscarn_fishp"),
 		ubenthslar_fishpt	= elt(uptakes, "ubenthslar_fishpt"),
@@ -216,8 +216,8 @@ build_model_parameters <- function(model, uptakes, fleet.model.output) {
 		hsfishplar_fishp	= elt(uptakes, "hsfishplar_fishp"),
 	
 		#Feeding by migratory fish at the reference temperature
-		uherb_fishmt		= elt(uptakes, "uherb_fishmt"),
-		hsherb_fishm		= elt(uptakes, "hsherb_fishm"),
+		uomni_fishmt		= elt(uptakes, "uomni_fishmt"),
+		hsomni_fishm		= elt(uptakes, "hsomni_fishm"),
 		ucarn_fishmt		= elt(uptakes, "ucarn_fishmt"),
 		hscarn_fishm		= elt(uptakes, "hscarn_fishm"),
 		ubenthslar_fishmt	= elt(uptakes, "ubenthslar_fishmt"),
@@ -230,8 +230,8 @@ build_model_parameters <- function(model, uptakes, fleet.model.output) {
 		hsfishplar_fishm	= elt(uptakes, "hsfishplar_fishm"),
 	
 		#Feeding by larvae of demersal fish at the reference temperature
-		uherb_fishdlart		= elt(uptakes, "uherb_fishdlart"),
-		hsherb_fishdlar		= elt(uptakes, "hsherb_fishdlar"),
+		uomni_fishdlart		= elt(uptakes, "uomni_fishdlart"),
+		hsomni_fishdlar		= elt(uptakes, "hsomni_fishdlar"),
 		ubenthslar_fishdlart	= elt(uptakes, "ubenthslar_fishdlart"),
 		hsbenthslar_fishdlar	= elt(uptakes, "hsbenthslar_fishdlar"),
 		ubenthclar_fishdlart	= elt(uptakes, "ubenthclar_fishdlart"),
@@ -291,8 +291,8 @@ build_model_parameters <- function(model, uptakes, fleet.model.output) {
 	
 		#Feeding by birds and mammals - temperature independent
 	
-		##uherb_bird		= elt(uptakes, "uherb_bird"),
-		##hsherb_bird		= elt(uptakes, "hsherb_bird"),
+		##uomni_bird		= elt(uptakes, "uomni_bird"),
+		##hsomni_bird		= elt(uptakes, "hsomni_bird"),
 		ucarn_bird		= elt(uptakes, "ucarn_bird"),
 		hscarn_bird		= elt(uptakes, "hscarn_bird"),
 		ubenths_bird		= elt(uptakes, "ubenths_bird"),
@@ -337,8 +337,8 @@ build_model_parameters <- function(model, uptakes, fleet.model.output) {
 
 		bdapar_seal		= elt(uptakes, "bdapar_seal"),
 
-		uherb_ceta		= elt(uptakes, "uherb_ceta"),
-		hsherb_ceta		= elt(uptakes, "hsherb_ceta"),
+		uomni_ceta		= elt(uptakes, "uomni_ceta"),
+		hsomni_ceta		= elt(uptakes, "hsomni_ceta"),
 		ucarn_ceta		= elt(uptakes, "ucarn_ceta"),
 		hscarn_ceta		= elt(uptakes, "hscarn_ceta"),
 		ubenths_ceta		= elt(uptakes, "ubenths_ceta"),
@@ -424,7 +424,7 @@ build_model_parameters <- function(model, uptakes, fleet.model.output) {
 		xxdt			= elt(fitted.parms, "xxdt"),
 	
 		#Death rate per unit biomass for carnivores fish birds and mammals
-		xxherb			= elt(fitted.parms, "xxherb"),
+		xxomni			= elt(fitted.parms, "xxomni"),
 		xxcarn			= elt(fitted.parms, "xxcarn"),
 		xxbenthslar		= elt(fitted.parms, "xxbenthslar"),
 		xxbenthclar		= elt(fitted.parms, "xxbenthclar"),

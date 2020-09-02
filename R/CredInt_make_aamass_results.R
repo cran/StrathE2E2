@@ -87,7 +87,7 @@ CredInt_make_aamass_results <- function(model, inshoreaamassstore, offshoreaamas
 	#offshoreaamassstore$benth_susp_bd<-(offshoreaamassstore$Benthos_susp/dep_feeders+offshoreaamassstore$Benthos_susp/dep_feeders_larvae)/(1-offshoreaamassstore$Area_proportion_of_inshore_zone)
 	offshoreaamassstore$benth_susp_bd<-(offshoreaamassstore[,21]+offshoreaamassstore[,22])/(1-offshoreaamassstore$Area_proportion_of_inshore_zone)
 
-	offshoreaamassstore$herb_bd<-offshoreaamassstore$Omnivorous_zooplankton/(1-offshoreaamassstore$Area_proportion_of_inshore_zone)
+	offshoreaamassstore$omni_bd<-offshoreaamassstore$Omnivorous_zooplankton/(1-offshoreaamassstore$Area_proportion_of_inshore_zone)
 
 	#offshoreaamassstore$benth_carn_bd<-(offshoreaamassstore$Benthos_carn/scav_feeders+offshoreaamassstore$Benthos_carn/scav_feeders_larvae)/(1-offshoreaamassstore$Area_proportion_of_inshore_zone)
 	offshoreaamassstore$benth_carn_bd<-(offshoreaamassstore[,23]+offshoreaamassstore[,24])/(1-offshoreaamassstore$Area_proportion_of_inshore_zone)
@@ -108,7 +108,7 @@ CredInt_make_aamass_results <- function(model, inshoreaamassstore, offshoreaamas
 	#inshoreaamassstore$benth_susp_bd<-(inshoreaamassstore$Benthos_susp/dep_feeders+inshoreaamassstore$Benthos_susp/dep_feeders_larvae)/(inshoreaamassstore$Area_proportion_of_inshore_zone)
 	inshoreaamassstore$benth_susp_bd<-(inshoreaamassstore[,21]+inshoreaamassstore[,22])/(inshoreaamassstore$Area_proportion_of_inshore_zone)
 
-	inshoreaamassstore$herb_bd<-inshoreaamassstore$Omnivorous_zooplankton/(inshoreaamassstore$Area_proportion_of_inshore_zone)
+	inshoreaamassstore$omni_bd<-inshoreaamassstore$Omnivorous_zooplankton/(inshoreaamassstore$Area_proportion_of_inshore_zone)
 
 	#inshoreaamassstore$benth_carn_bd<-(inshoreaamassstore$Benthos_carn/scav_feeders+inshoreaamassstore$Benthos_carn/scav_feeders_larvae)/(inshoreaamassstore$Area_proportion_of_inshore_zone)
 	inshoreaamassstore$benth_carn_bd<-(inshoreaamassstore[,23]+inshoreaamassstore[,24])/(inshoreaamassstore$Area_proportion_of_inshore_zone)
@@ -129,7 +129,7 @@ CredInt_make_aamass_results <- function(model, inshoreaamassstore, offshoreaamas
 	#wholeaamassstore$benth_susp_bd<-(wholeaamassstore$Benthos_susp/dep_feeders+wholeaamassstore$Benthos_susp/dep_feeders_larvae)
 	wholeaamassstore$benth_susp_bd<-(wholeaamassstore[,21]+wholeaamassstore[,22])
 
-	wholeaamassstore$herb_bd<-wholeaamassstore$Omnivorous_zooplankton
+	wholeaamassstore$omni_bd<-wholeaamassstore$Omnivorous_zooplankton
 
 	#wholeaamassstore$benth_carn_bd<-(wholeaamassstore$Benthos_carn/scav_feeders+wholeaamassstore$Benthos_carn/scav_feeders_larvae)
 	wholeaamassstore$benth_carn_bd<-(wholeaamassstore[,23]+wholeaamassstore[,24])

@@ -42,7 +42,7 @@ monthly_averages_of_final_year <- function(model, build, output, aggregates) {
 	s_nitrate	<- elt(aggregates, "s_nitrate")
 	s_ammonia	<- elt(aggregates, "s_ammonia")
 	s_phyt		<- elt(aggregates, "s_phyt")
-	herb		<- elt(aggregates, "herb")
+	omni		<- elt(aggregates, "omni")
 	carn		<- elt(aggregates, "carn")
 	benthslar	<- elt(aggregates, "benthslar")
 	benthclar	<- elt(aggregates, "benthclar")
@@ -61,7 +61,7 @@ monthly_averages_of_final_year <- function(model, build, output, aggregates) {
 		monthlyfinal[mon,3]<-mean(s_ammonia[((nyears-1)*360+((mon-1)*30)+1):((nyears-1)*360+(mon*30))])/xs_volume
 		monthlyfinal[mon,4]<-mean(ammonia_d[((nyears-1)*360+((mon-1)*30)+1):((nyears-1)*360+(mon*30))])/xd_volume
 		monthlyfinal[mon,5]<-mean(((((s_phyt[((nyears-1)*360+((mon-1)*30)+1):((nyears-1)*360+(mon*30))]))*12*106)/16)/C_to_chl)/xs_volume
-		monthlyfinal[mon,6]<-mean(herb[((nyears-1)*360+((mon-1)*30)+1):((nyears-1)*360+(mon*30))])/(xs_volume+xd_volume)
+		monthlyfinal[mon,6]<-mean(omni[((nyears-1)*360+((mon-1)*30)+1):((nyears-1)*360+(mon*30))])/(xs_volume+xd_volume)
 		monthlyfinal[mon,7]<-mean(carn[((nyears-1)*360+((mon-1)*30)+1):((nyears-1)*360+(mon*30))])/(xs_volume+xd_volume)
 		monthlyfinal[mon,8]<-mean(benthslar[((nyears-1)*360+((mon-1)*30)+1):((nyears-1)*360+(mon*30))])/(xs_volume+xd_volume)
 		monthlyfinal[mon,9]<-mean(benthclar[((nyears-1)*360+((mon-1)*30)+1):((nyears-1)*360+(mon*30))])/(xs_volume+xd_volume)
