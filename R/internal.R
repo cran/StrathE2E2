@@ -831,7 +831,7 @@ mass_results_descriptions<-c(
 "Migratory_fish",
 "Demersal_fish_larvae",
 "Demersal_fish",
-"Bird",
+"Birds",
 "Pinnipeds",
 "Cetaceans",
 "Total_nitrogen_mass",

@@ -11,7 +11,7 @@ fitted_uptake_mort_rates_NORTH_SEA.csv,Param,Fitted uptake and mortality paramet
 fitted_microbiology_others_NORTH_SEA.csv,Param,Fitted microibiology and other parameters,North Sea parameters generic for both 1970-1999 and 2003-2013 periods 
 fishing_fleet_NORTH_SEA_2003-2013.csv,Param,Fishing fleet basic parameters,North Sea fleet parameters for the 2003-2013 period (uses demersal discard rates from csv file)
 fishing_activity_NORTH_SEA_2003-2013.csv,Param,Fishing activity and seabed abrasion rates for each gear,North Sea gear activity rates from STECF and Norway for the 2003-2013 period
-fishing_power_NORTH_SEA.csv,Param,Fishing power parameters for each gear and guild,North Sea power parameters derived from 2003-2013 STECF data - used generically for both 1970-1999 and 2003-2013 periods
+fishing_power_NORTH_SEA_2003-2013.csv,Param,Fishing power parameters for each gear and guild,North Sea power parameters derived from 2003-2013 STECF data - used generically for both 1970-1999 and 2003-2013 periods
 fishing_discards_NORTH_SEA.csv,Param,Discard rates for each gear and guild,North Sea discard rates from 2003-2013 STECF data - used generically for both 1970-1999 and 2003-2013 - EXCEPT for demersal fish rates need to be set to internally derived in 1970-1999
 fishing_processing_NORTH_SEA.csv,Param,Processing at sea ratyes for each gear and guild,North Sea processing-at-sea rates generic for both 1970-1999 and 2003-2013 periods
 fishing_distribution_NORTH_SEA.csv,Param,Spatial distribution of activity rates across habitats,North Sea gear activity distributions from 2003-2013 STECF data - used generically for both the 1970-1999 and 2003-2013 periods

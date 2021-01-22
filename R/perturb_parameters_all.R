@@ -4,7 +4,7 @@
 #' perturb parameters a bit
 #'
 #' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#' Subroutine to load and set the parameter values to be use din the model run
+#' Subroutine to load and set the parameter values to be used in the model run
 #'
 #' Parameters which have been established by the simulated annealing scheme are
 #' loaded from a csv file which is made from the last line of the 'accepted parameters'
@@ -14,7 +14,7 @@
 #' hard-wired in this subroutine
 #' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #'
-#' In this bit of code the parameters can be varied by a random value drawn from a Gaussian distribution. The cv of the
+#' In this bit of code the parameters can be varied by a random value drawn from a uniform distribution. The range of the
 #' distribution is constant across groups of parameters.
 #' Intended for use in MCMC
 #'
@@ -619,7 +619,7 @@ names(ustore)<-c("uC_kelp","ddexudC_kelp","u_kelp","u_phyt","u_omni","u_carn","u
 
 if(h_sd>0){
 
-h_kelp<-max(0,runif(1,(1-h_sd)*h_kelp,h_kelp))
+h_kelp<-max(0,runif(1,(1-h_sd)*h_kelp,(1+h_sd)*h_kelp))
 h_phyt<-max(0,runif(1,(1-h_sd)*h_phyt,(1+h_sd)*h_phyt))
 h_omni<-max(0,runif(1,(1-h_sd)*h_omni,(1+h_sd)*h_omni))
 h_carn<-max(0,runif(1,(1-h_sd)*h_carn,(1+h_sd)*h_carn))

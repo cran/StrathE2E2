@@ -100,7 +100,7 @@ I_results<-O_results
 #25                           Migratory_fish
 #26                     Demersal_fish_larvae
 #27                            Demersal_fish
-#28                                     Bird
+#28                                    Birds
 #29                                Pinnipeds
 #30                                Cetaceans
 
@@ -158,8 +158,8 @@ O_results$omni_bd <- ( (O_rawresults[which(O_rawresults$Description=="Omnivorous
 I_results$carn_bd <- ( (I_rawresults[which(I_rawresults$Description=="Carnivorous_zooplankton"),1]) ) /shallowprop
 O_results$carn_bd <- ( (O_rawresults[which(O_rawresults$Description=="Carnivorous_zooplankton"),1]) ) /(1-shallowprop)
 
-I_results$bird_bd <- ( (I_rawresults[which(I_rawresults$Description=="Bird"),1]) ) /shallowprop
-O_results$bird_bd <- ( (O_rawresults[which(O_rawresults$Description=="Bird"),1]) ) /(1-shallowprop)
+I_results$bird_bd <- ( (I_rawresults[which(I_rawresults$Description=="Birds"),1]) ) /shallowprop
+O_results$bird_bd <- ( (O_rawresults[which(O_rawresults$Description=="Birds"),1]) ) /(1-shallowprop)
 
 I_results$seal_bd <- ( (I_rawresults[which(I_rawresults$Description=="Pinnipeds"),1]) ) /shallowprop
 O_results$seal_bd <- ( (O_rawresults[which(O_rawresults$Description=="Pinnipeds"),1]) ) /(1-shallowprop)

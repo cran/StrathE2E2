@@ -24,7 +24,7 @@ test_that("check that the testbed model achieves a steady state", {
 
 #Run the testbed model - assuming R home dir is "/GitLab/StrathE2E2/tests/testthat"
 
-nyears<-20  # number of years to run the model - the first 3 years should be ignored due to very tiny fluctuations arising from
+nyears<-40  # number of years to run the model - the first 3 years should be ignored due to very tiny fluctuations arising from
 #             lack of required precision capability in the csv files for setting initial conditions
 
 model<-e2e_read(model.name="Testbed",

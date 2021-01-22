@@ -9,8 +9,9 @@
 #' environmental forcings.
 #'
 #' The basis for the method is a scheme for sampling the model parameters, one at a time, from distributions around baseline sets, and testing the effects on the performance
-#' of the model against some criterion. In this case, the criterion is the likelihood of the observational data on the state of the ecosystem that
-#' are used as the target for parameter optimization in the various simulated annealing functions supplied with the package.
+#' of the model against some criterion. The default criterion is the likelihood of the observational data on the state of the ecosystem that
+#' are used as the target for parameter optimization in the various simulated annealing functions supplied with the package. However, the criterion can in principle 
+#' be any metric output from the model, e.g. a state variable value at some point in time or averaged over a time interval, or one of the computed fluxes.
 #'
 #' The process requires an initial set of parameters for the model. We refer to this as the 'parent' parameter set. It is recommended that this should be the parameters producing
 #' the maximum likelihood of the observational target data (as estimated by e.g. the e2e_optimize_eco() function). The MODEL_SETUP.csv file in the folder
@@ -20,14 +21,14 @@
 #' gaussian distribution of mean 0 and standard deviation given by a fixed coefficient
 #' of variation applied to the parent-set value of each parameter. 
 #'
-#' For each of the child-sets of parameters, the likelihood of the observed target data is calculated following runs of StrathE2E to stationary state.
+#' For each of the child-sets of parameters, the chosen output criterion is saved following runs of StrathE2E to stationary state.
 #' We refer to these as trajectory baselines.
 #'
 #' Then, for each trajectory, the parameters are varied in turn, one at a time, by adding a fixed proportionality increment to the trajectory baseline values, the model re-run,
-#' and the likelihood computed. We refer to these as 'level runs'. The proportionality increment is the same for all of the level runs within a given trajectory, and is drawn at random from a set of fixed
+#' and the output criterion computed. We refer to these as 'level runs'. The proportionality increment is the same for all of the level runs within a given trajectory, and is drawn at random from a set of fixed
 #' levels distributed symetrically around 0 (e.g. -10, -5, +5, +10 percent, i.e. proportions of the trajectory baseline values = 0.9, 0.95, 1.05, 1.10).
 #'
-#' For each level run, the 'Elementary Effect (EE)' of the given parameter is calculated from the difference between the level run likelihood and the corresponding trajectory baseline likelihood.
+#' For each level run, the 'Elementary Effect (EE)' of the given parameter is calculated from the difference between the level run criterion value and the corresponding trajectory baseline criterion value.
 #'
 #' On completion of all the trajectories, the raw results are (optionally) post-processed to generate the mean and standard deviations of all the EE values for each parameter. EE_mean is an index of the magnitude
 #' of the sensitivity, and EE_sd is an index of the extent of interaction with other parameters.
@@ -36,17 +37,28 @@
 #' of the target data. A horizontal red line indicates the likelihood of the parent parameter set, horizontal grey line indicates the likelihood for each trajectory baseline
 #' and each level-run likelihood is shown by a symbol. The y-axis range can be changed in real-time by editing the setup file "/Models/Modelname/Modelvariant/Param/control/sensitivity.csv"
 #'
-#' The outputs from the function are directed saved as list objects and to csv files (provided that the argument csv.output=TRUE) in the "results" folder sepcified in an e2e_read() function call. The outputs are:
-#' a) Table of parameter values applied in each run of the model (OAT_parameter_values-*.csv, where * = model.ident as defined by e2e_read())
-#' b) Table of the likelihood and EE value for each trajectory/level run (OAT_results-*.csv)
-#' c) If post-processing is selected, then a table of Mean EE and standard deviation of EE for each parameter, sorted by the absolute value of EE_mean (sorted_parameter_elemental_effects-*.csv)
+#' The outputs from the function are saved as list objects and directed to csv files (provided that the argument csv.output=TRUE) in the "results" folder sepcified in an e2e_read() function call. The outputs are:
+#' \itemize{
+#'   \item Table of parameter values applied in each run of the model (OAT_parameter_values-*.csv, where * = model.ident as defined by e2e_read())
+#'   \item Table of the criterion value and EE value for each trajectory/level run (OAT_results-*.csv)
+#'   \item If post-processing is selected, then a table of Mean EE and standard deviation of EE for each parameter, sorted by the absolute value of EE_mean (sorted_parameter_elemental_effects-*.csv)
+#' }
 #'
-#' WARNING - This function will take several days to run to completion on a single processor with even a modest number of iteration. 
+#' As mentioned above, the default criterion for assessing the model sensitivity is the likelihood of the observed target data set on the state of the ecosystem given each set of model drivers and parameters. 
+#' However, a function argument allows other criteria to be chosen as the basis for the analysis from the list of annually averaged or integrated variables saved in the output objects:
+#' \itemize{
+#'   \item results$final.year.output$mass_results_wholedomain (whole-domain annual averages of stage variables over the final year of a model run), and 
+#'   \item results$final.year.output$annual_flux_results_wholedomain (whole-domian annual integrals of fluxes between state variables over the final year of a model run).
+#' }
+#' The criterion is chosen by setting a value for the argument outID. The default outID=0 selects the likelihood of the observed target data. Other values in the range 1 to 247 select annualy averaged mass or 
+#' annually integrated flux outputs from a list viewable by running the function e2e_get_senscrit().
+#' 
+#' WARNING - The e2e_run_sens() function will take several days to run to completion on a single processor with even a modest number of iterations. 
 #' The total number of model runs required to support the analysis is r*(n+1) where r is the number of trajectories and n is the number of parameters. 
 #' The function incorporates all of the physical configuration parameters, fixed and fitted ecology model
-#' parameters, the fishing fleet model parameters, and the environmental forcings into the analysis, so r = 453. Each model run needs to be sufficiently long to achieve a stationary state 
-#' and as a consequnce a typical runtime of around 10h per trajectory. The mininimum recommended number of trajectories
-#' is 15,  to the function can take several days to complete.
+#' parameters, the fishing fleet model parameters, and the environmental forcings into the analysis, so n = 450. Each model run needs to be sufficiently long to achieve a stationary state 
+#' and as a consequnce a typical runtime will be around 10h per trajectory. The mininimum recommended number of trajectories
+#' is 15, so the function can take several days to complete.
 #'
 #' However, it is possible to spread the load over multiple processor/machines with 
 #' arguments in the function allowing for management of this parallelization. Afterwards, the raw results files are combined into a single data set
@@ -68,10 +80,11 @@
 #' @param postprocess Logical. If TRUE then process the results through to a final sorted list of parameter sensitivies for plotting. If FALSE just produce the raw results. The reason for NOT processing would be if the job has been shared across multiple machines/processors and several raw result files need to be merged before processing. Default=TRUE.
 #' @param csv.output Logical. If TRUE then enable writing of csv output files (default=FALSE).
 #' @param runtime.plot Logical. If FALSE then disable runtime plotting of the progress of the run - useful for testing (default=TRUE).
+#' @param outID Numeric value in the range 0 to 247. Selects the output criterion to be used as the basis for the analysis. Default=0 corresponds to the likelihood of observed target data. Other values obtainable by running e2e_get_senscrit().
 #'
 #' @return Depends on the settings of arguments 'postprocess' and 'csv.ouptut': If postprocess=TRUE and csv.output=TRUE then outputs are csv files of raw parameter vectors, likelihoods and Elementary Effects for each run, and parameter list sorted by EE_mean, plus the function returns the data of sorted parameters. If postprocess=FALSE and csv.output=FALSE then the function simply returns a dataframe of likelihoods and Elementary Effects for each run.
 #'
-#' @seealso \code{\link{e2e_read}}, \code{\link{e2e_merge_sens_mc}}, \code{\link{e2e_process_sens_mc}}, \code{\link{e2e_plot_sens_mc}}
+#' @seealso \code{\link{e2e_get_senscrit}}, \code{\link{e2e_read}}, \code{\link{e2e_merge_sens_mc}}, \code{\link{e2e_process_sens_mc}}, \code{\link{e2e_plot_sens_mc}}
 #'
 #' @importFrom stats runif 
 #' @importFrom grDevices dev.off
@@ -93,14 +106,31 @@
 #' # WARNING - Running a full sensitivity analysis takes days of computer time on a single
 #' # machine/processor because it involves a huge number of model runs.
 #' # The example below is just a (relatively) quick minimalist demonstration and should NOT
-#' # be taken as the basis for any analysis or conclusions.
+#' # be taken as the basis for any analysis or conclusions. 
 #' # Even so, this minimalist demonstration run could take 45 min to complete because it
-#' # involves 1359 model runs.
+#' # involves 1353 model runs.
+#' # This examples uses the likelihood of observed target data as the criterion for assessing
+#' # model sensitivity (i.e. outID is not set and so assumes the default value of 0).
 #'     sens_results <- e2e_run_sens(model, nyears=1, n_traj=3, csv.output=FALSE)
 #' # View the top few rows of the results dataframe:
 #'     head(sens_results)
 #' }
 #' 
+#' # --------------------------------------------------------------------------
+#'
+#' # To view the list of available criteria for use as the basis for the sensitivity analysis:
+#'     e2e_get_senscrit()
+#'
+#' # --------------------------------------------------------------------------
+#'
+#' \dontrun{
+#' # This examples uses the annual average mass of planktivorous fish as the criterion for
+#' assessing model sensitivity (i.e. outID = 24).
+#'     sens_results <- e2e_run_sens(model, nyears=1, n_traj=3, csv.output=FALSE, outID=24)
+#' # View the top few rows of the results dataframe:
+#'     head(sens_results)
+#' }
+#'
 #' # --------------------------------------------------------------------------
 #'
 #' # This is a dummy example to illustrate a more realistic sensitivity analysis:
@@ -152,7 +182,7 @@
 # |                                                                   |
 # ---------------------------------------------------------------------
 
-e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setoflevels=4, v_setoflevels=0.1, coldstart=TRUE, quiet=TRUE, postprocess=TRUE, csv.output=FALSE, runtime.plot=TRUE) {
+e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setoflevels=4, v_setoflevels=0.1, coldstart=TRUE, quiet=TRUE, postprocess=TRUE, csv.output=FALSE, runtime.plot=TRUE,outID=0) {
 
    oo <- options()
    on.exit(options(oo))
@@ -170,6 +200,57 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 	resultsdir	<- elt(model, "setup", "resultsdir")
 
 	#-------------------------------------------------------------------------------
+	#-------------------------------------------------------------------------------
+
+   # Define a function to recompute volume conservation anytime that input flow drivers are jiggled
+   vol_conserve <- function(tempforc) {
+						#First, these are the flows we actually know
+						#		   fdriverso_inflow    (8)
+						#		   fdriverd_inflow<-   (9)
+						#		   fdriversi_inflow<-  (10)
+						#		   fdriversi_outflow<- (13)
+						#		   fdriverso_si_flow<- (14)
+						#		   fdrivers_upwell<-   (16)
+
+						# The following need to be recomputed every time any o fthese are chnaged in order to maintain volume conservation
+						#                  fdriverso_outflow   (11)
+						#                  fdriverd_outflow    (12)
+						#                  fdriversi_so_flow   (15)
+
+							#Derived outflow from si to so (15)
+							#fdriversi_so_flow[,2]<-fdriverso_si_flow[,2] + fdriversi_inflow[,2] - fdriversi_outflow[,2]
+							tempforc[[15]][,2]  <- tempforc[[14]][,2] + tempforc[[10]][,2]  - tempforc[[13]][,2]
+
+							#Derived outflow from so (11)
+							#fdriverso_outflow[,2]<-fdriverso_inflow[,2] + fdrivers_upwell[,2] + fdriversi_so_flow[,2]  -  fdriverso_si_flow[,2]
+							tempforc[[11]][,2]  <- tempforc[[8]][,2] + tempforc[[16]][,2] + tempforc[[15]][,2] - tempforc[[14]][,2]
+
+							#Derived outflow from d (12)
+							#fdriverd_outflow[,2]<-fdriverd_inflow[,2] - fdrivers_upwell[,2] 
+							tempforc[[12]][,2]  <- tempforc[[9]][,2] - tempforc[[16]][,2] 
+
+		return(tempforc)
+   }
+
+	#-------------------------------------------------------------------------------
+	#-------------------------------------------------------------------------------
+
+        # Set up the location of the output metric to be used for the sensitivity analysis
+        if(outID<0 || outID > 247) {stop("Error: unknown output metric selection '", outID, "' !\n") }
+	if(outID==0) {output_object<-"annual_obj"}
+	if(outID>0 & outID<32) {output_object<-"mass_results_wholedomain"}
+	if(outID>31) {output_object<-"annual_flux_results_wholedomain"}
+
+	if(outID==0) {rowID<-1}
+	if(outID>0 & outID<32) {rowID<-outID}
+	if(outID>31) {rowID<-outID-31}
+
+	if(outID==0) {metricname<-"likelihood"}
+	if(outID>0 & outID<32) {metricname<-mass_results_descriptions[rowID]}
+	if(outID>31) {metricname<-annual_flux_descriptions[rowID]}
+
+        # ----------------------------------------------------------------------------------
+
 
 	#Set the cv level scaling factor to be applied to each parameter
 	n_levels<-1		# DONT CHANGE THIS
@@ -200,7 +281,6 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 	#SO THIS IS A BIT LIKE THE ANNEALING CODE VERSION WHERE THE ACCEPTED PARAMETERS NEVER CHANGE
 
 	#Vector of the locations in parms which are to be tweaked
-	# ZZ don't like this parameter numbering...can we not use names?
 	p_to_tweak<-c(seq(1,4,by=1),seq(28,56,by=1),		# physical config parameters excl the area proportions of sediments
 		seq(57,123,by=1),seq(286,306,by=1),seq(307,585,by=1))  # FISHING PARAMETERS - omitting the undersize and discard switch parameters loc 124 and 125
                                                                      # and the proportional spatial distributions of discards and offal as these can easily be jiggled
@@ -238,28 +318,40 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 	#Set up a vector of parms locations where the parameter is expected to be negative
 	p_negative<-c(517,519)   # msens,  nsens
 
+
+        # Vector of drivers to be tweaked - excludes the computed outflows for volume conservation
+        # as these are all derived from the input drivers
+        f_to_tweak <- c(1:10,13,14,16:53)
+	f_additive <- c(4,5,6) # temperatures
+
+	whichforclogs<-c(2,3)
+
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	build <- build_model(model ,nyears)
 	parms <- elt(build, "model.parameters")
-	forc <- elt(build, "forcings")
-	def_parms <- parms
-	def_forc <- forc
+	parmname<-(names(parms))[p_to_tweak]
 
-	Nforcs<-length(names(forc))
-	forcid<-seq(1001,1000+Nforcs,by=1)
-	forcname<-(names(forc))
-	whichforclogs<-c(2,3)
+	forc <- elt(build, "forcings")
+
+	Nforcstot<-length(names(forc))
+	Nforcs<-length(f_to_tweak)
+	forcid<-(seq(1001,1000+Nforcstot,by=1))[f_to_tweak]
+	forcname<-(names(forc))[f_to_tweak]
 
 	#add Nforcs to Nruns
 	Nruns<-Nruns+Nforcs
 
+	def_parms <- parms
+	def_forc <- forc
+
+
 	#ITERATE THE TRAJECTORY PROCESS.....
 
 
-	#Set up an array to hold the results which will be the likelihood values of the the modle runs given the parameters and the observed data
+	#Set up an array to hold the results which will be the selected metric value from the the model
 	OAT_results<-array(NA,dim=c(n_levels*Nruns*n_traj,6))
-	colnames(OAT_results)<-c("parameterid","trajectoryid","levelid","delta_p","likelihood","EE")
+	colnames(OAT_results)<-c("parameterid","trajectoryid","levelid","delta_p",metricname,"EE")
 	rownames(OAT_results)<-rep(rep(c("baseline",forcname,names(def_parms[p_to_tweak])),n_levels),n_traj)
 
 	OAT_results[,1]<-rep(c(0,forcid,p_to_tweak),n_traj*n_levels)
@@ -306,11 +398,17 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 
 			#Jiggle all the forcings to create a new trajectory
 
-			for(ffff in 1:Nforcs){
-
+			for(ffff in f_to_tweak){
+	
 				if(length( which(whichforclogs==ffff) ) == 0){
+					if(length( which(f_additive==ffff) ) == 0){       # multiplicative scaling
 					deltaforc<-rnorm(1,1,trajsd)
 					traj_forc[[ffff]][,2]<-def_forc[[ffff]][,2]*deltaforc
+					}
+					if(length( which(f_additive==ffff) ) > 0){        # additive scaling
+					deltaforc<-rnorm(1,1,trajsd)
+					traj_forc[[ffff]][,2]<-def_forc[[ffff]][,2] + mean(def_forc[[ffff]][,2]) * (deltaforc-1)
+					}
 				}
 
 				if(length( which(whichforclogs==ffff) ) > 0){
@@ -320,26 +418,16 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 
 			}
 
+
 			#Now we have to be a bit careful and redo the volume conservation calculations
 			#First, these are the flows we actually know
 			#		   fdriverso_inflow    (8)
 			#		   fdriverd_inflow<-   (9)
 			#		   fdriversi_inflow<-  (10)
 			#		   fdriversi_outflow<- (13)
-			#		   fdrivers_upwell<-   (16)
 			#		   fdriverso_si_flow<- (14)
-
-			#Derived outflow from si to so (15)
-			#fdriversi_so_flow[,2]<-fdriverso_si_flow[,2] + fdriversi_inflow[,2] - fdriversi_outflow[,2]
-			traj_forc[[15]][,2] <- traj_forc[[14]][,2] + traj_forc[[10]][,2] - traj_forc[[13]][,2]
-
-			#Derived outflow from so (11)
-			#fdriverso_outflow[,2]<-fdriverso_inflow[,2] + fdrivers_upwell[,2] + fdriversi_so_flow[,2] - fdriverso_si_flow[,2]
-			traj_forc[[11]][,2] <- traj_forc[[8]][,2] + traj_forc[[16]][,2] + traj_forc[[15]][,2] - traj_forc[[14]][,2]
-	
-			#Derived outflow from d (12)
-			#fdriverd_outflow[,2]<-fdriverd_inflow[,2] - fdrivers_upwell[,2] 
-			traj_forc[[12]][,2] <- traj_forc[[9]][,2] - traj_forc[[16]][,2] 
+			#		   fdrivers_upwell<-   (16)
+                        traj_forc <- vol_conserve(traj_forc)
 
 
 			#Jiggle all the parameters (inlcuding the fixed ones) to create a a new trajectory
@@ -382,12 +470,23 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 			newglims<-1
 			}
 			if(jjjj>1){
+
+                        baseline_traj_value <- OAT_results[1,5]
+
 			newglims<-0
 			axmin <- elt(annealing_control_data, "axmin")
+				if(baseline_traj_value < axmin) {
+				message("Warning: Baseline < axis min in sensitivity.csv control file - axmin reset to zero")
+				axmin<-0
+				}
 				if((axmin==axmin_p)==FALSE){
 					newglims<-1
 				}
 			axmax <- elt(annealing_control_data, "axmax")
+				if(baseline_traj_value > axmax) {
+				message("Warning: Baseline > axis max in sensitivity.csv control file - axmax reset to baseline*1.5")
+				axmax<-baseline_traj_value*1.5
+				}
 				if((axmax==axmax_p)==FALSE){
 					newglims<-1
 				}
@@ -414,46 +513,43 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 
 					if(jjjj<(Nforcs+2)){
 
-						if(length( which(whichforclogs==(jjjj-1)) ) == 0){
-							forc[[(jjjj-1)]][,2]<-traj_forc[[(jjjj-1)]][,2]*pcvscale[OAT_results[rtof,3]]
-						}
+				forc_to_jig <- f_to_tweak[jjjj-1]
 
-						if(length( which(whichforclogs==(jjjj-1)) ) > 0){
-							forc[[(jjjj-1)]][,2]<-(traj_forc[[(jjjj-1)]][,2]) + log(pcvscale[OAT_results[rtof,3]])
-						}
+				if(length( which(whichforclogs==forc_to_jig) ) == 0){
+					if(length( which(f_additive==forc_to_jig) ) == 0){       # multiplicative scaling
+					deltaforc<-pcvscale[OAT_results[rtof,3]]
+					forc[[forc_to_jig]][,2]<-traj_forc[[forc_to_jig]][,2]*deltaforc
+					}
+					if(length( which(f_additive==forc_to_jig) ) > 0){        # additive scaling
+					deltaforc<-pcvscale[OAT_results[rtof,3]]
+					forc[[forc_to_jig]][,2]<-traj_forc[[forc_to_jig]][,2] + mean(traj_forc[[forc_to_jig]][,2]) * (deltaforc-1)
+					}
+				}
+
+				if(length( which(whichforclogs==forc_to_jig) ) > 0){
+					forc[[forc_to_jig]][,2]<-(traj_forc[[forc_to_jig]][,2]) + log(pcvscale[OAT_results[rtof,3]])
+				}
+
+					# ........................................................................
 
 						#Now we have to be a bit careful and redo the volume conservation calculations
-						#if jjjj is in the range 8 to 16 then we need to redo the volume conservation calculation
 
-						#First, these are the flows we actually know
+						#if jjjj is in the range 8 to 16 then we need to redo the volume conservation calculation
+						#These are the flows we actually know
 						#		   fdriverso_inflow    (8)
 						#		   fdriverd_inflow<-   (9)
 						#		   fdriversi_inflow<-  (10)
 						#		   fdriversi_outflow<- (13)
-						#		   fdrivers_upwell<-   (16)
 						#		   fdriverso_si_flow<- (14)
+						#		   fdrivers_upwell<-   (16)
+						# The following need to be recomputed every time any o fthese are chnaged in order to maintain volume conservation
+						#                  fdriverso_outflow   (11)
+						#                  fdriverd_outflow    (12)
+						#                  fdriversi_so_flow   (15)
 
-						if(length(which( (c(10,13,14))==(jjjj-1))  ) > 0){
-							#Derived outflow from si to so (15)
-							#fdriversi_so_flow[,2]<-fdriverso_si_flow[,2] + fdriversi_inflow[,2] - fdriversi_outflow[,2]
-							forc[[15]][,2]  <- forc[[14]][,2] + forc[[10]][,2]  - forc[[13]][,2]
-						}
-						if((jjjj-1)==15) forc[[15]][,2]<-traj_forc[[15]][,2]   # we can't jiggle this independently of the others
-
-						if(length(which( (c(8,10,13,14,16))==(jjjj-1))  ) > 0){
-							#Derived outflow from so (11)
-							#fdriverso_outflow[,2]<-fdriverso_inflow[,2] + fdrivers_upwell[,2] + fdriversi_so_flow[,2]  -  fdriverso_si_flow[,2]
-							forc[[11]][,2]  <- forc[[8]][,2] + forc[[16]][,2] + forc[[15]][,2] - forc[[14]][,2]
-						}
-						if((jjjj-1)==11) forc[[11]][,2]<-traj_forc[[11]][,2]   # we can't jiggle this independently of the others
-
-						if(length(which( (c(9,16))==(jjjj-1))  ) > 0){
-							#Derived outflow from d (12)
-							#fdriverd_outflow[,2]<-fdriverd_inflow[,2] - fdrivers_upwell[,2] 
-							forc[[12]][,2]  <- forc[[9]][,2] - forc[[16]][,2] 
-						}
-						if((jjjj-1)==12) forc[[12]][,2]<-traj_forc[[12]][,2]   # we can't jiggle this independently of the others
+						if(length(which( (c(8,9,10,13,14,16))==(forc_to_jig))  ) > 0) forc <- vol_conserve(forc)
    					}
+
 
    					if(jjjj>(Nforcs+1)) {
 						# ZZ we are writing the parms used in the model run here:
@@ -476,22 +572,43 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 					# need to put modified forcings back into build:
 					build$forcings <- forc
 					build$model.parameters <- parms
-					fit <- StrathE2E_fit(model, build, quiet)
-					annual_obj <- elt(fit, "annual_obj")
-					Partial_chi <- elt(fit, "partial_chi")
+
+
+########################
+# Select which model run function to use and then extract the approriate model output metric
+
+	if(outID==0)   {
+		fit <- StrathE2E_fit(model, build, quiet)
+		Partial_chi <- elt(fit, "partial_chi")
+		metric_value <- Partial_chi[nrow(Partial_chi),]
+	}
+
+	if(outID>0)   {
+	output <- StrathE2E.run(build)
+	aggregates			<- aggregate_model_output(model, output)
+	annual.results.wholedomain	<- derive_annual_results_wholedomain(model, build, output, aggregates)
+	if(outID>0 & outID<32)      { metric_value <- annual.results.wholedomain$mass_results[rowID,1] }
+	if(outID>31)                { metric_value <- annual.results.wholedomain$annual_flux_results[rowID,1] }
+	}
+
+#########################
+
+
 				}
 
 				OAT_parmvalues[rtof,]<-parms[p_to_tweak]
 
-				if(needtorun==1) OAT_results[rtof,5] <- Partial_chi[nrow(Partial_chi),]
-				if(needtorun==0) OAT_results[rtof,5] <- OAT_results[rtst,5]		# if default parm value is zero implant the baseline likelihood
+#INSERT THE REQUIRED SENSITIVITY OBJECT INTO OAT_results[rtof,5]
+
+				if(needtorun==1) OAT_results[rtof,5] <- metric_value
+				if(needtorun==0) OAT_results[rtof,5] <- OAT_results[rtst,5]		# if default parm value is zero implant the baseline metric value
 
 				if(jjjj==1) OAT_results[rtof,6]<-0
 				if(jjjj>1) OAT_results[rtof,6]<- ( (OAT_results[rtof,5]-OAT_results[rtst,5])/ sqrt((OAT_results[rtof,4]^2)) )
 
 #----------------------------------------------------------------------------------------------------------
 
-		#Plot or update the time series of proposed and accepted likelihoods so far....
+		#Plot or update the time series of trajectory baseline and individual metric values so far....
 
 				if(runtime.plot==TRUE){
 				if(jjjj>1) {
@@ -510,7 +627,7 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 							"Initial trajectory baseline",
 							"Current trajectory baseline")
 					plot(c(1,(Nruns-1)) , c(OAT_results[1,5],OAT_results[1,5]) , type="l", col="red", ylim=c(axmin,axmax), xlim=c(1,(Nruns-1)),
-						xlab="Parameters",ylab="Target data likelihood",
+						xlab="Parameters",ylab=metricname,
 						main=paste("Trajectory ",kkk,sep="") )
 					points( c(1,(Nruns-1)) , c(OAT_results[rtst,5],OAT_results[rtst,5]),type="l" , col="grey")
 				        points(seq(1:(jjjj-1)),OAT_results[(rtst+1):rtof,5],type="p",pch=20, col=pltxtyp[1:(jjjj-1)])
@@ -544,9 +661,12 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 				results_df_out$trajectoryid<-OAT_results[,2]
 				results_df_out$levelid<-OAT_results[,3]
 				results_df_out$delta_p<-OAT_results[,4]
-				results_df_out$likelihood<-OAT_results[,5]
+				results_df_out$outputmetric<-OAT_results[,5]  # renamed later to the dynamic value selected by function argument outID
 				results_df_out$EE<-OAT_results[,6]
 				results_df_out$parametername <- rownames(OAT_results)
+
+	                        names(results_df_out)<-c("parametername","parameterid","trajectoryid","levelid","delta_p",metricname,"EE")
+
 				#-------------------
 
 				filename <- csvname(resultsdir, "OAT_results", model.ident)
@@ -560,6 +680,8 @@ e2e_run_sens <- function(model, nyears=50, n_traj=16, trajsd=0.0075, n_setofleve
 	} # end outer trajectories kkk loop
 
 	message("")
+
+# ----------------------------------------------------------------------------------------------
 
 	#PROCESS THE FINAL RESULTS TO GET THE SORTED PARAMETER SENSITIVITY FILE IF REQUIRED
 	if(postprocess==TRUE){

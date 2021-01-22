@@ -8,7 +8,8 @@
 // 5. fish and top predators undertake active horizontal migration in respnse to gradients in food concentration.
 // 
 // Author: Michael Heath, University of Strathclyde, Scotland
-// Date of this verision: Februaruy 2020
+// Version: 3.3.0
+// Date of this verision: December 2020
 // -------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------
 
@@ -755,9 +756,9 @@ static double parms[585]; //declare empty vector of length 585 - will be filled 
 #define xseal                   parms[536]
 #define xceta                   parms[537]
 
-#define kelpdebris_det         parms[538]
+#define kelpdebris_det          parms[538]
 
-#define corp_det               parms[539]
+#define corp_det                parms[539]
 #define disc_corp               parms[540]
 #define dsink_s                 parms[541]
 #define dsink_d                 parms[542]
@@ -989,6 +990,13 @@ static double xseal_o;
 static double xseal_i;
 static double xceta_o;
 static double xceta_i;
+
+static double bdapar_bird_o;
+static double bdapar_seal_o;
+static double bdapar_ceta_o;
+static double bdapar_bird_i;
+static double bdapar_seal_i;
+static double bdapar_ceta_i;
 
 static double wave_kelp_i;
 static double selfshade_kelp_i;
@@ -1952,10 +1960,16 @@ static double D_o_weighting;
 static double DFp_undersizeALL;
 static double Fdidaily_USC;
 static double Fdodaily_USC;
+
+static double food_o;
+static double food_i;
+static double pred_o;
+static double pred_i;
+static double Rlim;
+
 static double food_gradient_pfish;
 static double food_gradient_mfish;
 static double food_gradient_dfish;
-
 static double food_gradient_bird;
 static double food_gradient_seal;
 static double food_gradient_ceta;
@@ -2150,6 +2164,25 @@ void derivsc (int *neq,
              // ----------------------------------------------------
              // Sensitivity of N and C uptake inhibition terms for kelp
              kelp_i_slope = (1/(NCmax_kelp-NCmin_kelp));
+
+
+            // ----------------------------------------------------
+            // Beddington de-Angelis uptake parameters for birds, pinnipeds, cetacean scaled to zone surface area
+             bdapar_bird_o = bdapar_bird * 1/(1-shallowprop);
+             bdapar_seal_o = bdapar_seal * 1/(1-shallowprop);
+             bdapar_ceta_o = bdapar_ceta * 1/(1-shallowprop);
+
+             bdapar_bird_i = bdapar_bird * 1/(shallowprop);
+             bdapar_seal_i = bdapar_seal * 1/(shallowprop);
+             bdapar_ceta_i = bdapar_ceta * 1/(shallowprop);
+
+             //bdapar_bird_o = bdapar_bird ;
+             //bdapar_seal_o = bdapar_seal ;
+             //bdapar_ceta_o = bdapar_ceta ;
+
+             //bdapar_bird_i = bdapar_bird ;
+             //bdapar_seal_i = bdapar_seal ;
+             //bdapar_ceta_i = bdapar_ceta ;
 
         }
 
@@ -2450,78 +2483,7 @@ void derivsc (int *neq,
 // Rprintf("prop_fishdlar_surfo=%f\n", prop_fishdlar_surfo);
 // Rprintf("prop_fishdlar_deep=%f\n", prop_fishdlar_deep);
 
-/* __________ Food concentration gradients for pelagic and migratory fish and birds&mammals, relative to their own gradients___________*/
 
-// if log-gradients are >0 the food is higher offshore relative to predator so predator needs to shift offshore
-// if log-gradients are <0 then food is higher inshore relative to predator so predator needs to shift inshore
-
-food_gradient_pfish =  log( ( ((uomni_fishpt * y[39] + ucarn_fishpt * CZ_edible_o
-                                         +ufishplar_fishpt * y[46] + ufishdlar_fishpt * y[48]
-                                         +ubenthslar_fishpt * y[41] + ubenthclar_fishpt * y[43])/(1-shallowprop))
-                                      / ((uomni_fishpt * y[60] + ucarn_fishpt * CZ_edible_i
-                                         +ufishplar_fishpt * y[62] + ufishdlar_fishpt * y[63]
-                                         +ubenthslar_fishpt * y[55] + ubenthclar_fishpt * y[56])/(shallowprop))
-                                      )  / ( (y[45]/(1-shallowprop))/(y[64]/shallowprop) ) );
-
-food_gradient_mfish =  log( ( ((uomni_fishmt * y[39] + ucarn_fishmt * CZ_edible_o
-                                         +ufishplar_fishmt * y[46] + ufishdlar_fishmt * y[48]
-                                         +ubenthslar_fishmt * y[41] + ubenthclar_fishmt * y[43])/(1-shallowprop))
-                                      / ((uomni_fishmt * y[60] + ucarn_fishmt * CZ_edible_i
-                                         +ufishplar_fishmt * y[62] + ufishdlar_fishmt * y[63]
-                                         +ubenthslar_fishmt * y[55] + ubenthclar_fishmt * y[56])/(shallowprop))
-                                      )  / ( (y[49]/(1-shallowprop))/(y[65]/shallowprop) ) );
-
-food_gradient_bird =    log( ( ((ucarn_bird * CZ_edible_o
-                                         +ubenths_bird * y[42] + ubenthc_bird * y[44]
-                                         +udisc_bird * y[14] + ucorp_bird * (y[73]+y[18]+y[19]+y[20])
-                                         +ufishp_bird * y[45] + ufishd_bird * y[47]  + ufishm_bird * y[49])  /(1-shallowprop))
-                                      / ((ucarn_bird * CZ_edible_i
-                                         +ubenths_bird * y[57] + ubenthc_bird * y[58]
-                                         +udisc_bird * y[59] + ucorp_bird * (y[72]+y[15]+y[16]+y[17])
-                                         +ufishp_bird * y[64] + ufishd_bird * y[66] + ufishm_bird * y[65])/(shallowprop))
-                                      )  / ( (y[50]/(1-shallowprop))/(y[67]/shallowprop) ) );
-
-food_gradient_seal =    log( ( ((ucarn_seal * CZ_edible_o
-                                         +ubenths_seal * y[42] + ubenthc_seal * y[44]
-                                         +udisc_seal * y[14] + ucorp_seal * (y[73]+y[18]+y[19]+y[20]) + ubird_seal*y[50]
-                                         +ufishp_seal * y[45] + ufishd_seal * y[47]  + ufishm_seal * y[49])  /(1-shallowprop))
-                                      / ((ucarn_seal * CZ_edible_i
-                                         +ubenths_seal * y[57] + ubenthc_seal * y[58]
-                                         +udisc_seal * y[59] + ucorp_seal * (y[72]+y[15]+y[16]+y[17]) + ubird_seal*y[67]
-                                         +ufishp_seal * y[64] + ufishd_seal * y[66] + ufishm_seal * y[65])/(shallowprop))
-                                      )  / ( (y[68]/(1-shallowprop))/(y[69]/shallowprop) ) );
-
-
-food_gradient_ceta =    log( ( ((uomni_ceta * y[39] + ucarn_ceta * CZ_edible_o
-                                         +ubenths_ceta * y[42] + ubenthc_ceta * y[44]
-                                         +udisc_ceta * y[14] + ubird_ceta*y[50] + useal_ceta*y[68]
-                                         +ufishp_ceta * y[45] + ufishd_ceta * y[47]  + ufishm_ceta * y[49])  /(1-shallowprop))
-                                      / ((uomni_ceta * y[60] + ucarn_ceta * CZ_edible_i
-                                         +ubenths_ceta * y[57] + ubenthc_ceta * y[58]
-                                         +udisc_ceta * y[59] + ubird_ceta*y[67] + useal_ceta*y[69]
-                                         +ufishp_ceta * y[64] + ufishd_ceta * y[66] + ufishm_ceta * y[65])/(shallowprop))
-                                      )  / ( (y[70]/(1-shallowprop))/(y[71]/shallowprop) ) );
-
-
-
-food_gradient_dfish =  log( ( (( ucarn_fishdt * CZ_edible_o
-                                         +ufishplar_fishdt * y[46] + ufishdlar_fishdt * y[48]
-                                         + ufishp_fishdt * y[45]
-                                         + ufishm_fishdt * y[49]
-                                         + ufishd_fishdt * y[47]
-                                         + ubenths_fishdt * y[42] + ubenthc_fishdt * y[44]
-                                         + udisc_fishdt * y[14] + ucorp_fishdt * (y[73]+y[18]+y[19]+y[20])
-                                         )/(1-shallowprop))
-
-                                      / ((ucarn_fishdt * CZ_edible_i
-                                         +ufishplar_fishdt * y[62] + ufishdlar_fishdt * y[63]
-                                         + ufishp_fishdt * y[64]      
-                                         + ufishm_fishdt * y[65]      
-                                         + ufishd_fishdt * y[66]      
-                                         + ubenths_fishdt * y[57] + ubenthc_fishdt * y[58]
-                                         + udisc_fishdt * y[59] + ucorp_fishdt * (y[72]+y[15]+y[16]+y[17])
-                                         )/(shallowprop))
-                                      )  / ( (y[47]/(1-shallowprop))/(y[66]/shallowprop) ) );
 
 
 /* _____Apply the appropriate q10 and surface temperature to the uptake and metabolic parameters_____ */
@@ -3556,27 +3518,27 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // _____________
 
 
-	 Upt_corpse_d0_bird=      (f3(y[73],(y[50]*area_d0/(1-shallowprop)),ucorp_o_bird,(hscorp_bird*(volume_so+volume_d)*area_d0/(1-shallowprop)),bdapar_bird));
-	 Upt_corpse_d1_bird=      (f3(y[18],(y[50]*area_d1/(1-shallowprop)),ucorp_o_bird,(hscorp_bird*(volume_so+volume_d)*area_d1/(1-shallowprop)),bdapar_bird));
-	 Upt_corpse_d2_bird=      (f3(y[19],(y[50]*area_d2/(1-shallowprop)),ucorp_o_bird,(hscorp_bird*(volume_so+volume_d)*area_d2/(1-shallowprop)),bdapar_bird));
-	 Upt_corpse_d3_bird=      (f3(y[20],(y[50]*area_d3/(1-shallowprop)),ucorp_o_bird,(hscorp_bird*(volume_so+volume_d)*area_d3/(1-shallowprop)),bdapar_bird));
+	 Upt_corpse_d0_bird=      (f3(y[73],(y[50]*area_d0/(1-shallowprop)),ucorp_o_bird,(hscorp_bird*(volume_so+volume_d)*area_d0/(1-shallowprop)),bdapar_bird_o));
+	 Upt_corpse_d1_bird=      (f3(y[18],(y[50]*area_d1/(1-shallowprop)),ucorp_o_bird,(hscorp_bird*(volume_so+volume_d)*area_d1/(1-shallowprop)),bdapar_bird_o));
+	 Upt_corpse_d2_bird=      (f3(y[19],(y[50]*area_d2/(1-shallowprop)),ucorp_o_bird,(hscorp_bird*(volume_so+volume_d)*area_d2/(1-shallowprop)),bdapar_bird_o));
+	 Upt_corpse_d3_bird=      (f3(y[20],(y[50]*area_d3/(1-shallowprop)),ucorp_o_bird,(hscorp_bird*(volume_so+volume_d)*area_d3/(1-shallowprop)),bdapar_bird_o));
 
 // sum up over all sediment types
 	 Upt_corpse_o_bird=        (Upt_corpse_d0_bird+Upt_corpse_d1_bird+Upt_corpse_d2_bird+Upt_corpse_d3_bird );
 
- Upt_benths_o_bird=        (f3(y[42],(y[50]),ubenths_o_bird,(hsbenths_bird*(volume_so+volume_d)),bdapar_bird));
- Upt_benthc_o_bird=        (f3(y[44],(y[50]),ubenthc_o_bird,(hsbenthc_bird*(volume_so+volume_d)),bdapar_bird));
- Upt_disc_o_bird=          (f3(y[14],(y[50]),udisc_o_bird,(hsdisc_bird*(volume_so+volume_d)),bdapar_bird));
+ Upt_benths_o_bird=        (f3(y[42],(y[50]),ubenths_o_bird,(hsbenths_bird*(volume_so+volume_d)),bdapar_bird_o));
+ Upt_benthc_o_bird=        (f3(y[44],(y[50]),ubenthc_o_bird,(hsbenthc_bird*(volume_so+volume_d)),bdapar_bird_o));
+ Upt_disc_o_bird=          (f3(y[14],(y[50]),udisc_o_bird,(hsdisc_bird*(volume_so+volume_d)),bdapar_bird_o));
 
-// Upt_omni_o_bird=          (f3(y[39],(y[50]),uomni_o_bird,(hsomni_bird*(volume_so+volume_d)),bdapar_bird));
+// Upt_omni_o_bird=          (f3(y[39],(y[50]),uomni_o_bird,(hsomni_bird*(volume_so+volume_d)),bdapar_bird_o));
 
- Upt_carn_o_bird=          (f3(CZ_edible_o,(y[50]),ucarn_o_bird,(hscarn_bird*(volume_so+volume_d)),bdapar_bird));
+ Upt_carn_o_bird=          (f3(CZ_edible_o,(y[50]),ucarn_o_bird,(hscarn_bird*(volume_so+volume_d)),bdapar_bird_o));
 
- Upt_fishp_o_bird=         (f3(y[45],(y[50]),ufishp_o_bird,(hsfishp_bird*(volume_so+volume_d)),bdapar_bird));
+ Upt_fishp_o_bird=         (f3(y[45],(y[50]),ufishp_o_bird,(hsfishp_bird*(volume_so+volume_d)),bdapar_bird_o));
 
- Upt_fishd_o_bird=         (f3(y[47],(y[50]),ufishd_o_bird,(hsfishd_bird*(volume_so+volume_d)),bdapar_bird));
+ Upt_fishd_o_bird=         (f3(y[47],(y[50]),ufishd_o_bird,(hsfishd_bird*(volume_so+volume_d)),bdapar_bird_o));
 
- Upt_fishm_o_bird=         (f3(y[49],(y[50]),ufishm_o_bird,(hsfishm_bird*(volume_so+volume_d)),bdapar_bird));
+ Upt_fishm_o_bird=         (f3(y[49],(y[50]),ufishm_o_bird,(hsfishm_bird*(volume_so+volume_d)),bdapar_bird_o));
 
 // Sum over all prey
       Upt_total_bird_o = Upt_carn_o_bird + Upt_fishp_o_bird + Upt_fishm_o_bird + Upt_fishd_o_bird
@@ -3587,27 +3549,27 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // Inshore Birds
 // _____________
 
-	 Upt_corpse_s0_bird=      (f3(y[72],(y[67]*area_s0/shallowprop),ucorp_i_bird,(hscorp_bird*(volume_si*area_s0/shallowprop)),bdapar_bird));
-	 Upt_corpse_s1_bird=      (f3(y[15],(y[67]*area_s1/shallowprop),ucorp_i_bird,(hscorp_bird*(volume_si*area_s1/shallowprop)),bdapar_bird));
-	 Upt_corpse_s2_bird=      (f3(y[16],(y[67]*area_s2/shallowprop),ucorp_i_bird,(hscorp_bird*(volume_si*area_s2/shallowprop)),bdapar_bird));
-	 Upt_corpse_s3_bird=      (f3(y[17],(y[67]*area_s3/shallowprop),ucorp_i_bird,(hscorp_bird*(volume_si*area_s3/shallowprop)),bdapar_bird));
+	 Upt_corpse_s0_bird=      (f3(y[72],(y[67]*area_s0/shallowprop),ucorp_i_bird,(hscorp_bird*(volume_si*area_s0/shallowprop)),bdapar_bird_i));
+	 Upt_corpse_s1_bird=      (f3(y[15],(y[67]*area_s1/shallowprop),ucorp_i_bird,(hscorp_bird*(volume_si*area_s1/shallowprop)),bdapar_bird_i));
+	 Upt_corpse_s2_bird=      (f3(y[16],(y[67]*area_s2/shallowprop),ucorp_i_bird,(hscorp_bird*(volume_si*area_s2/shallowprop)),bdapar_bird_i));
+	 Upt_corpse_s3_bird=      (f3(y[17],(y[67]*area_s3/shallowprop),ucorp_i_bird,(hscorp_bird*(volume_si*area_s3/shallowprop)),bdapar_bird_i));
 
 // sum up over all sediment types
 	 Upt_corpse_i_bird=        (Upt_corpse_s0_bird+Upt_corpse_s1_bird+Upt_corpse_s2_bird+Upt_corpse_s3_bird );
 
- Upt_benths_i_bird=        (f3(y[57],(y[67]),ubenths_i_bird,(hsbenths_bird*(volume_si)),bdapar_bird));
- Upt_benthc_i_bird=        (f3(y[58],(y[67]),ubenthc_i_bird,(hsbenthc_bird*(volume_si)),bdapar_bird));
- Upt_disc_i_bird=          (f3(y[59],(y[67]),udisc_i_bird,(hsdisc_bird*(volume_si)),bdapar_bird));
+ Upt_benths_i_bird=        (f3(y[57],(y[67]),ubenths_i_bird,(hsbenths_bird*(volume_si)),bdapar_bird_i));
+ Upt_benthc_i_bird=        (f3(y[58],(y[67]),ubenthc_i_bird,(hsbenthc_bird*(volume_si)),bdapar_bird_i));
+ Upt_disc_i_bird=          (f3(y[59],(y[67]),udisc_i_bird,(hsdisc_bird*(volume_si)),bdapar_bird_i));
 
-//  Upt_omni_i_bird=          (f3(y[60],(y[67]),uomni_i_bird,(hsomni_bird*(volume_si)),bdapar_bird));
+//  Upt_omni_i_bird=          (f3(y[60],(y[67]),uomni_i_bird,(hsomni_bird*(volume_si)),bdapar_bird_i));
 
- Upt_carn_i_bird=          (f3(CZ_edible_i,(y[67]),ucarn_i_bird,(hscarn_bird*(volume_si)),bdapar_bird));
+ Upt_carn_i_bird=          (f3(CZ_edible_i,(y[67]),ucarn_i_bird,(hscarn_bird*(volume_si)),bdapar_bird_i));
 
- Upt_fishp_i_bird=         (f3(y[64],(y[67]),ufishp_i_bird,(hsfishp_bird*(volume_si)),bdapar_bird));
+ Upt_fishp_i_bird=         (f3(y[64],(y[67]),ufishp_i_bird,(hsfishp_bird*(volume_si)),bdapar_bird_i));
 
- Upt_fishd_i_bird=         (f3(y[66],(y[67]),ufishd_i_bird,(hsfishd_bird*(volume_si)),bdapar_bird));
+ Upt_fishd_i_bird=         (f3(y[66],(y[67]),ufishd_i_bird,(hsfishd_bird*(volume_si)),bdapar_bird_i));
 
- Upt_fishm_i_bird=         (f3(y[65],(y[67]),ufishm_i_bird,(hsfishm_bird*(volume_si)),bdapar_bird));
+ Upt_fishm_i_bird=         (f3(y[65],(y[67]),ufishm_i_bird,(hsfishm_bird*(volume_si)),bdapar_bird_i));
 
 // Sum over all prey
       Upt_total_bird_i = Upt_carn_i_bird + Upt_fishp_i_bird + Upt_fishm_i_bird + Upt_fishd_i_bird
@@ -3620,29 +3582,29 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // _____________
 
 
-	 Upt_corpse_d0_seal=      (f3(y[73],(y[68]*area_d0/(1-shallowprop)),ucorp_o_seal,(hscorp_seal*(volume_so+volume_d)*area_d0/(1-shallowprop)),bdapar_seal));
-	 Upt_corpse_d1_seal=      (f3(y[18],(y[68]*area_d1/(1-shallowprop)),ucorp_o_seal,(hscorp_seal*(volume_so+volume_d)*area_d1/(1-shallowprop)),bdapar_seal));
-	 Upt_corpse_d2_seal=      (f3(y[19],(y[68]*area_d2/(1-shallowprop)),ucorp_o_seal,(hscorp_seal*(volume_so+volume_d)*area_d2/(1-shallowprop)),bdapar_seal));
-	 Upt_corpse_d3_seal=      (f3(y[20],(y[68]*area_d3/(1-shallowprop)),ucorp_o_seal,(hscorp_seal*(volume_so+volume_d)*area_d3/(1-shallowprop)),bdapar_seal));
+	 Upt_corpse_d0_seal=      (f3(y[73],(y[68]*area_d0/(1-shallowprop)),ucorp_o_seal,(hscorp_seal*(volume_so+volume_d)*area_d0/(1-shallowprop)),bdapar_seal_o));
+	 Upt_corpse_d1_seal=      (f3(y[18],(y[68]*area_d1/(1-shallowprop)),ucorp_o_seal,(hscorp_seal*(volume_so+volume_d)*area_d1/(1-shallowprop)),bdapar_seal_o));
+	 Upt_corpse_d2_seal=      (f3(y[19],(y[68]*area_d2/(1-shallowprop)),ucorp_o_seal,(hscorp_seal*(volume_so+volume_d)*area_d2/(1-shallowprop)),bdapar_seal_o));
+	 Upt_corpse_d3_seal=      (f3(y[20],(y[68]*area_d3/(1-shallowprop)),ucorp_o_seal,(hscorp_seal*(volume_so+volume_d)*area_d3/(1-shallowprop)),bdapar_seal_o));
 
 // sum up over all sediment types
 	 Upt_corpse_o_seal=        (Upt_corpse_d0_seal+Upt_corpse_d1_seal+Upt_corpse_d2_seal+Upt_corpse_d3_seal );
 
- Upt_benths_o_seal=        (f3(y[42],(y[68]),ubenths_o_seal,(hsbenths_seal*(volume_so+volume_d)),bdapar_seal));
- Upt_benthc_o_seal=        (f3(y[44],(y[68]),ubenthc_o_seal,(hsbenthc_seal*(volume_so+volume_d)),bdapar_seal));
- Upt_disc_o_seal=          (f3(y[14],(y[68]),udisc_o_seal,(hsdisc_seal*(volume_so+volume_d)),bdapar_seal));
+ Upt_benths_o_seal=        (f3(y[42],(y[68]),ubenths_o_seal,(hsbenths_seal*(volume_so+volume_d)),bdapar_seal_o));
+ Upt_benthc_o_seal=        (f3(y[44],(y[68]),ubenthc_o_seal,(hsbenthc_seal*(volume_so+volume_d)),bdapar_seal_o));
+ Upt_disc_o_seal=          (f3(y[14],(y[68]),udisc_o_seal,(hsdisc_seal*(volume_so+volume_d)),bdapar_seal_o));
 
-// Upt_omni_o_seal=          (f3(y[39],(y[68]),uomni_o_seal,(hsomni_seal*(volume_so+volume_d)),bdapar_seal));
+// Upt_omni_o_seal=          (f3(y[39],(y[68]),uomni_o_seal,(hsomni_seal*(volume_so+volume_d)),bdapar_seal_o));
 
- Upt_carn_o_seal=          (f3(CZ_edible_o,(y[68]),ucarn_o_seal,(hscarn_seal*(volume_so+volume_d)),bdapar_seal));
+ Upt_carn_o_seal=          (f3(CZ_edible_o,(y[68]),ucarn_o_seal,(hscarn_seal*(volume_so+volume_d)),bdapar_seal_o));
 
- Upt_fishp_o_seal=         (f3(y[45],(y[68]),ufishp_o_seal,(hsfishp_seal*(volume_so+volume_d)),bdapar_seal));
+ Upt_fishp_o_seal=         (f3(y[45],(y[68]),ufishp_o_seal,(hsfishp_seal*(volume_so+volume_d)),bdapar_seal_o));
 
- Upt_fishd_o_seal=         (f3(y[47],(y[68]),ufishd_o_seal,(hsfishd_seal*(volume_so+volume_d)),bdapar_seal));
+ Upt_fishd_o_seal=         (f3(y[47],(y[68]),ufishd_o_seal,(hsfishd_seal*(volume_so+volume_d)),bdapar_seal_o));
 
- Upt_fishm_o_seal=         (f3(y[49],(y[68]),ufishm_o_seal,(hsfishm_seal*(volume_so+volume_d)),bdapar_seal));
+ Upt_fishm_o_seal=         (f3(y[49],(y[68]),ufishm_o_seal,(hsfishm_seal*(volume_so+volume_d)),bdapar_seal_o));
 
- Upt_bird_o_seal=         (f3(y[50],(y[68]),ubird_o_seal,(hsbird_seal*(volume_so+volume_d)),bdapar_seal));
+ Upt_bird_o_seal=         (f3(y[50],(y[68]),ubird_o_seal,(hsbird_seal*(volume_so+volume_d)),bdapar_seal_o));
 
 // Sum over all prey
       Upt_total_seal_o = Upt_carn_o_seal + Upt_fishp_o_seal + Upt_fishm_o_seal + Upt_fishd_o_seal
@@ -3655,29 +3617,29 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // Inshore Seals
 // _____________
 
-	 Upt_corpse_s0_seal=      (f3(y[72],(y[69]*area_s0/shallowprop),ucorp_i_seal,(hscorp_seal*(volume_si*area_s0/shallowprop)),bdapar_seal));
-	 Upt_corpse_s1_seal=      (f3(y[15],(y[69]*area_s1/shallowprop),ucorp_i_seal,(hscorp_seal*(volume_si*area_s1/shallowprop)),bdapar_seal));
-	 Upt_corpse_s2_seal=      (f3(y[16],(y[69]*area_s2/shallowprop),ucorp_i_seal,(hscorp_seal*(volume_si*area_s2/shallowprop)),bdapar_seal));
-	 Upt_corpse_s3_seal=      (f3(y[17],(y[69]*area_s3/shallowprop),ucorp_i_seal,(hscorp_seal*(volume_si*area_s3/shallowprop)),bdapar_seal));
+	 Upt_corpse_s0_seal=      (f3(y[72],(y[69]*area_s0/shallowprop),ucorp_i_seal,(hscorp_seal*(volume_si*area_s0/shallowprop)),bdapar_seal_i));
+	 Upt_corpse_s1_seal=      (f3(y[15],(y[69]*area_s1/shallowprop),ucorp_i_seal,(hscorp_seal*(volume_si*area_s1/shallowprop)),bdapar_seal_i));
+	 Upt_corpse_s2_seal=      (f3(y[16],(y[69]*area_s2/shallowprop),ucorp_i_seal,(hscorp_seal*(volume_si*area_s2/shallowprop)),bdapar_seal_i));
+	 Upt_corpse_s3_seal=      (f3(y[17],(y[69]*area_s3/shallowprop),ucorp_i_seal,(hscorp_seal*(volume_si*area_s3/shallowprop)),bdapar_seal_i));
 
 // sum up over all sediment types
 	 Upt_corpse_i_seal=        (Upt_corpse_s0_seal+Upt_corpse_s1_seal+Upt_corpse_s2_seal+Upt_corpse_s3_seal );
 
- Upt_benths_i_seal=        (f3(y[57],(y[69]),ubenths_i_seal,(hsbenths_seal*(volume_si)),bdapar_seal));
- Upt_benthc_i_seal=        (f3(y[58],(y[69]),ubenthc_i_seal,(hsbenthc_seal*(volume_si)),bdapar_seal));
- Upt_disc_i_seal=          (f3(y[59],(y[69]),udisc_i_seal,(hsdisc_seal*(volume_si)),bdapar_seal));
+ Upt_benths_i_seal=        (f3(y[57],(y[69]),ubenths_i_seal,(hsbenths_seal*(volume_si)),bdapar_seal_i));
+ Upt_benthc_i_seal=        (f3(y[58],(y[69]),ubenthc_i_seal,(hsbenthc_seal*(volume_si)),bdapar_seal_i));
+ Upt_disc_i_seal=          (f3(y[59],(y[69]),udisc_i_seal,(hsdisc_seal*(volume_si)),bdapar_seal_i));
 
-// Upt_omni_i_seal=          (f3(y[60],(y[69]),uomni_i_seal,(hsomni_seal*(volume_si)),bdapar_seal));
+// Upt_omni_i_seal=          (f3(y[60],(y[69]),uomni_i_seal,(hsomni_seal*(volume_si)),bdapar_seal_i));
 
- Upt_carn_i_seal=          (f3(CZ_edible_i,(y[69]),ucarn_i_seal,(hscarn_seal*(volume_si)),bdapar_seal));
+ Upt_carn_i_seal=          (f3(CZ_edible_i,(y[69]),ucarn_i_seal,(hscarn_seal*(volume_si)),bdapar_seal_i));
 
- Upt_fishp_i_seal=         (f3(y[64],(y[69]),ufishp_i_seal,(hsfishp_seal*(volume_si)),bdapar_seal));
+ Upt_fishp_i_seal=         (f3(y[64],(y[69]),ufishp_i_seal,(hsfishp_seal*(volume_si)),bdapar_seal_i));
 
- Upt_fishd_i_seal=         (f3(y[66],(y[69]),ufishd_i_seal,(hsfishd_seal*(volume_si)),bdapar_seal));
+ Upt_fishd_i_seal=         (f3(y[66],(y[69]),ufishd_i_seal,(hsfishd_seal*(volume_si)),bdapar_seal_i));
 
- Upt_fishm_i_seal=         (f3(y[65],(y[69]),ufishm_i_seal,(hsfishm_seal*(volume_si)),bdapar_seal));
+ Upt_fishm_i_seal=         (f3(y[65],(y[69]),ufishm_i_seal,(hsfishm_seal*(volume_si)),bdapar_seal_i));
 
- Upt_bird_i_seal=         (f3(y[67],(y[69]),ubird_i_seal,(hsbird_seal*(volume_si)),bdapar_seal));
+ Upt_bird_i_seal=         (f3(y[67],(y[69]),ubird_i_seal,(hsbird_seal*(volume_si)),bdapar_seal_i));
 
 // Sum over all prey
       Upt_total_seal_i = Upt_carn_i_seal + Upt_fishp_i_seal + Upt_fishm_i_seal + Upt_fishd_i_seal
@@ -3690,30 +3652,30 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // _____________
 
 
-//	 Upt_corpse_d1_ceta=      (f3(y[18],(y[70]*area_d1/(1-shallowprop)),ucorp_o_ceta,(hscorp_ceta*(volume_so+volume_d)*area_d1/(1-shallowprop)),bdapar_ceta));
-//	 Upt_corpse_d2_ceta=      (f3(y[19],(y[70]*area_d2/(1-shallowprop)),ucorp_o_ceta,(hscorp_ceta*(volume_so+volume_d)*area_d2/(1-shallowprop)),bdapar_ceta));
-//	 Upt_corpse_d3_ceta=      (f3(y[20],(y[70]*area_d3/(1-shallowprop)),ucorp_o_ceta,(hscorp_ceta*(volume_so+volume_d)*area_d3/(1-shallowprop)),bdapar_ceta));
+//	 Upt_corpse_d1_ceta=      (f3(y[18],(y[70]*area_d1/(1-shallowprop)),ucorp_o_ceta,(hscorp_ceta*(volume_so+volume_d)*area_d1/(1-shallowprop)),bdapar_ceta_o));
+//	 Upt_corpse_d2_ceta=      (f3(y[19],(y[70]*area_d2/(1-shallowprop)),ucorp_o_ceta,(hscorp_ceta*(volume_so+volume_d)*area_d2/(1-shallowprop)),bdapar_ceta_o));
+//	 Upt_corpse_d3_ceta=      (f3(y[20],(y[70]*area_d3/(1-shallowprop)),ucorp_o_ceta,(hscorp_ceta*(volume_so+volume_d)*area_d3/(1-shallowprop)),bdapar_ceta_o));
 
 // sum up over all sediment types
 //	 Upt_corpse_o_ceta=        (Upt_corpse_d1_ceta+Upt_corpse_d2_ceta+Upt_corpse_d3_ceta );
 
- Upt_benths_o_ceta=        (f3(y[42],(y[70]),ubenths_o_ceta,(hsbenths_ceta*(volume_so+volume_d)),bdapar_ceta));
- Upt_benthc_o_ceta=        (f3(y[44],(y[70]),ubenthc_o_ceta,(hsbenthc_ceta*(volume_so+volume_d)),bdapar_ceta));
- Upt_disc_o_ceta=          (f3(y[14],(y[70]),udisc_o_ceta,(hsdisc_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_benths_o_ceta=        (f3(y[42],(y[70]),ubenths_o_ceta,(hsbenths_ceta*(volume_so+volume_d)),bdapar_ceta_o));
+ Upt_benthc_o_ceta=        (f3(y[44],(y[70]),ubenthc_o_ceta,(hsbenthc_ceta*(volume_so+volume_d)),bdapar_ceta_o));
+ Upt_disc_o_ceta=          (f3(y[14],(y[70]),udisc_o_ceta,(hsdisc_ceta*(volume_so+volume_d)),bdapar_ceta_o));
 
- Upt_omni_o_ceta=          (f3(y[39],(y[70]),uomni_o_ceta,(hsomni_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_omni_o_ceta=          (f3(y[39],(y[70]),uomni_o_ceta,(hsomni_ceta*(volume_so+volume_d)),bdapar_ceta_o));
 
- Upt_carn_o_ceta=          (f3(CZ_edible_o,(y[70]),ucarn_o_ceta,(hscarn_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_carn_o_ceta=          (f3(CZ_edible_o,(y[70]),ucarn_o_ceta,(hscarn_ceta*(volume_so+volume_d)),bdapar_ceta_o));
 
- Upt_fishp_o_ceta=         (f3(y[45],(y[70]),ufishp_o_ceta,(hsfishp_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_fishp_o_ceta=         (f3(y[45],(y[70]),ufishp_o_ceta,(hsfishp_ceta*(volume_so+volume_d)),bdapar_ceta_o));
 
- Upt_fishd_o_ceta=         (f3(y[47],(y[70]),ufishd_o_ceta,(hsfishd_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_fishd_o_ceta=         (f3(y[47],(y[70]),ufishd_o_ceta,(hsfishd_ceta*(volume_so+volume_d)),bdapar_ceta_o));
 
- Upt_fishm_o_ceta=         (f3(y[49],(y[70]),ufishm_o_ceta,(hsfishm_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_fishm_o_ceta=         (f3(y[49],(y[70]),ufishm_o_ceta,(hsfishm_ceta*(volume_so+volume_d)),bdapar_ceta_o));
 
- Upt_bird_o_ceta=         (f3(y[50],(y[70]),ubird_o_ceta,(hsbird_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_bird_o_ceta=         (f3(y[50],(y[70]),ubird_o_ceta,(hsbird_ceta*(volume_so+volume_d)),bdapar_ceta_o));
 
- Upt_seal_o_ceta=         (f3(y[68],(y[70]),useal_o_ceta,(hsseal_ceta*(volume_so+volume_d)),bdapar_ceta));
+ Upt_seal_o_ceta=         (f3(y[68],(y[70]),useal_o_ceta,(hsseal_ceta*(volume_so+volume_d)),bdapar_ceta_o));
 
 // Sum over all prey
       Upt_total_ceta_o = Upt_omni_o_ceta  
@@ -3725,30 +3687,30 @@ if(area_d3>0 && rock_d3>0.5 && (y[7]+y[13])>0) {
 // Inshore Cetaceans
 // _____________
 
-//	 Upt_corpse_s1_ceta=      (f3(y[15],(y[71]*area_s1/shallowprop),ucorp_i_ceta,(hscorp_ceta*(volume_si*area_s1/shallowprop)),bdapar_ceta));
-//	 Upt_corpse_s2_ceta=      (f3(y[16],(y[71]*area_s2/shallowprop),ucorp_i_ceta,(hscorp_ceta*(volume_si*area_s2/shallowprop)),bdapar_ceta));
-//	 Upt_corpse_s3_ceta=      (f3(y[17],(y[71]*area_s3/shallowprop),ucorp_i_ceta,(hscorp_ceta*(volume_si*area_s3/shallowprop)),bdapar_ceta));
+//	 Upt_corpse_s1_ceta=      (f3(y[15],(y[71]*area_s1/shallowprop),ucorp_i_ceta,(hscorp_ceta*(volume_si*area_s1/shallowprop)),bdapar_ceta_i));
+//	 Upt_corpse_s2_ceta=      (f3(y[16],(y[71]*area_s2/shallowprop),ucorp_i_ceta,(hscorp_ceta*(volume_si*area_s2/shallowprop)),bdapar_ceta_i));
+//	 Upt_corpse_s3_ceta=      (f3(y[17],(y[71]*area_s3/shallowprop),ucorp_i_ceta,(hscorp_ceta*(volume_si*area_s3/shallowprop)),bdapar_ceta_i));
 
 // sum up over all sediment types
 //	 Upt_corpse_i_ceta=        (Upt_corpse_s1_ceta+Upt_corpse_s2_ceta+Upt_corpse_s3_ceta );
 
- Upt_benths_i_ceta=        (f3(y[57],(y[71]),ubenths_i_ceta,(hsbenths_ceta*(volume_si)),bdapar_ceta));
- Upt_benthc_i_ceta=        (f3(y[58],(y[71]),ubenthc_i_ceta,(hsbenthc_ceta*(volume_si)),bdapar_ceta));
- Upt_disc_i_ceta=          (f3(y[59],(y[71]),udisc_i_ceta,(hsdisc_ceta*(volume_si)),bdapar_ceta));
+ Upt_benths_i_ceta=        (f3(y[57],(y[71]),ubenths_i_ceta,(hsbenths_ceta*(volume_si)),bdapar_ceta_i));
+ Upt_benthc_i_ceta=        (f3(y[58],(y[71]),ubenthc_i_ceta,(hsbenthc_ceta*(volume_si)),bdapar_ceta_i));
+ Upt_disc_i_ceta=          (f3(y[59],(y[71]),udisc_i_ceta,(hsdisc_ceta*(volume_si)),bdapar_ceta_i));
 
- Upt_omni_i_ceta=          (f3(y[60],(y[71]),uomni_i_ceta,(hsomni_ceta*(volume_si)),bdapar_ceta));
+ Upt_omni_i_ceta=          (f3(y[60],(y[71]),uomni_i_ceta,(hsomni_ceta*(volume_si)),bdapar_ceta_i));
 
- Upt_carn_i_ceta=          (f3(CZ_edible_i,(y[71]),ucarn_i_ceta,(hscarn_ceta*(volume_si)),bdapar_ceta));
+ Upt_carn_i_ceta=          (f3(CZ_edible_i,(y[71]),ucarn_i_ceta,(hscarn_ceta*(volume_si)),bdapar_ceta_i));
 
- Upt_fishp_i_ceta=         (f3(y[64],(y[71]),ufishp_i_ceta,(hsfishp_ceta*(volume_si)),bdapar_ceta));
+ Upt_fishp_i_ceta=         (f3(y[64],(y[71]),ufishp_i_ceta,(hsfishp_ceta*(volume_si)),bdapar_ceta_i));
 
- Upt_fishd_i_ceta=         (f3(y[66],(y[71]),ufishd_i_ceta,(hsfishd_ceta*(volume_si)),bdapar_ceta));
+ Upt_fishd_i_ceta=         (f3(y[66],(y[71]),ufishd_i_ceta,(hsfishd_ceta*(volume_si)),bdapar_ceta_i));
 
- Upt_fishm_i_ceta=         (f3(y[65],(y[71]),ufishm_i_ceta,(hsfishm_ceta*(volume_si)),bdapar_ceta));
+ Upt_fishm_i_ceta=         (f3(y[65],(y[71]),ufishm_i_ceta,(hsfishm_ceta*(volume_si)),bdapar_ceta_i));
 
- Upt_bird_i_ceta=         (f3(y[67],(y[71]),ubird_i_ceta,(hsbird_ceta*(volume_si)),bdapar_ceta));
+ Upt_bird_i_ceta=         (f3(y[67],(y[71]),ubird_i_ceta,(hsbird_ceta*(volume_si)),bdapar_ceta_i));
 
- Upt_seal_i_ceta=         (f3(y[69],(y[71]),useal_i_ceta,(hsseal_ceta*(volume_si)),bdapar_ceta));
+ Upt_seal_i_ceta=         (f3(y[69],(y[71]),useal_i_ceta,(hsseal_ceta*(volume_si)),bdapar_ceta_i));
 
 // Sum over all prey
       Upt_total_ceta_i = Upt_omni_i_ceta 
@@ -4678,12 +4640,277 @@ HTLmetabolism_si =     ( eH_i * y[60] )
 
 
 
+/* __________ Food concentration gradients for pelagic and migratory fish and birds&mammals, relative to their own gradients___________*/
+
+// if log-gradients are >0 the food is higher offshore relative to predator so predator needs to shift offshore
+// if log-gradients are <0 then food is higher inshore relative to predator so predator needs to shift inshore
+
+// Planktivorous fish prey:predator gradient
+Rlim = 2;
+food_o = (uomni_fishpt * y[39] + ucarn_fishpt * CZ_edible_o
+         +ufishplar_fishpt * y[46] + ufishdlar_fishpt * y[48]
+         +ubenthslar_fishpt * y[41] + ubenthclar_fishpt * y[43]) ;
+food_i = (uomni_fishpt * y[60] + ucarn_fishpt * CZ_edible_i
+         +ufishplar_fishpt * y[62] + ufishdlar_fishpt * y[63]
+         +ubenthslar_fishpt * y[55] + ubenthclar_fishpt * y[56]) ;
+
+pred_o = y[45] ;
+pred_i = y[64] ;
+
+if(food_o>0 && pred_o>0 && food_i>0 && pred_i>0) {
+   food_gradient_pfish =  log( (food_o/pred_o) / (food_i/pred_i) ) ;
+}
+else if(pred_i==0 && food_i>0) {
+   food_gradient_pfish = -Rlim ;
+}
+else if(food_o==0 && food_i>0) {
+   food_gradient_pfish = -Rlim ;
+}
+
+else if(pred_o==0 && food_i>0) {
+   food_gradient_pfish = +Rlim ;
+}
+else if(food_i==0 && food_o>0) {
+   food_gradient_pfish = +Rlim ;
+}
+else {
+   food_gradient_pfish = 0 ;
+}
+
+// Migratory fish prey:predator gradient
+Rlim = 2;
+food_o = (uomni_fishmt * y[39] + ucarn_fishmt * CZ_edible_o
+         +ufishplar_fishmt * y[46] + ufishdlar_fishmt * y[48]
+         +ubenthslar_fishmt * y[41] + ubenthclar_fishmt * y[43]) ;
+food_i = (uomni_fishmt * y[60] + ucarn_fishmt * CZ_edible_i
+         +ufishplar_fishmt * y[62] + ufishdlar_fishmt * y[63]
+         +ubenthslar_fishmt * y[55] + ubenthclar_fishmt * y[56]) ;
+
+pred_o = y[49];
+pred_i = y[65] ;
+
+if(food_o>0 && pred_o>0 && food_i>0 && pred_i>0) {
+   food_gradient_mfish =  log( (food_o/pred_o) / (food_i/pred_i) ) ;
+}
+else if(pred_i==0 && food_i>0) {
+   food_gradient_mfish = -Rlim ;
+}
+else if(food_o==0 && food_i>0) {
+   food_gradient_mfish = -Rlim ;
+}
+
+else if(pred_o==0 && food_i>0) {
+   food_gradient_mfish = +Rlim ;
+}
+else if(food_i==0 && food_o>0) {
+   food_gradient_mfish = +Rlim ;
+}
+else {
+   food_gradient_mfish = 0 ;
+}
+
+
+
+// Demersal fish prey:predator gradient
+Rlim = 2;
+food_o = ( ucarn_fishdt * CZ_edible_o
+         +ufishplar_fishdt * y[46] + ufishdlar_fishdt * y[48]
+         + ufishp_fishdt * y[45]
+         + ufishm_fishdt * y[49]
+         + ufishd_fishdt * y[47]
+         + ubenths_fishdt * y[42] + ubenthc_fishdt * y[44]
+         + udisc_fishdt * y[14] + ucorp_fishdt * (y[73]+y[18]+y[19]+y[20]) );
+food_i = (ucarn_fishdt * CZ_edible_i
+         +ufishplar_fishdt * y[62] + ufishdlar_fishdt * y[63]
+         + ufishp_fishdt * y[64]      
+         + ufishm_fishdt * y[65]      
+         + ufishd_fishdt * y[66]      
+         + ubenths_fishdt * y[57] + ubenthc_fishdt * y[58]
+         + udisc_fishdt * y[59] + ucorp_fishdt * (y[72]+y[15]+y[16]+y[17]) );
+
+pred_o = y[47];
+pred_i = y[66];
+
+if(food_o>0 && pred_o>0 && food_i>0 && pred_i>0) {
+   food_gradient_dfish =  log( (food_o/pred_o) / (food_i/pred_i) ) ;
+}
+else if(pred_i==0 && food_i>0) {
+   food_gradient_dfish = -Rlim ;
+}
+else if(food_o==0 && food_i>0) {
+   food_gradient_dfish = -Rlim ;
+}
+
+else if(pred_o==0 && food_i>0) {
+   food_gradient_dfish = +Rlim ;
+}
+else if(food_i==0 && food_o>0) {
+   food_gradient_dfish = +Rlim ;
+}
+else {
+   food_gradient_dfish = 0 ;
+}
+
+
+// Bird prey:predator gradient 
+Rlim = 2;
+food_o=Upt_total_bird_o;
+food_i=Upt_total_bird_i;
+
+//food_o=Assim_bird_o;
+//food_i=Assim_bird_i;
+
+//food_o=Assim_bird_o - (ebird_o*y[50]);
+//food_i=Assim_bird_i - (ebird_i*y[67]);
+
+pred_o = y[50];
+pred_i = y[67];
+
+// If using uptake or assimilation alone use the following set of checks
+if(food_o>0 && pred_o>0 && food_i>0 && pred_i>0) {
+   food_gradient_bird =  log( (food_o/pred_o) / (food_i/pred_i) ) ;
+}
+else if(pred_i==0 && food_i>0) {
+   food_gradient_bird = -Rlim ;
+}
+else if(food_o==0 && food_i>0) {
+   food_gradient_bird = -Rlim ;
+}
+
+else if(pred_o==0 && food_i>0) {
+   food_gradient_bird = +Rlim ;
+}
+else if(food_i==0 && food_o>0) {
+   food_gradient_bird = +Rlim ;
+}
+else {
+   food_gradient_bird = 0 ;
+}
+
+// If using the net of assimilation and metabolism use the following set of checks...
+// if(pred_o>0 && pred_i>0) {
+//     food_gradient_bird = (food_o/pred_o) - (food_i/pred_i);
+// }
+// else if(pred_o>0 && pred_i==0){
+//     food_gradient_bird = (food_o/pred_o);
+// }
+// else if(pred_o==0 && pred_i>0){
+//     food_gradient_bird = - (food_i/pred_i);
+// }
+// else {
+//     food_gradient_bird = 0;
+// }
+
+
+// Pinniped prey:predator gradient - regulated by exposed sea surface area (IS THIS RIGHT)
+Rlim = 2;
+food_o=Upt_total_seal_o;
+food_i=Upt_total_seal_i;
+
+//food_o=Assim_seal_o;
+//food_i=Assim_seal_i;
+
+//food_o=Assim_seal_o - (eseal_o*y[68]);
+//food_i=Assim_seal_i - (eseal_i*y[69]);
+
+pred_o = y[68];
+pred_i = y[69];
+
+// If using uptake or assimilation alone use the following set of checks
+if(food_o>0 && pred_o>0 && food_i>0 && pred_i>0) {
+   food_gradient_seal =  log( (food_o/pred_o) / (food_i/pred_i) ) ;
+}
+else if(pred_i==0 && food_i>0) {
+   food_gradient_seal = -Rlim ;
+}
+else if(food_o==0 && food_i>0) {
+   food_gradient_seal = -Rlim ;
+}
+
+else if(pred_o==0 && food_i>0) {
+   food_gradient_seal = +Rlim ;
+}
+else if(food_i==0 && food_o>0) {
+   food_gradient_seal = +Rlim ;
+}
+else {
+   food_gradient_seal = 0 ;
+}
+
+// If using the net of assimilation and metabolism use the following set of checks...
+// if(pred_o>0 && pred_i>0) {
+//     food_gradient_seal = (food_o/pred_o) - (food_i/pred_i);
+// }
+// else if(pred_o>0 && pred_i==0){
+//     food_gradient_seal = (food_o/pred_o);
+// }
+// else if(pred_o==0 && pred_i>0){
+//     food_gradient_seal = - (food_i/pred_i);
+// }
+// else {
+//     food_gradient_seal = 0;
+// }
+
+
+
+// Cetacean prey:predator gradient - regulated by exposed sea surface area
+Rlim = 2;
+food_o=Upt_total_ceta_o;
+food_i=Upt_total_ceta_i;
+
+//food_o=Assim_ceta_o;
+//food_i=Assim_ceta_i;
+
+//food_o=Assim_ceta_o - (eceta_o*y[70]);
+//food_i=Assim_ceta_i - (eceta_i*y[71]);
+
+pred_o = y[70];
+pred_i = y[71];
+
+// If using uptake or assimilation alone use the following set of checks
+if(food_o>0 && pred_o>0 && food_i>0 && pred_i>0) {
+   food_gradient_ceta =  log( (food_o/pred_o) / (food_i/pred_i) ) ;
+}
+else if(pred_i==0 && food_i>0) {
+   food_gradient_ceta = -Rlim ;
+}
+else if(food_o==0 && food_i>0) {
+   food_gradient_ceta = -Rlim ;
+}
+
+else if(pred_o==0 && food_i>0) {
+   food_gradient_ceta = +Rlim ;
+}
+else if(food_i==0 && food_o>0) {
+   food_gradient_ceta = +Rlim ;
+}
+else {
+   food_gradient_ceta = 0 ;
+}
+
+// If using the net of assimilation and metabolism use the following set of checks...
+// if(pred_o>0 && pred_i>0) {
+//     food_gradient_ceta = (food_o/pred_o) - (food_i/pred_i);
+// }
+// else if(pred_o>0 && pred_i==0){
+//     food_gradient_ceta = (food_o/pred_o);
+// }
+// else if(pred_o==0 && pred_i>0){
+//     food_gradient_ceta = - (food_i/pred_i);
+// }
+// else {
+//     food_gradient_ceta = 0;
+// }
+
+
+
 
 /* ____ ACTIVE MIGRATION OF FISH and BIRDS&MAMMALS INTO THE INSHORE ALONG FOOD CONCENTRATION GRADIENTS ____ */
 
 
 if (food_gradient_pfish  < 0 ) {
-    InshoreIN_fishp = (y[45]/(1-shallowprop)) * pfish_migcoef * pow( food_gradient_pfish , 2) ;
+    InshoreIN_fishp = (y[45] * pfish_migcoef * pow( food_gradient_pfish , 2))/(1-shallowprop) ;
+//    InshoreIN_fishp = (y[45]) * pfish_migcoef * pow( food_gradient_pfish , 2) ;
 }
 else {
     InshoreIN_fishp = 0 ;
@@ -4691,7 +4918,8 @@ else {
 
 
 if (food_gradient_dfish  < 0 ) {
-    InshoreIN_fishd = (y[47]/(1-shallowprop)) * dfish_migcoef * pow( food_gradient_dfish , 2) ;
+    InshoreIN_fishd = (y[47] * dfish_migcoef * pow( food_gradient_dfish , 2))/(1-shallowprop) ;
+//    InshoreIN_fishd = (y[47]) * dfish_migcoef * pow( food_gradient_dfish , 2) ;
 }
 else {
     InshoreIN_fishd = 0 ;
@@ -4699,7 +4927,8 @@ else {
 
 
 if (food_gradient_mfish  < 0 ) {
-    InshoreIN_fishm = (y[49]/(1-shallowprop)) * mfish_migcoef * pow( food_gradient_mfish , 2) ;
+    InshoreIN_fishm = (y[49] * mfish_migcoef * pow( food_gradient_mfish , 2))/(1-shallowprop) ;
+//    InshoreIN_fishm = (y[49]) * mfish_migcoef * pow( food_gradient_mfish , 2) ;
 }
 else {
     InshoreIN_fishm = 0 ;
@@ -4707,7 +4936,8 @@ else {
 
 
 if (food_gradient_bird  < 0 ) {
-    InshoreIN_bird =  (y[50]/(1-shallowprop)) * bird_migcoef *  pow( food_gradient_bird  , 2) ;
+    InshoreIN_bird =  (y[50] * bird_migcoef *  pow( food_gradient_bird  , 2))/(1-shallowprop) ;
+//    InshoreIN_bird =  (y[50]) * bird_migcoef *  pow( food_gradient_bird  , 2) ;
 }
 else {
     InshoreIN_bird = 0 ;
@@ -4716,7 +4946,8 @@ else {
 
 // NEW <--------------------------------------------------
 if (food_gradient_seal  < 0 ) {
-    InshoreIN_seal =  (y[68]/(1-shallowprop)) * seal_migcoef *  pow( food_gradient_seal  , 2) ;
+    InshoreIN_seal =  (y[68] * seal_migcoef *  pow( food_gradient_seal  , 2))/(1-shallowprop) ;
+//    InshoreIN_seal =  (y[68]) * seal_migcoef *  pow( food_gradient_seal  , 2) ;
 }
 else {
     InshoreIN_seal = 0 ;
@@ -4725,7 +4956,8 @@ else {
 
 // NEW <--------------------------------------------------
 if (food_gradient_ceta  < 0 ) {
-    InshoreIN_ceta =  (y[70]/(1-shallowprop)) * ceta_migcoef *  pow( food_gradient_ceta  , 2) ;
+    InshoreIN_ceta =  (y[70] * ceta_migcoef *  pow( food_gradient_ceta  , 2))/(1-shallowprop) ;
+//    InshoreIN_ceta =  (y[70]) * ceta_migcoef *  pow( food_gradient_ceta  , 2) ;
 }
 else {
     InshoreIN_ceta = 0 ;
@@ -4739,7 +4971,8 @@ else {
 
 
 if (food_gradient_pfish  > 0 ) {
-    InshoreOUT_fishp = (y[64]/(shallowprop)) * pfish_migcoef * pow( food_gradient_pfish , 2) ;
+    InshoreOUT_fishp = (y[64] * pfish_migcoef * pow( food_gradient_pfish , 2))/(shallowprop) ;
+//    InshoreOUT_fishp = (y[64]) * pfish_migcoef * pow( food_gradient_pfish , 2) ;
 }
 else {
     InshoreOUT_fishp = 0 ;
@@ -4748,7 +4981,8 @@ else {
 
 
 if (food_gradient_dfish  > 0 ) {
-    InshoreOUT_fishd = (y[66]/(shallowprop)) * dfish_migcoef * pow( food_gradient_dfish , 2) ;
+    InshoreOUT_fishd = (y[66] * dfish_migcoef * pow( food_gradient_dfish , 2))/(shallowprop) ;
+//    InshoreOUT_fishd = (y[66]) * dfish_migcoef * pow( food_gradient_dfish , 2) ;
 }
 else {
     InshoreOUT_fishd = 0 ;
@@ -4756,7 +4990,8 @@ else {
 
 
 if (food_gradient_mfish  > 0 ) {
-    InshoreOUT_fishm = (y[65]/(shallowprop)) * mfish_migcoef * pow( food_gradient_mfish , 2) ;
+    InshoreOUT_fishm = (y[65] * mfish_migcoef * pow( food_gradient_mfish , 2))/(shallowprop) ;
+//    InshoreOUT_fishm = (y[65]) * mfish_migcoef * pow( food_gradient_mfish , 2) ;
 }
 else {
     InshoreOUT_fishm = 0 ;
@@ -4764,7 +4999,8 @@ else {
 
 
 if (food_gradient_bird > 0 ) {
-    InshoreOUT_bird =  (y[67]/(shallowprop)) * bird_migcoef *  pow( food_gradient_bird  , 2) ;
+    InshoreOUT_bird =  (y[67] * bird_migcoef *  pow( food_gradient_bird  , 2))/(shallowprop) ;
+//    InshoreOUT_bird =  (y[67]) * bird_migcoef *  pow( food_gradient_bird  , 2) ;
 }
 else {
     InshoreOUT_bird = 0 ;
@@ -4772,14 +5008,16 @@ else {
 
 
 if (food_gradient_seal > 0 ) {
-    InshoreOUT_seal =  (y[69]/(shallowprop)) * seal_migcoef *  pow( food_gradient_seal  , 2) ;
+    InshoreOUT_seal =  (y[69] * seal_migcoef *  pow( food_gradient_seal  , 2))/(shallowprop) ;
+//    InshoreOUT_seal =  (y[69]) * seal_migcoef *  pow( food_gradient_seal  , 2) ;
 }
 else {
     InshoreOUT_seal = 0 ;
 }
 
 if (food_gradient_ceta > 0 ) {
-    InshoreOUT_ceta =  (y[71]/(shallowprop)) * ceta_migcoef *  pow( food_gradient_ceta  , 2) ;
+    InshoreOUT_ceta =  (y[71] * ceta_migcoef *  pow( food_gradient_ceta  , 2))/(shallowprop) ;
+//    InshoreOUT_ceta =  (y[71]) * ceta_migcoef *  pow( food_gradient_ceta  , 2) ;
 }
 else {
     InshoreOUT_ceta = 0 ;
@@ -5863,7 +6101,7 @@ else {
               - ( driverdfish_sp * y[47] *DF_fec )
               + ( driverdfish_rec * y[48] )
               - ( Fdodaily_USC * (twomax(0,(max_exploitable_f_DF*(y[47]-protect_DF_o)))) ) ;
-	      
+
     // dfishd_i
     ydot[66] = Assim_fishd_i
               - ( eFd_i * y[66] )

@@ -571,9 +571,9 @@ total_sealflux<-  pfish_sealflux + dfish_sealflux + mfish_sealflux +
                 + benths_sealflux + benthc_sealflux
 
 
-disc_cetaflux<-fluxomni_ceta[ndays]-fluxomni_ceta[((nyears-1)*360+1)]
-omni_cetaflux<-fluxcarn_ceta[ndays]-fluxcarn_ceta[((nyears-1)*360+1)]
-carn_cetaflux<-fluxdisc_ceta[ndays]-fluxdisc_ceta[((nyears-1)*360+1)]
+disc_cetaflux<-fluxdisc_ceta[ndays]-fluxdisc_ceta[((nyears-1)*360+1)]
+omni_cetaflux<-fluxomni_ceta[ndays]-fluxomni_ceta[((nyears-1)*360+1)]
+carn_cetaflux<-fluxcarn_ceta[ndays]-fluxcarn_ceta[((nyears-1)*360+1)]
 pfish_cetaflux<-fluxpfish_ceta[ndays]-fluxpfish_ceta[((nyears-1)*360+1)]
 dfish_cetaflux<-fluxdfish_ceta[ndays]-fluxdfish_ceta[((nyears-1)*360+1)]
 mfish_cetaflux<-fluxmfish_ceta[ndays]-fluxmfish_ceta[((nyears-1)*360+1)]

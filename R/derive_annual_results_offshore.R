@@ -960,7 +960,7 @@ annual_flux_results[82,1]<-SEDWCammflux
 annual_flux_results[83,1]<-SEDWCnitflux      
 annual_flux_results[84,1]<-Fluxdet_omni    
 annual_flux_results[85,1]<-Fluxphyt_omni   
-annual_flux_results[85,1]<-Fluxbenthslar_omni 
+annual_flux_results[86,1]<-Fluxbenthslar_omni 
 annual_flux_results[87,1]<-Fluxbenthclar_omni 
 annual_flux_results[88,1]<-Fluxomni_carn      
 annual_flux_results[89,1]<-Fluxpfishlar_carn  

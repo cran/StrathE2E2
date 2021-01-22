@@ -132,7 +132,7 @@ wave_beach_kelpdebris,315,0,Ecology model fitted,Conversion rate,Macrophyte debr
 umaxC_kelp,316,0,Ecology model fitted,Maximum uptake rate,Carbon by macrophytes
 exudeC_kelp,317,0,Ecology model fitted,Carbon exudation rate,Macrophytes
 selfshade_kelp,318,0,Ecology model fitted,Coefficient,Macrophyte self shading
-uNIT_kelpt,319,0,Ecology model fitted,Maximum uptake rate,Nitate by macrophytes
+uNIT_kelpt,319,0,Ecology model fitted,Maximum uptake rate,Nitrate by macrophytes
 hsNIT_kelp,320,0,Ecology model fitted,Uptake half saturation coefficient,Nitrate by macrophytes
 uAMM_kelpt,321,0,Ecology model fitted,Maximum uptake rate,Ammonia by macrophytes
 hsAMM_kelp,322,0,Ecology model fitted,Uptake half saturation coefficient,Ammonia by macrophytes
@@ -300,14 +300,14 @@ aBclar,483,1,Ecology model fixed,Assimilation efficiency,Carnivore/scavenge feed
 aBs,484,1,Ecology model fixed,Assimilation efficiency,Suspension/deposit feeding benthos
 aBc,485,1,Ecology model fixed,Assimilation efficiency,Carnivore/scavenge feeding benthos
 aFplar,486,1,Ecology model fixed,Assimilation efficiency,Planktivorous fish larvae
-aFdlar,487,1,Ecology model fixed,Assimilation efficiency,Demersal fish lavae
+aFdlar,487,1,Ecology model fixed,Assimilation efficiency,Demersal fish larvae
 aFp,488,1,Ecology model fixed,Assimilation efficiency,Planktivorous fish
 aFm,489,1,Ecology model fixed,Assimilation efficiency,Migratory fish
 aFd,490,1,Ecology model fixed,Assimilation efficiency,Demersal fish
 abird,491,1,Ecology model fixed,Assimilation efficiency,Birds
 aseal,492,1,Ecology model fixed,Assimilation efficiency,Pinnipeds
 aceta,493,1,Ecology model fixed,Assimilation efficiency,Cetaceans
-eHt,494,1,Ecology model fixed,Background metabolic rate coefficient,Omnivorous fish
+eHt,494,1,Ecology model fixed,Background metabolic rate coefficient,Omnivorous zooplankton
 eCt,495,1,Ecology model fixed,Background metabolic rate coefficient,Carnivorous zooplankton
 eBslart,496,1,Ecology model fixed,Background metabolic rate coefficient,Suspension/deposit feeding benthos larvae
 eBclart,497,1,Ecology model fixed,Background metabolic rate coefficient,Carnivore/scavenge feeding benthos larvae
@@ -409,11 +409,8 @@ fdriverv_dif,1007,4,Environmental driver,Vertical diffusion rate,Offshore zone
 fdriverso_inflow,1008,4,Environmental driver,Boundary volume inflow rate,Inshore zone
 fdriverd_inflow,1009,4,Environmental driver,Boundary volume inflow rate,Lower layer offshore
 fdriversi_inflow,1010,4,Environmental driver,Boundary volume inflow rate,Inshore zone
-fdriverso_outflow,1011,4,Environmental driver,Volume outflow rate,Offshore surface
-fdriverd_outflow,1012,4,Environmental driver,Volume outflow rate,Lower layer offshore
 fdriversi_outflow,1013,4,Environmental driver,Volume outflow rate,Inshore zone
 fdriverso_si_flow,1014,4,Environmental driver,Volume exchange rate,Offshore to inshore zone
-fdriversi_so_flow,1015,4,Environmental driver,Volume exchange rate,Inshore to offshore zone
 fdrivers_upwell,1016,4,Environmental driver,Upwelling rate,Offshore zone
 fdriverriver,1017,4,Environmental driver,River volume inflow rate,Inshore zone
 fdriverboundso_det,1018,4,Environmental driver,Boundary concentration,Upper layer offshore detritus

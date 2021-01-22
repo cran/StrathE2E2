@@ -58,7 +58,7 @@ If csv output is selected then the resulting files in the current user results f
 # return of results. In a real simulation nyear would be at least 50.
 # This example illustrates that the vector of planktivorous fish harvest ratio multiplers
 # does not have to be evenly spaced.
-    hr=c(0,0.5,0.75,1.0,1.25,2.0,3.0) 
+    hr <- c(0,0.5,0.75,1.0,1.25,2.0,3.0) 
     pf_yield_data <- e2e_run_ycurve(model,selection="PLANKTIV", nyears=3, HRvector=hr,
                                     HRfixed=1,csv.output=FALSE)
 

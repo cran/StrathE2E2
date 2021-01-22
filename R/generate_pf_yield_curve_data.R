@@ -89,7 +89,7 @@ OZ_browid<-which(results$final.year.outputs$mass_results_wholedomain$Description
 CZ_browid<-which(results$final.year.outputs$mass_results_wholedomain$Description=="Carnivorous_zooplankton")
 Bsd_browid<-which(results$final.year.outputs$mass_results_wholedomain$Description=="Benthos_susp/dep_feeders")
 MF_browid<-which(results$final.year.outputs$mass_results_wholedomain$Description=="Migratory_fish")
-BD_browid<-which(results$final.year.outputs$mass_results_wholedomain$Description=="Bird")
+BD_browid<-which(results$final.year.outputs$mass_results_wholedomain$Description=="Birds")
 SL_browid<-which(results$final.year.outputs$mass_results_wholedomain$Description=="Pinnipeds")
 CT_browid<-which(results$final.year.outputs$mass_results_wholedomain$Description=="Cetaceans")
 

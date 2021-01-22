@@ -23,7 +23,7 @@ test_that("check top predator feeding flux calculations", {
 # model are set to 10C, wich matches the Q10 reference temperature in the fixed parameter inputs. This means that when manually
 # calculating the uptake fluxes there is no need to compute any temperature corrections for the maximum uptake rate
 # parameters. However, the C-code in the model IS doing the Q10 calculation, so this is an important aspect of the testing.
-# As a consequence, it is very important not to chnage the temperature driving values in the Testbed model - they must be
+# As a consequence, it is very important not to change the temperature driving values in the Testbed model - they must be
 # equal to the Q10 reference temperature value.
 # 2) The sediment habitats are all set to the same area (0.125). This affects the calculation of uptake of corpses by scavengers.
 # By setting the habitats to equal area, we can simply sum the mass of corpses across each zone and use that as input to the
@@ -226,15 +226,24 @@ PREF_bird_ceta<-elt(fitted.parameters,"PREF_bird_ceta")
 PREF_seal_ceta<-elt(fitted.parameters,"PREF_seal_ceta")
 
 
+bda_par_bird_o <- bda_par_bird * 1/(1-shallowprop)
+bda_par_seal_o <- bda_par_seal * 1/(1-shallowprop)
+bda_par_ceta_o <- bda_par_ceta * 1/(1-shallowprop)
+
+bda_par_bird_i <- bda_par_bird * 1/(shallowprop)
+bda_par_seal_i <- bda_par_seal * 1/(shallowprop)
+bda_par_ceta_i <- bda_par_ceta * 1/(shallowprop)
+
+
 #-----------------------------------------------------------------------------------------------------------------
 
 #Now calculate the fluxes
 
 
 
-calc_flux_corpse_bird_o<- f3(corpse_o,(bird_o),u_bird*PREF_corpse_bird,h_bird*(volume_so+volume_d),bda_par_bird)
+calc_flux_corpse_bird_o<- f3(corpse_o,(bird_o),u_bird*PREF_corpse_bird,h_bird*(volume_so+volume_d),bda_par_bird_o)
 
-calc_flux_corpse_bird_i<- f3(corpse_i,(bird_i),u_bird*PREF_corpse_bird,h_bird*(volume_si),bda_par_bird)
+calc_flux_corpse_bird_i<- f3(corpse_i,(bird_i),u_bird*PREF_corpse_bird,h_bird*(volume_si),bda_par_bird_i)
 
 calc_flux_corpse_bird_w <- calc_flux_corpse_bird_o + calc_flux_corpse_bird_i
 
@@ -245,8 +254,8 @@ model_flux_corpse_bird<-extract_model_flux(flow_matrix,"corpses","bird")
 
 #............................
 
-calc_flux_discard_bird_o<- f3(discard_o,(bird_o),u_bird*PREF_discard_bird,h_bird*(volume_so+volume_d),bda_par_bird)
-calc_flux_discard_bird_i<- f3(discard_i,(bird_i),u_bird*PREF_discard_bird,h_bird*(volume_si),bda_par_bird)
+calc_flux_discard_bird_o<- f3(discard_o,(bird_o),u_bird*PREF_discard_bird,h_bird*(volume_so+volume_d),bda_par_bird_o)
+calc_flux_discard_bird_i<- f3(discard_i,(bird_i),u_bird*PREF_discard_bird,h_bird*(volume_si),bda_par_bird_i)
 
 calc_flux_discard_bird_w <- calc_flux_discard_bird_o + calc_flux_discard_bird_i
 
@@ -258,8 +267,8 @@ model_flux_discard_bird<-extract_model_flux(flow_matrix,"discards","bird")
 #............................
 
 
-calc_flux_carn_bird_o<- f3(CZ_edible_o,(bird_o),u_bird*PREF_carn_bird,h_bird*(volume_so+volume_d),bda_par_bird)
-calc_flux_carn_bird_i<- f3(CZ_edible_i,(bird_i),u_bird*PREF_carn_bird,h_bird*(volume_si),bda_par_bird)
+calc_flux_carn_bird_o<- f3(CZ_edible_o,(bird_o),u_bird*PREF_carn_bird,h_bird*(volume_so+volume_d),bda_par_bird_o)
+calc_flux_carn_bird_i<- f3(CZ_edible_i,(bird_i),u_bird*PREF_carn_bird,h_bird*(volume_si),bda_par_bird_i)
 
 calc_flux_carn_bird_w <- calc_flux_carn_bird_o + calc_flux_carn_bird_i
 
@@ -270,8 +279,8 @@ model_flux_carn_bird<-extract_model_flux(flow_matrix,"carnzoo","bird")
 
 #............................
 
-calc_flux_benths_bird_o<- f3(benths_o,(bird_o),u_bird*PREF_benths_bird,h_bird*(volume_so+volume_d),bda_par_bird)
-calc_flux_benths_bird_i<- f3(benths_i,(bird_i),u_bird*PREF_benths_bird,h_bird*(volume_si),bda_par_bird)
+calc_flux_benths_bird_o<- f3(benths_o,(bird_o),u_bird*PREF_benths_bird,h_bird*(volume_so+volume_d),bda_par_bird_o)
+calc_flux_benths_bird_i<- f3(benths_i,(bird_i),u_bird*PREF_benths_bird,h_bird*(volume_si),bda_par_bird_i)
 
 calc_flux_benths_bird_w <- calc_flux_benths_bird_o + calc_flux_benths_bird_i
 
@@ -282,8 +291,8 @@ model_flux_benths_bird<-extract_model_flux(flow_matrix,"benths","bird")
 
 #............................
 
-calc_flux_benthc_bird_o<- f3(benthc_o,(bird_o),u_bird*PREF_benthc_bird,h_bird*(volume_so+volume_d),bda_par_bird)
-calc_flux_benthc_bird_i<- f3(benthc_i,(bird_i),u_bird*PREF_benthc_bird,h_bird*(volume_si),bda_par_bird)
+calc_flux_benthc_bird_o<- f3(benthc_o,(bird_o),u_bird*PREF_benthc_bird,h_bird*(volume_so+volume_d),bda_par_bird_o)
+calc_flux_benthc_bird_i<- f3(benthc_i,(bird_i),u_bird*PREF_benthc_bird,h_bird*(volume_si),bda_par_bird_i)
 
 calc_flux_benthc_bird_w <- calc_flux_benthc_bird_o + calc_flux_benthc_bird_i
 
@@ -294,8 +303,8 @@ model_flux_benthc_bird<-extract_model_flux(flow_matrix,"benthc","bird")
 
 #............................
 
-calc_flux_fishp_bird_o<- f3(fishp_o,(bird_o),u_bird*PREF_fishp_bird,h_bird*(volume_so+volume_d),bda_par_bird)
-calc_flux_fishp_bird_i<- f3(fishp_i,(bird_i),u_bird*PREF_fishp_bird,h_bird*(volume_si),bda_par_bird)
+calc_flux_fishp_bird_o<- f3(fishp_o,(bird_o),u_bird*PREF_fishp_bird,h_bird*(volume_so+volume_d),bda_par_bird_o)
+calc_flux_fishp_bird_i<- f3(fishp_i,(bird_i),u_bird*PREF_fishp_bird,h_bird*(volume_si),bda_par_bird_i)
 
 calc_flux_fishp_bird_w <- calc_flux_fishp_bird_o + calc_flux_fishp_bird_i
 
@@ -306,8 +315,8 @@ model_flux_fishp_bird<-extract_model_flux(flow_matrix,"pfish","bird")
 
 #............................
 
-calc_flux_fishd_bird_o<- f3(fishd_o,(bird_o),u_bird*PREF_fishd_bird,h_bird*(volume_so+volume_d),bda_par_bird)
-calc_flux_fishd_bird_i<- f3(fishd_i,(bird_i),u_bird*PREF_fishd_bird,h_bird*(volume_si),bda_par_bird)
+calc_flux_fishd_bird_o<- f3(fishd_o,(bird_o),u_bird*PREF_fishd_bird,h_bird*(volume_so+volume_d),bda_par_bird_o)
+calc_flux_fishd_bird_i<- f3(fishd_i,(bird_i),u_bird*PREF_fishd_bird,h_bird*(volume_si),bda_par_bird_i)
 
 calc_flux_fishd_bird_w <- calc_flux_fishd_bird_o + calc_flux_fishd_bird_i
 
@@ -319,8 +328,8 @@ model_flux_fishd_bird<-extract_model_flux(flow_matrix,"dfish","bird")
 #............................
 
 
-calc_flux_fishm_bird_o<- f3(fishm_o,(bird_o),u_bird*PREF_fishm_bird,h_bird*(volume_so+volume_d),bda_par_bird)
-calc_flux_fishm_bird_i<- f3(fishm_i,(bird_i),u_bird*PREF_fishm_bird,h_bird*(volume_si),bda_par_bird)
+calc_flux_fishm_bird_o<- f3(fishm_o,(bird_o),u_bird*PREF_fishm_bird,h_bird*(volume_so+volume_d),bda_par_bird_o)
+calc_flux_fishm_bird_i<- f3(fishm_i,(bird_i),u_bird*PREF_fishm_bird,h_bird*(volume_si),bda_par_bird_i)
 
 calc_flux_fishm_bird_w <- calc_flux_fishm_bird_o + calc_flux_fishm_bird_i
 
@@ -333,9 +342,8 @@ model_flux_fishm_bird<-extract_model_flux(flow_matrix,"mfish","bird")
 #............................
 
 
-calc_flux_corpse_seal_o<- f3(corpse_o,(seal_o),u_seal*PREF_corpse_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-
-calc_flux_corpse_seal_i<- f3(corpse_i,(seal_i),u_seal*PREF_corpse_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_corpse_seal_o<- f3(corpse_o,(seal_o),u_seal*PREF_corpse_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_corpse_seal_i<- f3(corpse_i,(seal_i),u_seal*PREF_corpse_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_corpse_seal_w <- calc_flux_corpse_seal_o + calc_flux_corpse_seal_i
 
@@ -346,8 +354,8 @@ model_flux_corpse_seal<-extract_model_flux(flow_matrix,"corpses","seal")
 
 #............................
 
-calc_flux_discard_seal_o<- f3(discard_o,(seal_o),u_seal*PREF_discard_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-calc_flux_discard_seal_i<- f3(discard_i,(seal_i),u_seal*PREF_discard_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_discard_seal_o<- f3(discard_o,(seal_o),u_seal*PREF_discard_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_discard_seal_i<- f3(discard_i,(seal_i),u_seal*PREF_discard_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_discard_seal_w <- calc_flux_discard_seal_o + calc_flux_discard_seal_i
 
@@ -359,8 +367,8 @@ model_flux_discard_seal<-extract_model_flux(flow_matrix,"discards","seal")
 #............................
 
 
-calc_flux_carn_seal_o<- f3(CZ_edible_o,(seal_o),u_seal*PREF_carn_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-calc_flux_carn_seal_i<- f3(CZ_edible_i,(seal_i),u_seal*PREF_carn_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_carn_seal_o<- f3(CZ_edible_o,(seal_o),u_seal*PREF_carn_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_carn_seal_i<- f3(CZ_edible_i,(seal_i),u_seal*PREF_carn_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_carn_seal_w <- calc_flux_carn_seal_o + calc_flux_carn_seal_i
 
@@ -371,8 +379,8 @@ model_flux_carn_seal<-extract_model_flux(flow_matrix,"carnzoo","seal")
 
 #............................
 
-calc_flux_benths_seal_o<- f3(benths_o,(seal_o),u_seal*PREF_benths_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-calc_flux_benths_seal_i<- f3(benths_i,(seal_i),u_seal*PREF_benths_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_benths_seal_o<- f3(benths_o,(seal_o),u_seal*PREF_benths_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_benths_seal_i<- f3(benths_i,(seal_i),u_seal*PREF_benths_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_benths_seal_w <- calc_flux_benths_seal_o + calc_flux_benths_seal_i
 
@@ -383,8 +391,8 @@ model_flux_benths_seal<-extract_model_flux(flow_matrix,"benths","seal")
 
 #............................
 
-calc_flux_benthc_seal_o<- f3(benthc_o,(seal_o),u_seal*PREF_benthc_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-calc_flux_benthc_seal_i<- f3(benthc_i,(seal_i),u_seal*PREF_benthc_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_benthc_seal_o<- f3(benthc_o,(seal_o),u_seal*PREF_benthc_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_benthc_seal_i<- f3(benthc_i,(seal_i),u_seal*PREF_benthc_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_benthc_seal_w <- calc_flux_benthc_seal_o + calc_flux_benthc_seal_i
 
@@ -395,8 +403,8 @@ model_flux_benthc_seal<-extract_model_flux(flow_matrix,"benthc","seal")
 
 #............................
 
-calc_flux_fishp_seal_o<- f3(fishp_o,(seal_o),u_seal*PREF_fishp_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-calc_flux_fishp_seal_i<- f3(fishp_i,(seal_i),u_seal*PREF_fishp_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_fishp_seal_o<- f3(fishp_o,(seal_o),u_seal*PREF_fishp_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_fishp_seal_i<- f3(fishp_i,(seal_i),u_seal*PREF_fishp_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_fishp_seal_w <- calc_flux_fishp_seal_o + calc_flux_fishp_seal_i
 
@@ -407,8 +415,8 @@ model_flux_fishp_seal<-extract_model_flux(flow_matrix,"pfish","seal")
 
 #............................
 
-calc_flux_fishd_seal_o<- f3(fishd_o,(seal_o),u_seal*PREF_fishd_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-calc_flux_fishd_seal_i<- f3(fishd_i,(seal_i),u_seal*PREF_fishd_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_fishd_seal_o<- f3(fishd_o,(seal_o),u_seal*PREF_fishd_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_fishd_seal_i<- f3(fishd_i,(seal_i),u_seal*PREF_fishd_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_fishd_seal_w <- calc_flux_fishd_seal_o + calc_flux_fishd_seal_i
 
@@ -419,8 +427,8 @@ model_flux_fishd_seal<-extract_model_flux(flow_matrix,"dfish","seal")
 
 #............................
 
-calc_flux_fishm_seal_o<- f3(fishm_o,(seal_o),u_seal*PREF_fishm_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-calc_flux_fishm_seal_i<- f3(fishm_i,(seal_i),u_seal*PREF_fishm_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_fishm_seal_o<- f3(fishm_o,(seal_o),u_seal*PREF_fishm_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_fishm_seal_i<- f3(fishm_i,(seal_i),u_seal*PREF_fishm_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_fishm_seal_w <- calc_flux_fishm_seal_o + calc_flux_fishm_seal_i
 
@@ -431,8 +439,8 @@ model_flux_fishm_seal<-extract_model_flux(flow_matrix,"mfish","seal")
 
 #............................
 
-calc_flux_bird_seal_o<- f3(bird_o,(seal_o),u_seal*PREF_bird_seal,h_seal*(volume_so+volume_d),bda_par_seal)
-calc_flux_bird_seal_i<- f3(bird_i,(seal_i),u_seal*PREF_bird_seal,h_seal*(volume_si),bda_par_seal)
+calc_flux_bird_seal_o<- f3(bird_o,(seal_o),u_seal*PREF_bird_seal,h_seal*(volume_so+volume_d),bda_par_seal_o)
+calc_flux_bird_seal_i<- f3(bird_i,(seal_i),u_seal*PREF_bird_seal,h_seal*(volume_si),bda_par_seal_i)
 
 calc_flux_bird_seal_w <- calc_flux_bird_seal_o + calc_flux_bird_seal_i
 
@@ -444,8 +452,8 @@ model_flux_bird_seal<-extract_model_flux(flow_matrix,"bird","seal")
 #............................
 #............................
 
-calc_flux_discard_ceta_o<- f3(discard_o,(ceta_o),u_ceta*PREF_discard_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_discard_ceta_i<- f3(discard_i,(ceta_i),u_ceta*PREF_discard_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_discard_ceta_o<- f3(discard_o,(ceta_o),u_ceta*PREF_discard_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_discard_ceta_i<- f3(discard_i,(ceta_i),u_ceta*PREF_discard_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_discard_ceta_w <- calc_flux_discard_ceta_o + calc_flux_discard_ceta_i
 
@@ -457,8 +465,8 @@ model_flux_discard_ceta<-extract_model_flux(flow_matrix,"discards","ceta")
 #............................
 
 
-calc_flux_omni_ceta_o<- f3(omni_o,(ceta_o),u_ceta*PREF_omni_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_omni_ceta_i<- f3(omni_i,(ceta_i),u_ceta*PREF_omni_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_omni_ceta_o<- f3(omni_o,(ceta_o),u_ceta*PREF_omni_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_omni_ceta_i<- f3(omni_i,(ceta_i),u_ceta*PREF_omni_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_omni_ceta_w <- calc_flux_omni_ceta_o + calc_flux_omni_ceta_i
 
@@ -470,8 +478,8 @@ model_flux_omni_ceta<-extract_model_flux(flow_matrix,"omnivzoo","ceta")
 #............................
 
 
-calc_flux_carn_ceta_o<- f3(CZ_edible_o,(ceta_o),u_ceta*PREF_carn_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_carn_ceta_i<- f3(CZ_edible_i,(ceta_i),u_ceta*PREF_carn_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_carn_ceta_o<- f3(CZ_edible_o,(ceta_o),u_ceta*PREF_carn_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_carn_ceta_i<- f3(CZ_edible_i,(ceta_i),u_ceta*PREF_carn_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_carn_ceta_w <- calc_flux_carn_ceta_o + calc_flux_carn_ceta_i
 
@@ -482,8 +490,8 @@ model_flux_carn_ceta<-extract_model_flux(flow_matrix,"carnzoo","ceta")
 
 #............................
 
-calc_flux_benths_ceta_o<- f3(benths_o,(ceta_o),u_ceta*PREF_benths_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_benths_ceta_i<- f3(benths_i,(ceta_i),u_ceta*PREF_benths_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_benths_ceta_o<- f3(benths_o,(ceta_o),u_ceta*PREF_benths_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_benths_ceta_i<- f3(benths_i,(ceta_i),u_ceta*PREF_benths_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_benths_ceta_w <- calc_flux_benths_ceta_o + calc_flux_benths_ceta_i
 
@@ -494,8 +502,8 @@ model_flux_benths_ceta<-extract_model_flux(flow_matrix,"benths","ceta")
 
 #............................
 
-calc_flux_benthc_ceta_o<- f3(benthc_o,(ceta_o),u_ceta*PREF_benthc_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_benthc_ceta_i<- f3(benthc_i,(ceta_i),u_ceta*PREF_benthc_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_benthc_ceta_o<- f3(benthc_o,(ceta_o),u_ceta*PREF_benthc_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_benthc_ceta_i<- f3(benthc_i,(ceta_i),u_ceta*PREF_benthc_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_benthc_ceta_w <- calc_flux_benthc_ceta_o + calc_flux_benthc_ceta_i
 
@@ -506,8 +514,8 @@ model_flux_benthc_ceta<-extract_model_flux(flow_matrix,"benthc","ceta")
 
 #............................
 
-calc_flux_fishp_ceta_o<- f3(fishp_o,(ceta_o),u_ceta*PREF_fishp_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_fishp_ceta_i<- f3(fishp_i,(ceta_i),u_ceta*PREF_fishp_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_fishp_ceta_o<- f3(fishp_o,(ceta_o),u_ceta*PREF_fishp_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_fishp_ceta_i<- f3(fishp_i,(ceta_i),u_ceta*PREF_fishp_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_fishp_ceta_w <- calc_flux_fishp_ceta_o + calc_flux_fishp_ceta_i
 
@@ -518,8 +526,8 @@ model_flux_fishp_ceta<-extract_model_flux(flow_matrix,"pfish","ceta")
 
 #............................
 
-calc_flux_fishd_ceta_o<- f3(fishd_o,(ceta_o),u_ceta*PREF_fishd_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_fishd_ceta_i<- f3(fishd_i,(ceta_i),u_ceta*PREF_fishd_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_fishd_ceta_o<- f3(fishd_o,(ceta_o),u_ceta*PREF_fishd_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_fishd_ceta_i<- f3(fishd_i,(ceta_i),u_ceta*PREF_fishd_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_fishd_ceta_w <- calc_flux_fishd_ceta_o + calc_flux_fishd_ceta_i
 
@@ -530,8 +538,8 @@ model_flux_fishd_ceta<-extract_model_flux(flow_matrix,"dfish","ceta")
 
 #............................
 
-calc_flux_fishm_ceta_o<- f3(fishm_o,(ceta_o),u_ceta*PREF_fishm_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_fishm_ceta_i<- f3(fishm_i,(ceta_i),u_ceta*PREF_fishm_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_fishm_ceta_o<- f3(fishm_o,(ceta_o),u_ceta*PREF_fishm_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_fishm_ceta_i<- f3(fishm_i,(ceta_i),u_ceta*PREF_fishm_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_fishm_ceta_w <- calc_flux_fishm_ceta_o + calc_flux_fishm_ceta_i
 
@@ -542,8 +550,8 @@ model_flux_fishm_ceta<-extract_model_flux(flow_matrix,"mfish","ceta")
 
 #............................
 
-calc_flux_bird_ceta_o<- f3(bird_o,(ceta_o),u_ceta*PREF_bird_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_bird_ceta_i<- f3(bird_i,(ceta_i),u_ceta*PREF_bird_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_bird_ceta_o<- f3(bird_o,(ceta_o),u_ceta*PREF_bird_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_bird_ceta_i<- f3(bird_i,(ceta_i),u_ceta*PREF_bird_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_bird_ceta_w <- calc_flux_bird_ceta_o + calc_flux_bird_ceta_i
 
@@ -554,8 +562,8 @@ model_flux_bird_ceta<-extract_model_flux(flow_matrix,"bird","ceta")
 
 #............................
 
-calc_flux_seal_ceta_o<- f3(seal_o,(ceta_o),u_ceta*PREF_seal_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta)
-calc_flux_seal_ceta_i<- f3(seal_i,(ceta_i),u_ceta*PREF_seal_ceta,h_ceta*(volume_si),bda_par_ceta)
+calc_flux_seal_ceta_o<- f3(seal_o,(ceta_o),u_ceta*PREF_seal_ceta,h_ceta*(volume_so+volume_d),bda_par_ceta_o)
+calc_flux_seal_ceta_i<- f3(seal_i,(ceta_i),u_ceta*PREF_seal_ceta,h_ceta*(volume_si),bda_par_ceta_i)
 
 calc_flux_seal_ceta_w <- calc_flux_seal_ceta_o + calc_flux_seal_ceta_i
 

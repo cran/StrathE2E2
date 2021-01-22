@@ -9,7 +9,7 @@
 #' In the case of the plot derived from ecology parameter optimization, the parameters are identified by an abbreviated name. A key to the paramaters identities
 #' can be downloaded in dataframe format by the function e2e_get_parmdoc().
 #' 
-#' @param model R-list object defining the model configuration used to generate the data and compiled by the e2e_load() function.
+#' @param model R-list object defining the model configuration used to generate the data and compiled by the e2e_read() function.
 #' @param selection Text string from a list identifying which type of optimization procedure generated the data to be plotted. Select from: "ECO", "HR", "ACT", corresponding to the functions e2e_optimize_eco(), e2e_optimize_hr(), and e2e_optimize_act(). Remember to include the phrase within "" quotes.
 #' @param use.saved Logical. If TRUE use data from a prior user-defined run held as csv files data in the current results folder, (default=FALSE).
 #' @param use.example Logical. If TRUE use pre-computed example data from the internal North Sea model rather than user-generated data, (default=FALSE).

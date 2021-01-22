@@ -57,12 +57,20 @@ if(use.example==FALSE){
 	Sorted_SENS_results <- readcsv(sensfile)
 }
 
-	NTRAJ<- Sorted_SENS_results$Ntrajectories[1]
+	NTRAJ <- Sorted_SENS_results$Ntrajectories[1]
+
+	senscritname <- Sorted_SENS_results$criterion[1]
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	xamin<-1.05*min(Sorted_SENS_results$EEmean,na.rm=TRUE)
-	xamax<-max(1, (1.05*max(Sorted_SENS_results$EEmean,na.rm=TRUE)) )
+#	xamin<-1.05*min(Sorted_SENS_results$EEmean,na.rm=TRUE)
+#	xamax<-max(1, (1.05*max(Sorted_SENS_results$EEmean,na.rm=TRUE)) )
+
+	xamin<-min(Sorted_SENS_results$EEmean,na.rm=TRUE) - 0.7 *( max(Sorted_SENS_results$EEmean,na.rm=TRUE) - min(Sorted_SENS_results$EEmean,na.rm=TRUE) )
+	xamaxt<-max((1.05*max(Sorted_SENS_results$EEmean,na.rm=TRUE)) )
+        xaxspan<-xamaxt-xamin
+        xamax<-xamaxt + (xaxspan*0.05)
+
 	yamax<-1.05*max(Sorted_SENS_results$EEsd,na.rm=TRUE)
 
 	#black = fitted (0)
@@ -77,7 +85,7 @@ if(use.example==FALSE){
         legsize<-rep(1,6)
 
 	par(mfrow=c(1,1))
-	par(mar=c(4.5,5,0.5,0.5))
+	par(mar=c(4.5,5,2.5,0.5))
 
 	plot(Sorted_SENS_results$EEmean[which(Sorted_SENS_results$fixfit==0)],Sorted_SENS_results$EEsd[which(Sorted_SENS_results$fixfit==0)],type="p",pch=legsymbols[1],cex=legsize[1],col=legcolours[1],xlim=c(xamin,xamax),ylim=c(0,yamax),xaxt="n",yaxt="n",ann=FALSE)
 	points(Sorted_SENS_results$EEmean[which(Sorted_SENS_results$fixfit==1)],Sorted_SENS_results$EEsd[which(Sorted_SENS_results$fixfit==1)],type="p",pch=legsymbols[2],cex=legsize[2],col=legcolours[2])
@@ -89,11 +97,14 @@ if(use.example==FALSE){
 
 	abline(0,(sqrt(NTRAJ)/2),lty="dashed")
 	abline(0,-(sqrt(NTRAJ)/2),lty="dashed")
-	axis(side=1,at=c(-5,-4,-3,-2,-1,0,1,2,3,4,5,6),las=1,cex.axis=1)
-	axis(side=2,at=c(0,0.5,1,1.5,2,3,4,5,6),las=1,cex.axis=1)
+#	axis(side=1,at=c(-5,-4,-3,-2,-1,-0.5,0,0.5,1,2,3,4,5,6),las=1,cex.axis=1)
+#	axis(side=2,at=c(0,0.25,0.5,1,1.5,2,3,4,5,6),las=1,cex.axis=1)
+	axis(side=1,las=1,cex.axis=1)
+	axis(side=2,las=1,cex.axis=1)
 	mtext("Elementary Effect mean",cex=1.3,side=1,line=2.25)
 	mtext("Elementary Effect standard deviation",cex=1.3,side=2,line=2.8)
 	legend("bottomleft",  bg="transparent", leglabels, pch=legsymbols, cex=legsize*0.75, col=legcolours, title= "Parameter types")
+	mtext(paste("Sensitivity analysis criterion: ",senscritname,sep="") ,cex=1.0,side=3,line=0.5)
 
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

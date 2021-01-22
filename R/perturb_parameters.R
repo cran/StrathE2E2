@@ -16,7 +16,7 @@
 #'
 #' In this bit of code the parameters can be varied by a random value drawn from a Gaussian distribution. The cv of the
 #' distribution is constant across groups of parameters.
-#' Intended for use in MCMC
+#' Intended for use in optimization schemes
 #'
 #' VECTORS BUILT UP:
 #'	prefstore	~ 67 pars

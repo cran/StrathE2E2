@@ -7,14 +7,14 @@ citEntry(entry="article",
                       as.person("Ian Thurlbeck "),
                       as.person("Robert Wilson ")),
   journal  =	"Methods in Ecology and Evolution",
-  volume   =	"submitted",
+  volume   =	"Published online 11 October 2020",
   year     = 	"2020",
   ISSN     = 	"2041-210X",
-  URL      = 	"https://besjournals.onlinelibrary.wiley.com/journal/2041210X",
+  URL      = 	"https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13510",
   keywords =	"food web, dynamic model, ecosystem, fisheries, 
                  ordinary differential equations, optimization, 
 				 sensitivity analysis, Monte-Carlo, R",
-  textVersion =  paste("Heath, M.R., Speirs, D.C., Thurlbeck, I. and Wilson, R. (2019).",
+  textVersion =  paste("Heath, M.R., Speirs, D.C., Thurlbeck, I. and Wilson, R. (2020).",
                        "StrathE2E2: an R package for modelling the dynamics of marine food webs and fisheries.",
-                       "Methods in Ecology and Evolution, submitted (check online for updates).")
+                       "Methods in Ecology and Evolution, published online 11 October 2020. 8pp.")
 )

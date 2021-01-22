@@ -1,4 +1,23 @@
-# StrathE2E2 3.2.0 
+# StrathE2E2 3.3.0 
+
+* Version 3.3.0 adds a significant extension to the sensitivity 
+  analysis function in the package, implements some changes
+  to the equations governing migrations of birds, pinnipeds and
+  cetaceans, and updates the citation details for the package:
+
+  * The sensitivity analysis extension allows the criterion of 
+    for the analysis to be selected from any one of the list of 
+    state variable and flux outputs from the model, in addition 
+    to the existing default (likelihood of observed data).
+
+  * Changes to the migration equations necessitate 
+    re-parameterisation of the example model of the North Sea, 
+    so the release includes new sets of parameter files. The 
+    accompanying example data package is also updated along
+    with the documentation.
+
+  * The citation details are updated to reflect publication of
+    our manuscript in Methods in Ecology and Evolution.
 
 * Version 3.2.0 accompanied a review revision our manuscript to 
   Methods in Ecology and Evolution in August 2020:

@@ -857,6 +857,8 @@ Fluxpartwc_sed      <-   fluxwcdet_xdet[ndays]      -     fluxwcdet_xdet[((nyear
                         +fluxmfish_corp[ndays]      -     fluxmfish_corp[((nyears-1)*360+1)] +
                         +fluxdfish_corp[ndays]      -     fluxdfish_corp[((nyears-1)*360+1)] +
                         +fluxbird_corp[ndays]      -     fluxbird_corp[((nyears-1)*360+1)] +
+                        +fluxseal_corp[ndays]      -     fluxseal_corp[((nyears-1)*360+1)] +
+                        +fluxceta_corp[ndays]      -     fluxceta_corp[((nyears-1)*360+1)] +
                         +fluxphyt_benths[ndays]      -     fluxphyt_benths[((nyears-1)*360+1)]+
                         +fluxwcdet_benths[ndays]      -     fluxwcdet_benths[((nyears-1)*360+1)]
 #Includes the water column feeding flux of benthos

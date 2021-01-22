@@ -25,6 +25,9 @@ process_sensitivity_analysis_results <- function(model, results) {
 
 	results_df_out <- results
 
+	senscritname <- names(results_df_out)[6]
+	if(senscritname=="likelihood") senscritname<-"Target data likelihood"        
+
 	NPARMS<-(nrow(results_df_out[which(results_df_out$trajectoryid==1),]))-1
 	NTRAJ<-(nrow(results_df_out))/(NPARMS+1)
 
@@ -57,21 +60,28 @@ process_sensitivity_analysis_results <- function(model, results) {
 
 	SENS_results<-results_df_out[2:(NPARMS+1),1:2]
 	SENS_results$fixfit<-0
+        SENS_results$criterion <- senscritname 
 	SENS_results$EEmean<-NA
 	SENS_results$EEsd<-NA
 
 	#vector of the the ids of the time series drivers
-	driverparms<-c(1001:1053)
+#	driverparms<-c(1001:1053)
+	driverparms<-parameter.details$parameterid[which(parameter.details$fixfit==4)]
 
 	#vector of physical setup parameters
-	physicalparms<-c(1:4,28:56)
+#	physicalparms<-c(1:4,28:56)
+	physicalparms<-parameter.details$parameterid[which(parameter.details$fixfit==5)]
 
 	#vector of the the ids of the fishing parameters
-	harvestrates<-c(57:76)
-	fishingparms<-c(77:123,286:306)
+#	harvestrates<-c(57:76)
+	harvestrates<-parameter.details$parameterid[which(parameter.details$fixfit==3)]
+
+#	fishingparms<-c(77:123,286:306)
+	fishingparms<-parameter.details$parameterid[which(parameter.details$fixfit==2)]
 
 	#vector of the the ids of the fixed parameters
-	fixedpars<-c(307:314,480:507,570:585)
+#	fixedpars<-c(307:314,480:507,570:585)
+	fixedpars<-parameter.details$parameterid[which(parameter.details$fixfit==1)]
 
 	driverrows<-rep(0,length(harvestrates))
 	for(jjk in 1:length(driverparms)){
